@@ -9,17 +9,17 @@
 /* Begin PBXBuildFile section */
 		97CFFD0D925629C500D0A534 /* Pods_VkAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAA5C3F71CF3911920A3A90 /* Pods_VkAudio.framework */; };
 		F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29C1CCF64A100E45170 /* AppDelegate.swift */; };
-		F56AD29F1CCF64A100E45170 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29E1CCF64A100E45170 /* LoginViewController.swift */; };
 		F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A01CCF64A100E45170 /* Main.storyboard */; };
 		F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */; };
 		F56AD2A71CCF64A200E45170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A61CCF64A200E45170 /* Assets.xcassets */; };
 		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
 		F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */; };
 		F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */; };
-		F5F088301CCF6AAF00525599 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0882F1CCF6AAF00525599 /* VkSDK.swift */; };
-		F5F088351CCF81A700525599 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F088341CCF81A700525599 /* UserAudiosViewController.swift */; };
-		F5F088371CCF8AF400525599 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F088361CCF8AF400525599 /* RequestManager.swift */; };
-		F5F088391CCFA8AA00525599 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F088381CCFA8AA00525599 /* AccessToken.swift */; };
+		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
+		F5B3E5731CCFC254003270A9 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */; };
+		F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56F1CCFC254003270A9 /* AccessToken.swift */; };
+		F5B3E5751CCFC254003270A9 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5701CCFC254003270A9 /* RequestManager.swift */; };
+		F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5711CCFC254003270A9 /* VkSDK.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 		D387AF6FBAC8C5FB5AC4D371 /* Pods-VkAudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig"; sourceTree = "<group>"; };
 		F56AD2991CCF64A100E45170 /* VkAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56AD29C1CCF64A100E45170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F56AD29E1CCF64A100E45170 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F56AD2A11CCF64A100E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VkAudio.xcdatamodel; sourceTree = "<group>"; };
 		F56AD2A61CCF64A200E45170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,10 +56,11 @@
 		F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioUITests.swift; sourceTree = "<group>"; };
 		F56AD2C11CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5F0882F1CCF6AAF00525599 /* VkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkSDK.swift; sourceTree = "<group>"; };
-		F5F088341CCF81A700525599 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
-		F5F088361CCF8AF400525599 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
-		F5F088381CCFA8AA00525599 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
+		F5B3E56F1CCFC254003270A9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		F5B3E5701CCFC254003270A9 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		F5B3E5711CCFC254003270A9 /* VkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkSDK.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
+				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
+				F5B3E56E1CCFC254003270A9 /* vk */,
 				F5F0882E1CCF673C00525599 /* support files */,
-				F5F0882D1CCF670200525599 /* viewcontroller */,
-				F5F088311CCF72C900525599 /* vk */,
 				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
 			);
 			path = VkAudio;
@@ -158,13 +158,23 @@
 			path = VkAudioUITests;
 			sourceTree = "<group>";
 		};
-		F5F0882D1CCF670200525599 /* viewcontroller */ = {
+		F5B3E56B1CCFC254003270A9 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				F56AD29E1CCF64A100E45170 /* LoginViewController.swift */,
-				F5F088341CCF81A700525599 /* UserAudiosViewController.swift */,
+				F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */,
+				F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */,
 			);
-			name = viewcontroller;
+			path = viewcontroller;
+			sourceTree = "<group>";
+		};
+		F5B3E56E1CCFC254003270A9 /* vk */ = {
+			isa = PBXGroup;
+			children = (
+				F5B3E56F1CCFC254003270A9 /* AccessToken.swift */,
+				F5B3E5701CCFC254003270A9 /* RequestManager.swift */,
+				F5B3E5711CCFC254003270A9 /* VkSDK.swift */,
+			);
+			path = vk;
 			sourceTree = "<group>";
 		};
 		F5F0882E1CCF673C00525599 /* support files */ = {
@@ -176,16 +186,6 @@
 				F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */,
 			);
 			name = "support files";
-			sourceTree = "<group>";
-		};
-		F5F088311CCF72C900525599 /* vk */ = {
-			isa = PBXGroup;
-			children = (
-				F5F0882F1CCF6AAF00525599 /* VkSDK.swift */,
-				F5F088361CCF8AF400525599 /* RequestManager.swift */,
-				F5F088381CCFA8AA00525599 /* AccessToken.swift */,
-			);
-			name = vk;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,13 +370,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5F088391CCFA8AA00525599 /* AccessToken.swift in Sources */,
+				F5B3E5731CCFC254003270A9 /* UserAudiosViewController.swift in Sources */,
+				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
-				F5F088301CCF6AAF00525599 /* VkSDK.swift in Sources */,
-				F56AD29F1CCF64A100E45170 /* LoginViewController.swift in Sources */,
-				F5F088351CCF81A700525599 /* UserAudiosViewController.swift in Sources */,
-				F5F088371CCF8AF400525599 /* RequestManager.swift in Sources */,
+				F5B3E5751CCFC254003270A9 /* RequestManager.swift in Sources */,
 				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
+				F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */,
+				F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
