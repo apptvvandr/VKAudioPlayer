@@ -1,0 +1,642 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97CFFD0D925629C500D0A534 /* Pods_VkAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAA5C3F71CF3911920A3A90 /* Pods_VkAudio.framework */; };
+		F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29C1CCF64A100E45170 /* AppDelegate.swift */; };
+		F56AD29F1CCF64A100E45170 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29E1CCF64A100E45170 /* LoginViewController.swift */; };
+		F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A01CCF64A100E45170 /* Main.storyboard */; };
+		F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */; };
+		F56AD2A71CCF64A200E45170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A61CCF64A200E45170 /* Assets.xcassets */; };
+		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
+		F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */; };
+		F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */; };
+		F5F088301CCF6AAF00525599 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F0882F1CCF6AAF00525599 /* VkSDK.swift */; };
+		F5F088351CCF81A700525599 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F088341CCF81A700525599 /* UserAudiosViewController.swift */; };
+		F5F088371CCF8AF400525599 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F088361CCF8AF400525599 /* RequestManager.swift */; };
+		F5F088391CCFA8AA00525599 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F088381CCFA8AA00525599 /* AccessToken.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F56AD2B11CCF64A200E45170 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F56AD2911CCF64A100E45170 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F56AD2981CCF64A100E45170;
+			remoteInfo = VkAudio;
+		};
+		F56AD2BC1CCF64A200E45170 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F56AD2911CCF64A100E45170 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F56AD2981CCF64A100E45170;
+			remoteInfo = VkAudio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		12C5E4EC5165AF3F51731493 /* Pods-VkAudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.debug.xcconfig"; sourceTree = "<group>"; };
+		BFAA5C3F71CF3911920A3A90 /* Pods_VkAudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkAudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D387AF6FBAC8C5FB5AC4D371 /* Pods-VkAudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig"; sourceTree = "<group>"; };
+		F56AD2991CCF64A100E45170 /* VkAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56AD29C1CCF64A100E45170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F56AD29E1CCF64A100E45170 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F56AD2A11CCF64A100E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VkAudio.xcdatamodel; sourceTree = "<group>"; };
+		F56AD2A61CCF64A200E45170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F56AD2A91CCF64A200E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F56AD2AB1CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F56AD2B01CCF64A200E45170 /* VkAudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioTests.swift; sourceTree = "<group>"; };
+		F56AD2B61CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioUITests.swift; sourceTree = "<group>"; };
+		F56AD2C11CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5F0882F1CCF6AAF00525599 /* VkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkSDK.swift; sourceTree = "<group>"; };
+		F5F088341CCF81A700525599 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
+		F5F088361CCF8AF400525599 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		F5F088381CCFA8AA00525599 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F56AD2961CCF64A100E45170 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97CFFD0D925629C500D0A534 /* Pods_VkAudio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F56AD2AD1CCF64A200E45170 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F56AD2B81CCF64A200E45170 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E85D036B77A87B00D0EE10E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFAA5C3F71CF3911920A3A90 /* Pods_VkAudio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		101DFAB536C22D241FB211DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				12C5E4EC5165AF3F51731493 /* Pods-VkAudio.debug.xcconfig */,
+				D387AF6FBAC8C5FB5AC4D371 /* Pods-VkAudio.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F56AD2901CCF64A100E45170 = {
+			isa = PBXGroup;
+			children = (
+				F56AD29B1CCF64A100E45170 /* VkAudio */,
+				F56AD2B31CCF64A200E45170 /* VkAudioTests */,
+				F56AD2BE1CCF64A200E45170 /* VkAudioUITests */,
+				F56AD29A1CCF64A100E45170 /* Products */,
+				101DFAB536C22D241FB211DD /* Pods */,
+				0E85D036B77A87B00D0EE10E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F56AD29A1CCF64A100E45170 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F56AD2991CCF64A100E45170 /* VkAudio.app */,
+				F56AD2B01CCF64A200E45170 /* VkAudioTests.xctest */,
+				F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F56AD29B1CCF64A100E45170 /* VkAudio */ = {
+			isa = PBXGroup;
+			children = (
+				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
+				F5F0882E1CCF673C00525599 /* support files */,
+				F5F0882D1CCF670200525599 /* viewcontroller */,
+				F5F088311CCF72C900525599 /* vk */,
+				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
+			);
+			path = VkAudio;
+			sourceTree = "<group>";
+		};
+		F56AD2B31CCF64A200E45170 /* VkAudioTests */ = {
+			isa = PBXGroup;
+			children = (
+				F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */,
+				F56AD2B61CCF64A200E45170 /* Info.plist */,
+			);
+			path = VkAudioTests;
+			sourceTree = "<group>";
+		};
+		F56AD2BE1CCF64A200E45170 /* VkAudioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */,
+				F56AD2C11CCF64A200E45170 /* Info.plist */,
+			);
+			path = VkAudioUITests;
+			sourceTree = "<group>";
+		};
+		F5F0882D1CCF670200525599 /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				F56AD29E1CCF64A100E45170 /* LoginViewController.swift */,
+				F5F088341CCF81A700525599 /* UserAudiosViewController.swift */,
+			);
+			name = viewcontroller;
+			sourceTree = "<group>";
+		};
+		F5F0882E1CCF673C00525599 /* support files */ = {
+			isa = PBXGroup;
+			children = (
+				F56AD2A61CCF64A200E45170 /* Assets.xcassets */,
+				F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */,
+				F56AD2AB1CCF64A200E45170 /* Info.plist */,
+				F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */,
+			);
+			name = "support files";
+			sourceTree = "<group>";
+		};
+		F5F088311CCF72C900525599 /* vk */ = {
+			isa = PBXGroup;
+			children = (
+				F5F0882F1CCF6AAF00525599 /* VkSDK.swift */,
+				F5F088361CCF8AF400525599 /* RequestManager.swift */,
+				F5F088381CCFA8AA00525599 /* AccessToken.swift */,
+			);
+			name = vk;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F56AD2981CCF64A100E45170 /* VkAudio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F56AD2C41CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudio" */;
+			buildPhases = (
+				857E01CC2D36784891A159A8 /* Check Pods Manifest.lock */,
+				F56AD2951CCF64A100E45170 /* Sources */,
+				F56AD2961CCF64A100E45170 /* Frameworks */,
+				F56AD2971CCF64A100E45170 /* Resources */,
+				37137BB351772928996FB954 /* Embed Pods Frameworks */,
+				EA0C0428EAA0BAC8C176740E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VkAudio;
+			productName = VkAudio;
+			productReference = F56AD2991CCF64A100E45170 /* VkAudio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F56AD2AF1CCF64A200E45170 /* VkAudioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F56AD2C71CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioTests" */;
+			buildPhases = (
+				F56AD2AC1CCF64A200E45170 /* Sources */,
+				F56AD2AD1CCF64A200E45170 /* Frameworks */,
+				F56AD2AE1CCF64A200E45170 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F56AD2B21CCF64A200E45170 /* PBXTargetDependency */,
+			);
+			name = VkAudioTests;
+			productName = VkAudioTests;
+			productReference = F56AD2B01CCF64A200E45170 /* VkAudioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F56AD2BA1CCF64A200E45170 /* VkAudioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F56AD2CA1CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioUITests" */;
+			buildPhases = (
+				F56AD2B71CCF64A200E45170 /* Sources */,
+				F56AD2B81CCF64A200E45170 /* Frameworks */,
+				F56AD2B91CCF64A200E45170 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F56AD2BD1CCF64A200E45170 /* PBXTargetDependency */,
+			);
+			name = VkAudioUITests;
+			productName = VkAudioUITests;
+			productReference = F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F56AD2911CCF64A100E45170 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = y0rrrsh;
+				TargetAttributes = {
+					F56AD2981CCF64A100E45170 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					F56AD2AF1CCF64A200E45170 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = F56AD2981CCF64A100E45170;
+					};
+					F56AD2BA1CCF64A200E45170 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = F56AD2981CCF64A100E45170;
+					};
+				};
+			};
+			buildConfigurationList = F56AD2941CCF64A100E45170 /* Build configuration list for PBXProject "VkAudio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F56AD2901CCF64A100E45170;
+			productRefGroup = F56AD29A1CCF64A100E45170 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F56AD2981CCF64A100E45170 /* VkAudio */,
+				F56AD2AF1CCF64A200E45170 /* VkAudioTests */,
+				F56AD2BA1CCF64A200E45170 /* VkAudioUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F56AD2971CCF64A100E45170 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */,
+				F56AD2A71CCF64A200E45170 /* Assets.xcassets in Resources */,
+				F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F56AD2AE1CCF64A200E45170 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F56AD2B91CCF64A200E45170 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37137BB351772928996FB954 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		857E01CC2D36784891A159A8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EA0C0428EAA0BAC8C176740E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F56AD2951CCF64A100E45170 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5F088391CCFA8AA00525599 /* AccessToken.swift in Sources */,
+				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
+				F5F088301CCF6AAF00525599 /* VkSDK.swift in Sources */,
+				F56AD29F1CCF64A100E45170 /* LoginViewController.swift in Sources */,
+				F5F088351CCF81A700525599 /* UserAudiosViewController.swift in Sources */,
+				F5F088371CCF8AF400525599 /* RequestManager.swift in Sources */,
+				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F56AD2AC1CCF64A200E45170 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F56AD2B71CCF64A200E45170 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F56AD2B21CCF64A200E45170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F56AD2981CCF64A100E45170 /* VkAudio */;
+			targetProxy = F56AD2B11CCF64A200E45170 /* PBXContainerItemProxy */;
+		};
+		F56AD2BD1CCF64A200E45170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F56AD2981CCF64A100E45170 /* VkAudio */;
+			targetProxy = F56AD2BC1CCF64A200E45170 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F56AD2A01CCF64A100E45170 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56AD2A11CCF64A100E45170 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56AD2A91CCF64A200E45170 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F56AD2C21CCF64A200E45170 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F56AD2C31CCF64A200E45170 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F56AD2C51CCF64A200E45170 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12C5E4EC5165AF3F51731493 /* Pods-VkAudio.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VkAudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F56AD2C61CCF64A200E45170 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D387AF6FBAC8C5FB5AC4D371 /* Pods-VkAudio.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = VkAudio/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F56AD2C81CCF64A200E45170 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VkAudioTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VkAudio.app/VkAudio";
+			};
+			name = Debug;
+		};
+		F56AD2C91CCF64A200E45170 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = VkAudioTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VkAudio.app/VkAudio";
+			};
+			name = Release;
+		};
+		F56AD2CB1CCF64A200E45170 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VkAudioUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VkAudio;
+			};
+			name = Debug;
+		};
+		F56AD2CC1CCF64A200E45170 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = VkAudioUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VkAudio;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F56AD2941CCF64A100E45170 /* Build configuration list for PBXProject "VkAudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F56AD2C21CCF64A200E45170 /* Debug */,
+				F56AD2C31CCF64A200E45170 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F56AD2C41CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F56AD2C51CCF64A200E45170 /* Debug */,
+				F56AD2C61CCF64A200E45170 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F56AD2C71CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F56AD2C81CCF64A200E45170 /* Debug */,
+				F56AD2C91CCF64A200E45170 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F56AD2CA1CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F56AD2CB1CCF64A200E45170 /* Debug */,
+				F56AD2CC1CCF64A200E45170 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */,
+			);
+			currentVersion = F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */;
+			path = VkAudio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F56AD2911CCF64A100E45170 /* Project object */;
+}
