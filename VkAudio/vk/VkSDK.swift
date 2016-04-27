@@ -14,7 +14,7 @@ class VkSDK {
     internal static let PREFS_KEY_TOKEN_URL = "token_url"
     
     var token: AccessToken?
-    var requestManager: RequestManager?
+    private var requestManager: RequestManager?
     
     class var instance: VkSDK? {
         if _instance == nil {
@@ -50,5 +50,9 @@ class VkSDK {
             + "&scope=\(scope)"
             + "&display=touch"
             + "&response_type=token"
+    }
+    
+    func getAudios(onResult: (result: [AnyObject]) -> Void){
+        requestManager?.getAudios(onResult)
     }
 }

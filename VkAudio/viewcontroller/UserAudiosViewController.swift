@@ -17,8 +17,6 @@ class UserAudiosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VkSDK.instance?.requestManager?.getAudios({ (result) in
-            print(result)
-        })
+        VkSDK.instance?.getAudios{result in print(result)}
     }
 }
