@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AFNetworking
+import Alamofire
 
 class LoginViewController: UIViewController, UIWebViewDelegate {
     

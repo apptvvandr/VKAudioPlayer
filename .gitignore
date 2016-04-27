@@ -16,7 +16,7 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-VkAudio.xcworkspace/xcuserdata/
+VkAudio.xcodeproj/xcuserdata/
 
 ## Other
 *.xccheckout
