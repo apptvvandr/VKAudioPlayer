@@ -19,7 +19,15 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         webView.delegate = self
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: VkSDK.URL_OAUTH)!))
+        
+        let plistPath = NSBundle.mainBundle().pathForResource("VkApp", ofType: "plist")
+        let appValues = NSDictionary(contentsOfFile: plistPath!)!
+    
+        let appId: String = appValues.objectForKey("APP_ID") as! String
+        let appScope: String = appValues.objectForKey("APP_SCOPE") as! String
+        
+        let authUrl = VkSDK.authUrl(appId, scope: appScope)
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
