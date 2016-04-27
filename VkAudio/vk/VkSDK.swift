@@ -52,7 +52,7 @@ class VkSDK {
             + "&response_type=token"
     }
     
-    func getAudios(onResult: (result: [AnyObject]) -> Void){
+    func getAudios(onResult: (result: AnyObject) -> Void){
         requestManager?.getAudios(onResult)
     }
 }

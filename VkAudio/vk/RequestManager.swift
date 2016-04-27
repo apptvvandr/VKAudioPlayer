@@ -20,23 +20,22 @@ class RequestManager {
     }
     
     private func sendApiGetRequest(apiMethod: String, params: [String: AnyObject]?,
-                                   onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)?){
+                                   onResult: (result: AnyObject) -> Void, onError: ((error: NSError) -> Void)?){
         
         Alamofire.request(.GET, URL_REQUEST_BASE + apiMethod, parameters: params)
             .responseJSON {
                 response in
-                if let responseValues = response.result.value {
-                    let responseDict = responseValues as! [String: AnyObject]
-                    let responseData = responseDict["response"] as! [AnyObject]
-                    onResult(result: Array(responseData[1..<responseData.count]))
+                let result = response.result
+                if result.isSuccess {
+                    onResult(result: result.value!)
                 }
                 else if onError != nil {
-                    onError!(error: NSError(coder: NSCoder())!)
+                    onError!(error: result.error!)
                 }
             }
     }
     
-    func getAudios(onResult: (result: [AnyObject]) -> Void) {
+    func getAudios(onResult: (result: AnyObject) -> Void) {
         let params = ["owner_id" : token.userId, "access_token" : token.token]
         sendApiGetRequest("audio.get", params: params, onResult: onResult) { (error) in
             //todo: handle error
