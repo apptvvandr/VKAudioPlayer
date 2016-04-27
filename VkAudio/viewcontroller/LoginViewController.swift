@@ -22,10 +22,12 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(NSURLRequest(URL: NSURL(string: VkSDK.URL_OAUTH)!))
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        if let currentUrl = webView.request?.URL?.absoluteString where currentUrl.containsString("access_token"){
-            VkSDK.setup(currentUrl)
-            self.performSegueWithIdentifier("login_to_user_audios", sender: self)
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if let url = request.URL?.absoluteString where url.containsString("access_token="){
+            VkSDK.setup(url)
+            self.performSegueWithIdentifier(UserAudiosViewController.SEGUE_ID, sender: self)
+            return false
         }
+        return true
     }
 }

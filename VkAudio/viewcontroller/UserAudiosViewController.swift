@@ -12,6 +12,7 @@ import UIKit
 class UserAudiosViewController: UIViewController{
     
     internal static let STORYBOARD_ID: String = "controller_user_audios"
+    internal static let SEGUE_ID: String = "login_to_user_audios"
     
     override func viewDidLoad() {
         super.viewDidLoad()
