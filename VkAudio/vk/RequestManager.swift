@@ -19,10 +19,16 @@ class RequestManager {
         self.token = token
     }
     
-    func getAudios(ownerId: String?) -> String {
-        let requestUrl: String = URL_REQUEST_BASE + "audio.get" + "?uid=\(token.userId)" + "&access_token=\(token.token)"
+    func getAudios(onResult: (result: [AnyObject]) -> Void) {
+        let params = ["owner_id" : token.userId, "access_token" : token.token]
         
-        
-        return requestUrl
+        Alamofire.request(.GET, URL_REQUEST_BASE + "audio.get", parameters: params)
+            .responseJSON{ response in
+                let dataDict = response.result.value as! [String : AnyObject]
+                if let serverData = dataDict["response"] as? [AnyObject] {
+                    let data = Array(serverData[1..<serverData.count])
+                    onResult(result: data)
+                }
+        }
     }
 }
