@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UIWebViewDelegate {
     
-    internal static let SROTYBOARD_ID: String = "controller_login"
+    internal static let SROTYBOARD_ID = "controller_login"
   
     @IBOutlet weak var webView: UIWebView!
     
@@ -22,9 +22,9 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         let plistPath = NSBundle.mainBundle().pathForResource("VkApp", ofType: "plist")
         let appValues = NSDictionary(contentsOfFile: plistPath!)!
     
-        let appId: String = appValues.objectForKey("APP_ID") as! String
-        let appScope: String = appValues.objectForKey("APP_SCOPE") as! String
-        let appApiVersion: String = appValues.objectForKey("API_VERSION") as! String
+        let appId = appValues.objectForKey("APP_ID") as! String
+        let appScope = appValues.objectForKey("APP_SCOPE") as! String
+        let appApiVersion = appValues.objectForKey("API_VERSION") as! String
         
         let authUrl = VkSDK.authUrl(appId, scope: appScope, version: appApiVersion)
         webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
