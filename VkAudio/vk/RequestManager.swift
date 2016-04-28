@@ -19,10 +19,27 @@ class RequestManager {
         self.token = token
     }
     
-    func getAudios(ownerId: String?) -> String {
-        let requestUrl: String = URL_REQUEST_BASE + "audio.get" + "?uid=\(token.userId)" + "&access_token=\(token.token)"
+    func getAudios(onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = nil) {
+        let params = ["owner_id" : token.userId, "access_token" : token.token]
+        let url = URL_REQUEST_BASE + "audio.get"
         
-        
-        return requestUrl
+        Alamofire.request(.GET, url, parameters: params)
+            .responseJSON{apiResponse in
+                if let response = apiResponse.result.value {
+                    let responseDict = response as! [String : AnyObject]
+                    if let responseDictValues = responseDict["response"] as? [AnyObject]{
+                        let responseValues = Array(responseDictValues[1..<responseDictValues.count])
+                        onResult(result: responseValues)
+                    }
+                    else if let errorDictValues = responseDict["error"] {
+                        let code = errorDictValues["error_code"] as! Int
+                        let message = errorDictValues["error_msg"] as! String
+                        onError?(error: NSError(domain: message, code: code, userInfo: nil))
+                    }
+                }
+                else {
+                    onError?(error: apiResponse.result.error!)
+                }
+        }
     }
 }

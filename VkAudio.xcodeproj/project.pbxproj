@@ -15,6 +15,7 @@
 		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
 		F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */; };
 		F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */; };
+		F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5ABBE821CD0C4F5000699EA /* VkApp.plist */; };
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
 		F5B3E5731CCFC254003270A9 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */; };
 		F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56F1CCFC254003270A9 /* AccessToken.swift */; };
@@ -56,6 +57,7 @@
 		F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioUITests.swift; sourceTree = "<group>"; };
 		F56AD2C11CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5ABBE821CD0C4F5000699EA /* VkApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VkApp.plist; sourceTree = "<group>"; };
 		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5B3E56F1CCFC254003270A9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				F5B3E56F1CCFC254003270A9 /* AccessToken.swift */,
 				F5B3E5701CCFC254003270A9 /* RequestManager.swift */,
 				F5B3E5711CCFC254003270A9 /* VkSDK.swift */,
+				F5ABBE821CD0C4F5000699EA /* VkApp.plist */,
 			);
 			path = vk;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */,
 				F56AD2A71CCF64A200E45170 /* Assets.xcassets in Resources */,
 				F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */,
+				F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

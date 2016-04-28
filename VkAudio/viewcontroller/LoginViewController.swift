@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Alamofire
 
 class LoginViewController: UIViewController, UIWebViewDelegate {
     
-    internal static let SROTYBOARD_ID: String = "controller_login"
+    internal static let SROTYBOARD_ID = "controller_login"
   
     @IBOutlet weak var webView: UIWebView!
     
@@ -19,13 +18,24 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         
         webView.delegate = self
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: VkSDK.URL_OAUTH)!))
+        
+        let plistPath = NSBundle.mainBundle().pathForResource("VkApp", ofType: "plist")
+        let appValues = NSDictionary(contentsOfFile: plistPath!)!
+    
+        let appId = appValues.objectForKey("APP_ID") as! String
+        let appScope = appValues.objectForKey("APP_SCOPE") as! String
+        let appApiVersion = appValues.objectForKey("API_VERSION") as! String
+        
+        let authUrl = VkSDK.authUrl(appId, scope: appScope, version: appApiVersion)
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        if let currentUrl = webView.request?.URL?.absoluteString where currentUrl.containsString("access_token"){
-            VkSDK.setup(currentUrl)
-            self.performSegueWithIdentifier("login_to_user_audios", sender: self)
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if let url = request.URL?.absoluteString where url.containsString("access_token="){
+            VkSDK.setup(url)
+            self.performSegueWithIdentifier(UserAudiosViewController.SEGUE_ID, sender: self)
+            return false
         }
+        return true
     }
 }

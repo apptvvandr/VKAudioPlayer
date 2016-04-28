@@ -13,18 +13,8 @@ class VkSDK {
     
     internal static let PREFS_KEY_TOKEN_URL = "token_url"
     
-    private static let APP_ID = 5424227
-    private static let APP_SECURE = "xnzb7tqjzyyFou43nUQ3"
-    private static let APP_SCOPE = "audio"
-    
-    static let URL_OAUTH: String = "http://oauth.vk.com/authorize"
-        + "?client_id=" + "\(APP_ID)"
-        + "&scope=" + "\(APP_SCOPE)"
-        + "&display=touch"
-        + "&response_type=token"
-    
     var token: AccessToken?
-    var requestManager: RequestManager?
+    private var requestManager: RequestManager?
     
     class var instance: VkSDK? {
         if _instance == nil {
@@ -52,5 +42,18 @@ class VkSDK {
             return
         }
         return nil
+    }
+    
+    static func authUrl(id: String, scope: String, version: String = "3.0") -> String {
+        return "http://oauth.vk.com/authorize"
+            + "?client_id=\(id)"
+            + "&scope=\(scope)"
+            + "&display=touch"
+            + "&v=\(version)"
+            + "&response_type=token"
+    }
+    
+    func getAudios(onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = nil){
+        requestManager?.getAudios(onResult)
     }
 }
