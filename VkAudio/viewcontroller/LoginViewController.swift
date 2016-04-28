@@ -24,8 +24,9 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     
         let appId: String = appValues.objectForKey("APP_ID") as! String
         let appScope: String = appValues.objectForKey("APP_SCOPE") as! String
+        let appApiVersion: String = appValues.objectForKey("API_VERSION") as! String
         
-        let authUrl = VkSDK.authUrl(appId, scope: appScope)
+        let authUrl = VkSDK.authUrl(appId, scope: appScope, version: appApiVersion)
         webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
     }
     

@@ -19,26 +19,27 @@ class RequestManager {
         self.token = token
     }
     
-    private func sendApiGetRequest(apiMethod: String, params: [String: AnyObject]?,
-                                   onResult: (result: AnyObject) -> Void, onError: ((error: NSError) -> Void)?){
-        
-        Alamofire.request(.GET, URL_REQUEST_BASE + apiMethod, parameters: params)
-            .responseJSON {
-                response in
-                let result = response.result
-                if result.isSuccess {
-                    onResult(result: result.value!)
-                }
-                else if onError != nil {
-                    onError!(error: result.error!)
-                }
-            }
-    }
-    
-    func getAudios(onResult: (result: AnyObject) -> Void) {
+    func getAudios(onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = nil) {
         let params = ["owner_id" : token.userId, "access_token" : token.token]
-        sendApiGetRequest("audio.get", params: params, onResult: onResult) { (error) in
-            //todo: handle error
+        let url = URL_REQUEST_BASE + "audio.get"
+        
+        Alamofire.request(.GET, url, parameters: params)
+            .responseJSON{apiResponse in
+                if let response = apiResponse.result.value {
+                    let responseDict = response as! [String : AnyObject]
+                    if let responseDictValues = responseDict["response"] as? [AnyObject]{
+                        let responseValues = Array(responseDictValues[1..<responseDictValues.count])
+                        onResult(result: responseValues)
+                    }
+                    else if let errorDictValues = responseDict["error"] {
+                        let code = errorDictValues["error_code"] as! Int
+                        let message = errorDictValues["error_msg"] as! String
+                        onError?(error: NSError(domain: message, code: code, userInfo: nil))
+                    }
+                }
+                else {
+                    onError?(error: apiResponse.result.error!)
+                }
         }
     }
 }

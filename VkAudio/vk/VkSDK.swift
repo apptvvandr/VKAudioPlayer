@@ -44,15 +44,16 @@ class VkSDK {
         return nil
     }
     
-    static func authUrl(id: String, scope: String) -> String {
+    static func authUrl(id: String, scope: String, version: String = "3.0") -> String {
         return "http://oauth.vk.com/authorize"
             + "?client_id=\(id)"
             + "&scope=\(scope)"
             + "&display=touch"
+            + "&v=\(version)"
             + "&response_type=token"
     }
     
-    func getAudios(onResult: (result: AnyObject) -> Void){
+    func getAudios(onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = nil){
         requestManager?.getAudios(onResult)
     }
 }

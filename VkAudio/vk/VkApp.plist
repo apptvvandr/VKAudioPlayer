@@ -8,5 +8,7 @@
 	<string>xnzb7tqjzyyFou43nUQ3</string>
 	<key>APP_SCOPE</key>
 	<string>audio</string>
+	<key>API_VERSION</key>
+	<string>5.12</string>
 </dict>
 </plist>
