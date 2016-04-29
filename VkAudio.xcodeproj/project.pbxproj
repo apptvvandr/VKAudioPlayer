@@ -15,9 +15,11 @@
 		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
 		F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */; };
 		F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */; };
+		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
+		F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D0F1CD361B600BC2067 /* Audio.swift */; };
+		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
 		F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5ABBE821CD0C4F5000699EA /* VkApp.plist */; };
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
-		F5B3E5731CCFC254003270A9 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */; };
 		F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56F1CCFC254003270A9 /* AccessToken.swift */; };
 		F5B3E5751CCFC254003270A9 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5701CCFC254003270A9 /* RequestManager.swift */; };
 		F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5711CCFC254003270A9 /* VkSDK.swift */; };
@@ -57,9 +59,11 @@
 		F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioUITests.swift; sourceTree = "<group>"; };
 		F56AD2C11CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
+		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		F5ABBE821CD0C4F5000699EA /* VkApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VkApp.plist; sourceTree = "<group>"; };
 		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5B3E56F1CCFC254003270A9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		F5B3E5701CCFC254003270A9 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		F5B3E5711CCFC254003270A9 /* VkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkSDK.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			children = (
 				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
 				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
+				F5AB3D111CD361C500BC2067 /* cells */,
 				F5B3E56E1CCFC254003270A9 /* vk */,
 				F5F0882E1CCF673C00525599 /* support files */,
 				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
@@ -160,11 +165,27 @@
 			path = VkAudioUITests;
 			sourceTree = "<group>";
 		};
+		F5AB3D0E1CD361B600BC2067 /* response_models */ = {
+			isa = PBXGroup;
+			children = (
+				F5AB3D0F1CD361B600BC2067 /* Audio.swift */,
+			);
+			path = response_models;
+			sourceTree = "<group>";
+		};
+		F5AB3D111CD361C500BC2067 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				F5AB3D121CD361C500BC2067 /* AudioCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		F5B3E56B1CCFC254003270A9 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
 				F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */,
-				F5B3E56D1CCFC254003270A9 /* UserAudiosViewController.swift */,
+				F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -172,6 +193,7 @@
 		F5B3E56E1CCFC254003270A9 /* vk */ = {
 			isa = PBXGroup;
 			children = (
+				F5AB3D0E1CD361B600BC2067 /* response_models */,
 				F5B3E56F1CCFC254003270A9 /* AccessToken.swift */,
 				F5B3E5701CCFC254003270A9 /* RequestManager.swift */,
 				F5B3E5711CCFC254003270A9 /* VkSDK.swift */,
@@ -374,12 +396,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5B3E5731CCFC254003270A9 /* UserAudiosViewController.swift in Sources */,
+				F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */,
 				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
+				F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
 				F5B3E5751CCFC254003270A9 /* RequestManager.swift in Sources */,
 				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
 				F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */,
+				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -53,7 +53,17 @@ class VkSDK {
             + "&response_type=token"
     }
     
-    func getAudios(onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = nil){
-        requestManager?.getAudios(onResult)
+    func getAudios(onResult: (result: [Audio]) -> Void, onError: ((error: NSError) -> Void)? = nil){
+        let apiMethod = "audio.get"
+        let params = ["owner_id" : token!.userId, "access_token" : token!.token]
+        
+        requestManager?.get(apiMethod, parameters: params, onResult: { (result) in
+            var audios = [Audio]()
+            for response in result {
+                let audio = Audio(apiResponse: response as! [String: AnyObject])
+                audios.append(audio)
+            }
+            onResult(result: audios)
+        }, onError: onError)
     }
 }
