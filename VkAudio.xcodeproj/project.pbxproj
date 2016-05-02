@@ -18,10 +18,11 @@
 		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
 		F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D0F1CD361B600BC2067 /* Audio.swift */; };
 		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
+		F5AB3D171CD3AA7700BC2067 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D161CD3AA7700BC2067 /* Users.swift */; };
+		F5AB3D191CD3AC1E00BC2067 /* Audios.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D181CD3AC1E00BC2067 /* Audios.swift */; };
 		F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5ABBE821CD0C4F5000699EA /* VkApp.plist */; };
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
 		F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56F1CCFC254003270A9 /* AccessToken.swift */; };
-		F5B3E5751CCFC254003270A9 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5701CCFC254003270A9 /* RequestManager.swift */; };
 		F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5711CCFC254003270A9 /* VkSDK.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,10 +63,11 @@
 		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
+		F5AB3D161CD3AA7700BC2067 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		F5AB3D181CD3AC1E00BC2067 /* Audios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audios.swift; sourceTree = "<group>"; };
 		F5ABBE821CD0C4F5000699EA /* VkApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VkApp.plist; sourceTree = "<group>"; };
 		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F5B3E56F1CCFC254003270A9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
-		F5B3E5701CCFC254003270A9 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		F5B3E5711CCFC254003270A9 /* VkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkSDK.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,9 +196,10 @@
 			isa = PBXGroup;
 			children = (
 				F5AB3D0E1CD361B600BC2067 /* response_models */,
-				F5B3E56F1CCFC254003270A9 /* AccessToken.swift */,
-				F5B3E5701CCFC254003270A9 /* RequestManager.swift */,
 				F5B3E5711CCFC254003270A9 /* VkSDK.swift */,
+				F5B3E56F1CCFC254003270A9 /* AccessToken.swift */,
+				F5AB3D161CD3AA7700BC2067 /* Users.swift */,
+				F5AB3D181CD3AC1E00BC2067 /* Audios.swift */,
 				F5ABBE821CD0C4F5000699EA /* VkApp.plist */,
 			);
 			path = vk;
@@ -398,10 +401,11 @@
 			files = (
 				F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */,
 				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
+				F5AB3D171CD3AA7700BC2067 /* Users.swift in Sources */,
 				F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
-				F5B3E5751CCFC254003270A9 /* RequestManager.swift in Sources */,
 				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
+				F5AB3D191CD3AC1E00BC2067 /* Audios.swift in Sources */,
 				F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */,
