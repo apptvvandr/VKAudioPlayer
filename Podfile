@@ -4,6 +4,7 @@ use_frameworks!
 target 'VkAudio' do
 
 pod 'Alamofire', '~> 3.3'
+pod 'Kingfisher', '~> 2.3'
 
 end
 

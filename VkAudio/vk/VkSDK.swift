@@ -12,7 +12,6 @@ import Alamofire
 private var _instance: VkSDK?
 class VkSDK {
     
-    let CODE_TOKEN_EXPIRED = 5
     internal static let PREFS_KEY_TOKEN_URL = "token_url"
     let URL_REQUEST_BASE = "https://api.vk.com/method/"
     
@@ -61,7 +60,7 @@ class VkSDK {
         }
         
         Alamofire.request(.GET, URL_REQUEST_BASE + apiMethod, parameters: requestParams)
-            .responseJSON{apiResponse in
+            .responseJSON{ apiResponse in
                 if let response = apiResponse.result.value {
                     let responseDict = response as! [String : AnyObject]
                     if let responseDictValues = responseDict["response"] as? [AnyObject]{
