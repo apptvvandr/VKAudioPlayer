@@ -9,9 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController, UIWebViewDelegate {
-    
-    internal static let SROTYBOARD_ID = "controller_login"
-  
+     
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
@@ -33,7 +31,9 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if let url = request.URL?.absoluteString where url.containsString("access_token="){
             VkSDK.setup(url)
-            self.performSegueWithIdentifier(UserAudiosViewController.SEGUE_ID, sender: self)
+            
+            performSegueWithIdentifier("segue_tabs", sender: self)
+            
             return false
         }
         return true

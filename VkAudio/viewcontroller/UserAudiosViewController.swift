@@ -2,23 +2,51 @@
 //  UserAudiosViewController.swift
 //  VkAudio
 //
-//  Created by mac-224 on 26.04.16.
+//  Created by mac-224 on 29.04.16.
 //  Copyright © 2016 y0rrrsh. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Kingfisher
 
-class UserAudiosViewController: UIViewController {
-    
-    internal static let STORYBOARD_ID = "controller_user_audios"
-    internal static let SEGUE_ID = "login_to_user_audios"
+class UserAudiosViewController: UITableViewController {
+        
+    var userAudios = [Audio]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VkSDK.instance?.getAudios({ (result) in
-            print(result)
+        VkSDK.Users.getUserInfo(
+            ["fields" : "photo_big"],
+            onResult: { result in
+                let url = NSURL(string: result["photo_big"] as! String)
+                let imageView = UIImageView()
+                imageView.kf_setImageWithURL(url!)
+                self.tableView.backgroundView = imageView
+            }
+        )
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        VkSDK.Audios.getAudios(
+        onResult: { result in
+            self.userAudios = result
+            self.tableView.reloadData()
         })
+    }
+
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(AudioCell.STORYBOARD_ID) as! AudioCell
+        let audio = userAudios[indexPath.row]
+        
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.update(audio.artist!, name: audio.name!)
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userAudios.count
     }
 }

@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import Alamofire
 
 private var _instance: VkSDK?
 class VkSDK {
     
     internal static let PREFS_KEY_TOKEN_URL = "token_url"
+    let URL_REQUEST_BASE = "https://api.vk.com/method/"
     
     var token: AccessToken?
-    private var requestManager: RequestManager?
     
     class var instance: VkSDK? {
         if _instance == nil {
@@ -38,7 +39,6 @@ class VkSDK {
     private init?(urlWithToken: String){
         if let token = AccessToken(url: urlWithToken){
             self.token = token
-            self.requestManager = RequestManager(token: token)
             return
         }
         return nil
@@ -53,7 +53,35 @@ class VkSDK {
             + "&response_type=token"
     }
     
-    func getAudios(onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = nil){
-        requestManager?.getAudios(onResult)
+    func get(apiMethod: String, parameters: [String: AnyObject]? = nil, onResult: (result: [AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = {error in print(error)}){
+        var requestParams: [String: AnyObject] = ["access_token": token!.token]
+        if let params = parameters {
+            requestParams += params
+        }
+        
+        Alamofire.request(.GET, URL_REQUEST_BASE + apiMethod, parameters: requestParams)
+            .responseJSON{ apiResponse in
+                if let response = apiResponse.result.value {
+                    let responseDict = response as! [String : AnyObject]
+                    if let responseDictValues = responseDict["response"] as? [AnyObject]{
+                        onResult(result: Array(responseDictValues))
+                    }
+                    else if let errorDictValues = responseDict["error"] {
+                        let code = errorDictValues["error_code"] as! Int
+                        let message = errorDictValues["error_msg"] as! String
+                        
+                        onError?(error: NSError(domain: message, code: code, userInfo: nil))
+                    }
+                }
+                else {
+                    onError?(error: apiResponse.result.error!)
+                }
+        }
+    }
+}
+
+func += <Key, Value> (inout left: [Key : Value], right: [Key : Value]) {
+    for (key, value) in right {
+        left[key] = value
     }
 }
