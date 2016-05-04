@@ -11,14 +11,14 @@ import Kingfisher
 
 class UserAudiosViewController: UITableViewController {
 
-    var userId: Int?
+    var ownerId: Int?
     var userAudios = [Audio]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
         var params = [String: AnyObject]()
-        if let id = userId {
+        if let id = ownerId {
             params = ["owner_id": id]
         }
 

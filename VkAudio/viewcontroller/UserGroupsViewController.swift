@@ -26,11 +26,20 @@ class UserGroupsViewController2: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: GroupCell = collectionView.dequeueReusableCellWithReuseIdentifier(GroupCell.STORYBOARD_ID, forIndexPath: indexPath) as! GroupCell
         let group = groups[indexPath.row]
-        cell.update(group.name!, photoUrl: group.photoUrl!)
+        cell.update(group.id!, groupName: group.name!, photoUrl: group.photoUrl!)
         return cell
     }
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groups.count
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier where identifier == "groupsToFriendAudios" {
+            let cell = sender as! GroupCell
+            
+            let destinationController = segue.destinationViewController as! UserAudiosViewController
+            destinationController.ownerId = -cell.groupId!
+        }
     }
 }

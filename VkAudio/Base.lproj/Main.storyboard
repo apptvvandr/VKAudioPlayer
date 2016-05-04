@@ -252,6 +252,7 @@
                                 <connections>
                                     <outlet property="imagePhoto" destination="aN7-ac-h3M" id="DF0-hI-tna"/>
                                     <outlet property="labelName" destination="Xb8-hy-8Ib" id="jJ1-8I-1g2"/>
+                                    <segue destination="45f-pB-Ccl" kind="show" identifier="groupsToFriendAudios" id="s1F-fO-6pI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -261,9 +262,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Groups" id="fqi-Bx-vPC"/>
-                    <connections>
-                        <segue destination="45f-pB-Ccl" kind="show" id="6gu-rg-V0h"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTP-E8-pZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -328,6 +326,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZOE-pU-Eok"/>
+        <segue reference="s1F-fO-6pI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -41,7 +41,7 @@ class UserFriendsViewController: UITableViewController {
             let cell = sender as! FriendCell
 
             let destinationController = segue.destinationViewController as! UserAudiosViewController
-            destinationController.userId = cell.userId
+            destinationController.ownerId = cell.userId
         }
     }
 }
