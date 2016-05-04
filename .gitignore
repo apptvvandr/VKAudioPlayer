@@ -43,8 +43,4 @@ Carthage/Build
 # fastlane
 fastlane/report.xml
 fastlane/screenshots
-.idea/misc.xml
-.idea/modules.xml
-.idea/VkAudio.iml
-.idea/workspace.xml
-.idea/xcode.xml
+.idea/

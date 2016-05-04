@@ -13,5 +13,6 @@ class VkItem {
     //todo: define a id initializer or change api request version
     var id: Int?
 
-    init(apiResponse: [String: AnyObject]){}
+    init(apiResponse: [String:AnyObject]) {
+    }
 }

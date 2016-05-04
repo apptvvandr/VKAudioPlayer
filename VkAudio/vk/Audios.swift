@@ -8,19 +8,19 @@
 
 import Foundation
 
-extension VkSDK{
-    
+extension VkSDK {
+
     struct Audios {
-        
-        static func getAudios(params: [String: AnyObject]? = nil, onResult: (result: [Audio]) -> Void, onError: ((error: NSError) -> Void)? = {error in print(error)}){
-            VkSDK.instance?.get("audio.get", parameters: params, onResult: { (result) in
-                var audios = [Audio]()
-                for i in 1 ..< result.count {
-                    let audio = Audio(apiResponse: result[i] as! [String: AnyObject])
-                    audios.append(audio)
-                }
+
+        static func getAudios(params: [String:AnyObject]? = nil, onResult: (result:[Audio]) -> Void, onError: ((error:NSError) -> Void)? = {
+            error in print(error)
+        }) {
+            VkSDK.instance?.get("audio.get", parameters: params, onResult: {
+                (result) in
+                var audios = result.flatMap { $0 as? [String: AnyObject] }.map { Audio(apiResponse: $0) }
                 onResult(result: audios)
-                }, onError: onError)
+            }, onError: onError)
         }
     }
+
 }
