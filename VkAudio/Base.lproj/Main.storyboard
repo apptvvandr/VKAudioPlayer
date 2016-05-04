@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -45,43 +45,49 @@
         <scene sceneID="FK0-fC-vNF">
             <objects>
                 <tableViewController storyboardIdentifier="controller_table_friends" id="Wj7-Ex-Y5o" customClass="UserFriendsViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_friend" id="p8c-sn-cZH" userLabel="cell_friend" customClass="FriendCell" customModule="VkAudio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_friend" rowHeight="65" id="p8c-sn-cZH" userLabel="cell_friend" customClass="FriendCell" customModule="VkAudio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p8c-sn-cZH" id="xkb-zG-Imb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ccm-xj-KTR">
-                                            <rect key="frame" x="8" y="-3" width="50" height="50"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-V3-SKe">
+                                            <rect key="frame" x="8" y="8" width="48" height="48"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="ATw-Nq-bmu"/>
+                                                <constraint firstAttribute="width" secondItem="TFX-V3-SKe" secondAttribute="height" multiplier="1:1" id="g22-KO-jPa"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="James Hetfield" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dla-Hp-Zyw">
-                                            <rect key="frame" x="66" y="11" width="301" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoD-ZH-HPc">
+                                            <rect key="frame" x="64" y="21" width="303" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="centerY" secondItem="dla-Hp-Zyw" secondAttribute="centerY" id="2sg-3k-J5x"/>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="top" secondItem="xkb-zG-Imb" secondAttribute="topMargin" constant="-11" id="336-ke-7q0"/>
-                                        <constraint firstItem="dla-Hp-Zyw" firstAttribute="leading" secondItem="Ccm-xj-KTR" secondAttribute="trailing" constant="8" symbolic="YES" id="NEb-Hl-g22"/>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="centerY" secondItem="xkb-zG-Imb" secondAttribute="centerY" id="Whl-Wh-N7L"/>
-                                        <constraint firstItem="dla-Hp-Zyw" firstAttribute="trailing" secondItem="xkb-zG-Imb" secondAttribute="trailingMargin" id="ZsW-z8-NV3"/>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="leading" secondItem="xkb-zG-Imb" secondAttribute="leadingMargin" id="rSB-m5-C0R"/>
+                                        <constraint firstAttribute="trailing" secondItem="KoD-ZH-HPc" secondAttribute="trailing" constant="8" id="CXA-4f-Eio"/>
+                                        <constraint firstItem="TFX-V3-SKe" firstAttribute="leading" secondItem="xkb-zG-Imb" secondAttribute="leading" constant="8" id="EGm-Vt-ZlI"/>
+                                        <constraint firstItem="KoD-ZH-HPc" firstAttribute="leading" secondItem="TFX-V3-SKe" secondAttribute="trailing" constant="8" symbolic="YES" id="RnS-uc-Ya5"/>
+                                        <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="KoD-ZH-HPc" secondAttribute="centerY" id="eUp-Aj-LNV"/>
+                                        <constraint firstItem="TFX-V3-SKe" firstAttribute="top" secondItem="xkb-zG-Imb" secondAttribute="top" constant="8" id="jUF-yE-etd"/>
+                                        <constraint firstAttribute="bottom" secondItem="TFX-V3-SKe" secondAttribute="bottom" constant="8" id="yr4-U3-hJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="p8c-sn-cZH" secondAttribute="centerY" id="GUX-4j-mLs"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="imagePhoto" destination="Ccm-xj-KTR" id="Pke-HS-w5F"/>
-                                    <outlet property="labelName" destination="dla-Hp-Zyw" id="PGb-T4-8q5"/>
+                                    <outlet property="imagePhoto" destination="TFX-V3-SKe" id="0Jt-NH-99A"/>
+                                    <outlet property="labelName" destination="KoD-ZH-HPc" id="6Pk-S4-juy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -210,7 +216,7 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-tX-Vwa">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-tX-Vwa">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         </imageView>
                                     </subviews>
@@ -301,6 +307,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6gu-rg-V0h"/>
+        <segue reference="ILf-wA-UvZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,7 @@ class UserFriendsViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        VkSDK.Frinds.getFriends(["fields": "name, photo_50"], onResult: { (result) in
+        VkSDK.Frinds.getFriends(["fields": "name, photo_100"], onResult: { (result) in
             self.friends = result
             self.tableView.reloadData()
         })
@@ -30,8 +30,7 @@ class UserFriendsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(FriendCell.STORYBOARD_ID) as! FriendCell
         let friend: Friend = friends[indexPath.row]
         
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        cell.update(friend.firstName!, lastName: friend.lastName!, photoUrl: friend.photoUrl!)
+        cell.setData(friend.firstName!, lastName: friend.lastName!, photoUrl: friend.photoUrl!)
         return cell
     }
 }
