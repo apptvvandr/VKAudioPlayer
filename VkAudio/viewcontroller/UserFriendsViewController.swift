@@ -32,7 +32,16 @@ class UserFriendsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(FriendCell.STORYBOARD_ID) as! FriendCell
         let friend: Friend = friends[indexPath.row]
 
-        cell.setData(friend.firstName!, lastName: friend.lastName!, photoUrl: friend.photoUrl!)
+        cell.setData(friend.id!, firstName: friend.firstName!, lastName: friend.lastName!, photoUrl: friend.photoUrl!)
         return cell
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier where identifier == "friendsToFriendAudios" {
+            let cell = sender as! FriendCell
+
+            let destinationController = segue.destinationViewController as! UserAudiosViewController
+            destinationController.userId = cell.userId
+        }
     }
 }

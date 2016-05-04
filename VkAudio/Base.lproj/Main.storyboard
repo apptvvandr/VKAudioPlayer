@@ -93,6 +93,7 @@
                                 <connections>
                                     <outlet property="imagePhoto" destination="TFX-V3-SKe" id="0Jt-NH-99A"/>
                                     <outlet property="labelName" destination="KoD-ZH-HPc" id="6Pk-S4-juy"/>
+                                    <segue destination="45f-pB-Ccl" kind="show" identifier="friendsToFriendAudios" id="ZOE-pU-Eok"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -102,9 +103,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Friends" id="Fsj-mr-5Ji"/>
-                    <connections>
-                        <segue destination="45f-pB-Ccl" kind="show" id="ILf-wA-UvZ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkM-Qq-LHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,6 +328,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6gu-rg-V0h"/>
+        <segue reference="ZOE-pU-Eok"/>
     </inferredMetricsTieBreakers>
 </document>

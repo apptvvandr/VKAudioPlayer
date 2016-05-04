@@ -11,17 +11,23 @@ import Kingfisher
 
 class UserAudiosViewController: UITableViewController {
 
+    var userId: Int?
     var userAudios = [Audio]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        VkSDK.Audios.getAudios(
-        onResult: {
-            result in
-            self.userAudios = result
-            self.tableView.reloadData()
-        })
+        var params = [String: AnyObject]()
+        if let id = userId {
+            params = ["owner_id": id]
+        }
+
+        VkSDK.Audios.getAudios(params,
+                onResult: {
+                    result in
+                    self.userAudios = result
+                    self.tableView.reloadData()
+                })
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -10,7 +10,8 @@ import Kingfisher
 class FriendCell: UITableViewCell {
 
     static let STORYBOARD_ID = "cell_friend"
-
+    
+    var userId: Int?
 
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -20,7 +21,8 @@ class FriendCell: UITableViewCell {
         imagePhoto.layer.cornerRadius = CGRectGetWidth(imagePhoto.frame) / 2
     }
 
-    func setData(firstName: String, lastName: String, photoUrl: String) {
+    func setData(userId: Int, firstName: String, lastName: String, photoUrl: String) {
+        self.userId = userId
         labelName.text = "\(firstName) \(lastName)"
         imagePhoto.kf_setImageWithURL(NSURL(string: photoUrl)!)
     }
