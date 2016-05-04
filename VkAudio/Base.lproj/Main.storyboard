@@ -205,7 +205,7 @@
         <scene sceneID="zmF-ws-i6d">
             <objects>
                 <collectionViewController id="fqm-vS-FZR" customClass="UserGroupsViewController2" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gqW-52-Byc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gqW-52-Byc" customClass="GroupsCollectionView" customModule="VkAudio" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -330,6 +330,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ILf-wA-UvZ"/>
+        <segue reference="6gu-rg-V0h"/>
     </inferredMetricsTieBreakers>
 </document>

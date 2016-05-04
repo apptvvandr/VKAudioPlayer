@@ -27,6 +27,7 @@
 		F58308F21CD8BE290094F1F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F11CD8BE290094F1F4 /* Group.swift */; };
 		F58308F41CD8C1820094F1F4 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F31CD8C1820094F1F4 /* Groups.swift */; };
 		F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AD1CDA34E70016C79C /* VkTabsController.swift */; };
+		F58706B01CDA4DA40016C79C /* GroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */; };
 		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
 		F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D0F1CD361B600BC2067 /* Audio.swift */; };
 		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
@@ -88,6 +89,7 @@
 		F58308F11CD8BE290094F1F4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F58308F31CD8C1820094F1F4 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		F58706AD1CDA34E70016C79C /* VkTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkTabsController.swift; sourceTree = "<group>"; };
+		F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsCollectionView.swift; path = ../GroupsCollectionView.swift; sourceTree = "<group>"; };
 		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
@@ -164,7 +166,7 @@
 			children = (
 				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
 				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
-				F5AB3D111CD361C500BC2067 /* cells */,
+				F5AB3D111CD361C500BC2067 /* views */,
 				F5B3E56E1CCFC254003270A9 /* vk */,
 				F5F0882E1CCF673C00525599 /* support files */,
 				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
@@ -190,6 +192,16 @@
 			path = VkAudioUITests;
 			sourceTree = "<group>";
 		};
+		F58706B11CDA53130016C79C /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				F5AB3D121CD361C500BC2067 /* AudioCell.swift */,
+				3115900DE6111E4627037424 /* FriendCell.swift */,
+				F53A00131CD905AE0029B246 /* GroupCell.swift */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
 		F5AB3D0E1CD361B600BC2067 /* response_models */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,13 +213,13 @@
 			path = response_models;
 			sourceTree = "<group>";
 		};
-		F5AB3D111CD361C500BC2067 /* cells */ = {
+		F5AB3D111CD361C500BC2067 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				F5AB3D121CD361C500BC2067 /* AudioCell.swift */,
-				3115900DE6111E4627037424 /* FriendCell.swift */,
-				F53A00131CD905AE0029B246 /* GroupCell.swift */,
+				F58706B11CDA53130016C79C /* cells */,
+				F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */,
 			);
+			name = views;
 			path = cells;
 			sourceTree = "<group>";
 		};
@@ -669,6 +681,7 @@
 				F58308F41CD8C1820094F1F4 /* Groups.swift in Sources */,
 				F5AB3D191CD3AC1E00BC2067 /* Audios.swift in Sources */,
 				F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */,
+				F58706B01CDA4DA40016C79C /* GroupsCollectionView.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */,
 				311593230AF33E3421C7C78B /* FriendCell.swift in Sources */,
