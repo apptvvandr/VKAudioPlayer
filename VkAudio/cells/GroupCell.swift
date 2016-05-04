@@ -20,7 +20,9 @@ class GroupCell: UICollectionViewCell {
 
     func update(groupId: Int, groupName: String, photoUrl: String) {
         self.groupId = groupId
-        imagePhoto.kf_setImageWithURL(NSURL(string: photoUrl)!)
         labelName.text = groupName
+        if let url = NSURL(string: photoUrl) {
+            imagePhoto.kf_setImageWithURL(url)
+        }
     }
 }

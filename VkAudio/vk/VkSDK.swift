@@ -72,10 +72,12 @@ class VkSDK {
                 if let responseDictValues = responseDict["response"] as? [AnyObject] {
                     onResult(result: Array(responseDictValues))
                 } else if let errorDictValues = responseDict["error"] {
-                    let code = errorDictValues["error_code"] as! Int
-                    let message = errorDictValues["error_msg"] as! String
+                    let code = errorDictValues["error_code"] as? Int
+                    let message = errorDictValues["error_msg"] as? String
 
-                    onError?(error: NSError(domain: message, code: code, userInfo: nil))
+                    if code != nil && message != nil {
+                        onError?(error: NSError(domain: message!, code: code!, userInfo: nil))
+                    }
                 }
             } else {
                 onError?(error: apiResponse.result.error!)

@@ -24,6 +24,8 @@ class FriendCell: UITableViewCell {
     func setData(userId: Int, firstName: String, lastName: String, photoUrl: String) {
         self.userId = userId
         labelName.text = "\(firstName) \(lastName)"
-        imagePhoto.kf_setImageWithURL(NSURL(string: photoUrl)!)
+        if let url = NSURL(string: photoUrl){
+            imagePhoto.kf_setImageWithURL(url)
+        }
     }
 }

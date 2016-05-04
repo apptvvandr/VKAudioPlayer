@@ -17,11 +17,7 @@ extension VkSDK {
         }) {
             VkSDK.instance?.get("friends.get", parameters: params, onResult: {
                 (result) in
-                var friends = [Friend]()
-                for apiResponse in result {
-                    let audio = Friend(apiResponse: apiResponse as! [String:AnyObject])
-                    friends.append(audio)
-                }
+                var friends = result.flatMap { $0 as? [String: AnyObject] }.map { Friend(apiResponse: $0) }
                 onResult(result: friends)
             }, onError: onError)
         }

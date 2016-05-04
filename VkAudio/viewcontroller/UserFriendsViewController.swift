@@ -16,6 +16,8 @@ class UserFriendsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
+
+        //todo: api-related stuff on UI. should be encapsulated into service level
         VkSDK.Frinds.getFriends(["fields": "name, photo_100"], onResult: {
             (result) in
             self.friends = result

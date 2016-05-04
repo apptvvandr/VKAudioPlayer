@@ -15,6 +15,7 @@ class UserGroupsViewController2: UICollectionViewController {
     var groups = [Group]()
 
     override func viewWillAppear(animated: Bool) {
+        //todo: api-related stuff on UI. should be encapsulated into service level
         VkSDK.Groups.getGroups(["extended": 1],
                 onResult: {
                     result in
