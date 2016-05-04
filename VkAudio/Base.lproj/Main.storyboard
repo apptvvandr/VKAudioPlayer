@@ -49,6 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_friend" rowHeight="65" id="p8c-sn-cZH" userLabel="cell_friend" customClass="FriendCell" customModule="VkAudio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="65"/>
@@ -69,10 +70,12 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoD-ZH-HPc">
                                             <rect key="frame" x="64" y="21" width="303" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="KoD-ZH-HPc" secondAttribute="trailing" constant="8" id="CXA-4f-Eio"/>
                                         <constraint firstItem="TFX-V3-SKe" firstAttribute="leading" secondItem="xkb-zG-Imb" secondAttribute="leading" constant="8" id="EGm-Vt-ZlI"/>
@@ -82,6 +85,8 @@
                                         <constraint firstAttribute="bottom" secondItem="TFX-V3-SKe" secondAttribute="bottom" constant="8" id="yr4-U3-hJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="p8c-sn-cZH" secondAttribute="centerY" id="GUX-4j-mLs"/>
                                 </constraints>
@@ -126,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="137.5" y="-668.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Vk Tabs Controller-->
         <scene sceneID="DM3-Ws-1Xh">
             <objects>
-                <tabBarController id="Dv0-lz-WMM" sceneMemberID="viewController">
+                <tabBarController id="Dv0-lz-WMM" customClass="VkTabsController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gjH-4K-WbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,7 +157,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MPu-sh-tI1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_audio" id="KYy-8w-Alr" customClass="AudioCell" customModule="VkAudio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
@@ -163,12 +171,17 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metallica - So What?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRU-to-zJc">
                                             <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="labelTitle" destination="GRU-to-zJc" id="FUN-6d-sBX"/>
                                 </connections>
@@ -195,6 +208,8 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gqW-52-Byc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="X53-En-p95">
                             <size key="itemSize" width="144" height="144"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -209,28 +224,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Metallica" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zss-3V-gyn">
-                                            <rect key="frame" x="8" y="151" width="164" height="21"/>
-                                            <color key="backgroundColor" red="0.014710038676101007" green="0.014242092911956534" blue="0.015113710732984287" alpha="0.24637078900709219" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-hy-8Ib">
+                                            <rect key="frame" x="0.0" y="151" width="180" height="29"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20378989361702127" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="BsK-3E-qQa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-tX-Vwa">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aN7-ac-h3M">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="QLM-tX-Vwa" firstAttribute="centerX" secondItem="BjR-SV-VbQ" secondAttribute="centerX" id="3C0-Zg-HOI"/>
-                                    <constraint firstItem="QLM-tX-Vwa" firstAttribute="centerY" secondItem="BjR-SV-VbQ" secondAttribute="centerY" id="Jus-NI-Jr3"/>
-                                    <constraint firstItem="zss-3V-gyn" firstAttribute="centerX" secondItem="BjR-SV-VbQ" secondAttribute="centerX" id="RKz-jd-Ycw"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="leading" secondItem="BjR-SV-VbQ" secondAttribute="leading" id="4Rg-29-ZA8"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="bottom" secondItem="Xb8-hy-8Ib" secondAttribute="bottom" id="502-Mc-C9y"/>
+                                    <constraint firstAttribute="bottom" secondItem="aN7-ac-h3M" secondAttribute="bottom" id="FOD-iM-dez"/>
+                                    <constraint firstItem="Xb8-hy-8Ib" firstAttribute="width" secondItem="BjR-SV-VbQ" secondAttribute="width" id="c7v-7l-ZQL"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="width" secondItem="BjR-SV-VbQ" secondAttribute="height" multiplier="1:1" id="f2C-Gv-yIh"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="top" secondItem="BjR-SV-VbQ" secondAttribute="top" id="l6G-Th-rWQ"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="leading" secondItem="Xb8-hy-8Ib" secondAttribute="leading" id="z7i-zg-1ug"/>
                                 </constraints>
                                 <size key="customSize" width="180" height="180"/>
                                 <connections>
-                                    <outlet property="imagePhoto" destination="QLM-tX-Vwa" id="s5K-0Y-AjS"/>
-                                    <outlet property="labelName" destination="zss-3V-gyn" id="U7V-ei-cJw"/>
+                                    <outlet property="imagePhoto" destination="aN7-ac-h3M" id="DF0-hI-tna"/>
+                                    <outlet property="labelName" destination="Xb8-hy-8Ib" id="jJ1-8I-1g2"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -270,7 +293,7 @@
         <!--My audios-->
         <scene sceneID="L7P-8s-47k">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My audios" id="YpM-GS-ESb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXC-JY-osl">
@@ -289,7 +312,7 @@
         <!--Groups-->
         <scene sceneID="GrU-PQ-LJ8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" id="K3C-1T-34E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xqn-9c-3Hx">

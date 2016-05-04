@@ -9,12 +9,12 @@
 import Foundation
 
 class Audio: VkItem {
-    
+
     var url: String?
     var artist: String?
     var name: String?
-    
-    override init(apiResponse: [String: AnyObject]){
+
+    override init(apiResponse: [String:AnyObject]) {
         super.init(apiResponse: apiResponse)
 
         id = apiResponse["aid"] as? Int

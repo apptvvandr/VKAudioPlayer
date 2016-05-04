@@ -26,6 +26,7 @@
 		F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */; };
 		F58308F21CD8BE290094F1F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F11CD8BE290094F1F4 /* Group.swift */; };
 		F58308F41CD8C1820094F1F4 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F31CD8C1820094F1F4 /* Groups.swift */; };
+		F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AD1CDA34E70016C79C /* VkTabsController.swift */; };
 		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
 		F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D0F1CD361B600BC2067 /* Audio.swift */; };
 		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
@@ -86,6 +87,7 @@
 		F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItem.swift; sourceTree = "<group>"; };
 		F58308F11CD8BE290094F1F4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F58308F31CD8C1820094F1F4 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		F58706AD1CDA34E70016C79C /* VkTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkTabsController.swift; sourceTree = "<group>"; };
 		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */,
 				F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */,
 				F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */,
+				F58706AD1CDA34E70016C79C /* VkTabsController.swift */,
 				F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */,
 			);
 			path = viewcontroller;
@@ -266,15 +269,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F56AD2C41CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudio" */;
 			buildPhases = (
-				9E4A410AE2CC4F320C845AF6 /* 📦 Check Pods Manifest.lock */,
+				9E4A410AE2CC4F320C845AF6 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				4B906881404DF1B4F194C996 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				F56AD2951CCF64A100E45170 /* Sources */,
 				F56AD2961CCF64A100E45170 /* Frameworks */,
 				F56AD2971CCF64A100E45170 /* Resources */,
 				71B475321235B166C4AB7DA1 /* uD83DuDCE6 Embed Pods Frameworks */,
 				EC3B6267DF90091495943146 /* uD83DuDCE6 Copy Pods Resources */,
-				15A2BCC0A0B7756B1DEE26F1 /* 📦 Embed Pods Frameworks */,
-				49CB2FCB73742CE60DCC7CB3 /* 📦 Copy Pods Resources */,
+				15A2BCC0A0B7756B1DEE26F1 /* uD83DuDCE6 Embed Pods Frameworks */,
+				49CB2FCB73742CE60DCC7CB3 /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,15 +292,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F56AD2C71CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioTests" */;
 			buildPhases = (
-				6AE6C3ACC19C17D55D6E19F5 /* 📦 Check Pods Manifest.lock */,
+				6AE6C3ACC19C17D55D6E19F5 /* uD83DuDCE6 Check Pods Manifest.lock */,
 				88AB62182F1F4A6DE17CD69E /* uD83DuDCE6 Check Pods Manifest.lock */,
 				F56AD2AC1CCF64A200E45170 /* Sources */,
 				F56AD2AD1CCF64A200E45170 /* Frameworks */,
 				F56AD2AE1CCF64A200E45170 /* Resources */,
 				4347FA09DEE0292D37E3E731 /* uD83DuDCE6 Embed Pods Frameworks */,
 				4EECE684007B4F370F1738AD /* uD83DuDCE6 Copy Pods Resources */,
-				B332DA09B906944C7486E1E3 /* 📦 Embed Pods Frameworks */,
-				8F65385CC8C640F4DF78C901 /* 📦 Copy Pods Resources */,
+				B332DA09B906944C7486E1E3 /* uD83DuDCE6 Embed Pods Frameworks */,
+				8F65385CC8C640F4DF78C901 /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -313,13 +316,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F56AD2CA1CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioUITests" */;
 			buildPhases = (
-				EFF06744FADAB56D9A48470F /* 📦 Check Pods Manifest.lock */,
+				EFF06744FADAB56D9A48470F /* uD83DuDCE6 Check Pods Manifest.lock */,
 				7F7B363A8A59D22DDAF8571D /* uD83DuDCE6 Check Pods Manifest.lock */,
 				F56AD2B71CCF64A200E45170 /* Sources */,
 				F56AD2B81CCF64A200E45170 /* Frameworks */,
 				F56AD2B91CCF64A200E45170 /* Resources */,
 				B8B64CB7A8EBD8D523AF4803 /* uD83DuDCE6 Copy Pods Resources */,
-				94170914AA41F25003B15F8B /* 📦 Copy Pods Resources */,
+				94170914AA41F25003B15F8B /* uD83DuDCE6 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -403,14 +406,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15A2BCC0A0B7756B1DEE26F1 /* 📦 Embed Pods Frameworks */ = {
+		15A2BCC0A0B7756B1DEE26F1 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,14 +436,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		49CB2FCB73742CE60DCC7CB3 /* 📦 Copy Pods Resources */ = {
+		49CB2FCB73742CE60DCC7CB3 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,14 +481,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6AE6C3ACC19C17D55D6E19F5 /* 📦 Check Pods Manifest.lock */ = {
+		6AE6C3ACC19C17D55D6E19F5 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,14 +541,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8F65385CC8C640F4DF78C901 /* 📦 Copy Pods Resources */ = {
+		8F65385CC8C640F4DF78C901 /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,14 +556,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		94170914AA41F25003B15F8B /* 📦 Copy Pods Resources */ = {
+		94170914AA41F25003B15F8B /* uD83DuDCE6 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Copy Pods Resources";
+			name = "uD83DuDCE6 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,14 +571,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioUITests/Pods-VkAudioUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E4A410AE2CC4F320C845AF6 /* 📦 Check Pods Manifest.lock */ = {
+		9E4A410AE2CC4F320C845AF6 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,14 +586,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B332DA09B906944C7486E1E3 /* 📦 Embed Pods Frameworks */ = {
+		B332DA09B906944C7486E1E3 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Embed Pods Frameworks";
+			name = "uD83DuDCE6 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,14 +631,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EFF06744FADAB56D9A48470F /* 📦 Check Pods Manifest.lock */ = {
+		EFF06744FADAB56D9A48470F /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "\uD83D\uDCE6 Check Pods Manifest.lock";
+			name = "uD83DuDCE6 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -650,6 +653,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */,
 				F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */,
 				F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */,
 				F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */,

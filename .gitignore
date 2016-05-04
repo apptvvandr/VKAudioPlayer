@@ -43,3 +43,4 @@ Carthage/Build
 # fastlane
 fastlane/report.xml
 fastlane/screenshots
+.idea/

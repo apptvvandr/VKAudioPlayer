@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 import Kingfisher
 
-class GroupCell: UICollectionViewCell{
-    
+class GroupCell: UICollectionViewCell {
+
     static let STORYBOARD_ID = "cell_group"
-    
+
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var labelName: UILabel!
-    
-    func update(groupName: String, photoUrl: String){
+
+    func update(groupName: String, photoUrl: String) {
         imagePhoto.kf_setImageWithURL(NSURL(string: photoUrl)!)
         labelName.text = groupName
     }

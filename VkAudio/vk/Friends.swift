@@ -8,20 +8,24 @@
 
 import Foundation
 
-extension VkSDK{
-    
+extension VkSDK {
+
     struct Frinds {
-        
-        static func getFriends(params: [String: AnyObject]? = nil, onResult: (result: [Friend]) -> Void, onError: ((error: NSError) -> Void)? = {error in print(error)}){
-            VkSDK.instance?.get("friends.get", parameters: params, onResult: { (result) in
+
+        static func getFriends(params: [String:AnyObject]? = nil, onResult: (result:[Friend]) -> Void, onError: ((error:NSError) -> Void)? = {
+            error in print(error)
+        }) {
+            VkSDK.instance?.get("friends.get", parameters: params, onResult: {
+                (result) in
                 var friends = [Friend]()
                 for apiResponse in result {
-                    let audio = Friend(apiResponse: apiResponse as! [String: AnyObject])
+                    let audio = Friend(apiResponse: apiResponse as! [String:AnyObject])
                     friends.append(audio)
                 }
                 onResult(result: friends)
-                }, onError: onError)
+            }, onError: onError)
         }
-        
+
     }
+
 }
