@@ -15,7 +15,7 @@ class AudioCell: UITableViewCell {
 
     @IBOutlet weak var labelTitle: UILabel!
 
-    func update(artist: String, name: String) -> Void {
-        labelTitle.text = "\(artist) - \(name)"
+    func setData(artist: String?, name: String?) -> Void {
+        labelTitle.text = "\(artist ?? "Unknown") - \(name ?? "Unknown")"
     }
 }

@@ -34,7 +34,7 @@ class UserFriendsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(FriendCell.STORYBOARD_ID) as! FriendCell
         let friend: Friend = friends[indexPath.row]
 
-        cell.setData(friend.id!, firstName: friend.firstName!, lastName: friend.lastName!, photoUrl: friend.photoUrl!)
+        cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.photoUrl)
         return cell
     }
 

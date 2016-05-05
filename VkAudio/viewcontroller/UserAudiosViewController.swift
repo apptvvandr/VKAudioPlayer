@@ -35,7 +35,7 @@ class UserAudiosViewController: UITableViewController {
         let audio = userAudios[indexPath.row]
 
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        cell.update(audio.artist!, name: audio.name!)
+        cell.setData(audio.artist, name: audio.name)
         return cell
     }
 

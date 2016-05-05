@@ -18,10 +18,10 @@ class GroupCell: UICollectionViewCell {
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var labelName: UILabel!
 
-    func update(groupId: Int, groupName: String, photoUrl: String) {
+    func setData(groupId: Int?, groupName: String?, photoUrl: String?) {
         self.groupId = groupId
         labelName.text = groupName
-        if let url = NSURL(string: photoUrl) {
+        if let url = NSURL(string: photoUrl!) {
             imagePhoto.kf_setImageWithURL(url)
         }
     }

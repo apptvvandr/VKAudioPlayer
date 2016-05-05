@@ -21,10 +21,10 @@ class FriendCell: UITableViewCell {
         imagePhoto.layer.cornerRadius = CGRectGetWidth(imagePhoto.frame) / 2
     }
 
-    func setData(userId: Int, firstName: String, lastName: String, photoUrl: String) {
+    func setData(userId: Int?, firstName: String?, lastName: String?, photoUrl: String?) {
         self.userId = userId
-        labelName.text = "\(firstName) \(lastName)"
-        if let url = NSURL(string: photoUrl){
+        labelName.text = "\(firstName ?? "") \(lastName ?? "")"
+        if let url = NSURL(string: photoUrl ?? ""){
             imagePhoto.kf_setImageWithURL(url)
         }
     }
