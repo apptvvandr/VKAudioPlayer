@@ -186,6 +186,7 @@
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="labelTitle" destination="GRU-to-zJc" id="FUN-6d-sBX"/>
+                                    <segue destination="hLe-fN-oCO" kind="show" identifier="audioToAudioPlayer" id="KQ8-D4-W1l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -195,9 +196,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Audios" id="1k8-lb-1f5"/>
-                    <connections>
-                        <segue destination="hLe-fN-oCO" kind="show" identifier="segue_player" id="3Ci-Tc-ncU"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLv-zt-nvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,7 +272,7 @@
         <!--Audio player-->
         <scene sceneID="QK7-KN-AEz">
             <objects>
-                <viewController storyboardIdentifier="controller_player" id="hLe-fN-oCO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="controller_player" id="hLe-fN-oCO" customClass="AudioPlayerViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gut-Q6-0nv"/>
                         <viewControllerLayoutGuide type="bottom" id="9wO-JN-inN"/>
@@ -282,7 +280,8 @@
                     <view key="view" contentMode="scaleToFill" id="dsl-Co-qvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Audio player" id="jWr-NU-ycx"/>
                 </viewController>

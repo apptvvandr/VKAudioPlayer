@@ -41,4 +41,18 @@ class UserAudiosViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userAudios.count
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+
+        if let identifier = segue.identifier where identifier == "audioToAudioPlayer" {
+            let cell = sender as! AudioCell
+            let index = self.tableView.indexPathForCell(cell)
+            let audio = userAudios[index!.row]
+            
+            let destinationController = segue.destinationViewController as! AudioPlayerViewController
+            destinationController.audio = audio
+        }
+        
+    }
 }

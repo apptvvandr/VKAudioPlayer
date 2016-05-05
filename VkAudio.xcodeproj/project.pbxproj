@@ -37,6 +37,7 @@
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
 		F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56F1CCFC254003270A9 /* AccessToken.swift */; };
 		F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5711CCFC254003270A9 /* VkSDK.swift */; };
+		F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F5B3E56F1CCFC254003270A9 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		F5B3E5711CCFC254003270A9 /* VkSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkSDK.swift; sourceTree = "<group>"; };
+		F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */,
 				F58706AD1CDA34E70016C79C /* VkTabsController.swift */,
 				F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */,
+				F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 			files = (
 				F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */,
 				F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */,
+				F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */,
 				F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */,
 				F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */,
 				F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */,
