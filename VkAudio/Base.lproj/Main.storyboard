@@ -112,7 +112,7 @@
         <scene sceneID="a0f-ZB-yXz">
             <objects>
                 <navigationController storyboardIdentifier="controller_nav_friends" automaticallyAdjustsScrollViewInsets="NO" id="JgF-P3-fYK" userLabel="Friends" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="4s5-Eq-1Em">
+                    <tabBarItem key="tabBarItem" title="Friends" image="ic_person_outline_white" id="4s5-Eq-1Em">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -290,7 +290,7 @@
         <scene sceneID="L7P-8s-47k">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My audios" id="YpM-GS-ESb"/>
+                    <tabBarItem key="tabBarItem" title="My audios" image="ic_play_circle_outline_white" id="YpM-GS-ESb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXC-JY-osl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -309,7 +309,7 @@
         <scene sceneID="GrU-PQ-LJ8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="K3C-1T-34E"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="ic_people_outline_white" id="K3C-1T-34E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xqn-9c-3Hx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -325,7 +325,12 @@
             <point key="canvasLocation" x="137.5" y="148.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_people_outline_white" width="24" height="24"/>
+        <image name="ic_person_outline_white" width="24" height="24"/>
+        <image name="ic_play_circle_outline_white" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s1F-fO-6pI"/>
+        <segue reference="V1X-DZ-srj"/>
     </inferredMetricsTieBreakers>
 </document>
