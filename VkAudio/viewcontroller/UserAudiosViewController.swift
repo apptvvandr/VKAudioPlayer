@@ -12,15 +12,15 @@ import Kingfisher
 class UserAudiosViewController: UITableViewController {
 
     var ownerId: Int?
+    var ownerName: String?
+    
     var userAudios = [Audio]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-        var params = [String: AnyObject]()
-        if let id = ownerId {
-            params = ["owner_id": id]
-        }
+        
+        self.title = ownerName != nil ? "\(ownerName!)'s audios" : "Audios"
+        let params: [String: AnyObject] = ownerId != nil ? ["owner_id": ownerId!] : [String: AnyObject]()
 
         VkSDK.Audios.getAudios(params,
                 onResult: {

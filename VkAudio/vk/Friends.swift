@@ -12,12 +12,12 @@ extension VkSDK {
 
     struct Frinds {
 
-        static func getFriends(params: [String:AnyObject]? = nil, onResult: (result:[Friend]) -> Void, onError: ((error:NSError) -> Void)? = {
+        static func getFriends(params: [String:AnyObject]? = nil, onResult: (result:[User]) -> Void, onError: ((error:NSError) -> Void)? = {
             error in print(error)
         }) {
             VkSDK.instance?.get("friends.get", parameters: params, onResult: {
                 (result) in
-                var friends = result.flatMap { $0 as? [String: AnyObject] }.map { Friend(apiResponse: $0) }
+                var friends = result.flatMap { $0 as? [String: AnyObject] }.map { User(apiResponse: $0) }
                 onResult(result: friends)
             }, onError: onError)
         }

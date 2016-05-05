@@ -11,11 +11,10 @@ import UIKit
 
 class UserFriendsViewController: UITableViewController {
 
-    var friends = [Friend]()
+    var friends = [User]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
 
         //todo: api-related stuff on UI. should be encapsulated into service level
         VkSDK.Frinds.getFriends(["fields": "name, photo_100"], onResult: {
@@ -31,8 +30,8 @@ class UserFriendsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(FriendCell.STORYBOARD_ID) as! FriendCell
-        let friend: Friend = friends[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(UserCell.STORYBOARD_ID) as! UserCell
+        let friend: User = friends[indexPath.row]
 
         cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.photoUrl)
         return cell
@@ -40,10 +39,11 @@ class UserFriendsViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier where identifier == "friendsToFriendAudios" {
-            let cell = sender as! FriendCell
+            let cell = sender as! UserCell
 
             let destinationController = segue.destinationViewController as! UserAudiosViewController
             destinationController.ownerId = cell.userId
+            destinationController.ownerName = cell.firstName
         }
     }
 }

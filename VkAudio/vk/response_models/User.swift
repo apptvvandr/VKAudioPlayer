@@ -1,5 +1,5 @@
 //
-//  Friend.swift
+//  User.swift
 //  VkAudio
 //
 //  Created by mac-224 on 02.05.16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Friend: VkItem {
+class User: VkItem {
 
     var firstName: String?
     var lastName: String?

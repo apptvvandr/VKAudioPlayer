@@ -7,11 +7,12 @@ import Foundation
 import UIKit
 import Kingfisher
 
-class FriendCell: UITableViewCell {
+class UserCell: UITableViewCell {
 
     static let STORYBOARD_ID = "cell_friend"
     
     var userId: Int?
+    var firstName: String?
 
     @IBOutlet weak var imagePhoto: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -23,6 +24,8 @@ class FriendCell: UITableViewCell {
 
     func setData(userId: Int?, firstName: String?, lastName: String?, photoUrl: String?) {
         self.userId = userId
+        self.firstName = firstName
+        
         labelName.text = "\(firstName ?? "") \(lastName ?? "")"
         if let url = NSURL(string: photoUrl ?? ""){
             imagePhoto.kf_setImageWithURL(url)

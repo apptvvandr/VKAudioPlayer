@@ -15,6 +15,8 @@ class UserGroupsViewController2: UICollectionViewController {
     var groups = [Group]()
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         //todo: api-related stuff on UI. should be encapsulated into service level
         VkSDK.Groups.getGroups(["extended": 1],
                 onResult: {
@@ -42,6 +44,7 @@ class UserGroupsViewController2: UICollectionViewController {
             if let groupId = cell.groupId {
                 let destinationController = segue.destinationViewController as! UserAudiosViewController
                 destinationController.ownerId = -groupId
+                destinationController.ownerName = cell.groupName
             }
         }
     }
