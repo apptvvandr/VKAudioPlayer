@@ -34,7 +34,6 @@ class UserAudiosViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(AudioCell.STORYBOARD_ID) as! AudioCell
         let audio = userAudios[indexPath.row]
 
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         cell.setData(audio.artist, name: audio.name)
         return cell
     }
