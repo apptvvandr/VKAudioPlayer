@@ -10,43 +10,49 @@ import UIKit
 import Kingfisher
 
 class UserAudiosViewController: UITableViewController {
-        
-    var userAudios = [Audio]()
+
+    var ownerId: Int?
+    var ownerName: String?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        VkSDK.Users.getUserInfo(
-            ["fields" : "photo_big"],
-            onResult: { result in
-                let url = NSURL(string: result["photo_big"] as! String)
-                let imageView = UIImageView()
-                imageView.kf_setImageWithURL(url!)
-                self.tableView.backgroundView = imageView
-            }
-        )
-    }
+    var userAudios = [Audio]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        VkSDK.Audios.getAudios(
-        onResult: { result in
-            self.userAudios = result
-            self.tableView.reloadData()
-        })
-    }
+        
+        self.title = ownerName != nil ? "\(ownerName!)'s audios" : "Audios"
+        let params: [String: AnyObject] = ownerId != nil ? ["owner_id": ownerId!] : [String: AnyObject]()
 
+        VkSDK.Audios.getAudios(params,
+                onResult: {
+                    result in
+                    self.userAudios = result
+                    self.tableView.reloadData()
+                })
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(AudioCell.STORYBOARD_ID) as! AudioCell
         let audio = userAudios[indexPath.row]
-        
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        cell.update(audio.artist!, name: audio.name!)
+
+        cell.setData(audio.artist, name: audio.name)
         return cell
     }
-    
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userAudios.count
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+
+        if let identifier = segue.identifier where identifier == "audioToAudioPlayer" {
+            let cell = sender as! AudioCell
+            let index = self.tableView.indexPathForCell(cell)
+            let audio = userAudios[index!.row]
+            
+            let destinationController = segue.destinationViewController as! AudioPlayerViewController
+            destinationController.audio = audio
+        }
+        
     }
 }

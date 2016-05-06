@@ -9,14 +9,18 @@
 import Foundation
 
 extension VkSDK {
-    
+
     struct Users {
-        
-        static func getUserInfo(params: [String: AnyObject]? = nil, onResult: (result: [String: AnyObject]) -> Void, onError: ((error: NSError) -> Void)? = {error in print(error)}){
-            VkSDK.instance?.get("users.get", parameters: params, onResult: { (result) in
-                onResult(result: result[0] as! [String : AnyObject])
-                }, onError: onError)
+
+        static func getUserInfo(params: [String:AnyObject]? = nil, onResult: (result:[String:AnyObject]) -> Void, onError: ((error:NSError) -> Void)? = {
+            error in print(error)
+        }) {
+            VkSDK.instance?.get("users.get", parameters: params, onResult: {
+                (result) in
+                onResult(result: result[0] as! [String:AnyObject])
+            }, onError: onError)
         }
-        
+
     }
+
 }

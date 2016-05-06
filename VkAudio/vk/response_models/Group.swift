@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Group: VkItem{
-    
+class Group: VkItem {
+
     var name: String?
     var photoUrl: String?
 
-    override init(apiResponse: [String : AnyObject]) {
+    override init(apiResponse: [String:AnyObject]) {
         super.init(apiResponse: apiResponse)
 
         id = apiResponse["gid"] as? Int

@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class AudioCell: UITableViewCell{
-    
+class AudioCell: UITableViewCell {
+
     static let STORYBOARD_ID = "cell_audio"
-    
+
     @IBOutlet weak var labelTitle: UILabel!
-    
-    func update(artist: String, name: String) -> Void{
-        labelTitle.text = "\(artist) - \(name)"
+
+    func setData(artist: String?, name: String?) {
+        labelTitle.text = "\(artist ?? "Unknown") - \(name ?? "Unknown")"
     }
 }

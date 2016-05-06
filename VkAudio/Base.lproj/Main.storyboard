@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -45,43 +45,59 @@
         <scene sceneID="FK0-fC-vNF">
             <objects>
                 <tableViewController storyboardIdentifier="controller_table_friends" id="Wj7-Ex-Y5o" customClass="UserFriendsViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_friend" id="p8c-sn-cZH" userLabel="cell_friend" customClass="FriendCell" customModule="VkAudio" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_friend" rowHeight="65" id="p8c-sn-cZH" userLabel="cell_friend" customClass="UserCell" customModule="VkAudio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p8c-sn-cZH" id="xkb-zG-Imb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ccm-xj-KTR">
-                                            <rect key="frame" x="8" y="-3" width="50" height="50"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-V3-SKe">
+                                            <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="ATw-Nq-bmu"/>
+                                                <constraint firstAttribute="width" secondItem="TFX-V3-SKe" secondAttribute="height" multiplier="1:1" id="g22-KO-jPa"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="James Hetfield" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dla-Hp-Zyw">
-                                            <rect key="frame" x="66" y="11" width="301" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoD-ZH-HPc">
+                                            <rect key="frame" x="64" y="21" width="303" height="21"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="centerY" secondItem="dla-Hp-Zyw" secondAttribute="centerY" id="2sg-3k-J5x"/>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="top" secondItem="xkb-zG-Imb" secondAttribute="topMargin" constant="-11" id="336-ke-7q0"/>
-                                        <constraint firstItem="dla-Hp-Zyw" firstAttribute="leading" secondItem="Ccm-xj-KTR" secondAttribute="trailing" constant="8" symbolic="YES" id="NEb-Hl-g22"/>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="centerY" secondItem="xkb-zG-Imb" secondAttribute="centerY" id="Whl-Wh-N7L"/>
-                                        <constraint firstItem="dla-Hp-Zyw" firstAttribute="trailing" secondItem="xkb-zG-Imb" secondAttribute="trailingMargin" id="ZsW-z8-NV3"/>
-                                        <constraint firstItem="Ccm-xj-KTR" firstAttribute="leading" secondItem="xkb-zG-Imb" secondAttribute="leadingMargin" id="rSB-m5-C0R"/>
+                                        <constraint firstAttribute="trailing" secondItem="KoD-ZH-HPc" secondAttribute="trailing" constant="8" id="CXA-4f-Eio"/>
+                                        <constraint firstItem="TFX-V3-SKe" firstAttribute="leading" secondItem="xkb-zG-Imb" secondAttribute="leading" constant="8" id="EGm-Vt-ZlI"/>
+                                        <constraint firstItem="KoD-ZH-HPc" firstAttribute="leading" secondItem="TFX-V3-SKe" secondAttribute="trailing" constant="8" symbolic="YES" id="RnS-uc-Ya5"/>
+                                        <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="KoD-ZH-HPc" secondAttribute="centerY" id="eUp-Aj-LNV"/>
+                                        <constraint firstItem="TFX-V3-SKe" firstAttribute="top" secondItem="xkb-zG-Imb" secondAttribute="top" constant="8" id="jUF-yE-etd"/>
+                                        <constraint firstAttribute="bottom" secondItem="TFX-V3-SKe" secondAttribute="bottom" constant="8" id="yr4-U3-hJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="p8c-sn-cZH" secondAttribute="centerY" id="GUX-4j-mLs"/>
+                                </constraints>
                                 <connections>
-                                    <outlet property="imagePhoto" destination="Ccm-xj-KTR" id="Pke-HS-w5F"/>
-                                    <outlet property="labelName" destination="dla-Hp-Zyw" id="PGb-T4-8q5"/>
+                                    <outlet property="imagePhoto" destination="TFX-V3-SKe" id="0Jt-NH-99A"/>
+                                    <outlet property="labelName" destination="KoD-ZH-HPc" id="6Pk-S4-juy"/>
+                                    <segue destination="45f-pB-Ccl" kind="show" identifier="friendsToFriendAudios" id="ZOE-pU-Eok"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,9 +107,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Friends" id="Fsj-mr-5Ji"/>
-                    <connections>
-                        <segue destination="45f-pB-Ccl" kind="show" id="ILf-wA-UvZ"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkM-Qq-LHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,7 +116,7 @@
         <scene sceneID="a0f-ZB-yXz">
             <objects>
                 <navigationController storyboardIdentifier="controller_nav_friends" automaticallyAdjustsScrollViewInsets="NO" id="JgF-P3-fYK" userLabel="Friends" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="4s5-Eq-1Em">
+                    <tabBarItem key="tabBarItem" title="Friends" image="ic_person_outline_white" id="4s5-Eq-1Em">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -120,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="137.5" y="-668.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Vk Tabs Controller-->
         <scene sceneID="DM3-Ws-1Xh">
             <objects>
-                <tabBarController id="Dv0-lz-WMM" sceneMemberID="viewController">
+                <tabBarController id="Dv0-lz-WMM" customClass="VkTabsController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gjH-4K-WbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -146,7 +159,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MPu-sh-tI1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_audio" id="KYy-8w-Alr" customClass="AudioCell" customModule="VkAudio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
@@ -157,14 +173,20 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metallica - So What?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRU-to-zJc">
                                             <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="labelTitle" destination="GRU-to-zJc" id="FUN-6d-sBX"/>
+                                    <segue destination="hLe-fN-oCO" kind="show" identifier="audioToAudioPlayer" id="KQ8-D4-W1l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -174,9 +196,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Audios" id="1k8-lb-1f5"/>
-                    <connections>
-                        <segue destination="hLe-fN-oCO" kind="show" identifier="segue_player" id="3Ci-Tc-ncU"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLv-zt-nvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,9 +205,11 @@
         <scene sceneID="zmF-ws-i6d">
             <objects>
                 <collectionViewController id="fqm-vS-FZR" customClass="UserGroupsViewController2" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gqW-52-Byc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gqW-52-Byc" customClass="GroupsCollectionView" customModule="VkAudio" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="X53-En-p95">
                             <size key="itemSize" width="144" height="144"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -203,28 +224,37 @@
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Metallica" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zss-3V-gyn">
-                                            <rect key="frame" x="8" y="151" width="164" height="21"/>
-                                            <color key="backgroundColor" red="0.014710038676101007" green="0.014242092911956534" blue="0.015113710732984287" alpha="0.24637078900709219" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-hy-8Ib">
+                                            <rect key="frame" x="0.0" y="151" width="180" height="29"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20378989361702127" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="BsK-3E-qQa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-tX-Vwa">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aN7-ac-h3M">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="QLM-tX-Vwa" firstAttribute="centerX" secondItem="BjR-SV-VbQ" secondAttribute="centerX" id="3C0-Zg-HOI"/>
-                                    <constraint firstItem="QLM-tX-Vwa" firstAttribute="centerY" secondItem="BjR-SV-VbQ" secondAttribute="centerY" id="Jus-NI-Jr3"/>
-                                    <constraint firstItem="zss-3V-gyn" firstAttribute="centerX" secondItem="BjR-SV-VbQ" secondAttribute="centerX" id="RKz-jd-Ycw"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="leading" secondItem="BjR-SV-VbQ" secondAttribute="leading" id="4Rg-29-ZA8"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="bottom" secondItem="Xb8-hy-8Ib" secondAttribute="bottom" id="502-Mc-C9y"/>
+                                    <constraint firstAttribute="bottom" secondItem="aN7-ac-h3M" secondAttribute="bottom" id="FOD-iM-dez"/>
+                                    <constraint firstItem="Xb8-hy-8Ib" firstAttribute="width" secondItem="BjR-SV-VbQ" secondAttribute="width" id="c7v-7l-ZQL"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="width" secondItem="BjR-SV-VbQ" secondAttribute="height" multiplier="1:1" id="f2C-Gv-yIh"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="top" secondItem="BjR-SV-VbQ" secondAttribute="top" id="l6G-Th-rWQ"/>
+                                    <constraint firstItem="aN7-ac-h3M" firstAttribute="leading" secondItem="Xb8-hy-8Ib" secondAttribute="leading" id="z7i-zg-1ug"/>
                                 </constraints>
                                 <size key="customSize" width="180" height="180"/>
                                 <connections>
-                                    <outlet property="imagePhoto" destination="QLM-tX-Vwa" id="s5K-0Y-AjS"/>
-                                    <outlet property="labelName" destination="zss-3V-gyn" id="U7V-ei-cJw"/>
+                                    <outlet property="imagePhoto" destination="aN7-ac-h3M" id="DF0-hI-tna"/>
+                                    <outlet property="labelName" destination="Xb8-hy-8Ib" id="jJ1-8I-1g2"/>
+                                    <segue destination="45f-pB-Ccl" kind="show" identifier="groupsToFriendAudios" id="s1F-fO-6pI"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -234,9 +264,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Groups" id="fqi-Bx-vPC"/>
-                    <connections>
-                        <segue destination="45f-pB-Ccl" kind="show" id="6gu-rg-V0h"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTP-E8-pZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,7 +272,7 @@
         <!--Audio player-->
         <scene sceneID="QK7-KN-AEz">
             <objects>
-                <viewController storyboardIdentifier="controller_player" id="hLe-fN-oCO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="controller_player" id="hLe-fN-oCO" customClass="AudioPlayerViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gut-Q6-0nv"/>
                         <viewControllerLayoutGuide type="bottom" id="9wO-JN-inN"/>
@@ -253,7 +280,8 @@
                     <view key="view" contentMode="scaleToFill" id="dsl-Co-qvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Audio player" id="jWr-NU-ycx"/>
                 </viewController>
@@ -264,8 +292,8 @@
         <!--My audios-->
         <scene sceneID="L7P-8s-47k">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My audios" id="YpM-GS-ESb"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My audios" image="ic_play_circle_outline_white" id="YpM-GS-ESb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXC-JY-osl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -283,8 +311,8 @@
         <!--Groups-->
         <scene sceneID="GrU-PQ-LJ8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="K3C-1T-34E"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Groups" image="ic_people_outline_white" id="K3C-1T-34E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xqn-9c-3Hx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -300,7 +328,12 @@
             <point key="canvasLocation" x="137.5" y="148.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_people_outline_white" width="24" height="24"/>
+        <image name="ic_person_outline_white" width="24" height="24"/>
+        <image name="ic_play_circle_outline_white" width="24" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6gu-rg-V0h"/>
+        <segue reference="ZOE-pU-Eok"/>
     </inferredMetricsTieBreakers>
 </document>
