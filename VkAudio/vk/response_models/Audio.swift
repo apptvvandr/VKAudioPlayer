@@ -13,6 +13,7 @@ class Audio: VkItem {
     var url: String?
     var artist: String?
     var name: String?
+    var duration: Float?
 
     override init(apiResponse: [String:AnyObject]) {
         super.init(apiResponse: apiResponse)
@@ -21,5 +22,6 @@ class Audio: VkItem {
         url = apiResponse["url"] as? String
         artist = apiResponse["artist"] as? String
         name = apiResponse["title"] as? String
+        duration = apiResponse["duration"] as? Float
     }
 }

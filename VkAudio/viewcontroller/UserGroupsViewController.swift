@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class UserGroupsViewController2: UICollectionViewController {
+class UserGroupsViewController: UICollectionViewController {
 
     var groups = [Group]()
 
