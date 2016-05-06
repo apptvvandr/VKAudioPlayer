@@ -24,7 +24,7 @@ class GroupCell: UICollectionViewCell {
         self.groupName = groupName
         
         labelName.text = groupName
-        if let url = NSURL(string: photoUrl!) {
+        if let photoUrl = photoUrl, url = NSURL(string: photoUrl) {
             imagePhoto.kf_setImageWithURL(url)
         }
     }

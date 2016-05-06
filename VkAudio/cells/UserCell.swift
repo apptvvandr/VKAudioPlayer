@@ -27,7 +27,7 @@ class UserCell: UITableViewCell {
         self.firstName = firstName
         
         labelName.text = "\(firstName ?? "") \(lastName ?? "")"
-        if let url = NSURL(string: photoUrl ?? ""){
+        if let photoUrl = photoUrl, url = NSURL(string: photoUrl){
             imagePhoto.kf_setImageWithURL(url)
         }
     }
