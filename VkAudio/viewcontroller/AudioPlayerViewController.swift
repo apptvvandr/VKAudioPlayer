@@ -8,14 +8,20 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class AudioPlayerViewController: UIViewController{
     
     var audio: Audio!
+    var player: AVPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "\(audio.artist ?? "Unknown") - \(audio.name ?? "Unknown")"
+        if let path = audio.url, url = NSURL(string: path){
+            player = AVPlayer(URL: url)
+            player.play()
+        }
     }
 }
