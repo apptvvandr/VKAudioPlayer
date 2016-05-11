@@ -17,7 +17,7 @@ extension VkSDK {
         }) {
             VkSDK.instance?.get("friends.get", parameters: params, onResult: {
                 (result) in
-                var friends = result.flatMap { $0 as? [String: AnyObject] }.map { User(apiResponse: $0) }
+                let friends = result.flatMap { $0 as? [String: AnyObject] }.map { User(apiResponse: $0) }
                 onResult(result: friends)
             }, onError: onError)
         }

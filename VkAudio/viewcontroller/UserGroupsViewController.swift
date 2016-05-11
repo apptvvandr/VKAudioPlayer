@@ -8,8 +8,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class UserGroupsViewController: UICollectionViewController {
 
     var groups = [Group]()
