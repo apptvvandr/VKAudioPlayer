@@ -90,7 +90,7 @@
                                         <constraint firstAttribute="bottom" secondItem="TFX-V3-SKe" secondAttribute="bottom" constant="8" id="yr4-U3-hJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="p8c-sn-cZH" secondAttribute="centerY" id="GUX-4j-mLs"/>
@@ -183,7 +183,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="labelTitle" destination="GRU-to-zJc" id="FUN-6d-sBX"/>

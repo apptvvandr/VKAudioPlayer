@@ -28,21 +28,26 @@ class AudioPlayerViewController: UIViewController{
     var selectedAudioIndex: Int!
     var timer: NSTimer!
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AudioPlayerViewController.onAudioSliderUpdated), userInfo: nil, repeats: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setupBlurView { (blurView) in
+            self.view.addSubview(blurView)
+            self.view.sendSubviewToBack(blurView)
+        }
         
         currentAudio = (selectedAudioIndex, audios[selectedAudioIndex])
         progressAudioStream.maximumValue = currentAudio.audio.duration ?? 0
         
         updateUi()
         playAudio(currentAudio.audio)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AudioPlayerViewController.onAudioSliderUpdated), userInfo: nil, repeats: true)
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {

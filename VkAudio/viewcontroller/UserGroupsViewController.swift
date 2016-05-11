@@ -13,6 +13,14 @@ private let reuseIdentifier = "Cell"
 class UserGroupsViewController: UICollectionViewController {
 
     var groups = [Group]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupBlurView { (blurView) in
+            self.collectionView!.backgroundView = blurView
+        }
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
