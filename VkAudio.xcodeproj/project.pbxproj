@@ -14,6 +14,7 @@
 		F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */; };
 		F509CDA01CD7C568003ACCC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9F1CD7C568003ACCC1 /* User.swift */; };
 		F509CDA21CD7C57D003ACCC1 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CDA11CD7C57D003ACCC1 /* Friends.swift */; };
+		F52C70BE1CE3865E0087C153 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C70BD1CE3865E0087C153 /* LocalStorage.swift */; };
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
 		F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29C1CCF64A100E45170 /* AppDelegate.swift */; };
@@ -71,6 +72,7 @@
 		F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsViewController.swift; sourceTree = "<group>"; };
 		F509CD9F1CD7C568003ACCC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F509CDA11CD7C57D003ACCC1 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		F52C70BD1CE3865E0087C153 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
 		F56AD2991CCF64A100E45170 /* VkAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 				F5B3E56E1CCFC254003270A9 /* vk */,
 				F5F0882E1CCF673C00525599 /* support files */,
 				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
+				F52C70BD1CE3865E0087C153 /* LocalStorage.swift */,
 			);
 			path = VkAudio;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
 				F509CDA21CD7C57D003ACCC1 /* Friends.swift in Sources */,
 				F509CDA01CD7C568003ACCC1 /* User.swift in Sources */,
+				F52C70BE1CE3865E0087C153 /* LocalStorage.swift in Sources */,
 				F5AB3D171CD3AA7700BC2067 /* Users.swift in Sources */,
 				F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,

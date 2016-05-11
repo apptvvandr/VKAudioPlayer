@@ -8,28 +8,45 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class VkTabsController: UITabBarController {
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-
+    
+    let BG_FILE_NAME = "bg_image.jpg"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let bgImagePath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: BG_FILE_NAME)
+        
+        if let background = UIImage(contentsOfFile: bgImagePath){
+            setBackgroundImage(background)
+            return
+        }
+        
         //todo: api-related stuff on UI. should be encapsulated into service level
         VkSDK.Users.getUserInfo(["fields": "photo_big"], onResult: {
             (result) in
             if let url = NSURL(string: result["photo_big"] as! String) {
-
-                UIImageView().kf_setImageWithURL(url, completionHandler: {
-                    (image, error, cacheType, imageURL) in
-
-                    UIGraphicsBeginImageContext(self.view.frame.size)
-                    image?.drawInRect(self.view.bounds)
-                    let contextImage = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
-
-                    self.view.backgroundColor = UIColor(patternImage: contextImage)
+                
+                Alamofire.download(.GET, url,
+                    destination: { (temporaryURL, response) in
+                        return NSURL(string: "file://\(bgImagePath)")!
+                        
+                }).response(completionHandler: { (request, response, data, error) in
+                    print("onResponse:")
+                    let background = UIImage(contentsOfFile: bgImagePath)
+                    
+                    //todo: blur this image and set fullscreen
+                    
+                    self.setBackgroundImage(background!)
                 })
             }
         })
+    }
+    
+    
+    private func setBackgroundImage(image: UIImage){
+        self.view.backgroundColor = UIColor(patternImage: image)
     }
 }
