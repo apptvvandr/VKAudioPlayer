@@ -20,43 +20,37 @@ class AudioPlayerViewController: UIViewController{
     @IBOutlet weak var btnNext: UIButton!
     
     @IBOutlet weak var progressAudioStream: UISlider!
-    
+        
     var player = AVPlayer()
     var audios: [Audio]!
-    var currentAudioIndex: Int!
+    private var currentAudio: (index: Int, audio: Audio)!
+    
+    var selectedAudioIndex: Int!
+    var timer: NSTimer!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AudioPlayerViewController.onAudioSliderUpdated), userInfo: nil, repeats: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let audio = audios[currentAudioIndex]
-        
-        progressAudioStream.maximumValue = audio.duration ?? 0
-        
-        player.addPeriodicTimeObserverForInterval(CMTimeMakeWithSeconds(1.0, 10), queue: dispatch_get_main_queue())
-        { (time: CMTime) in
-            let currentTime  = Int64(time.value) / Int64(time.timescale)
-            //todo: resolve drag conflicts with onAudioSliderDragged
-            self.progressAudioStream.value = Float(currentTime)
-            if currentTime == Int64(self.audios[self.currentAudioIndex].duration!) {
-                self.onNextButtonClicked(self)
-            }
-        }
+        currentAudio = (selectedAudioIndex, audios[selectedAudioIndex])
+        progressAudioStream.maximumValue = currentAudio.audio.duration ?? 0
         
         updateUi()
-        playAudio(audio)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
+        playAudio(currentAudio.audio)
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
-        if currentAudioIndex - 1 >= 0 {
-            currentAudioIndex = currentAudioIndex - 1
-            let audio = audios[currentAudioIndex]
+        if currentAudio.index - 1 >= 0 {
+            currentAudio.index = currentAudio.index - 1
+            currentAudio.audio = audios[currentAudio.index]
             updateUi()
-            playAudio(audio)
+            playAudio(currentAudio.audio)
         }
     }
     
@@ -70,19 +64,29 @@ class AudioPlayerViewController: UIViewController{
     }
     
     @IBAction func onNextButtonClicked(sender: AnyObject) {
-        if currentAudioIndex + 1 <= audios.count {
-            currentAudioIndex = currentAudioIndex + 1
-            let audio = audios[currentAudioIndex]
+        if currentAudio.index + 1 <= audios.count {
+            currentAudio.index = currentAudio.index + 1
+            currentAudio.audio = audios[currentAudio.index]
             updateUi()
-            playAudio(audio)
+            playAudio(currentAudio.audio)
         }
     }
     
-    @IBAction func onAudioSliderDragged(sender: AnyObject) {
+    @IBAction func onAudioSliderDragged(sender: UISlider) {
         let time = CMTimeMake(Int64(progressAudioStream.value), 1)
         player.seekToTime(time) { (result) in
             self.player.play()
         }
+    }
+    
+    func onAudioSliderUpdated(){
+        let playerTime = player.currentTime()
+        let time = Float(Int64(playerTime.value) / Int64(playerTime.timescale))
+        if time == currentAudio.audio.duration!{
+            self.onNextButtonClicked(self)
+            return
+        }
+        progressAudioStream.value = Float(time)
     }
     
     private func playAudio(audio: Audio){
@@ -93,13 +97,11 @@ class AudioPlayerViewController: UIViewController{
     }
     
     private func updateUi(){
-        let audio = audios[currentAudioIndex]
+        labelArtist.text = currentAudio.audio.artist
+        labelName.text = currentAudio.audio.name
         
-        labelArtist.text = audio.artist
-        labelName.text = audio.name
-        
-        btnPrevious.hidden = currentAudioIndex == 0
-        btnNext.hidden = currentAudioIndex == audios.count
+        btnPrevious.hidden = currentAudio.index == 0
+        btnNext.hidden = currentAudio.index == audios.count
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
@@ -114,6 +116,8 @@ class AudioPlayerViewController: UIViewController{
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         player.pause() //todo: implement continious playing in background
+        
         player.removeObserver(self, forKeyPath: "rate")
+        timer.invalidate()
     }
 }

@@ -51,7 +51,7 @@ class UserAudiosViewController: UITableViewController {
             
             let destinationController = segue.destinationViewController as! AudioPlayerViewController
             destinationController.audios = self.userAudios
-            destinationController.currentAudioIndex = index!.row
+            destinationController.selectedAudioIndex = index!.row
         }
         
     }
