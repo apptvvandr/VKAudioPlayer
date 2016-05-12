@@ -51,12 +51,11 @@ class AudioPlayerViewController: UIViewController{
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
-        if currentAudio.index - 1 >= 0 {
-            currentAudio.index = currentAudio.index - 1
-            currentAudio.audio = audios[currentAudio.index]
-            updateUi()
-            playAudio(currentAudio.audio)
-        }
+        let previousIndex = currentAudio.index > 0 ? currentAudio.index - 1 : audios.count - 1
+        currentAudio.index = previousIndex
+        currentAudio.audio = audios[currentAudio.index]
+        updateUi()
+        playAudio(currentAudio.audio)
     }
     
     @IBAction func onPlayButtonClicked(sender: AnyObject) {
@@ -69,12 +68,11 @@ class AudioPlayerViewController: UIViewController{
     }
     
     @IBAction func onNextButtonClicked(sender: AnyObject) {
-        if currentAudio.index + 1 <= audios.count - 1 {
-            currentAudio.index = currentAudio.index + 1
-            currentAudio.audio = audios[currentAudio.index]
-            updateUi()
-            playAudio(currentAudio.audio)
-        }
+        let nextIndex = currentAudio.index < audios.count - 1 ? currentAudio.index + 1 : 0
+        currentAudio.index = nextIndex
+        currentAudio.audio = audios[currentAudio.index]
+        updateUi()
+        playAudio(currentAudio.audio)
     }
     
     @IBAction func onAudioSliderDragged(sender: UISlider) {
@@ -104,9 +102,6 @@ class AudioPlayerViewController: UIViewController{
     private func updateUi(){
         labelArtist.text = currentAudio.audio.artist
         labelName.text = currentAudio.audio.name
-        
-        btnPrevious.hidden = currentAudio.index == 0
-        btnNext.hidden = currentAudio.index == audios.count - 1
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
