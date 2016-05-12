@@ -15,6 +15,7 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     var ownerName: String?
     var userAudios = [Audio]()
     
+    let refreshController = UIRefreshControl()
     let searchController = UISearchController(searchResultsController: nil)
     var filteredAudios = [Audio]()
     
@@ -29,20 +30,14 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        
+        refreshController.addTarget(self, action: #selector(onRefresh), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshController)
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.title = ownerName != nil ? "\(ownerName!)'s audios" : "Audios"
-        let params: [String: AnyObject] = ownerId != nil ? ["owner_id": ownerId!] : [String: AnyObject]()
-
-        VkSDK.Audios.getAudios(params,
-                onResult: {
-                    result in
-                    self.userAudios = result
-                    self.tableView.reloadData()
-                })
+        onRefresh()
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -75,6 +70,19 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(sechController: UISearchController) {
         onSearchPrepared(searchController.searchBar.text!)
+    }
+    
+    //MARK: -Refresh
+    
+    func onRefresh() {
+        self.title = ownerName != nil ? "\(ownerName!)'s audios" : "Audios"
+        let params: [String: AnyObject] = ownerId != nil ? ["owner_id": ownerId!] : [String: AnyObject]()
+        
+        VkSDK.Audios.getAudios(params, onResult: { result in
+            self.userAudios = result
+            self.tableView.reloadData()
+            self.refreshController.endRefreshing()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
