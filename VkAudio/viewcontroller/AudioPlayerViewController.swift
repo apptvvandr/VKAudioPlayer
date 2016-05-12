@@ -69,7 +69,7 @@ class AudioPlayerViewController: UIViewController{
     }
     
     @IBAction func onNextButtonClicked(sender: AnyObject) {
-        if currentAudio.index + 1 <= audios.count {
+        if currentAudio.index + 1 <= audios.count - 1 {
             currentAudio.index = currentAudio.index + 1
             currentAudio.audio = audios[currentAudio.index]
             updateUi()
@@ -106,7 +106,7 @@ class AudioPlayerViewController: UIViewController{
         labelName.text = currentAudio.audio.name
         
         btnPrevious.hidden = currentAudio.index == 0
-        btnNext.hidden = currentAudio.index == audios.count
+        btnNext.hidden = currentAudio.index == audios.count - 1
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
