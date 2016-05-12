@@ -15,6 +15,14 @@ class UserAudiosViewController: UITableViewController {
     var ownerName: String?
     
     var userAudios = [Audio]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupBlurView { (blurView) in
+            self.tableView.backgroundView = blurView
+        }
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,10 +56,10 @@ class UserAudiosViewController: UITableViewController {
         if let identifier = segue.identifier where identifier == "audioToAudioPlayer" {
             let cell = sender as! AudioCell
             let index = self.tableView.indexPathForCell(cell)
-            let audio = userAudios[index!.row]
             
             let destinationController = segue.destinationViewController as! AudioPlayerViewController
-            destinationController.audio = audio
+            destinationController.audios = self.userAudios
+            destinationController.selectedAudioIndex = index!.row
         }
         
     }

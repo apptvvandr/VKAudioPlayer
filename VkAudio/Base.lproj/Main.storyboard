@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -89,7 +90,7 @@
                                         <constraint firstAttribute="bottom" secondItem="TFX-V3-SKe" secondAttribute="bottom" constant="8" id="yr4-U3-hJ2"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="TFX-V3-SKe" firstAttribute="centerY" secondItem="p8c-sn-cZH" secondAttribute="centerY" id="GUX-4j-mLs"/>
@@ -182,7 +183,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="labelTitle" destination="GRU-to-zJc" id="FUN-6d-sBX"/>
@@ -204,7 +205,7 @@
         <!--Groups-->
         <scene sceneID="zmF-ws-i6d">
             <objects>
-                <collectionViewController id="fqm-vS-FZR" customClass="UserGroupsViewController2" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="fqm-vS-FZR" customClass="UserGroupsViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gqW-52-Byc" customClass="GroupsCollectionView" customModule="VkAudio" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,10 +281,126 @@
                     <view key="view" contentMode="scaleToFill" id="dsl-Co-qvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6E-Wt-JHV">
+                                <rect key="frame" x="169" y="551" width="36" height="36"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49811613475177308" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="W1I-8H-z1d"/>
+                                    <constraint firstAttribute="height" constant="36" id="vfJ-8j-af6"/>
+                                </constraints>
+                                <state key="normal" image="ic_play_arrow">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPlayButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="SJo-Bo-81f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQb-Ru-aEI">
+                                <rect key="frame" x="125" y="551" width="36" height="36"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Jak-XH-GWq"/>
+                                    <constraint firstAttribute="width" constant="36" id="hUX-5r-73b"/>
+                                </constraints>
+                                <state key="normal" image="ic_skip_previous">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onPreviousButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="RPH-JD-4lv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metallica" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnQ-dS-mso">
+                                <rect key="frame" x="20" y="72" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Whom The Bell Tolls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-DS-our">
+                                <rect key="frame" x="20" y="101" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_music" translatesAutoresizingMaskIntoConstraints="NO" id="303-Kt-Cdd">
+                                <rect key="frame" x="27" y="174" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="303-Kt-Cdd" secondAttribute="height" multiplier="1:1" id="YRv-yj-HYj"/>
+                                </constraints>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mPA-Dr-pYk">
+                                <rect key="frame" x="25" y="502" width="324" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onAudioSliderDragged:" destination="hLe-fN-oCO" eventType="valueChanged" id="1On-Zj-bgk"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjh-aC-L3s">
+                                <rect key="frame" x="213" y="551" width="36" height="36"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="0jB-Hx-vIj"/>
+                                    <constraint firstAttribute="width" constant="36" id="sJ2-h3-o1K"/>
+                                </constraints>
+                                <state key="normal" image="ic_skip_next">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onNextButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="Pm7-XQ-x7P"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z6E-Wt-JHV" firstAttribute="baseline" secondItem="Xjh-aC-L3s" secondAttribute="baseline" id="4dn-uM-aq9"/>
+                            <constraint firstItem="Xjh-aC-L3s" firstAttribute="leading" secondItem="z6E-Wt-JHV" secondAttribute="trailing" constant="8" symbolic="YES" id="BLp-hM-cyo"/>
+                            <constraint firstItem="cJL-DS-our" firstAttribute="top" secondItem="AnQ-dS-mso" secondAttribute="bottom" constant="8" symbolic="YES" id="Djb-0m-WFc"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="trailing" secondItem="303-Kt-Cdd" secondAttribute="trailing" id="JnR-v6-Mpz"/>
+                            <constraint firstItem="303-Kt-Cdd" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" constant="11" id="MAK-hQ-Dnd"/>
+                            <constraint firstItem="303-Kt-Cdd" firstAttribute="centerY" secondItem="dsl-Co-qvc" secondAttribute="centerY" id="MmJ-FK-Zce"/>
+                            <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="cJL-DS-our" secondAttribute="leading" id="PcG-2i-vFB"/>
+                            <constraint firstItem="cJL-DS-our" firstAttribute="centerX" secondItem="303-Kt-Cdd" secondAttribute="centerX" id="Ryz-cg-ON9"/>
+                            <constraint firstItem="303-Kt-Cdd" firstAttribute="centerX" secondItem="dsl-Co-qvc" secondAttribute="centerX" id="TFB-WS-8zf"/>
+                            <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" constant="4" id="V1o-vW-gMn"/>
+                            <constraint firstItem="gQb-Ru-aEI" firstAttribute="baseline" secondItem="z6E-Wt-JHV" secondAttribute="baseline" id="WmL-PY-VTA"/>
+                            <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="gQb-Ru-aEI" secondAttribute="bottom" constant="31" id="XKf-gO-orY"/>
+                            <constraint firstItem="303-Kt-Cdd" firstAttribute="centerX" secondItem="z6E-Wt-JHV" secondAttribute="centerX" id="ih8-VZ-5gU"/>
+                            <constraint firstItem="AnQ-dS-mso" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="8" symbolic="YES" id="lwX-Pt-ZJG"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="leading" secondItem="303-Kt-Cdd" secondAttribute="leading" id="nf2-Tx-gbX"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="top" secondItem="303-Kt-Cdd" secondAttribute="bottom" constant="8" symbolic="YES" id="vN6-dL-VAC"/>
+                            <constraint firstItem="AnQ-dS-mso" firstAttribute="trailing" secondItem="cJL-DS-our" secondAttribute="trailing" id="wUc-Kc-HHn"/>
+                            <constraint firstItem="z6E-Wt-JHV" firstAttribute="leading" secondItem="gQb-Ru-aEI" secondAttribute="trailing" constant="8" symbolic="YES" id="y1D-Fo-rKo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Audio player" id="jWr-NU-ycx"/>
+                    <connections>
+                        <outlet property="btnNext" destination="Xjh-aC-L3s" id="GPq-1A-Aiv"/>
+                        <outlet property="btnPlay" destination="z6E-Wt-JHV" id="Dmx-1S-If5"/>
+                        <outlet property="btnPrevious" destination="gQb-Ru-aEI" id="Wy7-s6-LiI"/>
+                        <outlet property="imageCover" destination="303-Kt-Cdd" id="2qC-3D-BDk"/>
+                        <outlet property="labelArtist" destination="AnQ-dS-mso" id="p1k-ES-Bih"/>
+                        <outlet property="labelName" destination="cJL-DS-our" id="p4d-Uh-DNv"/>
+                        <outlet property="progressAudioStream" destination="mPA-Dr-pYk" id="gM2-de-dRq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEQ-6M-JeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -292,7 +409,7 @@
         <!--My audios-->
         <scene sceneID="L7P-8s-47k">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fH4-cd-slO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My audios" image="ic_play_circle_outline_white" id="YpM-GS-ESb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXC-JY-osl">
@@ -311,7 +428,7 @@
         <!--Groups-->
         <scene sceneID="GrU-PQ-LJ8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" customClass="VkNavController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" image="ic_people_outline_white" id="K3C-1T-34E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xqn-9c-3Hx">
@@ -331,7 +448,11 @@
     <resources>
         <image name="ic_people_outline_white" width="24" height="24"/>
         <image name="ic_person_outline_white" width="24" height="24"/>
+        <image name="ic_play_arrow" width="24" height="24"/>
         <image name="ic_play_circle_outline_white" width="24" height="24"/>
+        <image name="ic_skip_next" width="24" height="24"/>
+        <image name="ic_skip_previous" width="24" height="24"/>
+        <image name="placeholder_music" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZOE-pU-Eok"/>

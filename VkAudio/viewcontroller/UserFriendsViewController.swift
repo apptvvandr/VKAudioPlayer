@@ -12,6 +12,14 @@ import UIKit
 class UserFriendsViewController: UITableViewController {
 
     var friends = [User]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.setupBlurView { (blurView) in
+            self.tableView.backgroundView = blurView
+        }
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

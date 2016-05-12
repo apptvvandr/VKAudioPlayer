@@ -17,7 +17,7 @@ extension VkSDK {
         }) {
             VkSDK.instance?.get("audio.get", parameters: params, onResult: {
                 (result) in
-                var audios = result.flatMap { $0 as? [String: AnyObject] }.map { Audio(apiResponse: $0) }
+                let audios = result.flatMap { $0 as? [String: AnyObject] }.map { Audio(apiResponse: $0) }
                 onResult(result: audios)
             }, onError: onError)
         }

@@ -17,7 +17,7 @@ extension VkSDK {
         }) {
             VkSDK.instance?.get("groups.get", parameters: params, onResult: {
                 (result) in
-                var groups = result.flatMap { $0 as? [String: AnyObject] }.map { Group(apiResponse: $0) }
+                let groups = result.flatMap { $0 as? [String: AnyObject] }.map { Group(apiResponse: $0) }
                 onResult(result: groups)
             }, onError: onError)
         }
