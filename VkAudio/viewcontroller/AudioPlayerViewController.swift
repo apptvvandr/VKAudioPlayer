@@ -8,9 +8,8 @@
 
 import Foundation
 import UIKit
-import AVFoundation
 
-class AudioPlayerViewController: UIViewController{
+class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     @IBOutlet weak var labelArtist: UILabel!
     @IBOutlet weak var labelName: UILabel!
@@ -21,12 +20,10 @@ class AudioPlayerViewController: UIViewController{
     
     @IBOutlet weak var progressAudioStream: UISlider!
         
-    var player = AVPlayer()
     var audios: [Audio]!
-    private var currentAudio: (index: Int, audio: Audio)!
-    
     var selectedAudioIndex: Int!
-    var timer: NSTimer!
+    
+    let audioPlayer = AudioPlayer.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,88 +33,49 @@ class AudioPlayerViewController: UIViewController{
             self.view.sendSubviewToBack(blurView)
         }
         
-        currentAudio = (selectedAudioIndex, audios[selectedAudioIndex])
-        progressAudioStream.maximumValue = currentAudio.audio.duration ?? 0
-        
-        updateUi()
-        playAudio(currentAudio.audio)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.New, context: nil)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AudioPlayerViewController.onAudioSliderUpdated), userInfo: nil, repeats: true)
+        audioPlayer.delegate = self
+        audioPlayer.playlist = audios
+        audioPlayer.play(selectedAudioIndex)
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
-        let previousIndex = currentAudio.index > 0 ? currentAudio.index - 1 : audios.count - 1
-        currentAudio.index = previousIndex
-        currentAudio.audio = audios[currentAudio.index]
-        updateUi()
-        playAudio(currentAudio.audio)
+        audioPlayer.playPrevious()
     }
     
     @IBAction func onPlayButtonClicked(sender: AnyObject) {
-        if player.rate == 0.0 {
-            player.play()
+        if audioPlayer.isPlaying() {
+            audioPlayer.pause()
         }
         else {
-            player.pause()
+            audioPlayer.continuePlaying()
         }
     }
     
     @IBAction func onNextButtonClicked(sender: AnyObject) {
-        let nextIndex = currentAudio.index < audios.count - 1 ? currentAudio.index + 1 : 0
-        currentAudio.index = nextIndex
-        currentAudio.audio = audios[currentAudio.index]
-        updateUi()
-        playAudio(currentAudio.audio)
+        audioPlayer.playNext()
     }
     
     @IBAction func onAudioSliderDragged(sender: UISlider) {
-        let time = CMTimeMake(Int64(progressAudioStream.value), 1)
-        player.seekToTime(time) { (result) in
-            self.player.play()
+        audioPlayer.seekToTime(Int64(progressAudioStream.value))
+    }
+    
+    //MARK: - AudioPlayerDelegate
+    
+    func onStopPlaying(audio: Audio, playlistPosition: Int, stopSeconds: Int64) {        
+        btnPlay.setImage(UIImage(named: "ic_play_arrow"), forState: .Normal)
+        if stopSeconds == Int64(audio.duration!) {
+            audioPlayer.playNext()
         }
     }
     
-    func onAudioSliderUpdated(){
-        let playerTime = player.currentTime()
-        let time = Float(Int64(playerTime.value) / Int64(playerTime.timescale))
-        if time == currentAudio.audio.duration!{
-            self.onNextButtonClicked(self)
-            return
-        }
-        progressAudioStream.value = Float(time)
+    func onStartPlaying(audio: Audio, playlistPosition: Int, startSeconds: Int64) {
+        btnPlay.setImage(UIImage(named: "ic_pause"), forState: .Normal)
+        labelArtist.text = audio.artist
+        labelName.text = audio.name
+        progressAudioStream.maximumValue = audio.duration!
     }
     
-    private func playAudio(audio: Audio){
-        if let path = audio.url, url = NSURL(string: path){
-            player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
-            player.play()
-        }
-    }
-    
-    private func updateUi(){
-        labelArtist.text = currentAudio.audio.artist
-        labelName.text = currentAudio.audio.name
-    }
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if keyPath == "rate" {
-            if let rate = change?[NSKeyValueChangeNewKey] as? Float {
-                let imageSrc = rate == 0.0 ? "ic_play_arrow" : "ic_pause"
-                btnPlay.setImage(UIImage(named: imageSrc), forState: .Normal)
-            }
-        }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        player.pause() //todo: implement continious playing in background
-        
-        player.removeObserver(self, forKeyPath: "rate")
-        timer.invalidate()
+    func onTimeChanged(seconds: Int64) {
+        progressAudioStream.value = Float(seconds)
     }
 }
