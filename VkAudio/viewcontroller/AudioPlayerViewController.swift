@@ -34,7 +34,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         }
         
         audioPlayer.delegate = self
-        audioPlayer.playlist = audios
+        audioPlayer.playlist = audios.map({$0 as Audio}) //[?] stackoverflow.com/questions/30100787
         audioPlayer.play(selectedAudioIndex)
     }
     
@@ -61,18 +61,20 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     //MARK: - AudioPlayerDelegate
     
-    func onStopPlaying(audio: Audio, playlistPosition: Int, stopSeconds: Int64) {        
+    func onStopPlaying(audio: AudioPlayerItem, playlistPosition: Int, stopSeconds: Int64) {
         btnPlay.setImage(UIImage(named: "ic_play_arrow"), forState: .Normal)
         if stopSeconds == Int64(audio.duration!) {
             audioPlayer.playNext()
         }
     }
     
-    func onStartPlaying(audio: Audio, playlistPosition: Int, startSeconds: Int64) {
+    func onStartPlaying(audio: AudioPlayerItem, playlistPosition: Int, startSeconds: Int64) {
+        let audio = audio as! Audio
+        
         btnPlay.setImage(UIImage(named: "ic_pause"), forState: .Normal)
         labelArtist.text = audio.artist
         labelName.text = audio.name
-        progressAudioStream.maximumValue = audio.duration!
+        progressAudioStream.maximumValue = Float(audio.duration!)
     }
     
     func onTimeChanged(seconds: Int64) {

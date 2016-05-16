@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Audio: VkItem {
+class Audio: VkItem, AudioPlayerItem {
 
     var url: String?
     var artist: String?
     var name: String?
-    var duration: Float?
+    var duration: Int?
 
     override init(apiResponse: [String:AnyObject]) {
         super.init(apiResponse: apiResponse)
@@ -22,6 +22,6 @@ class Audio: VkItem {
         url = apiResponse["url"] as? String
         artist = apiResponse["artist"] as? String
         name = apiResponse["title"] as? String
-        duration = apiResponse["duration"] as? Float
+        duration = apiResponse["duration"] as? Int
     }
 }
