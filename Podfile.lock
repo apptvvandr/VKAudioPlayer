@@ -1,13 +1,18 @@
 PODS:
-  - Alamofire (3.3.1)
-  - Kingfisher (2.3.1)
+  - Alamofire (3.4.0)
+  - Kingfisher (2.4.1)
+  - MMWormhole (2.0.0):
+    - MMWormhole/Core (= 2.0.0)
+  - MMWormhole/Core (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.3)
   - Kingfisher (~> 2.3)
+  - MMWormhole (~> 2.0.0)
 
 SPEC CHECKSUMS:
-  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
-  Kingfisher: 6d3fbada4829cbc7b89e883e8218c28afeb64e42
+  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
+  MMWormhole: 0cd3fd35a9118b2e2d762b499f54eeaace0be791
 
 COCOAPODS: 0.39.0

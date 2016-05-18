@@ -35,14 +35,27 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         
         audioPlayer.delegate = self
         audioPlayer.playlist = audios.map({$0 as Audio}) //[?] stackoverflow.com/questions/30100787
-        audioPlayer.play(selectedAudioIndex)
+        if audioPlayer.currentAudio?.playlistPosition != selectedAudioIndex {
+            audioPlayer.play(selectedAudioIndex)
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let audio = audioPlayer.currentAudio?.audio as! Audio
+        
+        let playButtonImageRes = audioPlayer.isPlaying() ? "ic_pause" : "ic_play_arrow"
+        btnPlay.setImage(UIImage(named: playButtonImageRes), forState: .Normal)
+        labelArtist.text = audio.artist
+        labelName.text = audio.name
+        progressAudioStream.maximumValue = Float(audio.duration!)
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
         audioPlayer.playPrevious()
     }
     
-    @IBAction func onPlayButtonClicked(sender: AnyObject) {
+    @IBAction func onPlayButtonClicked(sender: AnyObject) {        
         if audioPlayer.isPlaying() {
             audioPlayer.pause()
         }
@@ -75,6 +88,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
+        
+        AudioPlayerEventHandler.sendCurrentAudioChangedEvent(audio.artist, audioName: audio.name)
     }
     
     func onTimeChanged(seconds: Int64) {

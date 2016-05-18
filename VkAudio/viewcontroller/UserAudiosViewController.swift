@@ -87,15 +87,20 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
+        let audioPlayerVC = segue.destinationViewController as! AudioPlayerViewController
 
-        if let identifier = segue.identifier where identifier == "audioToAudioPlayer" {
+        if sender is AudioCell {
             let cell = sender as! AudioCell
             let index = self.tableView.indexPathForCell(cell)!.row
             
-            let destinationController = segue.destinationViewController as! AudioPlayerViewController
             let searchPrepared = isSearchPrepared()
-            destinationController.audios = searchPrepared ? filteredAudios : userAudios
-            destinationController.selectedAudioIndex = index
+            audioPlayerVC.audios = searchPrepared ? filteredAudios : userAudios
+            audioPlayerVC.selectedAudioIndex = index
+        }
+        else {
+            let player = AudioPlayer.sharedInstance
+            audioPlayerVC.audios = player.playlist.map({$0 as! Audio})
+            audioPlayerVC.selectedAudioIndex = player.currentAudio?.playlistPosition
         }
     }
     

@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2168D93EFA5153DAB0B53DB5 /* Pods_VKAudioWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180F57BD99F9E24B027F6929 /* Pods_VKAudioWidget.framework */; };
 		311593230AF33E3421C7C78B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115900DE6111E4627037424 /* UserCell.swift */; };
-		99DDAF91FE33BF6FD6E206BA /* Pods_VkAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E08C2773EEE48B7E2E850ABE /* Pods_VkAudio.framework */; };
+		5BC33EB2A6B9F21D95CE16A4 /* Pods_VkAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */; };
 		F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */; };
 		F509CDA01CD7C568003ACCC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9F1CD7C568003ACCC1 /* User.swift */; };
 		F509CDA21CD7C57D003ACCC1 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CDA11CD7C57D003ACCC1 /* Friends.swift */; };
 		F52C70BE1CE3865E0087C153 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C70BD1CE3865E0087C153 /* LocalStorage.swift */; };
+		F535EC5A1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */; };
+		F535EC5B1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */; };
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
 		F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29C1CCF64A100E45170 /* AppDelegate.swift */; };
@@ -20,14 +23,16 @@
 		F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */; };
 		F56AD2A71CCF64A200E45170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A61CCF64A200E45170 /* Assets.xcassets */; };
 		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
-		F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */; };
-		F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */; };
 		F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */; };
 		F58308F21CD8BE290094F1F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F11CD8BE290094F1F4 /* Group.swift */; };
 		F58308F41CD8C1820094F1F4 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F31CD8C1820094F1F4 /* Groups.swift */; };
 		F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AD1CDA34E70016C79C /* VkTabsController.swift */; };
 		F58706B01CDA4DA40016C79C /* GroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */; };
 		F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */; };
+		F5888E641CE9D42B00879186 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5888E631CE9D42B00879186 /* NotificationCenter.framework */; };
+		F5888E671CE9D42B00879186 /* VKAudioWidgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5888E661CE9D42B00879186 /* VKAudioWidgetController.swift */; };
+		F5888E6A1CE9D42B00879186 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5888E681CE9D42B00879186 /* MainInterface.storyboard */; };
+		F5888E6E1CE9D42B00879186 /* VKAudioWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F5888E621CE9D42B00879186 /* VKAudioWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
 		F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D0F1CD361B600BC2067 /* Audio.swift */; };
 		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
@@ -37,39 +42,47 @@
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
 		F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56F1CCFC254003270A9 /* AccessToken.swift */; };
 		F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E5711CCFC254003270A9 /* VkSDK.swift */; };
+		F5BC94A21CEA31580049E2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A61CCF64A200E45170 /* Assets.xcassets */; };
 		F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F56AD2B11CCF64A200E45170 /* PBXContainerItemProxy */ = {
+		F5888E6C1CE9D42B00879186 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F56AD2911CCF64A100E45170 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F56AD2981CCF64A100E45170;
-			remoteInfo = VkAudio;
-		};
-		F56AD2BC1CCF64A200E45170 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F56AD2911CCF64A100E45170 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F56AD2981CCF64A100E45170;
-			remoteInfo = VkAudio;
+			remoteGlobalIDString = F5888E611CE9D42B00879186;
+			remoteInfo = VKAudioWidget;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F5888E721CE9D42B00879186 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F5888E6E1CE9D42B00879186 /* VKAudioWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		180F57BD99F9E24B027F6929 /* Pods_VKAudioWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKAudioWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D3860055FAA0E9F38CC3F5 /* Pods-VKAudioWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKAudioWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-VKAudioWidget/Pods-VKAudioWidget.release.xcconfig"; sourceTree = "<group>"; };
+		2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig"; sourceTree = "<group>"; };
 		3115900DE6111E4627037424 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		721EAAB6FC68976265512E87 /* Pods-VkAudioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudioTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests.debug.xcconfig"; sourceTree = "<group>"; };
-		823E96F4B237C6AD0AE9C45B /* Pods-VkAudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.debug.xcconfig"; sourceTree = "<group>"; };
-		8A69385B90BB39231874ACF9 /* Pods-VkAudioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudioTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests.release.xcconfig"; sourceTree = "<group>"; };
-		ABD784DAFE42D7CC74525051 /* Pods-VkAudioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudioUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudioUITests/Pods-VkAudioUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E08C2773EEE48B7E2E850ABE /* Pods_VkAudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkAudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE5987FDB7CFA161CA660776 /* Pods-VkAudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig"; sourceTree = "<group>"; };
-		EE80C9D64696488E5294003E /* Pods-VkAudioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudioUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudioUITests/Pods-VkAudioUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkAudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.debug.xcconfig"; sourceTree = "<group>"; };
+		9829F9C8BB80A404BCA18289 /* Pods-VKAudioWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKAudioWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VKAudioWidget/Pods-VKAudioWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsViewController.swift; sourceTree = "<group>"; };
 		F509CD9F1CD7C568003ACCC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F509CDA11CD7C57D003ACCC1 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		F52C70BD1CE3865E0087C153 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerEventHandler.swift; sourceTree = "<group>"; };
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
 		F56AD2991CCF64A100E45170 /* VkAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,18 +92,19 @@
 		F56AD2A61CCF64A200E45170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F56AD2A91CCF64A200E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F56AD2AB1CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F56AD2B01CCF64A200E45170 /* VkAudioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioTests.swift; sourceTree = "<group>"; };
-		F56AD2B61CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VkAudioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAudioUITests.swift; sourceTree = "<group>"; };
-		F56AD2C11CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItem.swift; sourceTree = "<group>"; };
 		F58308F11CD8BE290094F1F4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F58308F31CD8C1820094F1F4 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		F58706AD1CDA34E70016C79C /* VkTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkTabsController.swift; sourceTree = "<group>"; };
 		F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsCollectionView.swift; path = ../GroupsCollectionView.swift; sourceTree = "<group>"; };
 		F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		F5888E621CE9D42B00879186 /* VKAudioWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VKAudioWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5888E631CE9D42B00879186 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		F5888E661CE9D42B00879186 /* VKAudioWidgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAudioWidgetController.swift; sourceTree = "<group>"; };
+		F5888E691CE9D42B00879186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		F5888E6B1CE9D42B00879186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5888E731CE9D50700879186 /* VkAudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VkAudio.entitlements; sourceTree = "<group>"; };
+		F5888E741CE9D56100879186 /* VKAudioWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VKAudioWidget.entitlements; sourceTree = "<group>"; };
 		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
@@ -108,21 +122,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99DDAF91FE33BF6FD6E206BA /* Pods_VkAudio.framework in Frameworks */,
+				5BC33EB2A6B9F21D95CE16A4 /* Pods_VkAudio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F56AD2AD1CCF64A200E45170 /* Frameworks */ = {
+		F5888E5F1CE9D42B00879186 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F56AD2B81CCF64A200E45170 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F5888E641CE9D42B00879186 /* NotificationCenter.framework in Frameworks */,
+				2168D93EFA5153DAB0B53DB5 /* Pods_VKAudioWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,7 +141,9 @@
 		4AF451C7F7CF59EA9D9F2A5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E08C2773EEE48B7E2E850ABE /* Pods_VkAudio.framework */,
+				F5888E631CE9D42B00879186 /* NotificationCenter.framework */,
+				180F57BD99F9E24B027F6929 /* Pods_VKAudioWidget.framework */,
+				9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -141,8 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F56AD29B1CCF64A100E45170 /* VkAudio */,
-				F56AD2B31CCF64A200E45170 /* VkAudioTests */,
-				F56AD2BE1CCF64A200E45170 /* VkAudioUITests */,
+				F5888E651CE9D42B00879186 /* VKAudioWidget */,
 				F56AD29A1CCF64A100E45170 /* Products */,
 				F8AECB4FDEE61BF233342976 /* Pods */,
 				4AF451C7F7CF59EA9D9F2A5A /* Frameworks */,
@@ -153,8 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				F56AD2991CCF64A100E45170 /* VkAudio.app */,
-				F56AD2B01CCF64A200E45170 /* VkAudioTests.xctest */,
-				F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */,
+				F5888E621CE9D42B00879186 /* VKAudioWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +171,7 @@
 		F56AD29B1CCF64A100E45170 /* VkAudio */ = {
 			isa = PBXGroup;
 			children = (
+				F5888E731CE9D50700879186 /* VkAudio.entitlements */,
 				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
 				F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */,
 				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
@@ -170,26 +180,9 @@
 				F5F0882E1CCF673C00525599 /* support files */,
 				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
 				F52C70BD1CE3865E0087C153 /* LocalStorage.swift */,
+				F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */,
 			);
 			path = VkAudio;
-			sourceTree = "<group>";
-		};
-		F56AD2B31CCF64A200E45170 /* VkAudioTests */ = {
-			isa = PBXGroup;
-			children = (
-				F56AD2B41CCF64A200E45170 /* VkAudioTests.swift */,
-				F56AD2B61CCF64A200E45170 /* Info.plist */,
-			);
-			path = VkAudioTests;
-			sourceTree = "<group>";
-		};
-		F56AD2BE1CCF64A200E45170 /* VkAudioUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F56AD2BF1CCF64A200E45170 /* VkAudioUITests.swift */,
-				F56AD2C11CCF64A200E45170 /* Info.plist */,
-			);
-			path = VkAudioUITests;
 			sourceTree = "<group>";
 		};
 		F58706B11CDA53130016C79C /* cells */ = {
@@ -200,6 +193,17 @@
 				F53A00131CD905AE0029B246 /* GroupCell.swift */,
 			);
 			name = cells;
+			sourceTree = "<group>";
+		};
+		F5888E651CE9D42B00879186 /* VKAudioWidget */ = {
+			isa = PBXGroup;
+			children = (
+				F5888E741CE9D56100879186 /* VKAudioWidget.entitlements */,
+				F5888E661CE9D42B00879186 /* VKAudioWidgetController.swift */,
+				F5888E681CE9D42B00879186 /* MainInterface.storyboard */,
+				F5888E6B1CE9D42B00879186 /* Info.plist */,
+			);
+			path = VKAudioWidget;
 			sourceTree = "<group>";
 		};
 		F5AB3D0E1CD361B600BC2067 /* response_models */ = {
@@ -265,12 +269,10 @@
 		F8AECB4FDEE61BF233342976 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				823E96F4B237C6AD0AE9C45B /* Pods-VkAudio.debug.xcconfig */,
-				EE5987FDB7CFA161CA660776 /* Pods-VkAudio.release.xcconfig */,
-				721EAAB6FC68976265512E87 /* Pods-VkAudioTests.debug.xcconfig */,
-				8A69385B90BB39231874ACF9 /* Pods-VkAudioTests.release.xcconfig */,
-				EE80C9D64696488E5294003E /* Pods-VkAudioUITests.debug.xcconfig */,
-				ABD784DAFE42D7CC74525051 /* Pods-VkAudioUITests.release.xcconfig */,
+				9829F9C8BB80A404BCA18289 /* Pods-VKAudioWidget.debug.xcconfig */,
+				27D3860055FAA0E9F38CC3F5 /* Pods-VKAudioWidget.release.xcconfig */,
+				97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */,
+				2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -294,61 +296,37 @@
 				49CB2FCB73742CE60DCC7CB3 /* uD83DuDCE6 Copy Pods Resources */,
 				B6A6AF605EF942F23DB29A0D /* Embed Pods Frameworks */,
 				593C1702B47E4B7521FD0D10 /* Copy Pods Resources */,
+				F5888E721CE9D42B00879186 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F5888E6D1CE9D42B00879186 /* PBXTargetDependency */,
 			);
 			name = VkAudio;
 			productName = VkAudio;
 			productReference = F56AD2991CCF64A100E45170 /* VkAudio.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F56AD2AF1CCF64A200E45170 /* VkAudioTests */ = {
+		F5888E611CE9D42B00879186 /* VKAudioWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F56AD2C71CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioTests" */;
+			buildConfigurationList = F5888E711CE9D42B00879186 /* Build configuration list for PBXNativeTarget "VKAudioWidget" */;
 			buildPhases = (
-				6AE6C3ACC19C17D55D6E19F5 /* uD83DuDCE6 Check Pods Manifest.lock */,
-				88AB62182F1F4A6DE17CD69E /* uD83DuDCE6 Check Pods Manifest.lock */,
-				F56AD2AC1CCF64A200E45170 /* Sources */,
-				F56AD2AD1CCF64A200E45170 /* Frameworks */,
-				F56AD2AE1CCF64A200E45170 /* Resources */,
-				4347FA09DEE0292D37E3E731 /* uD83DuDCE6 Embed Pods Frameworks */,
-				4EECE684007B4F370F1738AD /* uD83DuDCE6 Copy Pods Resources */,
-				B332DA09B906944C7486E1E3 /* uD83DuDCE6 Embed Pods Frameworks */,
-				8F65385CC8C640F4DF78C901 /* uD83DuDCE6 Copy Pods Resources */,
+				5D2F648F3EE2CC776E720B38 /* Check Pods Manifest.lock */,
+				F5888E5E1CE9D42B00879186 /* Sources */,
+				F5888E5F1CE9D42B00879186 /* Frameworks */,
+				F5888E601CE9D42B00879186 /* Resources */,
+				AD17A2C81076FA063B15D622 /* Embed Pods Frameworks */,
+				067DA82CA37E8F8D152E78BF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F56AD2B21CCF64A200E45170 /* PBXTargetDependency */,
 			);
-			name = VkAudioTests;
-			productName = VkAudioTests;
-			productReference = F56AD2B01CCF64A200E45170 /* VkAudioTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F56AD2BA1CCF64A200E45170 /* VkAudioUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F56AD2CA1CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioUITests" */;
-			buildPhases = (
-				EFF06744FADAB56D9A48470F /* uD83DuDCE6 Check Pods Manifest.lock */,
-				7F7B363A8A59D22DDAF8571D /* uD83DuDCE6 Check Pods Manifest.lock */,
-				F56AD2B71CCF64A200E45170 /* Sources */,
-				F56AD2B81CCF64A200E45170 /* Frameworks */,
-				F56AD2B91CCF64A200E45170 /* Resources */,
-				B8B64CB7A8EBD8D523AF4803 /* uD83DuDCE6 Copy Pods Resources */,
-				94170914AA41F25003B15F8B /* uD83DuDCE6 Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F56AD2BD1CCF64A200E45170 /* PBXTargetDependency */,
-			);
-			name = VkAudioUITests;
-			productName = VkAudioUITests;
-			productReference = F56AD2BB1CCF64A200E45170 /* VkAudioUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = VKAudioWidget;
+			productName = VKAudioWidget;
+			productReference = F5888E621CE9D42B00879186 /* VKAudioWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -363,14 +341,20 @@
 					F56AD2981CCF64A100E45170 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = UX7KH4QTQ6;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
-					F56AD2AF1CCF64A200E45170 = {
+					F5888E611CE9D42B00879186 = {
 						CreatedOnToolsVersion = 7.3;
-						TestTargetID = F56AD2981CCF64A100E45170;
-					};
-					F56AD2BA1CCF64A200E45170 = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = F56AD2981CCF64A100E45170;
+						DevelopmentTeam = UX7KH4QTQ6;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -388,8 +372,7 @@
 			projectRoot = "";
 			targets = (
 				F56AD2981CCF64A100E45170 /* VkAudio */,
-				F56AD2AF1CCF64A200E45170 /* VkAudioTests */,
-				F56AD2BA1CCF64A200E45170 /* VkAudioUITests */,
+				F5888E611CE9D42B00879186 /* VKAudioWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -406,23 +389,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F56AD2AE1CCF64A200E45170 /* Resources */ = {
+		F5888E601CE9D42B00879186 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F56AD2B91CCF64A200E45170 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				F5BC94A21CEA31580049E2E9 /* Assets.xcassets in Resources */,
+				F5888E6A1CE9D42B00879186 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		067DA82CA37E8F8D152E78BF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VKAudioWidget/Pods-VKAudioWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		15A2BCC0A0B7756B1DEE26F1 /* uD83DuDCE6 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,21 +429,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4347FA09DEE0292D37E3E731 /* uD83DuDCE6 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		49CB2FCB73742CE60DCC7CB3 /* uD83DuDCE6 Copy Pods Resources */ = {
@@ -483,21 +461,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4EECE684007B4F370F1738AD /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		593C1702B47E4B7521FD0D10 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,14 +476,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6AE6C3ACC19C17D55D6E19F5 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
+		5D2F648F3EE2CC776E720B38 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,66 +506,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7F7B363A8A59D22DDAF8571D /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		88AB62182F1F4A6DE17CD69E /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8F65385CC8C640F4DF78C901 /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		94170914AA41F25003B15F8B /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioUITests/Pods-VkAudioUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9E4A410AE2CC4F320C845AF6 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -618,19 +521,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		B332DA09B906944C7486E1E3 /* uD83DuDCE6 Embed Pods Frameworks */ = {
+		AD17A2C81076FA063B15D622 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Embed Pods Frameworks";
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioTests/Pods-VkAudioTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VKAudioWidget/Pods-VKAudioWidget-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B6A6AF605EF942F23DB29A0D /* Embed Pods Frameworks */ = {
@@ -646,21 +549,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8B64CB7A8EBD8D523AF4803 /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudioUITests/Pods-VkAudioUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D134B10A9C794BCFB51E0BC5 /* Check Pods Manifest.lock */ = {
@@ -691,21 +579,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFF06744FADAB56D9A48470F /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -739,37 +612,26 @@
 				F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */,
 				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,
 				F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */,
+				F535EC5A1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F56AD2AC1CCF64A200E45170 /* Sources */ = {
+		F5888E5E1CE9D42B00879186 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56AD2B51CCF64A200E45170 /* VkAudioTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F56AD2B71CCF64A200E45170 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F56AD2C01CCF64A200E45170 /* VkAudioUITests.swift in Sources */,
+				F5888E671CE9D42B00879186 /* VKAudioWidgetController.swift in Sources */,
+				F535EC5B1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F56AD2B21CCF64A200E45170 /* PBXTargetDependency */ = {
+		F5888E6D1CE9D42B00879186 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F56AD2981CCF64A100E45170 /* VkAudio */;
-			targetProxy = F56AD2B11CCF64A200E45170 /* PBXContainerItemProxy */;
-		};
-		F56AD2BD1CCF64A200E45170 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F56AD2981CCF64A100E45170 /* VkAudio */;
-			targetProxy = F56AD2BC1CCF64A200E45170 /* PBXContainerItemProxy */;
+			target = F5888E611CE9D42B00879186 /* VKAudioWidget */;
+			targetProxy = F5888E6C1CE9D42B00879186 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -788,6 +650,14 @@
 				F56AD2A91CCF64A200E45170 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F5888E681CE9D42B00879186 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5888E691CE9D42B00879186 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -878,11 +748,13 @@
 		};
 		F56AD2C51CCF64A200E45170 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 823E96F4B237C6AD0AE9C45B /* Pods-VkAudio.debug.xcconfig */;
+			baseConfigurationReference = 97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VkAudio/VkAudio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -897,11 +769,13 @@
 		};
 		F56AD2C61CCF64A200E45170 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE5987FDB7CFA161CA660776 /* Pods-VkAudio.release.xcconfig */;
+			baseConfigurationReference = 2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VkAudio/VkAudio.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -914,53 +788,33 @@
 			};
 			name = Release;
 		};
-		F56AD2C81CCF64A200E45170 /* Debug */ = {
+		F5888E6F1CE9D42B00879186 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 721EAAB6FC68976265512E87 /* Pods-VkAudioTests.debug.xcconfig */;
+			baseConfigurationReference = 9829F9C8BB80A404BCA18289 /* Pods-VKAudioWidget.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = VkAudioTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioTests;
+				CODE_SIGN_ENTITLEMENTS = VKAudioWidget/VKAudioWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = VKAudioWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudio.VKAudioWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VkAudio.app/VkAudio";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		F56AD2C91CCF64A200E45170 /* Release */ = {
+		F5888E701CE9D42B00879186 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A69385B90BB39231874ACF9 /* Pods-VkAudioTests.release.xcconfig */;
+			baseConfigurationReference = 27D3860055FAA0E9F38CC3F5 /* Pods-VKAudioWidget.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = VkAudioTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioTests;
+				CODE_SIGN_ENTITLEMENTS = VKAudioWidget/VKAudioWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = VKAudioWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudio.VKAudioWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VkAudio.app/VkAudio";
-			};
-			name = Release;
-		};
-		F56AD2CB1CCF64A200E45170 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE80C9D64696488E5294003E /* Pods-VkAudioUITests.debug.xcconfig */;
-			buildSettings = {
-				INFOPLIST_FILE = VkAudioUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = VkAudio;
-			};
-			name = Debug;
-		};
-		F56AD2CC1CCF64A200E45170 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABD784DAFE42D7CC74525051 /* Pods-VkAudioUITests.release.xcconfig */;
-			buildSettings = {
-				INFOPLIST_FILE = VkAudioUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.VkAudioUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = VkAudio;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -985,20 +839,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F56AD2C71CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioTests" */ = {
+		F5888E711CE9D42B00879186 /* Build configuration list for PBXNativeTarget "VKAudioWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F56AD2C81CCF64A200E45170 /* Debug */,
-				F56AD2C91CCF64A200E45170 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F56AD2CA1CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudioUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F56AD2CB1CCF64A200E45170 /* Debug */,
-				F56AD2CC1CCF64A200E45170 /* Release */,
+				F5888E6F1CE9D42B00879186 /* Debug */,
+				F5888E701CE9D42B00879186 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -137,7 +137,7 @@
         <!--Vk Tabs Controller-->
         <scene sceneID="DM3-Ws-1Xh">
             <objects>
-                <tabBarController id="Dv0-lz-WMM" customClass="VkTabsController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="controller_tabs" id="Dv0-lz-WMM" customClass="VkTabsController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="gjH-4K-WbM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -455,6 +455,6 @@
         <image name="placeholder_music" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZOE-pU-Eok"/>
+        <segue reference="V1X-DZ-srj"/>
     </inferredMetricsTieBreakers>
 </document>
