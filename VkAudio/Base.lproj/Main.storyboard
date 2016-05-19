@@ -289,6 +289,7 @@
                                     <constraint firstAttribute="width" constant="36" id="W1I-8H-z1d"/>
                                     <constraint firstAttribute="height" constant="36" id="vfJ-8j-af6"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_play_arrow">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -309,6 +310,7 @@
                                     <constraint firstAttribute="height" constant="36" id="Jak-XH-GWq"/>
                                     <constraint firstAttribute="width" constant="36" id="hUX-5r-73b"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_skip_previous">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -354,6 +356,7 @@
                                     <constraint firstAttribute="height" constant="36" id="0jB-Hx-vIj"/>
                                     <constraint firstAttribute="width" constant="36" id="sJ2-h3-o1K"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="ic_skip_next">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

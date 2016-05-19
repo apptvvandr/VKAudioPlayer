@@ -37,10 +37,6 @@ class VKAudioWidgetController: UIViewController, NCWidgetProviding {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VKAudioWidgetController.onWidgetClicked(_:))))
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: (NCUpdateResult) -> Void) {
-        completionHandler(.NoData)
-    }
-    
     func onWidgetClicked(sender: UITapGestureRecognizer) {
         let appUrl = NSURL(string: "vkaudio://context-widget")!
         self.extensionContext?.openURL(appUrl, completionHandler: nil)
