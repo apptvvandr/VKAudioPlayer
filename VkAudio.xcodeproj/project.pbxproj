@@ -13,11 +13,16 @@
 		F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */; };
 		F509CDA01CD7C568003ACCC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9F1CD7C568003ACCC1 /* User.swift */; };
 		F509CDA21CD7C57D003ACCC1 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CDA11CD7C57D003ACCC1 /* Friends.swift */; };
-		F52C70BE1CE3865E0087C153 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52C70BD1CE3865E0087C153 /* LocalStorage.swift */; };
-		F535EC5A1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */; };
-		F535EC5B1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */; };
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
+		F563C5E91CEDE09A00825849 /* AudioPlayerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E61CEDE09A00825849 /* AudioPlayerEventHandler.swift */; };
+		F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E71CEDE09A00825849 /* Extensions.swift */; };
+		F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E81CEDE09A00825849 /* LocalStorage.swift */; };
+		F563C5EC1CEDE15300825849 /* AudioPlayerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E61CEDE09A00825849 /* AudioPlayerEventHandler.swift */; };
+		F563C5F41CEDE21700825849 /* VKAudioWidgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5F11CEDE21700825849 /* VKAudioWidgetController.swift */; };
+		F563C5F71CEDE24800825849 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F563C5F51CEDE24800825849 /* Info.plist */; };
+		F563C5F81CEDE24800825849 /* VKAudioWidget.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = F563C5F61CEDE24800825849 /* VKAudioWidget.entitlements */; };
+		F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */; };
 		F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29C1CCF64A100E45170 /* AppDelegate.swift */; };
 		F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A01CCF64A100E45170 /* Main.storyboard */; };
 		F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */; };
@@ -27,10 +32,8 @@
 		F58308F21CD8BE290094F1F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F11CD8BE290094F1F4 /* Group.swift */; };
 		F58308F41CD8C1820094F1F4 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F31CD8C1820094F1F4 /* Groups.swift */; };
 		F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AD1CDA34E70016C79C /* VkTabsController.swift */; };
-		F58706B01CDA4DA40016C79C /* GroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */; };
 		F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */; };
 		F5888E641CE9D42B00879186 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5888E631CE9D42B00879186 /* NotificationCenter.framework */; };
-		F5888E671CE9D42B00879186 /* VKAudioWidgetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5888E661CE9D42B00879186 /* VKAudioWidgetController.swift */; };
 		F5888E6A1CE9D42B00879186 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5888E681CE9D42B00879186 /* MainInterface.storyboard */; };
 		F5888E6E1CE9D42B00879186 /* VKAudioWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F5888E621CE9D42B00879186 /* VKAudioWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
@@ -81,10 +84,15 @@
 		F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsViewController.swift; sourceTree = "<group>"; };
 		F509CD9F1CD7C568003ACCC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F509CDA11CD7C57D003ACCC1 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
-		F52C70BD1CE3865E0087C153 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerEventHandler.swift; sourceTree = "<group>"; };
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
+		F563C5E61CEDE09A00825849 /* AudioPlayerEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerEventHandler.swift; sourceTree = "<group>"; };
+		F563C5E71CEDE09A00825849 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F563C5E81CEDE09A00825849 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		F563C5F11CEDE21700825849 /* VKAudioWidgetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAudioWidgetController.swift; sourceTree = "<group>"; };
+		F563C5F51CEDE24800825849 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F563C5F61CEDE24800825849 /* VKAudioWidget.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VKAudioWidget.entitlements; sourceTree = "<group>"; };
+		F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCollectionView.swift; sourceTree = "<group>"; };
 		F56AD2991CCF64A100E45170 /* VkAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56AD29C1CCF64A100E45170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56AD2A11CCF64A100E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,15 +104,11 @@
 		F58308F11CD8BE290094F1F4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F58308F31CD8C1820094F1F4 /* Groups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		F58706AD1CDA34E70016C79C /* VkTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkTabsController.swift; sourceTree = "<group>"; };
-		F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsCollectionView.swift; path = ../GroupsCollectionView.swift; sourceTree = "<group>"; };
 		F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		F5888E621CE9D42B00879186 /* VKAudioWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VKAudioWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5888E631CE9D42B00879186 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		F5888E661CE9D42B00879186 /* VKAudioWidgetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKAudioWidgetController.swift; sourceTree = "<group>"; };
 		F5888E691CE9D42B00879186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		F5888E6B1CE9D42B00879186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5888E731CE9D50700879186 /* VkAudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VkAudio.entitlements; sourceTree = "<group>"; };
-		F5888E741CE9D56100879186 /* VKAudioWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VKAudioWidget.entitlements; sourceTree = "<group>"; };
 		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
 		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
@@ -148,6 +152,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F563C5E51CEDE09A00825849 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				F563C5E61CEDE09A00825849 /* AudioPlayerEventHandler.swift */,
+				F563C5E71CEDE09A00825849 /* Extensions.swift */,
+				F563C5E81CEDE09A00825849 /* LocalStorage.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		F563C5F01CEDE21700825849 /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				F563C5F11CEDE21700825849 /* VKAudioWidgetController.swift */,
+			);
+			path = viewcontroller;
+			sourceTree = "<group>";
+		};
+		F563C5F91CEDE24C00825849 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				F563C5F51CEDE24800825849 /* Info.plist */,
+				F563C5F61CEDE24800825849 /* VKAudioWidget.entitlements */,
+			);
+			name = support;
+			sourceTree = "<group>";
+		};
 		F56AD2901CCF64A100E45170 = {
 			isa = PBXGroup;
 			children = (
@@ -171,16 +202,14 @@
 		F56AD29B1CCF64A100E45170 /* VkAudio */ = {
 			isa = PBXGroup;
 			children = (
-				F5888E731CE9D50700879186 /* VkAudio.entitlements */,
 				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
 				F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */,
 				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
 				F5AB3D111CD361C500BC2067 /* views */,
 				F5B3E56E1CCFC254003270A9 /* vk */,
-				F5F0882E1CCF673C00525599 /* support files */,
+				F563C5E51CEDE09A00825849 /* utils */,
+				F5F0882E1CCF673C00525599 /* support */,
 				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
-				F52C70BD1CE3865E0087C153 /* LocalStorage.swift */,
-				F535EC591CEB90BB00A30D65 /* AudioPlayerEventHandler.swift */,
 			);
 			path = VkAudio;
 			sourceTree = "<group>";
@@ -198,10 +227,9 @@
 		F5888E651CE9D42B00879186 /* VKAudioWidget */ = {
 			isa = PBXGroup;
 			children = (
-				F5888E741CE9D56100879186 /* VKAudioWidget.entitlements */,
-				F5888E661CE9D42B00879186 /* VKAudioWidgetController.swift */,
+				F563C5F91CEDE24C00825849 /* support */,
+				F563C5F01CEDE21700825849 /* viewcontroller */,
 				F5888E681CE9D42B00879186 /* MainInterface.storyboard */,
-				F5888E6B1CE9D42B00879186 /* Info.plist */,
 			);
 			path = VKAudioWidget;
 			sourceTree = "<group>";
@@ -221,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				F58706B11CDA53130016C79C /* cells */,
-				F58706AF1CDA4DA40016C79C /* GroupsCollectionView.swift */,
+				F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */,
 			);
 			name = views;
 			path = cells;
@@ -255,15 +283,16 @@
 			path = vk;
 			sourceTree = "<group>";
 		};
-		F5F0882E1CCF673C00525599 /* support files */ = {
+		F5F0882E1CCF673C00525599 /* support */ = {
 			isa = PBXGroup;
 			children = (
+				F5888E731CE9D50700879186 /* VkAudio.entitlements */,
 				F56AD2A61CCF64A200E45170 /* Assets.xcassets */,
 				F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */,
 				F56AD2AB1CCF64A200E45170 /* Info.plist */,
 				F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */,
 			);
-			name = "support files";
+			name = support;
 			sourceTree = "<group>";
 		};
 		F8AECB4FDEE61BF233342976 /* Pods */ = {
@@ -395,6 +424,8 @@
 			files = (
 				F5BC94A21CEA31580049E2E9 /* Assets.xcassets in Resources */,
 				F5888E6A1CE9D42B00879186 /* MainInterface.storyboard in Resources */,
+				F563C5F71CEDE24800825849 /* Info.plist in Resources */,
+				F563C5F81CEDE24800825849 /* VKAudioWidget.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,21 +629,22 @@
 				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
 				F509CDA21CD7C57D003ACCC1 /* Friends.swift in Sources */,
 				F509CDA01CD7C568003ACCC1 /* User.swift in Sources */,
-				F52C70BE1CE3865E0087C153 /* LocalStorage.swift in Sources */,
 				F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */,
 				F5AB3D171CD3AA7700BC2067 /* Users.swift in Sources */,
 				F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
+				F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */,
 				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
+				F563C5E91CEDE09A00825849 /* AudioPlayerEventHandler.swift in Sources */,
 				F58308F41CD8C1820094F1F4 /* Groups.swift in Sources */,
 				F5AB3D191CD3AC1E00BC2067 /* Audios.swift in Sources */,
 				F5B3E5761CCFC254003270A9 /* VkSDK.swift in Sources */,
-				F58706B01CDA4DA40016C79C /* GroupsCollectionView.swift in Sources */,
+				F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F5B3E5741CCFC254003270A9 /* AccessToken.swift in Sources */,
+				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
 				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,
 				F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */,
-				F535EC5A1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,8 +652,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5888E671CE9D42B00879186 /* VKAudioWidgetController.swift in Sources */,
-				F535EC5B1CEB90BB00A30D65 /* AudioPlayerEventHandler.swift in Sources */,
+				F563C5EC1CEDE15300825849 /* AudioPlayerEventHandler.swift in Sources */,
+				F563C5F41CEDE21700825849 /* VKAudioWidgetController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

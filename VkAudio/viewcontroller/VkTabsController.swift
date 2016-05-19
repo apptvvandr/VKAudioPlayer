@@ -54,15 +54,3 @@ class VkTabsController: UITabBarController {
         self.view.backgroundColor = UIColor(patternImage: contextImage)
     }
 }
-
-extension UIViewController{
-    
-    func setupBlurView(style: UIBlurEffectStyle = .ExtraLight, onBlurCreated: (blurView: UIVisualEffectView) -> Void){
-        let blurEffect = UIBlurEffect(style: style)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        
-        onBlurCreated(blurView: blurEffectView)
-    }
-}

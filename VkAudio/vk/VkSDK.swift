@@ -85,9 +85,3 @@ class VkSDK {
         }
     }
 }
-
-func +=<Key, Value>(inout left: [Key:Value], right: [Key:Value]) {
-    for (key, value) in right {
-        left[key] = value
-    }
-}

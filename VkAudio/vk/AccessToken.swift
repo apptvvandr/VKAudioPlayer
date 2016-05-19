@@ -42,9 +42,3 @@ class AccessToken {
         self.init(token: accessValues[0], expiredIn: Int64(accessValues[1])!, userId: accessValues[2], wasRequested: NSDate.currentTimeMillis())
     }
 }
-
-extension NSDate {
-    static func currentTimeMillis() -> Int64 {
-        return Int64(NSDate().timeIntervalSince1970 * 1000)
-    }
-}
