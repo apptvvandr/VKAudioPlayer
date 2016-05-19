@@ -370,13 +370,57 @@
                                     <action selector="onNextButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="Pm7-XQ-x7P"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-fu-awW">
+                                <rect key="frame" x="81" y="551" width="36" height="36"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="O68-f9-F7x"/>
+                                    <constraint firstAttribute="width" constant="36" id="Wdd-Y8-VQa"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_shuffle">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onShuffleButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="Dhe-A2-wwd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3xH-c2-xnn">
+                                <rect key="frame" x="257" y="551" width="36" height="36"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="oO6-7t-6qL"/>
+                                    <constraint firstAttribute="height" constant="36" id="zAA-8G-Ztl"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="ic_repeat_one">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onRepeatButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="pl7-aI-HXN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z6E-Wt-JHV" firstAttribute="baseline" secondItem="Xjh-aC-L3s" secondAttribute="baseline" id="4dn-uM-aq9"/>
+                            <constraint firstItem="3xH-c2-xnn" firstAttribute="baseline" secondItem="Xjh-aC-L3s" secondAttribute="baseline" id="8hr-YS-fPY"/>
                             <constraint firstItem="Xjh-aC-L3s" firstAttribute="leading" secondItem="z6E-Wt-JHV" secondAttribute="trailing" constant="8" symbolic="YES" id="BLp-hM-cyo"/>
                             <constraint firstItem="cJL-DS-our" firstAttribute="top" secondItem="AnQ-dS-mso" secondAttribute="bottom" constant="8" symbolic="YES" id="Djb-0m-WFc"/>
+                            <constraint firstItem="gQb-Ru-aEI" firstAttribute="leading" secondItem="U9x-fu-awW" secondAttribute="trailing" constant="8" symbolic="YES" id="JT2-Sn-xsj"/>
                             <constraint firstItem="mPA-Dr-pYk" firstAttribute="trailing" secondItem="303-Kt-Cdd" secondAttribute="trailing" id="JnR-v6-Mpz"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" constant="11" id="MAK-hQ-Dnd"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="centerY" secondItem="dsl-Co-qvc" secondAttribute="centerY" id="MmJ-FK-Zce"/>
@@ -389,6 +433,8 @@
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="centerX" secondItem="z6E-Wt-JHV" secondAttribute="centerX" id="ih8-VZ-5gU"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="8" symbolic="YES" id="lwX-Pt-ZJG"/>
                             <constraint firstItem="mPA-Dr-pYk" firstAttribute="leading" secondItem="303-Kt-Cdd" secondAttribute="leading" id="nf2-Tx-gbX"/>
+                            <constraint firstItem="U9x-fu-awW" firstAttribute="baseline" secondItem="gQb-Ru-aEI" secondAttribute="baseline" id="pDc-Ak-T0O"/>
+                            <constraint firstItem="3xH-c2-xnn" firstAttribute="leading" secondItem="Xjh-aC-L3s" secondAttribute="trailing" constant="8" symbolic="YES" id="thC-pa-fH1"/>
                             <constraint firstItem="mPA-Dr-pYk" firstAttribute="top" secondItem="303-Kt-Cdd" secondAttribute="bottom" constant="8" symbolic="YES" id="vN6-dL-VAC"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="trailing" secondItem="cJL-DS-our" secondAttribute="trailing" id="wUc-Kc-HHn"/>
                             <constraint firstItem="z6E-Wt-JHV" firstAttribute="leading" secondItem="gQb-Ru-aEI" secondAttribute="trailing" constant="8" symbolic="YES" id="y1D-Fo-rKo"/>
@@ -399,6 +445,8 @@
                         <outlet property="btnNext" destination="Xjh-aC-L3s" id="GPq-1A-Aiv"/>
                         <outlet property="btnPlay" destination="z6E-Wt-JHV" id="Dmx-1S-If5"/>
                         <outlet property="btnPrevious" destination="gQb-Ru-aEI" id="Wy7-s6-LiI"/>
+                        <outlet property="btnRepeat" destination="3xH-c2-xnn" id="8FA-Et-58z"/>
+                        <outlet property="btnShuffle" destination="U9x-fu-awW" id="q5O-eu-HCT"/>
                         <outlet property="imageCover" destination="303-Kt-Cdd" id="2qC-3D-BDk"/>
                         <outlet property="labelArtist" destination="AnQ-dS-mso" id="p1k-ES-Bih"/>
                         <outlet property="labelName" destination="cJL-DS-our" id="p4d-Uh-DNv"/>
@@ -453,6 +501,8 @@
         <image name="ic_person_outline_white" width="24" height="24"/>
         <image name="ic_play_arrow" width="24" height="24"/>
         <image name="ic_play_circle_outline_white" width="24" height="24"/>
+        <image name="ic_repeat_one" width="24" height="24"/>
+        <image name="ic_shuffle" width="24" height="24"/>
         <image name="ic_skip_next" width="24" height="24"/>
         <image name="ic_skip_previous" width="24" height="24"/>
         <image name="placeholder_music" width="300" height="300"/>

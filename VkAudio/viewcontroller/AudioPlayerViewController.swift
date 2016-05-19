@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import GameplayKit
 
 class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
@@ -17,11 +18,16 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var btnPlay: UIButton!
     @IBOutlet weak var btnNext: UIButton!
+    @IBOutlet weak var btnShuffle: UIButton!
+    @IBOutlet weak var btnRepeat: UIButton!
     @IBOutlet weak var progressAudioStream: UISlider!
     
     let player = AudioPlayer.sharedInstance
     var audios: [Audio]!
     var selectedAudioIndex: Int!
+    
+    var shuffleEnabled = false
+    var repeatEnabled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +72,30 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         player.playNext()
     }
     
+    @IBAction func onShuffleButtonClicked(sender: AnyObject) {
+        var newPlaylist = [Audio]()
+        if !shuffleEnabled {
+            newPlaylist = audios.shuffle()
+            btnShuffle.tintColor = progressAudioStream.tintColor
+        }
+        else {
+            newPlaylist = self.audios
+            btnShuffle.tintColor = UIColor.blackColor()
+        }
+        shuffleEnabled = !shuffleEnabled
+        player.playlist = newPlaylist.map({$0 as Audio})
+    }
+    
+    @IBAction func onRepeatButtonClicked(sender: AnyObject) {
+        if !repeatEnabled {
+            btnRepeat.tintColor = progressAudioStream.tintColor
+        }
+        else {
+            btnRepeat.tintColor = UIColor.blackColor()
+        }
+        repeatEnabled = !repeatEnabled
+    }
+    
     @IBAction func onAudioSliderDragged(sender: UISlider) {
         player.seekToTime(Int64(progressAudioStream.value))
     }
@@ -75,7 +105,12 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     func onStopPlaying(audio: AudioPlayerItem, playlistPosition: Int, stopSeconds: Int64) {
         btnPlay.setImage(UIImage(named: "ic_play_arrow"), forState: .Normal)
         if stopSeconds == Int64(audio.duration!) {
-            player.playNext()
+            if repeatEnabled {
+                player.play(playlistPosition)
+            }
+            else {
+                player.playNext()
+            }
         }
         AudioPlayerEventHandler.sendPlayerStateChangedEvent(false, sender: .CONTROLLER)
     }
@@ -94,5 +129,28 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     func onTimeChanged(seconds: Int64) {
         progressAudioStream.value = Float(seconds)
+    }
+}
+
+extension CollectionType {
+    /// Return a copy of `self` with its elements shuffled
+    func shuffle() -> [Generator.Element] {
+        var list = Array(self)
+        list.shuffleInPlace()
+        return list
+    }
+}
+
+extension MutableCollectionType where Index == Int {
+    /// Shuffle the elements of `self` in-place.
+    mutating func shuffleInPlace() {
+        // empty and single-element collections don't shuffle
+        if count < 2 { return }
+        
+        for i in 0..<count - 1 {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            guard i != j else { continue }
+            swap(&self[i], &self[j])
+        }
     }
 }
