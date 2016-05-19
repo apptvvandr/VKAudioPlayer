@@ -9,13 +9,13 @@
 import Foundation
 import AVFoundation
 
-class AudioPlayer {
+public class AudioPlayer {
     
-    static let sharedInstance = AudioPlayer()
-    var delegate: AudioPlayerDelegate?
+    public static let sharedInstance = AudioPlayer()
+    public var delegate: AudioPlayerDelegate?
     
-    var playlist = [Audio]()
-    var currentAudio: (playlistPosition: Int, audio: Audio)?
+    public var playlist: [AudioPlayerItem] = [AudioPlayerItem]()
+    public var currentAudio: (playlistPosition: Int, audio: AudioPlayerItem)?
     
     private var player = AVPlayer()
     private var currentAudioTimer: NSTimer?
@@ -23,7 +23,7 @@ class AudioPlayer {
     
     private init() {}
     
-    func play(playlistPosition: Int = 0) {
+    public func play(playlistPosition: Int = 0) {
         assert(playlistPosition >= 0 && playlistPosition < playlist.count)
         
         if playlist.isEmpty {
@@ -32,7 +32,7 @@ class AudioPlayer {
         self.playAudio(playlistPosition)
     }
     
-    func playNext() {
+    public func playNext() {
         if playlist.isEmpty {
             print("AudioPlayer: playNext: playlist is empty")
             return
@@ -42,7 +42,7 @@ class AudioPlayer {
         self.playAudio(nextIndex)
     }
     
-    func playPrevious() {
+    public func playPrevious() {
         if playlist.isEmpty {
             print("AudioPlayer: playPrevious: playlist is empty")
             return
@@ -53,7 +53,7 @@ class AudioPlayer {
         self.playAudio(previousIndex)
     }
     
-    func continuePlaying() {
+    public func continuePlaying() {
         if currentAudio == nil {
             print("AudioPlayer: continuePlaying: current audio is not initialized")
             return
@@ -64,7 +64,7 @@ class AudioPlayer {
         delegate?.onStartPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, startSeconds: playerSecondsToInt())
     }
     
-    func pause() {
+    public func pause() {
         if playing {
             player.pause()
             playing = false
@@ -73,7 +73,7 @@ class AudioPlayer {
         }
     }
     
-    func seekToTime(seconds: Int64){
+    public func seekToTime(seconds: Int64){
         currentAudioTimer?.invalidate()
         player.seekToTime(CMTimeMake(seconds, 1)) { (finished: Bool) in
             if finished {
@@ -82,7 +82,7 @@ class AudioPlayer {
         }
     }
     
-    func isPlaying() -> Bool {
+    public func isPlaying() -> Bool {
         return self.playing
     }
     
@@ -125,8 +125,13 @@ class AudioPlayer {
     }
 }
 
-protocol AudioPlayerDelegate {
+public protocol AudioPlayerDelegate {
     func onTimeChanged(seconds: Int64)
-    func onStartPlaying(audio: Audio, playlistPosition: Int, startSeconds: Int64)
-    func onStopPlaying(audio: Audio, playlistPosition: Int, stopSeconds: Int64)
+    func onStartPlaying(audio: AudioPlayerItem, playlistPosition: Int, startSeconds: Int64)
+    func onStopPlaying(audio: AudioPlayerItem, playlistPosition: Int, stopSeconds: Int64)
+}
+
+public protocol AudioPlayerItem : class {
+    var url: String? {get set}
+    var duration: Int? {get set}
 }
