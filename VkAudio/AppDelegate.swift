@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func applicationDidFinishLaunching(application: UIApplication) {
-        AudioPlayerEventHandler.subscribeForPlayerEvent(AudioPlayerEventHandler.PlayerEvent.PLAYER_STATE_CHANGED) { (message: Bool) in
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        AudioPlayerEventHandler.subscribeForPlayerEvent(.STATE_CHANGED, sender: .WIDGET) { (message: Bool) in
             if message {
                 AudioPlayer.sharedInstance.continuePlaying()
             }
@@ -24,9 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        AudioPlayerEventHandler.subscribeForPlayerEvent(AudioPlayerEventHandler.PlayerEvent.NEXT_AUDIO) { (message: Bool) in
+        AudioPlayerEventHandler.subscribeForPlayerEvent(.NEXT_AUDIO, sender: .WIDGET) { (message: Bool) in
             AudioPlayer.sharedInstance.playNext()
         }
+        return true
     }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
