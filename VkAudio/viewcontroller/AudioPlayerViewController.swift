@@ -23,6 +23,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnRemove: UIButton!
     @IBOutlet weak var progressAudioStream: UISlider!
+    @IBOutlet weak var labelAudioCurrentDuration: UILabel!
+    @IBOutlet weak var labelAudioDuration: UILabel!
     
     let player = AudioPlayer.sharedInstance
     var playlistOwnerId: Int? //nil means current user
@@ -45,12 +47,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         if player.currentAudio?.playlistPosition != selectedAudioIndex {
             player.play(selectedAudioIndex)
         }
-        
-        let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
-        commandCenter.nextTrackCommand.addTarget(self, action: #selector(AudioPlayerViewController.onNextButtonClicked(_:)))
-        commandCenter.previousTrackCommand.addTarget(self, action: #selector(AudioPlayerViewController.onPreviousButtonClicked(_:)))
-        commandCenter.pauseCommand.addTarget(self, action: #selector(AudioPlayerViewController.onPlayButtonClicked(_:)))
-        commandCenter.playCommand.addTarget(self, action: #selector(AudioPlayerViewController.onPlayButtonClicked(_:)))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,8 +58,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
-        
-        UIApplication.sharedApplication().becomeFirstResponder()
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
@@ -127,8 +121,19 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         player.seekToTime(Int64(progressAudioStream.value)) {
             let currentAudio = self.player.currentAudio?.audio as! Audio
             let elapsedTime = Int64(self.progressAudioStream.value)
+            
             self.updateMediaCenterInfo(currentAudio, elapsedTime: elapsedTime)
         }
+    }
+    
+    private func updateMediaCenterInfo(currentAudio: Audio, elapsedTime: Int64? = 0) {
+        let currentAudioInfo = [
+            MPMediaItemPropertyArtist: currentAudio.artist!,
+            MPMediaItemPropertyTitle: currentAudio.name!,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: NSNumber(longLong: elapsedTime!),
+            MPMediaItemPropertyPlaybackDuration: NSNumber(integer: currentAudio.duration!)
+        ]
+        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentAudioInfo
     }
     
     //MARK: - AudioPlayerDelegate
@@ -152,6 +157,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
+        labelAudioDuration.text = audioDurationToString(audio.duration!)
         
         btnRemove.enabled = playlistOwnerId == nil
         btnAdd.enabled = playlistOwnerId != nil
@@ -159,25 +165,15 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         updateMediaCenterInfo(audio, elapsedTime: startSeconds)
     }
     
+    private func audioDurationToString(seconds: Int) -> String {
+        let minutes = seconds / 60
+        let seconds = seconds % 60
+                
+        return String(format: "%0.2d:%0.2d", minutes, seconds)
+    }
+    
     func onTimeChanged(seconds: Int64) {
         progressAudioStream.value = Float(seconds)
-    }
-    
-    private func updateMediaCenterInfo(currentAudio: Audio, elapsedTime: Int64? = 0) {
-        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-            MPMediaItemPropertyArtist: currentAudio.artist!,
-            MPMediaItemPropertyTitle: currentAudio.name!,
-            MPNowPlayingInfoPropertyElapsedPlaybackTime: NSNumber(longLong: elapsedTime!),
-            MPMediaItemPropertyPlaybackDuration: NSNumber(integer: currentAudio.duration!)
-        ]
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        UIApplication.sharedApplication().resignFirstResponder()
-    }
-    
-    override func canBecomeFirstResponder() -> Bool {
-        return true
+        labelAudioCurrentDuration.text = audioDurationToString(Int(seconds))
     }
 }
