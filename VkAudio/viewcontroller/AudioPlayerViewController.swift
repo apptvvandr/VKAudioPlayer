@@ -130,7 +130,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
                 player.playNext()
             }
         }
-        AudioPlayerEventHandler.sendPlayerStateChangedEvent(false, sender: .CONTROLLER)
     }
     
     func onStartPlaying(audio: AudioPlayerItem, playlistPosition: Int, startSeconds: Int64) {
@@ -140,9 +139,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
-        
-        AudioPlayerEventHandler.sendPlayerStateChangedEvent(true, sender: .CONTROLLER)
-        AudioPlayerEventHandler.sendCurrentAudioChangedEvent(audio.artist, audioName: audio.name, sender: .CONTROLLER)
         
         btnRemove.enabled = playlistOwnerId == nil
         btnAdd.enabled = playlistOwnerId != nil

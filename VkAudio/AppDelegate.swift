@@ -14,22 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        AudioPlayerEventHandler.subscribeForPlayerEvent(.STATE_CHANGED, sender: .WIDGET) { (message: Bool) in
-            if message {
-                AudioPlayer.sharedInstance.continuePlaying()
-            }
-            else {
-                AudioPlayer.sharedInstance.pause()
-            }
-        }
-        
-        AudioPlayerEventHandler.subscribeForPlayerEvent(.NEXT_AUDIO, sender: .WIDGET) { (message: Bool) in
-            AudioPlayer.sharedInstance.playNext()
-        }
-        return true
-    }
-    
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         if url.absoluteString.hasSuffix("context-widget") {
             
