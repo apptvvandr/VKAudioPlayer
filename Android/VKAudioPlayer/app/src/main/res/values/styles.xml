@@ -2,15 +2,28 @@
 
     <style name="VKAP"/>
 
-    <style name="VKAP.Main" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="VKAP.Main" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="toolbarStyle">@style/VKAP.Toolbar</item>
     </style>
 
     <style name="VKAP.Splash" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="VKAP.Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+        <item name="titleTextAppearance">@style/VKAP.Toolbar.Title</item>
+    </style>
+
+    <style name="VKAP.Toolbar.Title" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

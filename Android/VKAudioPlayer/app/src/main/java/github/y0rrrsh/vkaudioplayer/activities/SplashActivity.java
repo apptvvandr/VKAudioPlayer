@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer;
+package github.y0rrrsh.vkaudioplayer.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +13,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Handler().postDelayed(() -> MainActivity.start(SplashActivity.this), 1500);
+        new Handler().postDelayed(() -> LoginActivity.start(SplashActivity.this), 1500);
     }
 }

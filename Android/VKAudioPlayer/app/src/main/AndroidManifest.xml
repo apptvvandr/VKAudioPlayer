@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="github.y0rrrsh.vkaudioplayer">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,7 @@
         android:theme="@style/VKAP.Main">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/VKAP.Splash">
             <intent-filter>
@@ -20,7 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".activities.LoginActivity"/>
+
+        <activity android:name=".activities.MainActivity"/>
 
     </application>
 
