@@ -73,11 +73,12 @@ public class AudioPlayer {
         }
     }
     
-    public func seekToTime(seconds: Int64){
+    public func seekToTime(seconds: Int64, onFinish: (() -> Void)? = nil){
         currentAudioTimer?.invalidate()
         player.seekToTime(CMTimeMake(seconds, 1)) { (finished: Bool) in
             if finished {
                 self.currentAudioTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AudioPlayer.onTimeChanged), userInfo: nil, repeats: true)
+                onFinish?()
             }
         }
     }

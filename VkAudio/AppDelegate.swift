@@ -8,11 +8,17 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        return true
+    }
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         if url.absoluteString.hasSuffix("context-widget") {

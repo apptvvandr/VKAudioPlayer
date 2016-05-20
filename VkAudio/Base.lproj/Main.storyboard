@@ -117,7 +117,7 @@
         <scene sceneID="a0f-ZB-yXz">
             <objects>
                 <navigationController storyboardIdentifier="controller_nav_friends" automaticallyAdjustsScrollViewInsets="NO" id="JgF-P3-fYK" userLabel="Friends" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" image="ic_person_outline_white" id="4s5-Eq-1Em">
+                    <tabBarItem key="tabBarItem" title="Friends" image="ic_person" id="4s5-Eq-1Em">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -514,7 +514,7 @@
         <scene sceneID="GrU-PQ-LJ8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JSq-eW-Tbh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" image="ic_people_outline_white" id="K3C-1T-34E"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="ic_people" id="K3C-1T-34E"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xqn-9c-3Hx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -533,8 +533,8 @@
     <resources>
         <image name="ic_add" width="24" height="24"/>
         <image name="ic_next" width="24" height="24"/>
-        <image name="ic_people_outline_white" width="24" height="24"/>
-        <image name="ic_person_outline_white" width="24" height="24"/>
+        <image name="ic_people" width="24" height="24"/>
+        <image name="ic_person" width="24" height="24"/>
         <image name="ic_play" width="24" height="24"/>
         <image name="ic_play_circle_outline_white" width="24" height="24"/>
         <image name="ic_previous" width="24" height="24"/>

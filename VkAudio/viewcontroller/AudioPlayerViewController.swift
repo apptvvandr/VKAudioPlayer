@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MediaPlayer
 
 class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
@@ -44,6 +45,12 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         if player.currentAudio?.playlistPosition != selectedAudioIndex {
             player.play(selectedAudioIndex)
         }
+        
+        let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(AudioPlayerViewController.onNextButtonClicked(_:)))
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(AudioPlayerViewController.onPreviousButtonClicked(_:)))
+        commandCenter.pauseCommand.addTarget(self, action: #selector(AudioPlayerViewController.onPlayButtonClicked(_:)))
+        commandCenter.playCommand.addTarget(self, action: #selector(AudioPlayerViewController.onPlayButtonClicked(_:)))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -55,6 +62,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
+        
+        UIApplication.sharedApplication().becomeFirstResponder()
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
@@ -115,7 +124,11 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     }
     
     @IBAction func onAudioSliderDragged(sender: UISlider) {
-        player.seekToTime(Int64(progressAudioStream.value))
+        player.seekToTime(Int64(progressAudioStream.value)) {
+            let currentAudio = self.player.currentAudio?.audio as! Audio
+            let elapsedTime = Int64(self.progressAudioStream.value)
+            self.updateMediaCenterInfo(currentAudio, elapsedTime: elapsedTime)
+        }
     }
     
     //MARK: - AudioPlayerDelegate
@@ -142,9 +155,29 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         
         btnRemove.enabled = playlistOwnerId == nil
         btnAdd.enabled = playlistOwnerId != nil
+        
+        updateMediaCenterInfo(audio, elapsedTime: startSeconds)
     }
     
     func onTimeChanged(seconds: Int64) {
         progressAudioStream.value = Float(seconds)
+    }
+    
+    private func updateMediaCenterInfo(currentAudio: Audio, elapsedTime: Int64? = 0) {
+        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+            MPMediaItemPropertyArtist: currentAudio.artist!,
+            MPMediaItemPropertyTitle: currentAudio.name!,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: NSNumber(longLong: elapsedTime!),
+            MPMediaItemPropertyPlaybackDuration: NSNumber(integer: currentAudio.duration!)
+        ]
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().resignFirstResponder()
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
     }
 }
