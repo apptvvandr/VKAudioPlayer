@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -290,7 +290,7 @@
                                     <constraint firstAttribute="height" constant="36" id="vfJ-8j-af6"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_play_arrow">
+                                <state key="normal" image="ic_play">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -311,7 +311,7 @@
                                     <constraint firstAttribute="width" constant="36" id="hUX-5r-73b"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_skip_previous">
+                                <state key="normal" image="ic_previous">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -324,14 +324,14 @@
                                     <action selector="onPreviousButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="RPH-JD-4lv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metallica" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnQ-dS-mso">
-                                <rect key="frame" x="20" y="72" width="335" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metallica" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnQ-dS-mso">
+                                <rect key="frame" x="16" y="72" width="291" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Whom The Bell Tolls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-DS-our">
-                                <rect key="frame" x="20" y="101" width="335" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Whom The Bell Tolls" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-DS-our">
+                                <rect key="frame" x="16" y="101" width="291" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -357,7 +357,7 @@
                                     <constraint firstAttribute="width" constant="36" id="sJ2-h3-o1K"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_skip_next">
+                                <state key="normal" image="ic_next">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -399,7 +399,7 @@
                                     <constraint firstAttribute="height" constant="36" id="zAA-8G-Ztl"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_repeat_one">
+                                <state key="normal" image="ic_repeat">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -412,39 +412,73 @@
                                     <action selector="onRepeatButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="pl7-aI-HXN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-wv-Zc2">
+                                <rect key="frame" x="309" y="94" width="38" height="36"/>
+                                <state key="normal" image="ic_add">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="9tU-LF-yTB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvy-Co-bOZ">
+                                <rect key="frame" x="309" y="65" width="38" height="36"/>
+                                <state key="normal" image="ic_remove">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onRemoveButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="bcw-x8-hTu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="z6E-Wt-JHV" firstAttribute="baseline" secondItem="Xjh-aC-L3s" secondAttribute="baseline" id="4dn-uM-aq9"/>
+                            <constraint firstItem="uvy-Co-bOZ" firstAttribute="leading" secondItem="XdT-wv-Zc2" secondAttribute="leading" id="5lm-yL-gWl"/>
+                            <constraint firstItem="XdT-wv-Zc2" firstAttribute="baseline" secondItem="cJL-DS-our" secondAttribute="baseline" constant="7" id="86Z-Yu-qTw"/>
                             <constraint firstItem="3xH-c2-xnn" firstAttribute="baseline" secondItem="Xjh-aC-L3s" secondAttribute="baseline" id="8hr-YS-fPY"/>
                             <constraint firstItem="Xjh-aC-L3s" firstAttribute="leading" secondItem="z6E-Wt-JHV" secondAttribute="trailing" constant="8" symbolic="YES" id="BLp-hM-cyo"/>
                             <constraint firstItem="cJL-DS-our" firstAttribute="top" secondItem="AnQ-dS-mso" secondAttribute="bottom" constant="8" symbolic="YES" id="Djb-0m-WFc"/>
                             <constraint firstItem="gQb-Ru-aEI" firstAttribute="leading" secondItem="U9x-fu-awW" secondAttribute="trailing" constant="8" symbolic="YES" id="JT2-Sn-xsj"/>
                             <constraint firstItem="mPA-Dr-pYk" firstAttribute="trailing" secondItem="303-Kt-Cdd" secondAttribute="trailing" id="JnR-v6-Mpz"/>
+                            <constraint firstItem="uvy-Co-bOZ" firstAttribute="baseline" secondItem="AnQ-dS-mso" secondAttribute="baseline" constant="7" id="KeW-7G-KEi"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" constant="11" id="MAK-hQ-Dnd"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="centerY" secondItem="dsl-Co-qvc" secondAttribute="centerY" id="MmJ-FK-Zce"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="cJL-DS-our" secondAttribute="leading" id="PcG-2i-vFB"/>
-                            <constraint firstItem="cJL-DS-our" firstAttribute="centerX" secondItem="303-Kt-Cdd" secondAttribute="centerX" id="Ryz-cg-ON9"/>
+                            <constraint firstItem="uvy-Co-bOZ" firstAttribute="leading" secondItem="AnQ-dS-mso" secondAttribute="trailing" constant="2" id="Q6o-YS-BoM"/>
+                            <constraint firstItem="cJL-DS-our" firstAttribute="centerX" secondItem="303-Kt-Cdd" secondAttribute="centerX" constant="-25.5" id="Ryz-cg-ON9"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="centerX" secondItem="dsl-Co-qvc" secondAttribute="centerX" id="TFB-WS-8zf"/>
-                            <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" constant="4" id="V1o-vW-gMn"/>
+                            <constraint firstItem="uvy-Co-bOZ" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="1" id="U6g-nt-7sO"/>
+                            <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" id="V1o-vW-gMn"/>
                             <constraint firstItem="gQb-Ru-aEI" firstAttribute="baseline" secondItem="z6E-Wt-JHV" secondAttribute="baseline" id="WmL-PY-VTA"/>
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="gQb-Ru-aEI" secondAttribute="bottom" constant="31" id="XKf-gO-orY"/>
+                            <constraint firstItem="uvy-Co-bOZ" firstAttribute="trailing" secondItem="XdT-wv-Zc2" secondAttribute="trailing" id="Ygi-Ie-Kwj"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="centerX" secondItem="z6E-Wt-JHV" secondAttribute="centerX" id="ih8-VZ-5gU"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="8" symbolic="YES" id="lwX-Pt-ZJG"/>
                             <constraint firstItem="mPA-Dr-pYk" firstAttribute="leading" secondItem="303-Kt-Cdd" secondAttribute="leading" id="nf2-Tx-gbX"/>
                             <constraint firstItem="U9x-fu-awW" firstAttribute="baseline" secondItem="gQb-Ru-aEI" secondAttribute="baseline" id="pDc-Ak-T0O"/>
+                            <constraint firstItem="XdT-wv-Zc2" firstAttribute="trailing" secondItem="303-Kt-Cdd" secondAttribute="trailing" id="qFp-8S-oiZ"/>
                             <constraint firstItem="3xH-c2-xnn" firstAttribute="leading" secondItem="Xjh-aC-L3s" secondAttribute="trailing" constant="8" symbolic="YES" id="thC-pa-fH1"/>
                             <constraint firstItem="mPA-Dr-pYk" firstAttribute="top" secondItem="303-Kt-Cdd" secondAttribute="bottom" constant="8" symbolic="YES" id="vN6-dL-VAC"/>
+                            <constraint firstItem="XdT-wv-Zc2" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="30" id="wLB-1I-O6i"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="trailing" secondItem="cJL-DS-our" secondAttribute="trailing" id="wUc-Kc-HHn"/>
                             <constraint firstItem="z6E-Wt-JHV" firstAttribute="leading" secondItem="gQb-Ru-aEI" secondAttribute="trailing" constant="8" symbolic="YES" id="y1D-Fo-rKo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Audio player" id="jWr-NU-ycx"/>
                     <connections>
+                        <outlet property="btnAdd" destination="XdT-wv-Zc2" id="xJX-ee-TIL"/>
                         <outlet property="btnNext" destination="Xjh-aC-L3s" id="GPq-1A-Aiv"/>
                         <outlet property="btnPlay" destination="z6E-Wt-JHV" id="Dmx-1S-If5"/>
                         <outlet property="btnPrevious" destination="gQb-Ru-aEI" id="Wy7-s6-LiI"/>
+                        <outlet property="btnRemove" destination="uvy-Co-bOZ" id="ihY-i3-ZRg"/>
                         <outlet property="btnRepeat" destination="3xH-c2-xnn" id="8FA-Et-58z"/>
                         <outlet property="btnShuffle" destination="U9x-fu-awW" id="q5O-eu-HCT"/>
                         <outlet property="imageCover" destination="303-Kt-Cdd" id="2qC-3D-BDk"/>
@@ -497,14 +531,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_add" width="24" height="24"/>
+        <image name="ic_next" width="24" height="24"/>
         <image name="ic_people_outline_white" width="24" height="24"/>
         <image name="ic_person_outline_white" width="24" height="24"/>
-        <image name="ic_play_arrow" width="24" height="24"/>
+        <image name="ic_play" width="24" height="24"/>
         <image name="ic_play_circle_outline_white" width="24" height="24"/>
-        <image name="ic_repeat_one" width="24" height="24"/>
+        <image name="ic_previous" width="24" height="24"/>
+        <image name="ic_remove" width="24" height="24"/>
+        <image name="ic_repeat" width="24" height="24"/>
         <image name="ic_shuffle" width="24" height="24"/>
-        <image name="ic_skip_next" width="24" height="24"/>
-        <image name="ic_skip_previous" width="24" height="24"/>
         <image name="placeholder_music" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>

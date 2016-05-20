@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import GameplayKit
 
 class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
@@ -20,12 +19,15 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnShuffle: UIButton!
     @IBOutlet weak var btnRepeat: UIButton!
+    @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet weak var btnRemove: UIButton!
     @IBOutlet weak var progressAudioStream: UISlider!
     
     let player = AudioPlayer.sharedInstance
+    var playlistOwnerId: Int? //nil means current user
     var audios: [Audio]!
     var selectedAudioIndex: Int!
-    
+        
     var shuffleEnabled = false
     var repeatEnabled = false
     
@@ -48,7 +50,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         super.viewWillAppear(animated)
         let audio = player.currentAudio?.audio as! Audio
         
-        let playButtonImageRes = player.isPlaying() ? "ic_pause" : "ic_play_arrow"
+        let playButtonImageRes = player.isPlaying() ? "ic_pause" : "ic_play"
         btnPlay.setImage(UIImage(named: playButtonImageRes), forState: .Normal)
         labelArtist.text = audio.artist
         labelName.text = audio.name
@@ -96,6 +98,22 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         repeatEnabled = !repeatEnabled
     }
     
+    @IBAction func onRemoveButtonClicked(sender: AnyObject) {
+        let currentAudio = player.currentAudio?.audio as! Audio
+        VkSDK.Audios.removeAudio(currentAudio.id!, ownerId: currentAudio.ownerId!) { (result) in
+            // todo: notify user on success
+        }
+        player.playlist.removeAtIndex(player.currentAudio!.playlistPosition)
+        player.playNext()
+    }
+    
+    @IBAction func onAddButtonClicked(sender: AnyObject) {
+        let currentAudio = player.currentAudio?.audio as! Audio
+        VkSDK.Audios.addAudio(currentAudio.id!, ownerId: currentAudio.ownerId!) { (result) in
+            // todo: notify user on success
+        }
+    }
+    
     @IBAction func onAudioSliderDragged(sender: UISlider) {
         player.seekToTime(Int64(progressAudioStream.value))
     }
@@ -103,7 +121,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     //MARK: - AudioPlayerDelegate
     
     func onStopPlaying(audio: AudioPlayerItem, playlistPosition: Int, stopSeconds: Int64) {
-        btnPlay.setImage(UIImage(named: "ic_play_arrow"), forState: .Normal)
+        btnPlay.setImage(UIImage(named: "ic_play"), forState: .Normal)
         if stopSeconds == Int64(audio.duration!) {
             if repeatEnabled {
                 player.play(playlistPosition)
@@ -125,6 +143,9 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         
         AudioPlayerEventHandler.sendPlayerStateChangedEvent(true, sender: .CONTROLLER)
         AudioPlayerEventHandler.sendCurrentAudioChangedEvent(audio.artist, audioName: audio.name, sender: .CONTROLLER)
+        
+        btnRemove.enabled = playlistOwnerId == nil
+        btnAdd.enabled = playlistOwnerId != nil
     }
     
     func onTimeChanged(seconds: Int64) {

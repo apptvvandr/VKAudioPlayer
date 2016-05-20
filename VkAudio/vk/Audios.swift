@@ -21,6 +21,21 @@ extension VkSDK {
                 onResult(result: audios)
             }, onError: onError)
         }
+        
+        static func addAudio(audioId: Int, ownerId: Int, onResult: ((result: Int?) -> Void)? = nil) {
+            let params = ["audio_id": audioId, "owner_id": ownerId]
+            VkSDK.instance?.get("audio.add", parameters: params, onResult: { (result) in
+                print(result)
+//                onResult?(result: result)
+            })
+        }
+        
+        static func removeAudio(audioId: Int, ownerId: Int, onResult: ((result: Int?) -> Void)? = nil) {
+            let params = ["audio_id": audioId, "owner_id": ownerId]
+            VkSDK.instance?.get("audio.delete", parameters: params, onResult: { (result) in
+                print(result)
+//                onResult?(result: result)
+            })
+        }
     }
-
 }

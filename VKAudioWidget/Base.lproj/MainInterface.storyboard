@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="24" id="Q8t-3s-Dbw"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_skip_next"/>
+                                <state key="normal" image="ic_next"/>
                                 <connections>
                                     <action selector="onNextButtonClicked:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="fKk-Pf-JtG"/>
                                 </connections>
@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="height" constant="24" id="iHW-dP-sg0"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="ic_play_arrow"/>
+                                <state key="normal" image="ic_play"/>
                                 <connections>
                                     <action selector="onPlayButtonClicked:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="2NX-bW-j1v"/>
                                 </connections>
@@ -88,7 +88,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_play_arrow" width="24" height="24"/>
-        <image name="ic_skip_next" width="24" height="24"/>
+        <image name="ic_next" width="24" height="24"/>
+        <image name="ic_play" width="24" height="24"/>
     </resources>
 </document>

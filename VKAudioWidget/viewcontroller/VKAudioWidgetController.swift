@@ -58,7 +58,7 @@ class VKAudioWidgetController: UIViewController, NCWidgetProviding {
     }
     
     private func updatePlayButtonWithData(isPlaying: Bool) {
-        let playButtonImage = isPlaying ? "ic_pause" : "ic_play_arrow"
+        let playButtonImage = isPlaying ? "ic_pause" : "ic_play"
         btnPlay.setImage(UIImage(named: playButtonImage), forState: .Normal)
     }
 }

@@ -14,6 +14,7 @@ class Audio: VkItem, AudioPlayerItem {
     var artist: String?
     var name: String?
     var duration: Int?
+    var ownerId: Int?
 
     override init(apiResponse: [String:AnyObject]) {
         super.init(apiResponse: apiResponse)
@@ -23,5 +24,6 @@ class Audio: VkItem, AudioPlayerItem {
         artist = apiResponse["artist"] as? String
         name = apiResponse["title"] as? String
         duration = apiResponse["duration"] as? Int
+        ownerId = apiResponse["owner_id"] as? Int
     }
 }

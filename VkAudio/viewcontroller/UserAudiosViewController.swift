@@ -94,6 +94,7 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
             let index = self.tableView.indexPathForCell(cell)!.row
             
             let searchPrepared = isSearchPrepared()
+            audioPlayerVC.playlistOwnerId = ownerId
             audioPlayerVC.audios = searchPrepared ? filteredAudios : userAudios
             audioPlayerVC.selectedAudioIndex = index
         }
