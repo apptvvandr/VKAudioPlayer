@@ -22,16 +22,15 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
 
         let appId = appValues.objectForKey("APP_ID") as! String
         let appScope = appValues.objectForKey("APP_SCOPE") as! String
-        let appApiVersion = appValues.objectForKey("API_VERSION") as! String
 
-        let authUrl = VkSDK.authUrl(appId, scope: appScope, version: appApiVersion)
+        let authUrl = VkApi.authUrl(appId, scope: appScope)
         webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if let url = request.URL?.absoluteString where url.containsString("access_token=") {
-            VkSDK.setup(url)
-
+            VKAPService.setup(VkApi.setup(url))
+            
             performSegueWithIdentifier("segue_tabs", sender: self)
 
             return false
