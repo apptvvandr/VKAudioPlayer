@@ -6,6 +6,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
@@ -34,7 +35,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     private List<Audio> provideMockItems(int amount) {
         List<Audio> items = new ArrayList<>(amount);
         for (int i = 0; i < amount; i++) {
-            items.add(new Audio(i));
+            items.add(new Audio(i, "Metallica", "For Whom The Bells Tools", 100 + new Random().nextInt(200)));
         }
 
         return items;
