@@ -11,6 +11,7 @@ import UIKit
 
 class UserFriendsViewController: UITableViewController {
 
+    let api = VKAPService.sharedInstance!
     var friends = [User]()
     
     override func viewDidLoad() {
@@ -24,12 +25,10 @@ class UserFriendsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        //todo: api-related stuff on UI. should be encapsulated into service level
-        VkSDK.Frinds.getFriends(["fields": "name, photo_100"], onResult: {
-            (result) in
+        api.getFriends(VkApiCallback(onResult: { (result) in
             self.friends = result
             self.tableView.reloadData()
-        })
+        }))
     }
 
 
