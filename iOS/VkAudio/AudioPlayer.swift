@@ -61,7 +61,7 @@ public class AudioPlayer {
         player.play()
         playing = true
         
-        delegate?.onStartPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, startSeconds: playerSecondsToInt())
+        delegate?.onStartPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, startSeconds: playerSecondsToInt(player.currentTime()))
     }
     
     public func pause() {
@@ -69,7 +69,7 @@ public class AudioPlayer {
             player.pause()
             playing = false
             
-            delegate?.onStopPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, stopSeconds: self.playerSecondsToInt())
+            delegate?.onStopPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, stopSeconds: self.playerSecondsToInt(player.currentTime()))
         }
     }
     
@@ -97,22 +97,24 @@ public class AudioPlayer {
             player.play()
             playing = true
             
-            delegate?.onStartPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, startSeconds: self.playerSecondsToInt())
+            delegate?.onStartPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, startSeconds: self.playerSecondsToInt(player.currentTime()))
         }
     }
     
     @objc private func onTimeChanged() {
-        let seconds = self.playerSecondsToInt()
+        let seconds = self.playerSecondsToInt(player.currentTime())
+        let itemDuration = Int64(currentAudio!.audio.duration!)
         
-        if seconds == Int64(currentAudio!.audio.duration!) {
+        guard seconds != itemDuration else {
             self.currentAudioTimer?.invalidate()
-            
             delegate?.onStopPlaying(currentAudio!.audio, playlistPosition: currentAudio!.playlistPosition, stopSeconds: seconds)
-            
             return
         }
         
-        delegate?.onTimeChanged(seconds)
+        let cachedRange = player.currentItem?.loadedTimeRanges.first
+        let cachedSeconds = cachedRange != nil ? playerSecondsToInt(CMTimeRangeGetEnd(cachedRange!.CMTimeRangeValue)) : 0
+        
+        delegate?.onTimeChanged(seconds, cachedSeconds: cachedSeconds)
     }
     
     private func resetTimer() {
@@ -120,14 +122,13 @@ public class AudioPlayer {
         self.currentAudioTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AudioPlayer.onTimeChanged), userInfo: nil, repeats: true)
     }
     
-    private func playerSecondsToInt() -> Int64 {
-        let playerTime = player.currentTime()
-        return Int64(playerTime.value) / Int64(playerTime.timescale)
+    private func playerSecondsToInt(seconds: CMTime) -> Int64 {
+        return Int64(seconds.value) / Int64(seconds.timescale)
     }
 }
 
 public protocol AudioPlayerDelegate {
-    func onTimeChanged(seconds: Int64)
+    func onTimeChanged(seconds: Int64, cachedSeconds: Int64)
     func onStartPlaying(audio: AudioPlayerItem, playlistPosition: Int, startSeconds: Int64)
     func onStopPlaying(audio: AudioPlayerItem, playlistPosition: Int, stopSeconds: Int64)
 }

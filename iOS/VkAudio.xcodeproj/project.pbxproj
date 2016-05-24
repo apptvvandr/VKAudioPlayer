@@ -13,6 +13,7 @@
 		F509CDA01CD7C568003ACCC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9F1CD7C568003ACCC1 /* User.swift */; };
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
+		F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E13B21CF454DD00114D89 /* BufferingSlider.swift */; };
 		F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E71CEDE09A00825849 /* Extensions.swift */; };
 		F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E81CEDE09A00825849 /* LocalStorage.swift */; };
 		F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */; };
@@ -59,6 +60,7 @@
 		F509CD9F1CD7C568003ACCC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
+		F55E13B21CF454DD00114D89 /* BufferingSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferingSlider.swift; sourceTree = "<group>"; };
 		F563C5E71CEDE09A00825849 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F563C5E81CEDE09A00825849 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCollectionView.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				F58706B11CDA53130016C79C /* cells */,
 				F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */,
+				F55E13B21CF454DD00114D89 /* BufferingSlider.swift */,
 			);
 			name = views;
 			path = cells;
@@ -482,6 +485,7 @@
 				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
 				F591452E1CF32A05009D3AA8 /* VkApiImpl.swift in Sources */,
 				F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */,
+				F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
 				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,

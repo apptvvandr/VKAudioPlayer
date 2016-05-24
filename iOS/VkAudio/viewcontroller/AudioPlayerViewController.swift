@@ -22,7 +22,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var btnRepeat: UIButton!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var btnRemove: UIButton!
-    @IBOutlet weak var progressAudioStream: UISlider!
+    @IBOutlet weak var progressAudioStream: BufferingSlider!
     @IBOutlet weak var labelAudioCurrentDuration: UILabel!
     @IBOutlet weak var labelAudioDuration: UILabel!
     
@@ -173,8 +173,9 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         return String(format: "%0.2d:%0.2d", minutes, seconds)
     }
     
-    func onTimeChanged(seconds: Int64) {
+    func onTimeChanged(seconds: Int64, cachedSeconds: Int64) {
         progressAudioStream.value = Float(seconds)
         labelAudioCurrentDuration.text = audioDurationToString(Int(seconds))
+        progressAudioStream.bufferValue = Float(cachedSeconds)
     }
 }

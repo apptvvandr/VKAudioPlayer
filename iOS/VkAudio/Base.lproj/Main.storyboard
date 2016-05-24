@@ -285,16 +285,6 @@
                             <imageView userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_music" translatesAutoresizingMaskIntoConstraints="NO" id="303-Kt-Cdd">
                                 <rect key="frame" x="20" y="156" width="335" height="335"/>
                             </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mPA-Dr-pYk">
-                                <rect key="frame" x="18" y="494" width="339" height="31"/>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Huh-18-6hl"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="onAudioSliderDragged:" destination="hLe-fN-oCO" eventType="valueChanged" id="1On-Zj-bgk"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6E-Wt-JHV">
                                 <rect key="frame" x="163" y="548" width="48" height="48"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.49811613475177308" colorSpace="calibratedRGB"/>
@@ -408,13 +398,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeJ-4q-yjW">
                                 <rect key="frame" x="20" y="532" width="28" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lX2-sm-TiA">
                                 <rect key="frame" x="325" y="532" width="30" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metallica" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnQ-dS-mso">
@@ -456,15 +446,39 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRo-KP-Bvk">
                                 <rect key="frame" x="27" y="540" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mPA-Dr-pYk" customClass="BufferingSlider" customModule="VkAudio" customModuleProvider="target">
+                                <rect key="frame" x="18" y="494" width="339" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7As-Kk-kmq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundLayerColor">
+                                        <color key="value" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressLayerColor">
+                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bufferLayerColor">
+                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onAudioSliderDragged:" destination="hLe-fN-oCO" eventType="valueChanged" id="1On-Zj-bgk"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lX2-sm-TiA" firstAttribute="top" secondItem="mPA-Dr-pYk" secondAttribute="bottom" constant="8" symbolic="YES" id="4vV-UZ-fwD"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="cJL-DS-our" secondAttribute="leading" id="7OB-Kb-WrQ"/>
                             <constraint firstItem="uvy-Co-bOZ" firstAttribute="trailing" secondItem="XdT-wv-Zc2" secondAttribute="trailing" id="9o0-p0-jjz"/>
+                            <constraint firstItem="LeJ-4q-yjW" firstAttribute="top" secondItem="mPA-Dr-pYk" secondAttribute="bottom" constant="8" symbolic="YES" id="9qy-ye-dMv"/>
                             <constraint firstItem="gQb-Ru-aEI" firstAttribute="centerY" secondItem="z6E-Wt-JHV" secondAttribute="centerY" id="AM2-df-ZIS"/>
                             <constraint firstItem="cJL-DS-our" firstAttribute="leading" secondItem="303-Kt-Cdd" secondAttribute="leading" constant="-4" id="BVR-on-D38"/>
                             <constraint firstItem="Xjh-aC-L3s" firstAttribute="baseline" secondItem="3xH-c2-xnn" secondAttribute="baseline" id="ClD-8b-EKp"/>
@@ -473,31 +487,29 @@
                             <constraint firstItem="Xjh-aC-L3s" firstAttribute="centerY" secondItem="z6E-Wt-JHV" secondAttribute="centerY" id="HU8-pd-N5P"/>
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="LeJ-4q-yjW" secondAttribute="bottom" constant="72" id="Igu-qa-auQ"/>
                             <constraint firstItem="gQb-Ru-aEI" firstAttribute="leading" secondItem="U9x-fu-awW" secondAttribute="trailing" constant="8" symbolic="YES" id="Isn-D6-fuA"/>
-                            <constraint firstItem="z6E-Wt-JHV" firstAttribute="centerX" secondItem="mPA-Dr-pYk" secondAttribute="centerX" id="Kkb-HG-r9e"/>
-                            <constraint firstItem="z6E-Wt-JHV" firstAttribute="top" secondItem="mPA-Dr-pYk" secondAttribute="bottom" constant="24" id="Lzo-0o-al7"/>
-                            <constraint firstItem="303-Kt-Cdd" firstAttribute="trailing" secondItem="mPA-Dr-pYk" secondAttribute="trailing" id="MUR-GA-6QN"/>
                             <constraint firstItem="XdT-wv-Zc2" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="43" id="OWR-fJ-mre"/>
-                            <constraint firstItem="303-Kt-Cdd" firstAttribute="leading" secondItem="mPA-Dr-pYk" secondAttribute="leading" id="Ove-hK-xsL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AnQ-dS-mso" secondAttribute="trailing" constant="28" id="PHd-VG-Grl"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="15" id="PoL-VP-ZGd"/>
-                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="leading" secondItem="LeJ-4q-yjW" secondAttribute="leading" id="Qci-ml-wfF"/>
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="z6E-Wt-JHV" secondAttribute="bottom" constant="22" id="Rcn-jt-O5n"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" id="S17-g1-b6f"/>
                             <constraint firstItem="z6E-Wt-JHV" firstAttribute="leading" secondItem="gQb-Ru-aEI" secondAttribute="trailing" constant="8" id="Szt-IV-bu7"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="baseline" secondItem="uvy-Co-bOZ" secondAttribute="baseline" id="X3T-pT-Dzw"/>
-                            <constraint firstItem="LeJ-4q-yjW" firstAttribute="top" secondItem="mPA-Dr-pYk" secondAttribute="bottom" constant="8" symbolic="YES" id="Ycq-vd-2KU"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="trailing" secondItem="303-Kt-Cdd" secondAttribute="trailing" id="Xbv-jY-PWO"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="centerX" secondItem="dsl-Co-qvc" secondAttribute="centerX" id="abG-OH-hI9"/>
                             <constraint firstItem="LeJ-4q-yjW" firstAttribute="baseline" secondItem="lX2-sm-TiA" secondAttribute="baseline" id="dD8-fo-cHJ"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="top" secondItem="303-Kt-Cdd" secondAttribute="bottom" constant="3" id="e9X-4j-vaf"/>
                             <constraint firstItem="Xjh-aC-L3s" firstAttribute="leading" secondItem="z6E-Wt-JHV" secondAttribute="trailing" constant="8" id="eXD-6e-WGc"/>
                             <constraint firstItem="303-Kt-Cdd" firstAttribute="top" secondItem="XdT-wv-Zc2" secondAttribute="bottom" constant="25" id="gnx-Ox-8wd"/>
                             <constraint firstItem="U9x-fu-awW" firstAttribute="baseline" secondItem="gQb-Ru-aEI" secondAttribute="baseline" id="hXh-Nn-O2s"/>
-                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="trailing" secondItem="lX2-sm-TiA" secondAttribute="trailing" id="jmu-wy-OMG"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="centerX" secondItem="z6E-Wt-JHV" secondAttribute="centerX" id="hjX-F4-dAj"/>
                             <constraint firstItem="XdT-wv-Zc2" firstAttribute="centerX" secondItem="lX2-sm-TiA" secondAttribute="centerX" constant="4" id="kmS-SZ-wSb"/>
-                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="top" secondItem="303-Kt-Cdd" secondAttribute="bottom" constant="3" id="mQZ-c6-YGL"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="trailing" secondItem="lX2-sm-TiA" secondAttribute="trailing" id="npD-Kw-TCE"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="leading" secondItem="303-Kt-Cdd" secondAttribute="leading" id="pS2-Qj-Dh8"/>
                             <constraint firstItem="3xH-c2-xnn" firstAttribute="leading" secondItem="Xjh-aC-L3s" secondAttribute="trailing" constant="8" symbolic="YES" id="rzV-g8-7Pd"/>
                             <constraint firstItem="AnQ-dS-mso" firstAttribute="trailing" secondItem="cJL-DS-our" secondAttribute="trailing" id="s5B-Ro-ghP"/>
                             <constraint firstItem="cJL-DS-our" firstAttribute="centerY" secondItem="XdT-wv-Zc2" secondAttribute="centerY" id="v3S-gx-ma3"/>
                             <constraint firstItem="uvy-Co-bOZ" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="8" id="xVB-cd-GZS"/>
+                            <constraint firstItem="mPA-Dr-pYk" firstAttribute="leading" secondItem="LeJ-4q-yjW" secondAttribute="leading" id="xur-CA-na0"/>
                             <constraint firstItem="uvy-Co-bOZ" firstAttribute="leading" secondItem="XdT-wv-Zc2" secondAttribute="leading" id="zRP-39-kRc"/>
                         </constraints>
                         <variation key="default">
@@ -520,7 +532,7 @@
                         <outlet property="labelAudioCurrentDuration" destination="LeJ-4q-yjW" id="XPX-FQ-FrE"/>
                         <outlet property="labelAudioDuration" destination="lX2-sm-TiA" id="JPj-YD-mQM"/>
                         <outlet property="labelName" destination="cJL-DS-our" id="p4d-Uh-DNv"/>
-                        <outlet property="progressAudioStream" destination="mPA-Dr-pYk" id="gM2-de-dRq"/>
+                        <outlet property="progressAudioStream" destination="mPA-Dr-pYk" id="Yg8-hq-RwA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEQ-6M-JeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
