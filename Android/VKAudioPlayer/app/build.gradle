@@ -26,10 +26,20 @@ android {
 }
 
 dependencies {
+    //Google libs
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
 
     //ButterKnife
     compile 'com.jakewharton:butterknife:8.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
+
+    //FragmentArgs
+    compile 'com.hannesdorfmann.fragmentargs:annotation:3.0.2'
+    apt 'com.hannesdorfmann.fragmentargs:processor:3.0.2'
+
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
 }

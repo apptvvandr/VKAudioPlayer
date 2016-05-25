@@ -10,7 +10,7 @@ import android.webkit.WebViewClient;
 import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.BaseActivity;
-import github.y0rrrsh.vkaudioplayer.models.AccessToken;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
 
 public class LoginActivity extends BaseActivity {
 
@@ -35,14 +35,8 @@ public class LoginActivity extends BaseActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.contains("access_token=")) {
-                    String tokenSubstring = url.split("#")[1];
-                    String[] accessParams = tokenSubstring.split("&");
 
-                    String token = accessParams[0].split("=")[1];
-                    String expiresIn = accessParams[1].split("=")[1];
-                    String userId = accessParams[2].split("=")[1];
-
-                    AccessToken.init(token, expiresIn, userId);
+                    VkApi.init(url);
                     MainActivity.start(LoginActivity.this);
                 }
                 return super.shouldOverrideUrlLoading(view, url);

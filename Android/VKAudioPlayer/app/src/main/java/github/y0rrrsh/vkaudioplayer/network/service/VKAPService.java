@@ -1,0 +1,12 @@
+package github.y0rrrsh.vkaudioplayer.network.service;
+
+import github.y0rrrsh.vkaudioplayer.models.Audio;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
+
+/**
+ * @author Artur Yorsh
+ */
+public interface VKAPService {
+
+    void getAudios(String userId, VkArrayCallback<Audio> callback);
+}

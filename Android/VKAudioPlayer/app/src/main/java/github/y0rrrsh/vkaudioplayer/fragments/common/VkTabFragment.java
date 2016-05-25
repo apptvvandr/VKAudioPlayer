@@ -9,14 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
+
 import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
 
 /**
  * @author Artur Yorsh
  */
 public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragment {
+
+    protected static final String TAG = "VkTabFragment";
+
+    protected VKAPService api = VkApi.getServiceInstance();
 
     @BindView(R.id.recycler_view) RecyclerView recyclerView;
     protected A adapter;
@@ -32,6 +40,14 @@ public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragmen
         return new LinearLayoutManager(context);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FragmentArgs.inject(this);
+
+        adapter = onCreateItemAdapter();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,7 +55,6 @@ public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragmen
 
         RecyclerView.LayoutManager layoutManager = getLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = onCreateItemAdapter();
         recyclerView.setAdapter(adapter);
 
         return contentView;

@@ -7,7 +7,7 @@ import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemHolder;
-import github.y0rrrsh.vkaudioplayer.models.response.Audio;
+import github.y0rrrsh.vkaudioplayer.models.Audio;
 
 /**
  * @author Artur Yorsh
@@ -26,7 +26,8 @@ public class UserAudiosAdapter extends VkItemAdapter<Audio, UserAudiosAdapter.Au
 
     @Override
     protected void onBindViewHolder(AudioHolder holder, Audio item, int position) {
-        holder.textId.setText(String.valueOf(item.getId()));
+        String audioInfo = String.format("%s - %s", item.getArtist(), item.getTitle());
+        holder.textId.setText(audioInfo);
     }
 
     static class AudioHolder extends VkItemHolder {
