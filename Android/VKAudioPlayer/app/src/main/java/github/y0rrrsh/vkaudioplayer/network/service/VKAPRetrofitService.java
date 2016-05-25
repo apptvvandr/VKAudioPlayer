@@ -1,6 +1,7 @@
 package github.y0rrrsh.vkaudioplayer.network.service;
 
 import github.y0rrrsh.vkaudioplayer.models.Audio;
+import github.y0rrrsh.vkaudioplayer.models.Friend;
 import github.y0rrrsh.vkaudioplayer.models.Group;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
@@ -18,4 +19,7 @@ interface VKAPRetrofitService {
 
     @GET("groups.get")
     Call<VkResponse<VkArrayResponse<Group>>> getGroups(@Query("extended") boolean extended);
+
+    @GET("friends.get")
+    Call<VkResponse<VkArrayResponse<Friend>>> getFriends(@Query("fields") String fields);
 }
