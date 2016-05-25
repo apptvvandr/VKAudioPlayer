@@ -3,6 +3,7 @@ package github.y0rrrsh.vkaudioplayer.network.service;
 import java.util.List;
 
 import github.y0rrrsh.vkaudioplayer.models.Audio;
+import github.y0rrrsh.vkaudioplayer.models.Group;
 import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
@@ -32,6 +33,23 @@ class VKAPServiceImpl implements VKAPService {
 
             @Override
             public void onFailure(Call<VkResponse<VkArrayResponse<Audio>>> call, Throwable t) {
+                t.printStackTrace();
+                callback.onError(t);
+            }
+        });
+    }
+
+    @Override
+    public void getGroups(VkArrayCallback<Group> callback) {
+        service.getGroups(true).enqueue(new Callback<VkResponse<VkArrayResponse<Group>>>() {
+            @Override
+            public void onResponse(Call<VkResponse<VkArrayResponse<Group>>> call, Response<VkResponse<VkArrayResponse<Group>>> response) {
+                List<Group> items = response.body().getResponse().getItems();
+                callback.onResponse(items);
+            }
+
+            @Override
+            public void onFailure(Call<VkResponse<VkArrayResponse<Group>>> call, Throwable t) {
                 t.printStackTrace();
                 callback.onError(t);
             }

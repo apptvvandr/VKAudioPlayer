@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragmentBuilder;
+import github.y0rrrsh.vkaudioplayer.fragments.UserGroupsFragment;
 
 /**
  * @author Artur Yorsh
@@ -19,7 +20,12 @@ public class VkTabAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new UserAudiosFragmentBuilder().build();
+        switch (position) {
+            default:
+                return new UserAudiosFragmentBuilder().build();
+            case 1:
+                return new UserGroupsFragment();
+        }
     }
 
     @Override
