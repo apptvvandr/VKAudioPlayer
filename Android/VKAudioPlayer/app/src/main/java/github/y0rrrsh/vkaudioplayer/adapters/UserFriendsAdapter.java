@@ -8,6 +8,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
+import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemHolder;
 import github.y0rrrsh.vkaudioplayer.models.Friend;
@@ -31,6 +32,9 @@ public class UserFriendsAdapter extends VkItemAdapter<Friend, UserFriendsAdapter
     protected void onBindViewHolder(FriendHolder holder, Friend item, int position) {
         Picasso.with(holder.itemView.getContext()).load(item.getPhoto100()).into(holder.imageAvatar);
         holder.textName.setText(String.format("%s %s", item.getFirstName(), item.getLastName()));
+
+        holder.itemView.setOnClickListener(v ->
+                ListAudioActivity.start(holder.itemView.getContext(), item.getId(), item.getFirstName()));
     }
 
     static class FriendHolder extends VkItemHolder {

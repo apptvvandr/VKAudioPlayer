@@ -28,8 +28,10 @@ class VKAPServiceImpl implements VKAPService {
         service.getAudios(userId).enqueue(new Callback<VkResponse<VkArrayResponse<Audio>>>() {
             @Override
             public void onResponse(Call<VkResponse<VkArrayResponse<Audio>>> call, Response<VkResponse<VkArrayResponse<Audio>>> response) {
-                List<Audio> items = response.body().getResponse().getItems();
-                callback.onResponse(items);
+                VkArrayResponse<Audio> arrayResponse = response.body().getResponse();
+                if (arrayResponse != null) {
+                    callback.onResponse(arrayResponse.getItems());
+                }
             }
 
             @Override
