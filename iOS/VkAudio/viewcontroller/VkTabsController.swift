@@ -12,35 +12,18 @@ import Alamofire
 
 class VkTabsController: UITabBarController {
     
-    let BG_FILE_NAME = "bg_image.jpg"
+    let api = VKAPService.sharedInstance!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let bgImagePath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: BG_FILE_NAME)
-        
-        if let background = UIImage(contentsOfFile: bgImagePath){
-            setBackgroundImage(background)
+        guard let userPhoto = UIImage(contentsOfFile: "bg_image.jpg") else {
+            api.getUserPhoto(VkApiCallback(onResult: { (result) in
+                self.setBackgroundImage(result)
+            }))
             return
         }
-        
-        //todo: api-related stuff on UI. should be encapsulated into service level
-        VkSDK.Users.getUserInfo(["fields": "photo_big"], onResult: {
-            (result) in
-            if let url = NSURL(string: result["photo_big"] as! String) {
-                
-                Alamofire.download(.GET, url,
-                    destination: { (temporaryURL, response) in
-                        return NSURL(string: "file://\(bgImagePath)")!
-                        
-                }).response(completionHandler: { (request, response, data, error) in
-                    print("onResponse:")
-                    let background = UIImage(contentsOfFile: bgImagePath)
-                    
-                    self.setBackgroundImage(background!)
-                })
-            }
-        })
+        setBackgroundImage(userPhoto)
     }
     
     private func setBackgroundImage(image: UIImage) {

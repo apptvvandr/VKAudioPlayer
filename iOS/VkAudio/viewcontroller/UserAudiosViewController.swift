@@ -11,6 +11,8 @@ import Kingfisher
 
 class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
 
+    let api = VKAPService.sharedInstance!
+    
     var ownerId: Int?
     var ownerName: String?
     var userAudios = [Audio]()
@@ -75,14 +77,11 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     //MARK: -Refresh
     
     func onRefresh() {
-        self.title = ownerName != nil ? "\(ownerName!)'s audios" : "Audios"
-        let params: [String: AnyObject] = ownerId != nil ? ["owner_id": ownerId!] : [String: AnyObject]()
-        
-        VkSDK.Audios.getAudios(params, onResult: { result in
+        api.getAudios(ownerId, callback: VkApiCallback(onResult: { (result) in
             self.userAudios = result
             self.tableView.reloadData()
             self.refreshController.endRefreshing()
-        })
+        }))
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

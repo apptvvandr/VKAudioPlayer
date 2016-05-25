@@ -26,6 +26,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var labelAudioCurrentDuration: UILabel!
     @IBOutlet weak var labelAudioDuration: UILabel!
     
+    let api: VKAPService = VKAPService.sharedInstance!
     let player = AudioPlayer.sharedInstance
     var playlistOwnerId: Int? //nil means current user
     var audios: [Audio]!
@@ -103,18 +104,18 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     @IBAction func onRemoveButtonClicked(sender: AnyObject) {
         let currentAudio = player.currentAudio?.audio as! Audio
-        VkSDK.Audios.removeAudio(currentAudio.id!, ownerId: currentAudio.ownerId!) { (result) in
-            // todo: notify user on success
-        }
+        api.removeAudio(currentAudio.id!, ownerId: currentAudio.ownerId!, callback: VkApiCallback(onResult: { (result) in
+            //todo: notify user on success
+        }))
         player.playlist.removeAtIndex(player.currentAudio!.playlistPosition)
         player.playNext()
     }
     
     @IBAction func onAddButtonClicked(sender: AnyObject) {
         let currentAudio = player.currentAudio?.audio as! Audio
-        VkSDK.Audios.addAudio(currentAudio.id!, ownerId: currentAudio.ownerId!) { (result) in
-            // todo: notify user on success
-        }
+        api.addAudio(currentAudio.id!, ownerId: currentAudio.ownerId!, callback: VkApiCallback(onResult: { (result) in
+            //todo: notify user on success
+        }))
     }
     
     @IBAction func onAudioSliderDragged(sender: UISlider) {

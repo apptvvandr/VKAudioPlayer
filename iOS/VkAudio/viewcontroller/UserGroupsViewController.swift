@@ -10,6 +10,7 @@ import UIKit
 
 class UserGroupsViewController: UICollectionViewController {
 
+    let api = VKAPService.sharedInstance!
     var groups = [Group]()
     
     override func viewDidLoad() {
@@ -23,13 +24,10 @@ class UserGroupsViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //todo: api-related stuff on UI. should be encapsulated into service level
-        VkSDK.Groups.getGroups(["extended": 1],
-                onResult: {
-                    result in
-                    self.groups = result
-                    self.collectionView?.reloadData()
-                })
+        api.getGroups(VkApiCallback(onResult: { (result) in
+            self.groups = result
+            self.collectionView?.reloadData()
+        }))
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
