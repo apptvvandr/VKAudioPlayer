@@ -40,5 +40,6 @@ public class UserFriendsFragment extends VkTabFragment<UserFriendsAdapter> {
     @Override
     protected void onEmpty() {
         emptyView.setMessage("Seems, there are no friends in your list\nor something went wrong.");
+        emptyView.show();
     }
 }
