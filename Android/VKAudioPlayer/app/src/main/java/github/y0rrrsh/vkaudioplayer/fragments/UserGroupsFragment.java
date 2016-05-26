@@ -12,7 +12,7 @@ import github.y0rrrsh.vkaudioplayer.adapters.UserGroupsAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.Group;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
 
 /**
  * @author Artur Yorsh
@@ -31,7 +31,7 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getGroups(new VkApi.VkArrayCallback<Group>() {
+        api.getGroups(new VkArrayCallback<Group>() {
             @Override
             public void onResponse(List<Group> response) {
                 adapter.setItems(response);

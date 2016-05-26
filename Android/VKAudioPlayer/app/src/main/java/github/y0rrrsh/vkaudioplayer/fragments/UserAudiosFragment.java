@@ -12,7 +12,7 @@ import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.Audio;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
 
 /**
  * @author Artur Yorsh
@@ -22,6 +22,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
     @Arg(required = false)
     String userId;
+
     @Arg(required = false)
     String ownerName;
 
@@ -32,7 +33,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getAudios(userId, new VkApi.VkArrayCallback<Audio>() {
+        api.getAudios(userId, new VkArrayCallback<Audio>() {
             @Override
             public void onResponse(List<Audio> response) {
                 adapter.setItems(response);
@@ -41,7 +42,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
             @Override
             public void onError(Throwable t) {
                 progressBar.setVisibility(View.GONE);
-                onEmpty();
+                onDataSizeChanged(0);
             }
         });
     }
