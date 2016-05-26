@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VKAudioPlayer</string>
+    <string name="transition_avatar">transition_avatar</string>
+    <string name="transition_name">transition_name</string>
 </resources>

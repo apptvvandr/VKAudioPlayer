@@ -1,5 +1,8 @@
 package github.y0rrrsh.vkaudioplayer.adapters;
 
+import android.app.Activity;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,11 +33,19 @@ public class UserFriendsAdapter extends VkItemAdapter<Friend, UserFriendsAdapter
 
     @Override
     protected void onBindViewHolder(FriendHolder holder, Friend item, int position) {
-        Picasso.with(holder.itemView.getContext()).load(item.getPhoto100()).into(holder.imageAvatar);
+        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200()).into(holder.imageAvatar);
         holder.textName.setText(String.format("%s %s", item.getFirstName(), item.getLastName()));
 
-        holder.itemView.setOnClickListener(v ->
-                ListAudioActivity.start(holder.itemView.getContext(), item.getId(), item.getFirstName()));
+        holder.itemView.setOnClickListener(v -> {
+                    Activity activity = (Activity) holder.itemView.getContext();
+                    ActivityOptionsCompat options = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                                holder.imageAvatar, holder.imageAvatar.getTransitionName());
+                    }
+                    ListAudioActivity.start(activity, item.getId(), item.getFirstName(), item.getPhoto200(), options);
+                }
+        );
     }
 
     static class FriendHolder extends VkItemHolder {

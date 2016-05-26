@@ -13,6 +13,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:adjustViewBounds="true"
+        android:transitionName="@string/transition_avatar"
         app:riv_corner_radius="32dp"
         tools:src="@mipmap/ic_launcher"/>
 

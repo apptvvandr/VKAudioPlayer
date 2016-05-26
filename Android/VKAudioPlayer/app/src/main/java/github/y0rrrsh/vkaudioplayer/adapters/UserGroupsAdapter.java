@@ -1,5 +1,8 @@
 package github.y0rrrsh.vkaudioplayer.adapters;
 
+import android.app.Activity;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,8 +36,17 @@ public class UserGroupsAdapter extends VkItemAdapter<Group, UserGroupsAdapter.Gr
         Picasso.with(holder.itemView.getContext()).load(item.getPhoto200()).into(holder.imageAvatar);
         holder.textTitle.setText(item.getName());
 
-        holder.itemView.setOnClickListener(v ->
-                ListAudioActivity.start(holder.itemView.getContext(), -item.getId(), item.getName()));
+        holder.itemView.setOnClickListener(v -> {
+                    Activity activity = (Activity) holder.itemView.getContext();
+                    ActivityOptionsCompat options = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                                holder.imageAvatar, holder.imageAvatar.getTransitionName());
+                    }
+                    ListAudioActivity.start(activity, -item.getId(), item.getName(), item.getPhoto200(), options);
+                }
+
+        );
     }
 
     static class GroupHolder extends VkItemHolder {

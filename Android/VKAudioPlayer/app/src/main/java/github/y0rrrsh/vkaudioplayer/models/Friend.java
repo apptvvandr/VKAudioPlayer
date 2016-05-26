@@ -17,9 +17,9 @@ public class Friend implements VkItem {
     @SerializedName("last_name")
     @Expose
     private String lastName;
-    @SerializedName("photo_100")
+    @SerializedName("photo_200")
     @Expose
-    private String photo100;
+    private String photo200;
     @SerializedName("online")
     @Expose
     private Integer online;
@@ -32,8 +32,8 @@ public class Friend implements VkItem {
         return lastName;
     }
 
-    public String getPhoto100() {
-        return photo100;
+    public String getPhoto200() {
+        return photo200;
     }
 
     public Integer getOnline() {

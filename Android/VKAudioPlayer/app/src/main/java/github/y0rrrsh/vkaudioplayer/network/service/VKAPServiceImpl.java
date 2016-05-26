@@ -67,7 +67,7 @@ class VKAPServiceImpl implements VKAPService {
 
     @Override
     public void getFriends(VkArrayCallback<Friend> callback) {
-        service.getFriends("name, photo_100").enqueue(new Callback<VkResponse<VkArrayResponse<Friend>>>() {
+        service.getFriends("name, photo_200").enqueue(new Callback<VkResponse<VkArrayResponse<Friend>>>() {
             @Override
             public void onResponse(Call<VkResponse<VkArrayResponse<Friend>>> call, Response<VkResponse<VkArrayResponse<Friend>>> response) {
                 VkArrayResponse<Friend> itemsResponse = response.body().getResponse();
