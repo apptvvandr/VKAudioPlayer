@@ -12,8 +12,15 @@ public class VkResponse<T> {
     @Expose
     private T response;
 
+    @SerializedName("error")
+    @Expose
+    private VkError error;
+
     public T getResponse() {
         return response;
     }
 
+    public VkError getError() {
+        return error;
+    }
 }
