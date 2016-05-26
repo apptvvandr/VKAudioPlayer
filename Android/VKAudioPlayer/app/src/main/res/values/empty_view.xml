@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmptyView">
+
+        <attr name="ev_image" format="integer"/>
+        <attr name="ev_message" format="string"/>
+
+    </declare-styleable>
+</resources>
