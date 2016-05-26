@@ -1,7 +1,6 @@
 package github.y0rrrsh.vkaudioplayer.fragments;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.hannesdorfmann.fragmentargs.annotation.Arg;
@@ -12,7 +11,8 @@ import java.util.List;
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.Audio;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
 
 /**
  * @author Artur Yorsh
@@ -22,6 +22,8 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
     @Arg(required = false)
     String userId;
+    @Arg(required = false)
+    String ownerName;
 
     @Override
     protected UserAudiosAdapter onCreateItemAdapter() {
@@ -29,10 +31,8 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        api.getAudios(userId, new VkArrayCallback<Audio>() {
+    protected void onDataRequest(@NonNull VKAPService api) {
+        api.getAudios(userId, new VkApi.VkArrayCallback<Audio>() {
             @Override
             public void onResponse(List<Audio> response) {
                 adapter.setItems(response);
@@ -40,8 +40,17 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
             @Override
             public void onError(Throwable t) {
-
+                progressBar.setVisibility(View.GONE);
+                onEmpty();
             }
         });
+    }
+
+    @Override
+    protected void onEmpty() {
+        String owner = ownerName == null ? "your" : ownerName + "'s";
+        String message = String.format("Seems, %s playlist is empty,\nor something went wrong.", owner);
+        emptyView.setMessage(message);
+        emptyView.show();
     }
 }

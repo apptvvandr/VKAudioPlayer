@@ -28,12 +28,13 @@ public class ListAudioActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         int ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
-        String ownerName = getIntent().getStringExtra(ARG_OWNER_NAME);
+        String  ownerName = getIntent().getStringExtra(ARG_OWNER_NAME);
         toolbar.setTitle(String.format("%s's audios", ownerName));
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
         UserAudiosFragment userAudiosFragment = new UserAudiosFragmentBuilder()
                 .userId(String.valueOf(ownerId))
+                .ownerName(ownerName)
                 .build();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, userAudiosFragment)

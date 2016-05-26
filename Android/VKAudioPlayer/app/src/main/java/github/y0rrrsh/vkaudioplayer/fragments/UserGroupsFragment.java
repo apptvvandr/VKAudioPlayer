@@ -1,8 +1,7 @@
 package github.y0rrrsh.vkaudioplayer.fragments;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,7 +11,8 @@ import java.util.List;
 import github.y0rrrsh.vkaudioplayer.adapters.UserGroupsAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.Group;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
 
 /**
  * @author Artur Yorsh
@@ -30,10 +30,8 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        api.getGroups(new VkArrayCallback<Group>() {
+    protected void onDataRequest(@NonNull VKAPService api) {
+        api.getGroups(new VkApi.VkArrayCallback<Group>() {
             @Override
             public void onResponse(List<Group> response) {
                 adapter.setItems(response);
@@ -41,8 +39,14 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
 
             @Override
             public void onError(Throwable t) {
-
+                progressBar.setVisibility(View.GONE);
             }
         });
+    }
+
+    @Override
+    protected void onEmpty() {
+        emptyView.setMessage("Seems, you are not a member of any group,\nor something went wrong.");
+        emptyView.show();
     }
 }
