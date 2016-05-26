@@ -59,7 +59,6 @@ public class ListAudioActivity extends BaseActivity implements ItemObserver {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         fabPlay.hide(new FloatingActionButton.OnVisibilityChangedListener() {
             @Override
             public void onHidden(FloatingActionButton fab) {
