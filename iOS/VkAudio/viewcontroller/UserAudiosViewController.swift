@@ -8,8 +8,10 @@
 
 import UIKit
 import Kingfisher
+import DZNEmptyDataSet
+import MBProgressHUD
 
-class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
+class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     let api = VKAPService.sharedInstance!
     
@@ -17,9 +19,10 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     var ownerName: String?
     var userAudios = [Audio]()
     
-    let refreshController = UIRefreshControl()
     let searchController = UISearchController(searchResultsController: nil)
     var filteredAudios = [Audio]()
+    
+    var progressHudHidden: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +36,8 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
         
-        refreshController.addTarget(self, action: #selector(onRefresh), forControlEvents: UIControlEvents.ValueChanged)
-        tableView.addSubview(refreshController)
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -77,10 +80,17 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     //MARK: -Refresh
     
     func onRefresh() {
-        api.getAudios(ownerId, callback: VkApiCallback(onResult: { (result) in
-            self.userAudios = result
-            self.tableView.reloadData()
-            self.refreshController.endRefreshing()
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        progressHudHidden = false
+        api.getAudios(ownerId, callback: VkApiCallback(
+            onResult: { (result) in
+                self.userAudios = result
+                self.tableView.reloadData()
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+            },
+            onError: { (error) in
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+                self.tableView.reloadEmptyDataSet()
         }))
     }
     
@@ -107,5 +117,27 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         searchController.active = false
+    }
+    
+    //MARK: -DZNEmptyDataSet
+    
+    func emptyDataSetShouldDisplay(scrollView: UIScrollView!) -> Bool {
+        return progressHudHidden && userAudios.count == 0
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Oops..."
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Seems, \(ownerName ?? "your") playlist is empty, or something went wrong"
+        let attrs = [NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "sad")
     }
 }

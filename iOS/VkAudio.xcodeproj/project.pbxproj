@@ -51,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		180F57BD99F9E24B027F6929 /* Pods_VKAudioWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKAudioWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig"; sourceTree = "<group>"; };
 		3115900DE6111E4627037424 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkAudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				F5888E631CE9D42B00879186 /* NotificationCenter.framework */,
-				180F57BD99F9E24B027F6929 /* Pods_VKAudioWidget.framework */,
 				9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */,
 			);
 			name = Frameworks;

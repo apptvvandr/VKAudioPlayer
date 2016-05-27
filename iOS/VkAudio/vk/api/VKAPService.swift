@@ -28,61 +28,85 @@ class VKAPService: VKAPServiceDelegate {
     func getAudios(ownerId: Int?, callback: VkApiCallback<[Audio]>?) {
         let requestParams: [String: AnyObject]? = ownerId != nil ? ["owner_id": ownerId!] : nil
         
-        api.getRequest("audio.get", params: requestParams, callback: VkApiCallback(onResult: { (result: [AnyObject]) in
-            let audios = result.flatMap { $0 as? [String: AnyObject] }.map { Audio(apiResponse: $0) }
-            callback?.onResult(result: audios)
+        api.getRequest("audio.get", params: requestParams, callback: VkApiCallback(
+            onResult: { (result: [AnyObject]) in
+                let audios = result.flatMap { $0 as? [String: AnyObject] }.map { Audio(apiResponse: $0) }
+                callback?.onResult(result: audios)
+            },
+            onError: { (error) in
+                callback?.onError?(error: error)
         }))
     }
     
     func getGroups(callback: VkApiCallback<[Group]>?) {
         let requestParams: [String: AnyObject] = ["extended": 1]
         
-        api.getRequest("groups.get", params: requestParams, callback: VkApiCallback(onResult: { (result: [AnyObject]) in
-            let groups = result.flatMap { $0 as? [String: AnyObject] }.map { Group(apiResponse: $0) }
-            callback?.onResult(result: groups)
+        api.getRequest("groups.get", params: requestParams, callback: VkApiCallback(
+            onResult: { (result: [AnyObject]) in
+                let groups = result.flatMap { $0 as? [String: AnyObject] }.map { Group(apiResponse: $0) }
+                callback?.onResult(result: groups)
+            },
+            onError: { (error) in
+                callback?.onError?(error: error)
         }))
     }
     
     func getFriends(callback: VkApiCallback<[User]>?) {
         let requestParams: [String: AnyObject] = ["fields": "name, photo_100"]
         
-        api.getRequest("friends.get", params: requestParams, callback: VkApiCallback(onResult: { (result: [AnyObject]) in
-            let users = result.flatMap { $0 as? [String: AnyObject] }.map { User(apiResponse: $0) }
-            callback?.onResult(result: users)
+        api.getRequest("friends.get", params: requestParams, callback: VkApiCallback(
+            onResult: { (result: [AnyObject]) in
+                let users = result.flatMap { $0 as? [String: AnyObject] }.map { User(apiResponse: $0) }
+                callback?.onResult(result: users)
+            },
+            onError: { (error) in
+                callback?.onError?(error: error)
         }))
     }
     
     func getUserPhoto(callback: VkApiCallback<UIImage>?) {
         let requestParams: [String: AnyObject] = ["fields": "photo_big"]
         
-        api.getRequest("users.get", params: requestParams, callback: VkApiCallback(onResult: { (result: [AnyObject]) in
-            guard let resultDict  = result[0] as? [String : AnyObject], let url = NSURL(string: resultDict["photo_big"] as! String) else {
-                return
-            }
+        api.getRequest("users.get", params: requestParams, callback: VkApiCallback(
+            onResult: { (result: [AnyObject]) in
+                guard let resultDict  = result[0] as? [String : AnyObject], let url = NSURL(string: resultDict["photo_big"] as! String) else {
+                    return
+                }
             
-            let localPath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg")
-            Alamofire.download(.GET, url, destination: { (temporaryURL, response) in
-                return NSURL(string: "file://\(localPath)")!
-            }).response(completionHandler: { (request, response, data, error) in
-                let image = UIImage(contentsOfFile: localPath)
-                callback?.onResult(result: image!)
-            })
+                let localPath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg")
+                Alamofire.download(.GET, url, destination: { (temporaryURL, response) in
+                    return NSURL(string: "file://\(localPath)")!
+                }).response(completionHandler: { (request, response, data, error) in
+                    let image = UIImage(contentsOfFile: localPath)
+                    callback?.onResult(result: image!)
+                })
+            },
+            onError: { (error) in
+                callback?.onError?(error: error)
         }))
     }
 
     func addAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<AnyObject>?) {
         let params: [String: AnyObject] = ["audio_id": audioId, "owner_id": ownerId]
         
-        api.getRequest("audio.add", params: params, callback: VkApiCallback(onResult: { (result: AnyObject) in
-            callback?.onResult(result: result)
+        api.getRequest("audio.add", params: params, callback: VkApiCallback(
+            onResult: { (result: AnyObject) in
+                callback?.onResult(result: result)
+            },
+            onError: { (error) in
+                callback?.onError?(error: error)
         }))
     }
 
     func removeAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<AnyObject>?) {
         let params: [String: AnyObject] = ["audio_id": audioId, "owner_id": ownerId]
 
-        api.getRequest("audio.delete", params: params, callback: VkApiCallback(onResult: { (result: AnyObject) in
-            callback?.onResult(result: result)
+        api.getRequest("audio.delete", params: params, callback: VkApiCallback(
+            onResult: { (result: AnyObject) in
+                callback?.onResult(result: result)
+            },
+            onError: { (error) in
+                callback?.onError?(error: error)
         }))
     }
 }
