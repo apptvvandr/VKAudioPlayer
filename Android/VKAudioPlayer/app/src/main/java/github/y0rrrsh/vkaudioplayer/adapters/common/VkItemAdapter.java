@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import github.y0rrrsh.vkaudioplayer.models.response.VkItem;
+import github.y0rrrsh.vkaudioplayer.models.VkItem;
 
 /**
  * @author Artur Yorsh
@@ -16,6 +16,8 @@ import github.y0rrrsh.vkaudioplayer.models.response.VkItem;
 public abstract class VkItemAdapter<M extends VkItem, VH extends VkItemHolder> extends RecyclerView.Adapter<VH> {
 
     protected List<M> items;
+
+    protected ItemObserver itemObserver;
 
     @LayoutRes
     protected abstract int getItemViewResId();
@@ -46,5 +48,16 @@ public abstract class VkItemAdapter<M extends VkItem, VH extends VkItemHolder> e
     public void setItems(List<M> items) {
         this.items = items;
         notifyDataSetChanged();
+        if (itemObserver != null) {
+            itemObserver.onDataSizeChanged(getItemCount());
+        }
+    }
+
+    public void setItemObserver(ItemObserver observer) {
+        itemObserver = observer;
+    }
+
+    public interface ItemObserver {
+        void onDataSizeChanged(int size);
     }
 }
