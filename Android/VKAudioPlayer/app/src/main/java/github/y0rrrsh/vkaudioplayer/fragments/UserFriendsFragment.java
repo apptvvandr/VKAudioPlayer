@@ -9,7 +9,7 @@ import github.y0rrrsh.vkaudioplayer.adapters.UserFriendsAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.Friend;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
 
 /**
  * @author Artur Yorsh

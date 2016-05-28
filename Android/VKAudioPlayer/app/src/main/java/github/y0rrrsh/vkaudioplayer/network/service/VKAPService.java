@@ -3,7 +3,7 @@ package github.y0rrrsh.vkaudioplayer.network.service;
 import github.y0rrrsh.vkaudioplayer.models.Audio;
 import github.y0rrrsh.vkaudioplayer.models.Friend;
 import github.y0rrrsh.vkaudioplayer.models.Group;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
 
 /**
  * @author Artur Yorsh

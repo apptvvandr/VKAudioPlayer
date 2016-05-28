@@ -18,7 +18,7 @@ import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter.ItemObserver;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
 import github.y0rrrsh.vkaudioplayer.views.EmptyView;
 
 /**
@@ -77,7 +77,7 @@ public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragmen
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        VKAPService api = VkApi.getServiceInstance();
+        VKAPService api = VKApi.getApiService();
         if (api != null) {
             onDataRequest(api);
         }

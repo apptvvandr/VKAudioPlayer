@@ -12,7 +12,7 @@ import retrofit2.http.Query;
 /**
  * @author Artur Yorsh
  */
-interface VKAPRetrofitService {
+public interface VKAPRetrofitService {
 
     @GET("audio.get")
     Call<VkResponse<VkArrayResponse<Audio>>> getAudios(@Query("owner_id") String userId);
