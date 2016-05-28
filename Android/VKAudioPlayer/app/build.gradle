@@ -14,9 +14,13 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "VKAP_APP_ID", "\"5424227\""
+            buildConfigField "String", "VKAP_APP_SCOPE", "\"audio, offline\""
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "VKAP_APP_ID", "5424227"
+            buildConfigField "String", "VKAP_APP_SCOPE", "audio, offline"
         }
     }
     compileOptions {
