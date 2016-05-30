@@ -1,11 +1,16 @@
-package github.y0rrrsh.vkaudioplayer.network.service;
+package github.y0rrrsh.vkaudioplayer.vkapi;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.List;
 
 import github.y0rrrsh.vkaudioplayer.models.VkItem;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPRetrofitService;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -17,23 +22,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * @author Artur Yorsh
  */
-public class VkApi {
+public class VKApi {
 
-    private static VkApi instance;
+    private static VKApi instance;
 
     private String userId;
     private String accessToken;
     private String tokenExpiresIn;
 
+    //TODO: Implement DI for api service service
     private VKAPService service;
 
-    private VkApi(String accessToken, String tokenExpiresIn, String userId) {
+    private VKApi(String accessToken, String tokenExpiresIn, String userId) {
         this.accessToken = accessToken;
         this.tokenExpiresIn = tokenExpiresIn;
         this.userId = userId;
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         Interceptor requestInterceptor = chain -> {
             Request original = chain.request();
 
@@ -62,19 +68,32 @@ public class VkApi {
         service = new VKAPServiceImpl(retrofit.create(VKAPRetrofitService.class));
     }
 
-    public static void init(@NonNull String urlWithToken) {
-        String tokenSubstring = urlWithToken.split("#")[1];
-        String[] accessParams = tokenSubstring.split("&");
+    public static void init(@NonNull Context context) {
+        if (instance != null) {
+            return;
+        }
+        String[] tokenValues = VKPreferences.getTokenValues(context);
+        if (tokenValues[0] == null) {
+            return;
+        }
+        instance = new VKApi(tokenValues[0], tokenValues[1], tokenValues[2]);
+    }
 
-        String token = accessParams[0].split("=")[1];
-        String expiresIn = accessParams[1].split("=")[1];
-        String userId = accessParams[2].split("=")[1];
+    static void init(Context context, @NonNull String token, String expiresIn, String userId) {
+        VKPreferences.saveTokenValues(context, token, expiresIn, userId);
+        instance = new VKApi(token, expiresIn, userId);
+    }
 
-        instance = new VkApi(token, expiresIn, userId);
+    public static void login(@NonNull Activity activity, @NonNull String appId, @NonNull String appScope) {
+        VKLoginActivity.startForResult(activity, appId, appScope);
+    }
+
+    public static boolean isInitialized() {
+        return instance != null;
     }
 
     @Nullable
-    public static VKAPService getServiceInstance() {
+    public static VKAPService getApiService() {
         return instance == null ? null : instance.service;
     }
 

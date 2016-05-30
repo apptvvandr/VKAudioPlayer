@@ -5,7 +5,7 @@ import github.y0rrrsh.vkaudioplayer.models.Friend;
 import github.y0rrrsh.vkaudioplayer.models.Group;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
-import github.y0rrrsh.vkaudioplayer.network.service.VkApi.VkArrayCallback;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -13,13 +13,13 @@ import retrofit2.Response;
 /**
  * @author Artur Yorsh
  */
-class VKAPServiceImpl implements VKAPService {
+public class VKAPServiceImpl implements VKAPService {
 
     private static final String TAG = "VKAPServiceImpl";
 
     private VKAPRetrofitService service;
 
-    VKAPServiceImpl(VKAPRetrofitService service) {
+    public VKAPServiceImpl(VKAPRetrofitService service) {
         this.service = service;
     }
 
