@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import github.y0rrrsh.vkaudioplayer.models.VkItem;
+import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
 
 /**
  * @author Artur Yorsh

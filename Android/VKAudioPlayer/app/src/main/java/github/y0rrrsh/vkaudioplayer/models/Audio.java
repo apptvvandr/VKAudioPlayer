@@ -3,6 +3,8 @@ package github.y0rrrsh.vkaudioplayer.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
+
 /**
  * @author Artur Yorsh
  */

@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
-import github.y0rrrsh.vkaudioplayer.models.VkItem;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPRetrofitService;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;

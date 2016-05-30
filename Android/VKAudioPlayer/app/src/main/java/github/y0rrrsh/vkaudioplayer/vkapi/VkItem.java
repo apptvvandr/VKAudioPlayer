@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.models;
+package github.y0rrrsh.vkaudioplayer.vkapi;
 
 /**
  * @author Artur Yorsh
