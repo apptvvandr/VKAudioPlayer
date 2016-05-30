@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="github.y0rrrsh.vkaudioplayer">
+<manifest package="github.y0rrrsh.vkaudioplayer"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -12,24 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/VKAP.Main">
 
+        <activity android:name=".vkapi.VKLoginActivity"/>
+
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/VKAP.Splash">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".vkapi.VKLoginActivity"/>
-
         <activity android:name=".activities.MainActivity"/>
-
         <activity android:name=".activities.ListAudioActivity"/>
 
+        <activity android:name=".AudioPlayerActivity">
+        </activity>
     </application>
 
 </manifest>
