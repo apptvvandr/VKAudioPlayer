@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MediaPlayer
+import JLToast
 
 class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
@@ -105,7 +106,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBAction func onRemoveButtonClicked(sender: AnyObject) {
         let currentAudio = player.currentAudio?.audio as! Audio
         api.removeAudio(currentAudio.id!, ownerId: currentAudio.ownerId!, callback: VkApiCallback(onResult: { (result) in
-            //todo: notify user on success
+            let message = "\(currentAudio.artist ?? "Unknown") - \(currentAudio.name ?? "Unnamed") was removed from your page"
+            JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
         }))
         player.playlist.removeAtIndex(player.currentAudio!.playlistPosition)
         player.playNext()
@@ -114,7 +116,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBAction func onAddButtonClicked(sender: AnyObject) {
         let currentAudio = player.currentAudio?.audio as! Audio
         api.addAudio(currentAudio.id!, ownerId: currentAudio.ownerId!, callback: VkApiCallback(onResult: { (result) in
-            //todo: notify user on success
+            let message = "\(currentAudio.artist ?? "Unknown") - \(currentAudio.name ?? "Unnamed") was added to your page"
+            JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
         }))
     }
     
