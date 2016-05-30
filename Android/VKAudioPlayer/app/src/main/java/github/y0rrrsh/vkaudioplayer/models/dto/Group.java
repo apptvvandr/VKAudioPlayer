@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.models;
+package github.y0rrrsh.vkaudioplayer.models.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -59,10 +59,12 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = super.onCreateView(inflater, container, savedInstanceState);
-        adapter.setItemClickListener((item, itemPosition) -> {
+
+        adapter.setItemClickListener((item, itemPosition, viewHolder) -> {
             List<AudioModel> playlist = adapter.getItems();
             AudioPlayerActivity.start(getActivity(), playlist, itemPosition);
         });
+
         return contentView;
     }
 

@@ -13,11 +13,12 @@ import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
 /**
  * @author Artur Yorsh
  */
-public abstract class VkItemAdapter<M extends VkItem, VH extends VkItemHolder> extends RecyclerView.Adapter<VH> {
+public abstract class VkItemAdapter<M, VH extends VkItemHolder> extends RecyclerView.Adapter<VH> {
 
     protected List<M> items;
 
     protected ItemObserver itemObserver;
+    protected ItemClickListener<M, VH> itemClickListener;
 
     @LayoutRes
     protected abstract int getItemViewResId();
@@ -38,6 +39,10 @@ public abstract class VkItemAdapter<M extends VkItem, VH extends VkItemHolder> e
     public void onBindViewHolder(VH holder, int position) {
         M item = items.get(position);
         onBindViewHolder(holder, item, position);
+        holder.itemView.setOnClickListener(v -> {
+            if (itemClickListener == null) return;
+            itemClickListener.onItemClicked(item, position, holder);
+        });
     }
 
     @Override
@@ -53,11 +58,23 @@ public abstract class VkItemAdapter<M extends VkItem, VH extends VkItemHolder> e
         }
     }
 
+    public List<M> getItems() {
+        return items;
+    }
+
     public void setItemObserver(ItemObserver observer) {
         itemObserver = observer;
     }
 
+    public void setItemClickListener(ItemClickListener<M, VH> listener){
+        this.itemClickListener = listener;
+    }
+
     public interface ItemObserver {
         void onDataSizeChanged(int size);
+    }
+
+    public interface ItemClickListener<M, VH> {
+        void onItemClicked(M item, int itemPosition, VH viewHolder);
     }
 }

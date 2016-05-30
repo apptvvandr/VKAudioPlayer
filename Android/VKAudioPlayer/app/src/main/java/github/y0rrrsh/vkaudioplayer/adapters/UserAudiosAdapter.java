@@ -37,11 +37,11 @@ public class UserAudiosAdapter extends VkItemAdapter<AudioModel, UserAudiosAdapt
         holder.textDuration.setText(dateFormat.format(new Date(item.getDuration() * 1000)));
     }
 
-    static class AudioHolder extends VkItemHolder {
+    public static class AudioHolder extends VkItemHolder {
 
-        @BindView(R.id.text_audio_title) TextView textTitle;
-        @BindView(R.id.text_audio_artist) TextView textArtist;
-        @BindView(R.id.text_audio_duration) TextView textDuration;
+        @BindView(R.id.text_audio_title) public TextView textTitle;
+        @BindView(R.id.text_audio_artist) public TextView textArtist;
+        @BindView(R.id.text_audio_duration) public TextView textDuration;
 
         public AudioHolder(View itemView) {
             super(itemView);
