@@ -47,6 +47,8 @@ public class AudioModel implements AudioPlayerItem {
     }
 
     protected AudioModel(Parcel in) {
+        id = in.readLong();
+        ownerId = in.readLong();
         url = in.readString();
         duration = in.readLong();
         artist = in.readString();
