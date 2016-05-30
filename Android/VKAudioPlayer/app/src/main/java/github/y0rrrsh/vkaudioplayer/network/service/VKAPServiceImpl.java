@@ -1,8 +1,8 @@
 package github.y0rrrsh.vkaudioplayer.network.service;
 
-import github.y0rrrsh.vkaudioplayer.models.Audio;
-import github.y0rrrsh.vkaudioplayer.models.Friend;
-import github.y0rrrsh.vkaudioplayer.models.Group;
+import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
+import github.y0rrrsh.vkaudioplayer.models.dto.Friend;
+import github.y0rrrsh.vkaudioplayer.models.dto.Group;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
@@ -24,11 +24,11 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getAudios(String userId, VkArrayCallback<Audio> callback) {
-        service.getAudios(userId).enqueue(new Callback<VkResponse<VkArrayResponse<Audio>>>() {
+    public void getAudios(String userId, VkArrayCallback<AudioDTO> callback) {
+        service.getAudios(userId).enqueue(new Callback<VkResponse<VkArrayResponse<AudioDTO>>>() {
             @Override
-            public void onResponse(Call<VkResponse<VkArrayResponse<Audio>>> call, Response<VkResponse<VkArrayResponse<Audio>>> response) {
-                VkArrayResponse<Audio> itemsResponse = response.body().getResponse();
+            public void onResponse(Call<VkResponse<VkArrayResponse<AudioDTO>>> call, Response<VkResponse<VkArrayResponse<AudioDTO>>> response) {
+                VkArrayResponse<AudioDTO> itemsResponse = response.body().getResponse();
                 if (itemsResponse == null) {
                     onFailure(call, response.body().getError());
                     return;
@@ -37,7 +37,7 @@ public class VKAPServiceImpl implements VKAPService {
             }
 
             @Override
-            public void onFailure(Call<VkResponse<VkArrayResponse<Audio>>> call, Throwable t) {
+            public void onFailure(Call<VkResponse<VkArrayResponse<AudioDTO>>> call, Throwable t) {
                 t.printStackTrace();
                 callback.onError(t);
             }

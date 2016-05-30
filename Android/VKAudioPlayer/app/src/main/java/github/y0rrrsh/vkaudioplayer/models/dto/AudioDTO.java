@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.models;
+package github.y0rrrsh.vkaudioplayer.models.dto;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -8,7 +8,7 @@ import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
 /**
  * @author Artur Yorsh
  */
-public class Audio implements VkItem {
+public class AudioDTO implements VkItem {
 
     @SerializedName("id")
     @Expose
