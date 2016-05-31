@@ -9,21 +9,29 @@ import github.y0rrrsh.vkaudioplayer.AudioPlayerItem;
  */
 public class AudioModel implements AudioPlayerItem {
 
-    private long id;
-    private long ownerId;
+    private Integer id;
+    private Integer ownerId;
 
     private String url;
     private long duration;
     private String artist;
     private String name;
 
-    public AudioModel(long id, long ownerId, String url, long duration, String artist, String name) {
+    public AudioModel(Integer id, Integer ownerId, String url, long duration, String artist, String name) {
         this.id = id;
         this.ownerId = ownerId;
         this.url = url;
         this.duration = duration;
         this.artist = artist;
         this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
     }
 
     @Override
@@ -47,8 +55,8 @@ public class AudioModel implements AudioPlayerItem {
     }
 
     protected AudioModel(Parcel in) {
-        id = in.readLong();
-        ownerId = in.readLong();
+        id = in.readInt();
+        ownerId = in.readInt();
         url = in.readString();
         duration = in.readLong();
         artist = in.readString();
@@ -74,8 +82,8 @@ public class AudioModel implements AudioPlayerItem {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeLong(ownerId);
+        dest.writeInt(id);
+        dest.writeInt(ownerId);
         dest.writeString(url);
         dest.writeLong(duration);
         dest.writeString(artist);

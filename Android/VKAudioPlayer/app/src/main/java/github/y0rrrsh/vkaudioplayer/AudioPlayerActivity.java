@@ -14,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import github.y0rrrsh.vkaudioplayer.activities.common.BaseActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.views.PlaybackControlView;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
 
 public class AudioPlayerActivity extends BaseActivity implements PlaybackControlView.ActionHandler {
 
@@ -35,6 +38,8 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
     private AudioModel currentAudio;
     private int currentItemPosition;
 
+    private VKAPService api = VKApi.getApiService();
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_audio_player;
@@ -52,14 +57,6 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
 
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         playbackControlView.setActionHandler(this);
-        btnAdd.setOnClickListener(v -> {
-            // TODO: 30.05.16: onAddClicked
-            Toast.makeText(AudioPlayerActivity.this, "onAddClicked", Toast.LENGTH_SHORT).show();
-        });
-        btnRemove.setOnClickListener(v -> {
-            // TODO: 30.05.16 onRemoveClicked
-            Toast.makeText(AudioPlayerActivity.this, "onRemoveClicked", Toast.LENGTH_SHORT).show();
-        });
     }
 
     @Override
@@ -68,6 +65,36 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
 
         textArtist.setText(currentAudio.getArtist());
         textName.setText(currentAudio.getName());
+    }
+
+    @OnClick(R.id.btn_player_add)
+    protected void onAddClicked() {
+        api.addAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VKApi.VkCallback<Integer>() {
+            @Override
+            public void onResponse(Integer response) {
+                String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
+                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was added to your page", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Throwable t) {
+            }
+        });
+    }
+
+    @OnClick(R.id.btn_player_remove)
+    protected void onRemoveClicked() {
+        api.removeAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VKApi.VkCallback<Integer>() {
+            @Override
+            public void onResponse(Integer response) {
+                String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
+                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was removed from your page", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Throwable t) {
+            }
+        });
     }
 
     @Override

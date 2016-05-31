@@ -38,7 +38,7 @@ public class VKApi {
         this.userId = userId;
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         Interceptor requestInterceptor = chain -> {
             Request original = chain.request();
 
@@ -96,7 +96,7 @@ public class VKApi {
         return instance == null ? null : instance.service;
     }
 
-    public interface VkCallback<T extends VkItem> {
+    public interface VkCallback<T> {
         void onResponse(T response);
 
         void onError(Throwable t);

@@ -22,4 +22,10 @@ public interface VKAPRetrofitService {
 
     @GET("friends.get")
     Call<VkResponse<VkArrayResponse<Friend>>> getFriends(@Query("fields") String fields);
+
+    @GET("audio.add")
+    Call<VkResponse<Integer>> addAudio(@Query("audio_id") Integer id, @Query("owner_id") Integer ownerId);
+
+    @GET("audio.delete")
+    Call<VkResponse<Integer>> removeAudio(@Query("audio_id") Integer id, @Query("owner_id") Integer ownerId);
 }
