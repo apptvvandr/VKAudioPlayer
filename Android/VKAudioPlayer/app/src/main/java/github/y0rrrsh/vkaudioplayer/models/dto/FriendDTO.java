@@ -8,7 +8,7 @@ import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
 /**
  * @author Artur Yorsh
  */
-public class Friend implements VkItem {
+public class FriendDTO implements VkItem {
 
     @SerializedName("id")
     @Expose

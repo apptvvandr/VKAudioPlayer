@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
-
 /**
  * @author Artur Yorsh
  */
@@ -66,7 +64,7 @@ public abstract class VkItemAdapter<M, VH extends VkItemHolder> extends Recycler
         itemObserver = observer;
     }
 
-    public void setItemClickListener(ItemClickListener<M, VH> listener){
+    public void setItemClickListener(ItemClickListener<M, VH> listener) {
         this.itemClickListener = listener;
     }
 

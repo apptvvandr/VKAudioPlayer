@@ -3,6 +3,7 @@ package github.y0rrrsh.vkaudioplayer.views;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -112,6 +113,10 @@ public class PlaybackControlView extends LinearLayout {
                 actionHandler.onSeekDragged(currentValue);
             }
         });
+    }
+
+    public void setPlayImage(@DrawableRes int image) {
+        btnPlay.setImageDrawable(getResources().getDrawable(image));
     }
 
     public void setMaxProgress(int limit) {

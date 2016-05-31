@@ -10,12 +10,12 @@ import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemHolder;
-import github.y0rrrsh.vkaudioplayer.models.dto.Friend;
+import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 
 /**
  * @author Artur Yorsh
  */
-public class UserFriendsAdapter extends VkItemAdapter<Friend, UserFriendsAdapter.FriendHolder> {
+public class UserFriendsAdapter extends VkItemAdapter<FriendDTO, UserFriendsAdapter.FriendHolder> {
 
     @Override
     protected int getItemViewResId() {
@@ -28,7 +28,7 @@ public class UserFriendsAdapter extends VkItemAdapter<Friend, UserFriendsAdapter
     }
 
     @Override
-    protected void onBindViewHolder(FriendHolder holder, Friend item, int position) {
+    protected void onBindViewHolder(FriendHolder holder, FriendDTO item, int position) {
         Picasso.with(holder.itemView.getContext()).load(item.getPhoto200()).into(holder.imageAvatar);
         holder.textName.setText(String.format("%s %s", item.getFirstName(), item.getLastName()));
     }

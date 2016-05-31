@@ -2,7 +2,7 @@ package github.y0rrrsh.vkaudioplayer.models;
 
 import android.os.Parcel;
 
-import github.y0rrrsh.vkaudioplayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 
 /**
  * @author Artur Yorsh. 30.05.16.

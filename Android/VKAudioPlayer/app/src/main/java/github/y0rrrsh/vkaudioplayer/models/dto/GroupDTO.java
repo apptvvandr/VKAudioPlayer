@@ -8,7 +8,7 @@ import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
 /**
  * @author Artur Yorsh
  */
-public class Group implements VkItem {
+public class GroupDTO implements VkItem {
 
     @SerializedName("id")
     @Expose

@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 
 import github.y0rrrsh.vkaudioplayer.App;
 import github.y0rrrsh.vkaudioplayer.AudioPlayer;
-import github.y0rrrsh.vkaudioplayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 
 /**
  * @author Artur Yorsh
@@ -47,7 +47,7 @@ public abstract class PlaybackActivity extends BaseActivity {
         unregisterReceiver(playbackReceiver);
     }
 
-    protected void onProgressUpdated(int progress){
+    protected void onProgressUpdated(int progress) {
     }
 
     protected void onStartPlaying(AudioPlayerItem currentItem) {

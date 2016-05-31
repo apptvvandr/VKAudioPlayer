@@ -21,12 +21,21 @@ import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragmentBuilder;
 
 public class ListAudioActivity extends BaseActivity implements ItemObserver {
 
+    public static final String ARG_OWNER_AVATAR = "owner_avatar";
     public static String ARG_OWNER_ID = "owner_id";
     public static String ARG_OWNER_NAME = "owner_name";
-    public static final String ARG_OWNER_AVATAR = "owner_avatar";
-
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.fab_play) FloatingActionButton fabPlay;
+
+    public static void start(Activity activity, int ownerId, String ownerName, String avatarUrl,
+                             @Nullable ActivityOptionsCompat options) {
+        Intent starter = new Intent(activity, ListAudioActivity.class)
+                .putExtra(ARG_OWNER_ID, ownerId)
+                .putExtra(ARG_OWNER_NAME, ownerName)
+                .putExtra(ARG_OWNER_AVATAR, avatarUrl);
+        Bundle transitionOptions = options == null ? null : options.toBundle();
+        ActivityCompat.startActivity(activity, starter, transitionOptions);
+    }
 
     @Override
     protected int getLayoutId() {
@@ -74,15 +83,5 @@ public class ListAudioActivity extends BaseActivity implements ItemObserver {
         } else {
             fabPlay.show();
         }
-    }
-
-    public static void start(Activity activity, int ownerId, String ownerName, String avatarUrl,
-                             @Nullable ActivityOptionsCompat options) {
-        Intent starter = new Intent(activity, ListAudioActivity.class)
-                .putExtra(ARG_OWNER_ID, ownerId)
-                .putExtra(ARG_OWNER_NAME, ownerName)
-                .putExtra(ARG_OWNER_AVATAR, avatarUrl);
-        Bundle transitionOptions = options == null ? null : options.toBundle();
-        ActivityCompat.startActivity(activity, starter, transitionOptions);
     }
 }

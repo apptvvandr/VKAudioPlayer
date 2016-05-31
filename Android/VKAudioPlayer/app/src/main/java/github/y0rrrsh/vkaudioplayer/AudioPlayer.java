@@ -3,6 +3,7 @@ package github.y0rrrsh.vkaudioplayer;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Parcelable;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -120,5 +121,16 @@ public class AudioPlayer {
 
     public int getProgress() {
         return player.getCurrentPosition() / 1000;
+    }
+
+
+    public interface AudioPlayerItem extends Parcelable {
+        String getArtist();
+
+        String getName();
+
+        String getUrl();
+
+        long getDuration();
     }
 }

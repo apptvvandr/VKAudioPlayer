@@ -1,8 +1,8 @@
 package github.y0rrrsh.vkaudioplayer.network.service;
 
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
-import github.y0rrrsh.vkaudioplayer.models.dto.Friend;
-import github.y0rrrsh.vkaudioplayer.models.dto.Group;
+import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
+import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
@@ -46,11 +46,11 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getGroups(VkArrayCallback<Group> callback) {
-        service.getGroups(true).enqueue(new Callback<VkResponse<VkArrayResponse<Group>>>() {
+    public void getGroups(VkArrayCallback<GroupDTO> callback) {
+        service.getGroups(true).enqueue(new Callback<VkResponse<VkArrayResponse<GroupDTO>>>() {
             @Override
-            public void onResponse(Call<VkResponse<VkArrayResponse<Group>>> call, Response<VkResponse<VkArrayResponse<Group>>> response) {
-                VkArrayResponse<Group> itemsResponse = response.body().getResponse();
+            public void onResponse(Call<VkResponse<VkArrayResponse<GroupDTO>>> call, Response<VkResponse<VkArrayResponse<GroupDTO>>> response) {
+                VkArrayResponse<GroupDTO> itemsResponse = response.body().getResponse();
                 if (itemsResponse == null) {
                     onFailure(call, response.body().getError());
                     return;
@@ -59,7 +59,7 @@ public class VKAPServiceImpl implements VKAPService {
             }
 
             @Override
-            public void onFailure(Call<VkResponse<VkArrayResponse<Group>>> call, Throwable t) {
+            public void onFailure(Call<VkResponse<VkArrayResponse<GroupDTO>>> call, Throwable t) {
                 t.printStackTrace();
                 callback.onError(t);
             }
@@ -67,11 +67,11 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getFriends(VkArrayCallback<Friend> callback) {
-        service.getFriends("name, photo_200").enqueue(new Callback<VkResponse<VkArrayResponse<Friend>>>() {
+    public void getFriends(VkArrayCallback<FriendDTO> callback) {
+        service.getFriends("name, photo_200").enqueue(new Callback<VkResponse<VkArrayResponse<FriendDTO>>>() {
             @Override
-            public void onResponse(Call<VkResponse<VkArrayResponse<Friend>>> call, Response<VkResponse<VkArrayResponse<Friend>>> response) {
-                VkArrayResponse<Friend> itemsResponse = response.body().getResponse();
+            public void onResponse(Call<VkResponse<VkArrayResponse<FriendDTO>>> call, Response<VkResponse<VkArrayResponse<FriendDTO>>> response) {
+                VkArrayResponse<FriendDTO> itemsResponse = response.body().getResponse();
                 if (itemsResponse == null) {
                     onFailure(call, response.body().getError());
                     return;
@@ -80,7 +80,7 @@ public class VKAPServiceImpl implements VKAPService {
             }
 
             @Override
-            public void onFailure(Call<VkResponse<VkArrayResponse<Friend>>> call, Throwable t) {
+            public void onFailure(Call<VkResponse<VkArrayResponse<FriendDTO>>> call, Throwable t) {
                 t.printStackTrace();
                 callback.onError(t);
             }
@@ -93,7 +93,7 @@ public class VKAPServiceImpl implements VKAPService {
             @Override
             public void onResponse(Call<VkResponse<Integer>> call, Response<VkResponse<Integer>> response) {
                 Integer responseId = response.body().getResponse();
-                if (responseId == null){
+                if (responseId == null) {
                     onFailure(call, response.body().getError());
                     return;
                 }
@@ -114,7 +114,7 @@ public class VKAPServiceImpl implements VKAPService {
             @Override
             public void onResponse(Call<VkResponse<Integer>> call, Response<VkResponse<Integer>> response) {
                 Integer responseId = response.body().getResponse();
-                if (responseId == null){
+                if (responseId == null) {
                     onFailure(call, response.body().getError());
                     return;
                 }

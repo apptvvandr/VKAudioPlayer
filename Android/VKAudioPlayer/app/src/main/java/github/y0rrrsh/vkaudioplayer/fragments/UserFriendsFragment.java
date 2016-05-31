@@ -14,7 +14,7 @@ import java.util.List;
 import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserFriendsAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
-import github.y0rrrsh.vkaudioplayer.models.dto.Friend;
+import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
 
@@ -30,9 +30,9 @@ public class UserFriendsFragment extends VkTabFragment<UserFriendsAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getFriends(new VkArrayCallback<Friend>() {
+        api.getFriends(new VkArrayCallback<FriendDTO>() {
             @Override
-            public void onResponse(List<Friend> response) {
+            public void onResponse(List<FriendDTO> response) {
                 progressBar.setVisibility(View.GONE);
                 adapter.setItems(response);
             }

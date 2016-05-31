@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="github.y0rrrsh.vkaudioplayer"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="github.y0rrrsh.vkaudioplayer">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -27,8 +27,7 @@
         <activity android:name=".activities.MainActivity"/>
         <activity android:name=".activities.ListAudioActivity"/>
 
-        <activity android:name=".activities.AudioPlayerActivity">
-        </activity>
+        <activity android:name=".activities.AudioPlayerActivity"/>
     </application>
 
 </manifest>

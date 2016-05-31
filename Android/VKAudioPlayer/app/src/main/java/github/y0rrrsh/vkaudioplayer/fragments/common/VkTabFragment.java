@@ -18,8 +18,8 @@ import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter.ItemObserver;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
 import github.y0rrrsh.vkaudioplayer.views.EmptyView;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
 
 /**
  * @author Artur Yorsh

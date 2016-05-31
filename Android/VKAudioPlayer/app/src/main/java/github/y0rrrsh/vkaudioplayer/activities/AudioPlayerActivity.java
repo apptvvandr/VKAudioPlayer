@@ -15,7 +15,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import github.y0rrrsh.vkaudioplayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
@@ -98,8 +98,6 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
         });
     }
 
-    //PlaybackControlView
-
     @Override
     public void onPreviousClicked() {
         player.playPrevious();
@@ -138,18 +136,19 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
         player.seekTo(currentValue);
     }
 
-    //PlaybackActivity
-
     @Override
     protected void onStartPlaying(AudioPlayerItem currentItem) {
         setCurrentTrackInfo(currentItem);
+        playbackControlView.setPlayImage(R.drawable.ic_pause_black_24dp);
         playbackControlView.setMaxProgress((int) currentItem.getDuration());
     }
 
     @Override
     protected void onStopPlaying(int stopSeconds) {
-        if (stopSeconds != player.getCurrentItem().getDuration()) return;
-        player.playNext();
+        playbackControlView.setPlayImage(R.drawable.ic_play_arrow_black_24dp);
+        if (stopSeconds == player.getCurrentItem().getDuration()) {
+            onNextClicked();
+        }
     }
 
     @Override
