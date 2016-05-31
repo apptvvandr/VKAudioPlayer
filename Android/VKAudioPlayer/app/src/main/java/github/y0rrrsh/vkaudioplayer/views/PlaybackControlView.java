@@ -114,8 +114,16 @@ public class PlaybackControlView extends LinearLayout {
         });
     }
 
+    public void setMaxProgress(int limit) {
+        seekProgress.setMax(limit);
+    }
+
     public void setActionHandler(ActionHandler actionHandler) {
         this.actionHandler = actionHandler;
+    }
+
+    public void setProgress(int progress) {
+        seekProgress.setProgress(progress);
     }
 
     public interface ActionHandler {

@@ -12,7 +12,7 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import java.util.List;
 
-import github.y0rrrsh.vkaudioplayer.AudioPlayerActivity;
+import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;

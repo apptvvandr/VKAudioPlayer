@@ -27,7 +27,7 @@
         <activity android:name=".activities.MainActivity"/>
         <activity android:name=".activities.ListAudioActivity"/>
 
-        <activity android:name=".AudioPlayerActivity">
+        <activity android:name=".activities.AudioPlayerActivity">
         </activity>
     </application>
 

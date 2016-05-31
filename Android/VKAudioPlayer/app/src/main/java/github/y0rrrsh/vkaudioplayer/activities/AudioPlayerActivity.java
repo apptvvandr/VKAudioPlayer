@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer;
+package github.y0rrrsh.vkaudioplayer.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,13 +15,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import github.y0rrrsh.vkaudioplayer.activities.common.BaseActivity;
+import github.y0rrrsh.vkaudioplayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.R;
+import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.views.PlaybackControlView;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
+import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkCallback;
 
-public class AudioPlayerActivity extends BaseActivity implements PlaybackControlView.ActionHandler {
+public class AudioPlayerActivity extends PlaybackActivity implements PlaybackControlView.ActionHandler {
 
     private static final String ARG_PLAYLIST = "audio_playlist";
     private static final String ARG_START_POSITION = "playlist_start_position";
@@ -33,10 +36,6 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
     @BindView(R.id.btn_player_add) ImageButton btnAdd;
     @BindView(R.id.btn_player_remove) ImageButton btnRemove;
     @BindView(R.id.image_player_cover) ImageView imageCover;
-
-    private List<AudioModel> playlist;
-    private AudioModel currentAudio;
-    private int currentItemPosition;
 
     private VKAPService api = VKApi.getApiService();
 
@@ -50,26 +49,27 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
         super.onCreate(savedInstanceState);
 
         Intent starter = getIntent();
-        playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
-        currentItemPosition = starter.getIntExtra(ARG_START_POSITION, 0);
-
-        currentAudio = playlist.get(currentItemPosition);
+        ArrayList<AudioModel> playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
+        int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
 
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         playbackControlView.setActionHandler(this);
+
+        player.setPlaylist(playlist);
+        player.play(startPosition);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        textArtist.setText(currentAudio.getArtist());
-        textName.setText(currentAudio.getName());
+        AudioPlayerItem currentItem = player.getCurrentItem();
+        setCurrentTrackInfo(currentItem);
     }
 
     @OnClick(R.id.btn_player_add)
     protected void onAddClicked() {
-        api.addAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VKApi.VkCallback<Integer>() {
+        AudioModel currentAudio = (AudioModel) player.getCurrentItem();
+        api.addAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VkCallback<Integer>() {
             @Override
             public void onResponse(Integer response) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
@@ -84,7 +84,8 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
 
     @OnClick(R.id.btn_player_remove)
     protected void onRemoveClicked() {
-        api.removeAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VKApi.VkCallback<Integer>() {
+        AudioModel currentAudio = (AudioModel) player.getCurrentItem();
+        api.removeAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VkCallback<Integer>() {
             @Override
             public void onResponse(Integer response) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
@@ -97,22 +98,27 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
         });
     }
 
+    //PlaybackControlView
+
     @Override
     public void onPreviousClicked() {
-        // TODO: 30.05.16: onPreviousClicked
-        Toast.makeText(this, "onPreviousClicked", Toast.LENGTH_SHORT).show();
+        player.playPrevious();
+        setCurrentTrackInfo(player.getCurrentItem());
     }
 
     @Override
     public void onPlayClicked() {
-        // TODO: 30.05.16: onPlayClicked
-        Toast.makeText(this, "onPlayClicked", Toast.LENGTH_SHORT).show();
+        if (player.isPlaying()) {
+            player.pause();
+        } else {
+            player.play();
+        }
     }
 
     @Override
     public void onNextClicked() {
-        // TODO: 30.05.16: onNextClicked
-        Toast.makeText(this, "onNextClicked", Toast.LENGTH_SHORT).show();
+        player.playNext();
+        setCurrentTrackInfo(player.getCurrentItem());
     }
 
     @Override
@@ -129,8 +135,31 @@ public class AudioPlayerActivity extends BaseActivity implements PlaybackControl
 
     @Override
     public void onSeekDragged(int currentValue) {
-        // TODO: 30.05.16: onSeekDragged
-        Toast.makeText(this, "onSeekDragged", Toast.LENGTH_SHORT).show();
+        player.seekTo(currentValue);
+    }
+
+    //PlaybackActivity
+
+    @Override
+    protected void onStartPlaying(AudioPlayerItem currentItem) {
+        setCurrentTrackInfo(currentItem);
+        playbackControlView.setMaxProgress((int) currentItem.getDuration());
+    }
+
+    @Override
+    protected void onStopPlaying(int stopSeconds) {
+        if (stopSeconds != player.getCurrentItem().getDuration()) return;
+        player.playNext();
+    }
+
+    @Override
+    protected void onProgressUpdated(int progress) {
+        playbackControlView.setProgress(progress);
+    }
+
+    private void setCurrentTrackInfo(AudioPlayerItem currentItem) {
+        textArtist.setText(currentItem.getArtist());
+        textName.setText(currentItem.getName());
     }
 
     public static void start(Context context, List<AudioModel> playlist, int startPosition) {
