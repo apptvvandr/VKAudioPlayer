@@ -53,7 +53,10 @@ public abstract class PlaybackActivity extends BaseActivity {
     protected void onStartPlaying(AudioPlayerItem currentItem) {
     }
 
-    protected void onStopPlaying(int stopSeconds) {
+    protected void onPausePlaying() {
+    }
+
+    protected void onCompletePlaying() {
     }
 
     private class PlaybackReceiver extends BroadcastReceiver {
@@ -61,21 +64,26 @@ public abstract class PlaybackActivity extends BaseActivity {
         public IntentFilter filter = new IntentFilter();
 
         public PlaybackReceiver() {
-            filter.addAction(AudioPlayer.ACTION_PLAY);
-            filter.addAction(AudioPlayer.ACTION_STOP);
+            filter.addAction(AudioPlayer.ACTION_START);
+            filter.addAction(AudioPlayer.ACTION_PAUSE);
+            filter.addAction(AudioPlayer.ACTION_COMPLETE);
         }
 
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
 
-            if (AudioPlayer.ACTION_PLAY.equals(action)) {
+            if (AudioPlayer.ACTION_START.equals(action)) {
                 AudioPlayerItem currentItem = player.getCurrentItem();
                 onStartPlaying(currentItem);
                 return;
             }
-            if (AudioPlayer.ACTION_STOP.equals(action)) {
-                onStopPlaying(player.getProgress());
+            if (AudioPlayer.ACTION_PAUSE.equals(action)) {
+                onPausePlaying();
+                return;
+            }
+            if (AudioPlayer.ACTION_COMPLETE.equals(action)) {
+                onCompletePlaying();
             }
         }
 

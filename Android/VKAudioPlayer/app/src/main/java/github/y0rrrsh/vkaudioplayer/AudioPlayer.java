@@ -14,8 +14,9 @@ import java.util.List;
  */
 public class AudioPlayer {
 
-    public static final String ACTION_PLAY = "github.y0rrrsh.vkaudioplayer.PLAY";
-    public static final String ACTION_STOP = "github.y0rrrsh.vkaudioplayer.STOP";
+    public static final String ACTION_START = "github.y0rrrsh.vkaudioplayer.START";
+    public static final String ACTION_PAUSE = "github.y0rrrsh.vkaudioplayer.PAUSE";
+    public static final String ACTION_COMPLETE = "github.y0rrrsh.vkaudioplayer.COMPLETE";
 
     private static AudioPlayer instance;
     private Context context;
@@ -30,10 +31,10 @@ public class AudioPlayer {
         player = new MediaPlayer();
 
         player.setOnPreparedListener(mp -> {
-            broadcast(ACTION_PLAY);
+            broadcast(ACTION_START);
             player.start();
         });
-        player.setOnCompletionListener(mp -> broadcast(ACTION_STOP));
+        player.setOnCompletionListener(mp -> broadcast(ACTION_COMPLETE));
         player.setOnBufferingUpdateListener((mp, percent) -> {
             // TODO: 5/31/2016 cache control
         });
@@ -53,7 +54,7 @@ public class AudioPlayer {
             play(0);
             return;
         }
-        broadcast(ACTION_PLAY);
+        broadcast(ACTION_START);
         player.start();
     }
 
@@ -87,7 +88,7 @@ public class AudioPlayer {
 
     public void pause() {
         player.pause();
-        broadcast(ACTION_STOP);
+        broadcast(ACTION_PAUSE);
     }
 
     public boolean isPlaying() {
@@ -99,6 +100,18 @@ public class AudioPlayer {
         player.seekTo(seconds * 1000);
     }
 
+    public int getProgress() {
+        return player.getCurrentPosition() / 1000;
+    }
+
+    public int getItemDuration() {
+        return player.getDuration();
+    }
+
+    private void broadcast(String action) {
+        context.sendBroadcast(new Intent(action));
+    }
+
     public List<? extends AudioPlayerItem> getPlaylist() {
         return playlist;
     }
@@ -107,22 +120,9 @@ public class AudioPlayer {
         this.playlist = playlist;
     }
 
-    public int getItemDuration() {
-        return player.getDuration();
-    }
-
     public AudioPlayerItem getCurrentItem() {
         return currentItem;
     }
-
-    private void broadcast(String action) {
-        context.sendBroadcast(new Intent(action));
-    }
-
-    public int getProgress() {
-        return player.getCurrentPosition() / 1000;
-    }
-
 
     public interface AudioPlayerItem extends Parcelable {
         String getArtist();

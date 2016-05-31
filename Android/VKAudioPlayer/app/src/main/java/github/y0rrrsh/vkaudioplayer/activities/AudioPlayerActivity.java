@@ -144,11 +144,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
     }
 
     @Override
-    protected void onStopPlaying(int stopSeconds) {
+    protected void onPausePlaying() {
         playbackControlView.setPlayImage(R.drawable.ic_play_arrow_black_24dp);
-        if (stopSeconds == player.getCurrentItem().getDuration()) {
-            onNextClicked();
-        }
     }
 
     @Override

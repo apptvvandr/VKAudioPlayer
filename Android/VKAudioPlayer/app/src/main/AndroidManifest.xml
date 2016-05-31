@@ -28,6 +28,13 @@
         <activity android:name=".activities.ListAudioActivity"/>
 
         <activity android:name=".activities.AudioPlayerActivity"/>
+
+        <receiver android:name=".PlaybackReceiver">
+            <intent-filter>
+                <action android:name="github.y0rrrsh.vkaudioplayer.START"/>
+                <action android:name="github.y0rrrsh.vkaudioplayer.COMPLETE"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
