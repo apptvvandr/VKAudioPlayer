@@ -18,27 +18,27 @@
 
         <ImageButton
             android:id="@+id/btn_player_shuffle"
-            style="@style/PlayerButton.Medium"
+            style="@style/PCV.PlayerButton.Medium"
             android:src="@drawable/ic_shuffle_black_24dp"/>
 
         <ImageButton
             android:id="@+id/btn_player_previous"
-            style="@style/PlayerButton.Medium"
+            style="@style/PCV.PlayerButton.Medium"
             android:src="@drawable/ic_skip_previous_black_24dp"/>
 
         <ImageButton
             android:id="@+id/btn_player_play"
-            style="@style/PlayerButton.Large"
+            style="@style/PCV.PlayerButton.Large"
             android:src="@drawable/ic_play_arrow_black_24dp"/>
 
         <ImageButton
             android:id="@+id/btn_player_next"
-            style="@style/PlayerButton.Medium"
+            style="@style/PCV.PlayerButton.Medium"
             android:src="@drawable/ic_skip_next_black_24dp"/>
 
         <ImageButton
             android:id="@+id/btn_player_repeat"
-            style="@style/PlayerButton.Medium"
+            style="@style/PCV.PlayerButton.Medium"
             android:src="@drawable/ic_repeat_one_black_24dp"/>
 
     </LinearLayout>

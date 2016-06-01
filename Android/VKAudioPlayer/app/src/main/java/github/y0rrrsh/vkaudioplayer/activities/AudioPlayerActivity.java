@@ -2,7 +2,6 @@ package github.y0rrrsh.vkaudioplayer.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.widget.Toolbar;
@@ -68,10 +67,10 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
 
         if (VKAPPreferences.isShuffleEnabled(this)) {
             shuffle(player.getPlaylist());
-            playbackControlView.btnShuffle.setColorFilter(getResources().getColor(R.color.colorAccent));
+            playbackControlView.setShuffleButtonTintColor(R.color.colorAccent);
         }
         if (VKAPPreferences.isRepeatEnabled(this)) {
-            playbackControlView.btnRepeat.setColorFilter(getResources().getColor(R.color.colorAccent));
+            playbackControlView.setRepeatButtonTintColor(R.color.colorAccent);
         }
     }
 
@@ -141,11 +140,10 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         VKAPPreferences.setShuffleEnabled(this, !shuffleEnabled);
         if (!shuffleEnabled) {
             shuffle(player.getPlaylist());
-            // TODO: 01.06.16 replace in playback view selector
-            playbackControlView.btnShuffle.setColorFilter(getResources().getColor(R.color.colorAccent));
+            playbackControlView.setShuffleButtonTintColor(R.color.colorAccent);
         } else {
             player.setPlaylist(new ArrayList<>(playlist));
-            playbackControlView.btnShuffle.clearColorFilter();
+            playbackControlView.setShuffleButtonTintColor(android.R.color.black);
         }
     }
 
@@ -154,11 +152,10 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         boolean repeatEnabled = VKAPPreferences.isRepeatEnabled(this);
         VKAPPreferences.setRepeatEnabled(this, !repeatEnabled);
 
-        // TODO: 01.06.16 replace in playback view selector
         if (!repeatEnabled) {
-            playbackControlView.btnRepeat.setColorFilter(getResources().getColor(R.color.colorAccent));
+            playbackControlView.setRepeatButtonTintColor(R.color.colorAccent);
         } else {
-            playbackControlView.btnRepeat.clearColorFilter();
+            playbackControlView.setRepeatButtonTintColor(android.R.color.black);
         }
     }
 
@@ -170,20 +167,18 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @Override
     protected void onStartPlaying(AudioPlayerItem currentItem) {
         setTrackInfo(currentItem);
-        Drawable pauseImage = getResources().getDrawable(R.drawable.ic_pause_black_24dp);
-        playbackControlView.btnPlay.setImageDrawable(pauseImage);
-        playbackControlView.seekProgress.setMax((int) currentItem.getDuration());
+        playbackControlView.setPlayButtonIcon(R.drawable.ic_pause_black_24dp);
+        playbackControlView.setSeekMaxProgress((int) currentItem.getDuration());
     }
 
     @Override
     protected void onPausePlaying() {
-        Drawable playImage = getResources().getDrawable(R.drawable.ic_play_arrow_black_24dp);
-        playbackControlView.btnPlay.setImageDrawable(playImage);
+        playbackControlView.setPlayButtonIcon(R.drawable.ic_play_arrow_black_24dp);
     }
 
     @Override
     protected void onProgressUpdated(int progress) {
-        playbackControlView.seekProgress.setProgress(progress);
+        playbackControlView.setSeekCurrentProgress(progress);
     }
 
     private void setTrackInfo(AudioPlayerItem currentItem) {
