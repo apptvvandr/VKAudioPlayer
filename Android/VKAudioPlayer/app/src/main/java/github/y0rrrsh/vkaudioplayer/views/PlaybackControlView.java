@@ -2,8 +2,8 @@ package github.y0rrrsh.vkaudioplayer.views;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +18,14 @@ import github.y0rrrsh.vkaudioplayer.R;
  */
 public class PlaybackControlView extends LinearLayout {
 
-    private ImageButton btnPrevious;
-    private ImageButton btnPlay;
-    private ImageButton btnNext;
-    private ImageButton btnShuffle;
-    private ImageButton btnRepeat;
-    private SeekBar seekProgress;
+    public ImageButton btnPrevious;
+    public ImageButton btnPlay;
+    public ImageButton btnNext;
+    public ImageButton btnShuffle;
+    public ImageButton btnRepeat;
+    public SeekBar seekProgress;
 
-    private ActionHandler actionHandler;
+    private PlaybackActionHandler actionHandler;
 
     public PlaybackControlView(Context context) {
         super(context);
@@ -115,23 +115,11 @@ public class PlaybackControlView extends LinearLayout {
         });
     }
 
-    public void setPlayImage(@DrawableRes int image) {
-        btnPlay.setImageDrawable(getResources().getDrawable(image));
-    }
-
-    public void setMaxProgress(int limit) {
-        seekProgress.setMax(limit);
-    }
-
-    public void setActionHandler(ActionHandler actionHandler) {
+    public void setActionHandler(PlaybackActionHandler actionHandler) {
         this.actionHandler = actionHandler;
     }
 
-    public void setProgress(int progress) {
-        seekProgress.setProgress(progress);
-    }
-
-    public interface ActionHandler {
+    public interface PlaybackActionHandler {
 
         void onPreviousClicked();
 

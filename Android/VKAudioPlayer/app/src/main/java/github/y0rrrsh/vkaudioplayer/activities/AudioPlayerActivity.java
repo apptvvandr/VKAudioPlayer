@@ -2,6 +2,7 @@ package github.y0rrrsh.vkaudioplayer.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.widget.Toolbar;
@@ -20,11 +21,15 @@ import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 import github.y0rrrsh.vkaudioplayer.views.PlaybackControlView;
+import github.y0rrrsh.vkaudioplayer.views.PlaybackControlView.PlaybackActionHandler;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkCallback;
 
-public class AudioPlayerActivity extends PlaybackActivity implements PlaybackControlView.ActionHandler {
+import static java.util.Collections.shuffle;
+
+public class AudioPlayerActivity extends PlaybackActivity implements PlaybackActionHandler {
 
     private static final String ARG_PLAYLIST = "audio_playlist";
     private static final String ARG_START_POSITION = "playlist_start_position";
@@ -36,6 +41,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
     @BindView(R.id.btn_player_add) ImageButton btnAdd;
     @BindView(R.id.btn_player_remove) ImageButton btnRemove;
     @BindView(R.id.image_player_cover) ImageView imageCover;
+
+    private List<AudioModel> playlist;
 
     private VKAPService api = VKApi.getApiService();
 
@@ -49,21 +56,30 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
         super.onCreate(savedInstanceState);
 
         Intent starter = getIntent();
-        ArrayList<AudioModel> playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
+        playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
         int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
 
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         playbackControlView.setActionHandler(this);
 
-        player.setPlaylist(playlist);
+        ArrayList<AudioModel> playerList = new ArrayList<>(playlist);
+        player.setPlaylist(playerList);
         player.play(startPosition);
+
+        if (VKAPPreferences.isShuffleEnabled(this)) {
+            shuffle(player.getPlaylist());
+            playbackControlView.btnShuffle.setColorFilter(getResources().getColor(R.color.colorAccent));
+        }
+        if (VKAPPreferences.isRepeatEnabled(this)) {
+            playbackControlView.btnRepeat.setColorFilter(getResources().getColor(R.color.colorAccent));
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         AudioPlayerItem currentItem = player.getCurrentItem();
-        setCurrentTrackInfo(currentItem);
+        setTrackInfo(currentItem);
     }
 
     @OnClick(R.id.btn_player_add)
@@ -101,7 +117,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
     @Override
     public void onPreviousClicked() {
         player.playPrevious();
-        setCurrentTrackInfo(player.getCurrentItem());
+        setTrackInfo(player.getCurrentItem());
     }
 
     @Override
@@ -116,19 +132,34 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
     @Override
     public void onNextClicked() {
         player.playNext();
-        setCurrentTrackInfo(player.getCurrentItem());
+        setTrackInfo(player.getCurrentItem());
     }
 
     @Override
     public void onShuffleClicked() {
-        // TODO: 30.05.16: onShuffleClicked
-        Toast.makeText(this, "onShuffleClicked", Toast.LENGTH_SHORT).show();
+        boolean shuffleEnabled = VKAPPreferences.isShuffleEnabled(this);
+        VKAPPreferences.setShuffleEnabled(this, !shuffleEnabled);
+        if (!shuffleEnabled) {
+            shuffle(player.getPlaylist());
+            // TODO: 01.06.16 replace in playback view selector
+            playbackControlView.btnShuffle.setColorFilter(getResources().getColor(R.color.colorAccent));
+        } else {
+            player.setPlaylist(new ArrayList<>(playlist));
+            playbackControlView.btnShuffle.clearColorFilter();
+        }
     }
 
     @Override
     public void onRepeatClicked() {
-        // TODO: 30.05.16: onRepeatClicked
-        Toast.makeText(this, "onRepeatClicked", Toast.LENGTH_SHORT).show();
+        boolean repeatEnabled = VKAPPreferences.isRepeatEnabled(this);
+        VKAPPreferences.setRepeatEnabled(this, !repeatEnabled);
+
+        // TODO: 01.06.16 replace in playback view selector
+        if (!repeatEnabled) {
+            playbackControlView.btnRepeat.setColorFilter(getResources().getColor(R.color.colorAccent));
+        } else {
+            playbackControlView.btnRepeat.clearColorFilter();
+        }
     }
 
     @Override
@@ -138,22 +169,24 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackCon
 
     @Override
     protected void onStartPlaying(AudioPlayerItem currentItem) {
-        setCurrentTrackInfo(currentItem);
-        playbackControlView.setPlayImage(R.drawable.ic_pause_black_24dp);
-        playbackControlView.setMaxProgress((int) currentItem.getDuration());
+        setTrackInfo(currentItem);
+        Drawable pauseImage = getResources().getDrawable(R.drawable.ic_pause_black_24dp);
+        playbackControlView.btnPlay.setImageDrawable(pauseImage);
+        playbackControlView.seekProgress.setMax((int) currentItem.getDuration());
     }
 
     @Override
     protected void onPausePlaying() {
-        playbackControlView.setPlayImage(R.drawable.ic_play_arrow_black_24dp);
+        Drawable playImage = getResources().getDrawable(R.drawable.ic_play_arrow_black_24dp);
+        playbackControlView.btnPlay.setImageDrawable(playImage);
     }
 
     @Override
     protected void onProgressUpdated(int progress) {
-        playbackControlView.setProgress(progress);
+        playbackControlView.seekProgress.setProgress(progress);
     }
 
-    private void setCurrentTrackInfo(AudioPlayerItem currentItem) {
+    private void setTrackInfo(AudioPlayerItem currentItem) {
         textArtist.setText(currentItem.getArtist());
         textName.setText(currentItem.getName());
     }
