@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="github.y0rrrsh.vkaudioplayer">
+<manifest package="github.y0rrrsh.vkaudioplayer"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -27,12 +27,22 @@
         <activity android:name=".activities.MainActivity"/>
         <activity android:name=".activities.ListAudioActivity"/>
 
-        <activity android:name=".activities.AudioPlayerActivity"/>
+        <activity
+            android:name=".activities.AudioPlayerActivity"
+            android:launchMode="singleTask"/>
 
-        <receiver android:name=".PlaybackReceiver">
+        <receiver android:name=".receivers.PlaybackReceiver">
             <intent-filter>
                 <action android:name="github.y0rrrsh.vkaudioplayer.START"/>
+                <action android:name="github.y0rrrsh.vkaudioplayer.PAUSE"/>
                 <action android:name="github.y0rrrsh.vkaudioplayer.COMPLETE"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receivers.WidgetControlReceiver">
+            <intent-filter>
+                <action android:name="github.y0rrrsh.vkaudioplayer.widget.PLAY"/>
+                <action android:name="github.y0rrrsh.vkaudioplayer.widget.NEXT"/>
             </intent-filter>
         </receiver>
     </application>

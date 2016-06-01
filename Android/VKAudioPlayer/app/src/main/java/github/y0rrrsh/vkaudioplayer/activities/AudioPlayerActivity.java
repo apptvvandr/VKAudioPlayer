@@ -30,8 +30,8 @@ import static java.util.Collections.shuffle;
 
 public class AudioPlayerActivity extends PlaybackActivity implements PlaybackActionHandler {
 
-    private static final String ARG_PLAYLIST = "audio_playlist";
-    private static final String ARG_START_POSITION = "playlist_start_position";
+    public static final String ARG_PLAYLIST = "audio_playlist";
+    public static final String ARG_START_POSITION = "playlist_start_position";
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.control_player) PlaybackControlView playbackControlView;
@@ -54,29 +54,43 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent starter = getIntent();
-        playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
-        int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
-
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         playbackControlView.setActionHandler(this);
 
-        ArrayList<AudioModel> playerList = new ArrayList<>(playlist);
-        player.setPlaylist(playerList);
+        int shuffleTint = VKAPPreferences.isShuffleEnabled(this) ? R.color.colorAccent : android.R.color.black;
+        int repeatTint = VKAPPreferences.isRepeatEnabled(this) ? R.color.colorAccent : android.R.color.black;
+        playbackControlView.setShuffleButtonTintColor(shuffleTint);
+        playbackControlView.setRepeatButtonTintColor(repeatTint);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Intent starter = getIntent();
+        if (!starter.hasExtra(ARG_PLAYLIST)) return;
+
+        playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
+        int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
+        player.setPlaylist(new ArrayList<>(playlist));
         player.play(startPosition);
 
         if (VKAPPreferences.isShuffleEnabled(this)) {
-            shuffle(player.getPlaylist());
-            playbackControlView.setShuffleButtonTintColor(R.color.colorAccent);
+//            shuffle(player.getPlaylist());
         }
-        if (VKAPPreferences.isRepeatEnabled(this)) {
-            playbackControlView.setRepeatButtonTintColor(R.color.colorAccent);
-        }
+        starter.removeExtra(ARG_PLAYLIST);
+        starter.removeExtra(ARG_START_POSITION);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        int playButtonRes = player.isPlaying() ? R.drawable.ic_pause_black_24dp : R.drawable.ic_play_arrow_black_24dp;
+        playbackControlView.setPlayButtonIcon(playButtonRes);
+        playbackControlView.setSeekCurrentProgress(player.getProgress());
+        playbackControlView.setSeekMaxProgress(player.getItemDuration());
+
         AudioPlayerItem currentItem = player.getCurrentItem();
         setTrackInfo(currentItem);
     }
@@ -168,7 +182,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     protected void onStartPlaying(AudioPlayerItem currentItem) {
         setTrackInfo(currentItem);
         playbackControlView.setPlayButtonIcon(R.drawable.ic_pause_black_24dp);
-        playbackControlView.setSeekMaxProgress((int) currentItem.getDuration());
+        playbackControlView.setSeekMaxProgress(player.getItemDuration());
     }
 
     @Override

@@ -34,7 +34,10 @@ public class AudioPlayer {
             broadcast(ACTION_START);
             player.start();
         });
-        player.setOnCompletionListener(mp -> broadcast(ACTION_COMPLETE));
+        player.setOnCompletionListener(mp -> {
+            if(player.getCurrentPosition() == 0) return; // FIXME: 01.06.16 because called sometimes before onPrepared
+            broadcast(ACTION_COMPLETE);
+        });
         player.setOnBufferingUpdateListener((mp, percent) -> {
             // TODO: 5/31/2016 cache control
         });
@@ -105,7 +108,7 @@ public class AudioPlayer {
     }
 
     public int getItemDuration() {
-        return player.getDuration();
+        return player.getDuration() / 1000;
     }
 
     private void broadcast(String action) {
@@ -122,6 +125,10 @@ public class AudioPlayer {
 
     public AudioPlayerItem getCurrentItem() {
         return currentItem;
+    }
+
+    public int getCurrentItemPosition() {
+        return currentItemPosition;
     }
 
     public interface AudioPlayerItem extends Parcelable {
