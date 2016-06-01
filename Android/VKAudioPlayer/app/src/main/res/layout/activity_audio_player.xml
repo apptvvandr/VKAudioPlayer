@@ -57,12 +57,12 @@
 
                 <ImageButton
                     android:id="@+id/btn_player_remove"
-                    style="@style/VKAP.PlayerButton.Small"
+                    style="@style/PCV.PlayerButton.Small"
                     android:src="@drawable/ic_remove_black_24dp"/>
 
                 <ImageButton
                     android:id="@+id/btn_player_add"
-                    style="@style/VKAP.PlayerButton.Small"
+                    style="@style/PCV.PlayerButton.Small"
                     android:src="@drawable/ic_add_black_24dp"/>
 
             </LinearLayout>
