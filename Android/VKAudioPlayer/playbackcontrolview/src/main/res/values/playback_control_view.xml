@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PlaybackControlView">
+        <attr name="pcv_colorPrimary" format="integer"/>
+        <attr name="pcv_colorAccent" format="integer"/>
+    </declare-styleable>
+</resources>

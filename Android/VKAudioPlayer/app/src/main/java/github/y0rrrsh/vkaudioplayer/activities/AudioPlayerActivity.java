@@ -16,14 +16,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import github.y0rrrsh.playbackcontrolview.PlaybackControlView;
+import github.y0rrrsh.playbackcontrolview.PlaybackControlView.PlaybackActionHandler;
 import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
-import github.y0rrrsh.vkaudioplayer.views.PlaybackControlView;
-import github.y0rrrsh.vkaudioplayer.views.PlaybackControlView.PlaybackActionHandler;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkCallback;
 

@@ -78,7 +78,7 @@
             android:scaleType="centerCrop"
             tools:src="@mipmap/ic_launcher"/>
 
-        <github.y0rrrsh.vkaudioplayer.views.PlaybackControlView
+        <github.y0rrrsh.playbackcontrolview.PlaybackControlView
             android:id="@+id/control_player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

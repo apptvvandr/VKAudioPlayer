@@ -1,8 +1,7 @@
-package github.y0rrrsh.vkaudioplayer.views;
+package github.y0rrrsh.playbackcontrolview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,8 +9,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
-
-import github.y0rrrsh.vkaudioplayer.R;
 
 /**
  * @author Artur Yorsh. 30.05.16.
