@@ -25,6 +25,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -74,15 +75,15 @@
             android:id="@+id/image_player_cover"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            tools:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/bg_cover_default"/>
 
         <github.y0rrrsh.playbackcontrolview.PlaybackControlView
             android:id="@+id/control_player"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
 
     </LinearLayout>
 

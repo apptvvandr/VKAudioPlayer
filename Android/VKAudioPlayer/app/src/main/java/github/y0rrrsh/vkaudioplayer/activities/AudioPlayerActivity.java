@@ -2,6 +2,8 @@ package github.y0rrrsh.vkaudioplayer.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageButton;
@@ -20,6 +22,7 @@ import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
+import github.y0rrrsh.vkaudioplayer.network.asynctask.RetrieveAudioCoverTask;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
@@ -39,6 +42,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @BindView(R.id.btn_player_remove) ImageButton btnRemove;
     @BindView(R.id.image_player_cover) ImageView imageCover;
 
+    private Bitmap defaultCover;
     private List<AudioModel> playlist;
 
     private VKAPService api = VKApi.getApiService();
@@ -54,6 +58,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
 
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         playbackControlView.setActionHandler(this);
+        defaultCover = BitmapFactory.decodeResource(getResources(), R.drawable.bg_cover_default);
 
         int shuffleTint = VKAPPreferences.isShuffleEnabled(this) ? R.color.colorAccent : android.R.color.black;
         int repeatTint = VKAPPreferences.isRepeatEnabled(this) ? R.color.colorAccent : android.R.color.black;
@@ -130,6 +135,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @Override
     public void onPreviousClicked() {
         player.playPrevious();
+        imageCover.setImageBitmap(defaultCover);
         setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
@@ -145,6 +151,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @Override
     public void onNextClicked() {
         player.playNext();
+        imageCover.setImageBitmap(defaultCover);
         setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
@@ -183,6 +190,10 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         setTrackInfo((AudioModel) currentItem);
         playbackControlView.setPlayButtonIcon(R.drawable.ic_pause_black_24dp);
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
+
+        RetrieveAudioCoverTask.retrieve(currentItem.getUrl(), result -> {
+            if (result != null) imageCover.setImageBitmap(result);
+        });
     }
 
     @Override
