@@ -25,6 +25,11 @@ public abstract class AudioPlayerReceiver extends BroadcastReceiver {
         }
         if (action.equals(AudioPlayer.ACTION_COMPLETE)) {
             onPlayerComplete(context);
+            return;
+        }
+        if (AudioPlayer.ACTION_BUFFER_UPDATE.equals(action)) {
+            int percent = intent.getIntExtra(AudioPlayer.EXTRA_BUFFER_PERCENT, 0);
+            onPlayerBufferUpdate(context, percent / 100.0f);
         }
     }
 
@@ -33,4 +38,6 @@ public abstract class AudioPlayerReceiver extends BroadcastReceiver {
     protected abstract void onPlayerPause(Context context);
 
     protected abstract void onPlayerComplete(Context context);
+
+    protected abstract void onPlayerBufferUpdate(Context context, float percent);
 }

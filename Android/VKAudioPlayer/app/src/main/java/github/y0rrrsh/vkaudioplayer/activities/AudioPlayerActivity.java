@@ -195,6 +195,12 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         playbackControlView.setSeekCurrentProgress(progress);
     }
 
+    @Override
+    protected void onBufferUpdated(float percent) {
+        int bufferProgress = (int) (percent * player.getItemDuration());
+        playbackControlView.setSeekSecondaryProgress(bufferProgress);
+    }
+
     private void setTrackInfo(AudioModel currentItem) {
         textArtist.setText(currentItem.getArtist());
         textName.setText(currentItem.getName());

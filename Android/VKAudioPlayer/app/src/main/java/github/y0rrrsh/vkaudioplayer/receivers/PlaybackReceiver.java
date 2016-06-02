@@ -42,6 +42,10 @@ public class PlaybackReceiver extends AudioPlayerReceiver {
         player.playNext();
     }
 
+    @Override
+    protected void onPlayerBufferUpdate(Context context, float percent) {
+    }
+
     private void postNowPlayingNotification(Context context) {
         AudioPlayerItem currentItem = AudioPlayer.getInstance(context).getCurrentItem();
         Notification notification = buildNowPlayingNotification(context, (AudioModel) currentItem);

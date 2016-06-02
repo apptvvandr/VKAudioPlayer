@@ -58,6 +58,9 @@ public abstract class PlaybackActivity extends BaseActivity {
     protected void onCompletePlaying() {
     }
 
+    protected void onBufferUpdated(float percent) {
+    }
+
     private class PlaybackReceiver extends AudioPlayerReceiver {
 
         public IntentFilter filter = new IntentFilter();
@@ -66,6 +69,7 @@ public abstract class PlaybackActivity extends BaseActivity {
             filter.addAction(AudioPlayer.ACTION_START);
             filter.addAction(AudioPlayer.ACTION_PAUSE);
             filter.addAction(AudioPlayer.ACTION_COMPLETE);
+            filter.addAction(AudioPlayer.ACTION_BUFFER_UPDATE);
         }
 
         @Override
@@ -82,6 +86,11 @@ public abstract class PlaybackActivity extends BaseActivity {
         @Override
         protected void onPlayerComplete(Context context) {
             onCompletePlaying();
+        }
+
+        @Override
+        protected void onPlayerBufferUpdate(Context context, float percent) {
+            onBufferUpdated(percent);
         }
     }
 }

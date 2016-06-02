@@ -16,6 +16,8 @@ public class AudioPlayer {
     public static final String ACTION_START = "github.y0rrrsh.vkaudioplayer.START";
     public static final String ACTION_PAUSE = "github.y0rrrsh.vkaudioplayer.PAUSE";
     public static final String ACTION_COMPLETE = "github.y0rrrsh.vkaudioplayer.COMPLETE";
+    public static final String ACTION_BUFFER_UPDATE = "github.y0rrrsh.vkaudioplayer.BUFFER";
+    public static final String EXTRA_BUFFER_PERCENT = "player_buffer_percent";
 
     private static AudioPlayer instance;
     private Context context;
@@ -39,7 +41,9 @@ public class AudioPlayer {
             broadcast(ACTION_COMPLETE);
         });
         player.setOnBufferingUpdateListener((mp, percent) -> {
-            // TODO: 5/31/2016 cache control
+            Intent intent = new Intent(ACTION_BUFFER_UPDATE);
+            intent.putExtra(EXTRA_BUFFER_PERCENT, percent);
+            context.sendBroadcast(intent);
         });
         player.setOnSeekCompleteListener(mp -> play());
 

@@ -207,6 +207,10 @@ public class PlaybackControlView extends LinearLayout {
         seekProgress.setProgress(progress);
     }
 
+    public void setSeekSecondaryProgress(int progress) {
+        seekProgress.setSecondaryProgress(progress);
+    }
+
     private void setButtonIcon(@NonNull ImageButton button, @DrawableRes int icon) {
         button.setImageDrawable(getResources().getDrawable(icon));
     }
