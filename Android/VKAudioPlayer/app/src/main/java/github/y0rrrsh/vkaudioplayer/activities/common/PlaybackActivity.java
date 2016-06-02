@@ -16,7 +16,7 @@ import github.y0rrrsh.vkaudioplayer.receivers.common.AudioPlayerReceiver;
  */
 public abstract class PlaybackActivity extends BaseActivity {
 
-    protected AudioPlayer player = AudioPlayer.getInstance(App.getContext());
+    protected static AudioPlayer player = AudioPlayer.getInstance(App.getContext());
     private PlaybackReceiver playbackReceiver = new PlaybackReceiver();
 
     @Override

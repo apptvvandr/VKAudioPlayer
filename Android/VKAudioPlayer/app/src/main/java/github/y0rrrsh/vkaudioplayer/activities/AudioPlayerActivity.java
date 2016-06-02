@@ -3,7 +3,6 @@ package github.y0rrrsh.vkaudioplayer.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,7 +29,6 @@ import static java.util.Collections.shuffle;
 
 public class AudioPlayerActivity extends PlaybackActivity implements PlaybackActionHandler {
 
-    public static final String ARG_PLAYLIST = "audio_playlist";
     public static final String ARG_START_POSITION = "playlist_start_position";
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -67,19 +65,22 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     protected void onStart() {
         super.onStart();
 
+        playlist = new ArrayList<>((List<AudioModel>) player.getPlaylist());
+
         Intent starter = getIntent();
-        if (!starter.hasExtra(ARG_PLAYLIST)) return;
+        if (starter.hasExtra(ARG_START_POSITION)) {
+            int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
+            AudioPlayerItem currentItem = player.getCurrentItem();
 
-        playlist = starter.getParcelableArrayListExtra(ARG_PLAYLIST);
-        int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
-        player.setPlaylist(new ArrayList<>(playlist));
-        player.play(startPosition);
+            if (currentItem == null || !currentItem.equals(playlist.get(startPosition))) {
+                player.play(startPosition);
+            }
+            if (VKAPPreferences.isShuffleEnabled(this)) {
+                shuffle(player.getPlaylist());
+            }
 
-        if (VKAPPreferences.isShuffleEnabled(this)) {
-            shuffle(player.getPlaylist());
+            starter.removeExtra(ARG_START_POSITION);
         }
-        starter.removeExtra(ARG_PLAYLIST);
-        starter.removeExtra(ARG_START_POSITION);
     }
 
     @Override
@@ -91,8 +92,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         playbackControlView.setSeekCurrentProgress(player.getProgress());
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
 
-        AudioPlayerItem currentItem = player.getCurrentItem();
-        setTrackInfo(currentItem);
+        setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
     @OnClick(R.id.btn_player_add)
@@ -130,7 +130,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @Override
     public void onPreviousClicked() {
         player.playPrevious();
-        setTrackInfo(player.getCurrentItem());
+        setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
     @Override
@@ -145,7 +145,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @Override
     public void onNextClicked() {
         player.playNext();
-        setTrackInfo(player.getCurrentItem());
+        setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
     @Override
@@ -156,7 +156,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
             shuffle(player.getPlaylist());
             playbackControlView.setShuffleButtonTintColor(R.color.colorAccent);
         } else {
-            player.setPlaylist(new ArrayList<>(playlist));
+            player.setPlaylist(playlist);
             playbackControlView.setShuffleButtonTintColor(android.R.color.black);
         }
     }
@@ -180,7 +180,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
 
     @Override
     protected void onStartPlaying(AudioPlayerItem currentItem) {
-        setTrackInfo(currentItem);
+        setTrackInfo((AudioModel) currentItem);
         playbackControlView.setPlayButtonIcon(R.drawable.ic_pause_black_24dp);
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
     }
@@ -195,14 +195,14 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         playbackControlView.setSeekCurrentProgress(progress);
     }
 
-    private void setTrackInfo(AudioPlayerItem currentItem) {
+    private void setTrackInfo(AudioModel currentItem) {
         textArtist.setText(currentItem.getArtist());
         textName.setText(currentItem.getName());
     }
 
     public static void start(Context context, List<AudioModel> playlist, int startPosition) {
+        player.setPlaylist(playlist);
         Intent starter = new Intent(context, AudioPlayerActivity.class)
-                .putParcelableArrayListExtra(ARG_PLAYLIST, (ArrayList<? extends Parcelable>) playlist)
                 .putExtra(ARG_START_POSITION, startPosition);
         context.startActivity(starter);
     }

@@ -1,7 +1,5 @@
 package github.y0rrrsh.vkaudioplayer.models;
 
-import android.os.Parcel;
-
 import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 
 /**
@@ -34,12 +32,10 @@ public class AudioModel implements AudioPlayerItem {
         return ownerId;
     }
 
-    @Override
     public String getArtist() {
         return artist;
     }
 
-    @Override
     public String getName() {
         return name;
     }
@@ -54,39 +50,15 @@ public class AudioModel implements AudioPlayerItem {
         return duration;
     }
 
-    protected AudioModel(Parcel in) {
-        id = in.readInt();
-        ownerId = in.readInt();
-        url = in.readString();
-        duration = in.readLong();
-        artist = in.readString();
-        name = in.readString();
-    }
-
-    public static final Creator<AudioModel> CREATOR = new Creator<AudioModel>() {
-        @Override
-        public AudioModel createFromParcel(Parcel in) {
-            return new AudioModel(in);
-        }
-
-        @Override
-        public AudioModel[] newArray(int size) {
-            return new AudioModel[size];
-        }
-    };
-
     @Override
-    public int describeContents() {
-        return 0;
-    }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeInt(ownerId);
-        dest.writeString(url);
-        dest.writeLong(duration);
-        dest.writeString(artist);
-        dest.writeString(name);
+        AudioModel that = (AudioModel) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (ownerId != null ? !ownerId.equals(that.ownerId) : that.ownerId != null) return false;
+        return url != null ? url.equals(that.url) : that.url == null;
     }
 }

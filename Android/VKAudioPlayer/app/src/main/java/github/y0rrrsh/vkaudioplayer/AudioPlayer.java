@@ -3,7 +3,6 @@ package github.y0rrrsh.vkaudioplayer;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Parcelable;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +34,8 @@ public class AudioPlayer {
             player.start();
         });
         player.setOnCompletionListener(mp -> {
-            if(player.getCurrentPosition() == 0) return; // FIXME: 01.06.16 because called sometimes before onPrepared
+            if (player.getCurrentPosition() == 0)
+                return; // FIXME: 01.06.16 because called sometimes before onPrepared
             broadcast(ACTION_COMPLETE);
         });
         player.setOnBufferingUpdateListener((mp, percent) -> {
@@ -120,7 +120,7 @@ public class AudioPlayer {
     }
 
     public void setPlaylist(List<? extends AudioPlayerItem> playlist) {
-        this.playlist = playlist;
+        this.playlist = new ArrayList<>(playlist);
     }
 
     public AudioPlayerItem getCurrentItem() {
@@ -131,11 +131,7 @@ public class AudioPlayer {
         return currentItemPosition;
     }
 
-    public interface AudioPlayerItem extends Parcelable {
-        String getArtist();
-
-        String getName();
-
+    public interface AudioPlayerItem {
         String getUrl();
 
         long getDuration();

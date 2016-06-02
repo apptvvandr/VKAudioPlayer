@@ -11,6 +11,7 @@ import github.y0rrrsh.vkaudioplayer.AudioPlayer;
 import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
+import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.receivers.common.AudioPlayerReceiver;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
@@ -43,11 +44,11 @@ public class PlaybackReceiver extends AudioPlayerReceiver {
 
     private void postNowPlayingNotification(Context context) {
         AudioPlayerItem currentItem = AudioPlayer.getInstance(context).getCurrentItem();
-        Notification notification = buildNowPlayingNotification(context, currentItem);
+        Notification notification = buildNowPlayingNotification(context, (AudioModel) currentItem);
         getNotificationService(context).notify(NOTIFICATION_ID_PLAYER, notification);
     }
 
-    private Notification buildNowPlayingNotification(Context context, AudioPlayerItem currentItem) {
+    private Notification buildNowPlayingNotification(Context context, AudioModel currentItem) {
         RemoteViews widgetLayout = new RemoteViews(context.getPackageName(), R.layout.widget_audio_player);
         widgetLayout.setTextViewText(R.id.text_widget_artist, currentItem.getArtist());
         widgetLayout.setTextViewText(R.id.text_widget_name, currentItem.getName());
