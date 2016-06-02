@@ -1,8 +1,6 @@
 package github.y0rrrsh.vkaudioplayer.activities.common;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +9,7 @@ import android.support.annotation.Nullable;
 import github.y0rrrsh.vkaudioplayer.App;
 import github.y0rrrsh.vkaudioplayer.AudioPlayer;
 import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.receivers.common.AudioPlayerReceiver;
 
 /**
  * @author Artur Yorsh
@@ -59,7 +58,7 @@ public abstract class PlaybackActivity extends BaseActivity {
     protected void onCompletePlaying() {
     }
 
-    private class PlaybackReceiver extends BroadcastReceiver {
+    private class PlaybackReceiver extends AudioPlayerReceiver {
 
         public IntentFilter filter = new IntentFilter();
 
@@ -70,22 +69,19 @@ public abstract class PlaybackActivity extends BaseActivity {
         }
 
         @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-
-            if (AudioPlayer.ACTION_START.equals(action)) {
-                AudioPlayerItem currentItem = player.getCurrentItem();
-                onStartPlaying(currentItem);
-                return;
-            }
-            if (AudioPlayer.ACTION_PAUSE.equals(action)) {
-                onPausePlaying();
-                return;
-            }
-            if (AudioPlayer.ACTION_COMPLETE.equals(action)) {
-                onCompletePlaying();
-            }
+        protected void onPlayerStart(Context context) {
+            AudioPlayerItem currentItem = player.getCurrentItem();
+            onStartPlaying(currentItem);
         }
 
+        @Override
+        protected void onPlayerPause(Context context) {
+            onPausePlaying();
+        }
+
+        @Override
+        protected void onPlayerComplete(Context context) {
+            onCompletePlaying();
+        }
     }
 }

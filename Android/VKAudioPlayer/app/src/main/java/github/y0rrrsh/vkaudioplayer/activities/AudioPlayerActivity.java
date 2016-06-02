@@ -76,7 +76,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         player.play(startPosition);
 
         if (VKAPPreferences.isShuffleEnabled(this)) {
-//            shuffle(player.getPlaylist());
+            shuffle(player.getPlaylist());
         }
         starter.removeExtra(ARG_PLAYLIST);
         starter.removeExtra(ARG_START_POSITION);

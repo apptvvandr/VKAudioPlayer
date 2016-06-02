@@ -3,7 +3,6 @@ package github.y0rrrsh.vkaudioplayer.receivers;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
@@ -12,34 +11,40 @@ import github.y0rrrsh.vkaudioplayer.AudioPlayer;
 import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
+import github.y0rrrsh.vkaudioplayer.receivers.common.AudioPlayerReceiver;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
 /**
  * @author Artur Yorsh
  */
-public class PlaybackReceiver extends BroadcastReceiver {
+public class PlaybackReceiver extends AudioPlayerReceiver {
 
     public static final int NOTIFICATION_ID_PLAYER = 2417;
 
     @Override
-    public void onReceive(Context context, Intent intent) {
-        String action = intent.getAction();
+    protected void onPlayerStart(Context context) {
+        postNowPlayingNotification(context);
+    }
 
-        if (AudioPlayer.ACTION_START.equals(action) || AudioPlayer.ACTION_PAUSE.equals(action)) {
-            AudioPlayerItem currentItem = AudioPlayer.getInstance(context).getCurrentItem();
-            Notification notification = buildNowPlayingNotification(context, currentItem);
-            getNotificationService(context).notify(NOTIFICATION_ID_PLAYER, notification);
+    @Override
+    protected void onPlayerPause(Context context) {
+        postNowPlayingNotification(context);
+    }
+
+    @Override
+    protected void onPlayerComplete(Context context) {
+        AudioPlayer player = AudioPlayer.getInstance(context);
+        if (VKAPPreferences.isRepeatEnabled(context)) {
+            player.play();
             return;
         }
+        player.playNext();
+    }
 
-        if (AudioPlayer.ACTION_COMPLETE.equals(action)) {
-            AudioPlayer player = AudioPlayer.getInstance(context);
-            if (VKAPPreferences.isRepeatEnabled(context)) {
-                player.play();
-                return;
-            }
-            player.playNext();
-        }
+    private void postNowPlayingNotification(Context context) {
+        AudioPlayerItem currentItem = AudioPlayer.getInstance(context).getCurrentItem();
+        Notification notification = buildNowPlayingNotification(context, currentItem);
+        getNotificationService(context).notify(NOTIFICATION_ID_PLAYER, notification);
     }
 
     private Notification buildNowPlayingNotification(Context context, AudioPlayerItem currentItem) {
