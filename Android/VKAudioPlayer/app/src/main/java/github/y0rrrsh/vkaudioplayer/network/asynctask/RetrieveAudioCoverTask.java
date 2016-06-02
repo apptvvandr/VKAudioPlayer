@@ -11,7 +11,7 @@ import wseemann.media.FFmpegMediaMetadataRetriever;
  */
 public class RetrieveAudioCoverTask extends CallbackTask<Bitmap> {
 
-    private FFmpegMediaMetadataRetriever retriever = new FFmpegMediaMetadataRetriever();
+
     private String url;
 
     public static void retrieve(String url, @NonNull Callback<Bitmap> callback) {
@@ -25,11 +25,19 @@ public class RetrieveAudioCoverTask extends CallbackTask<Bitmap> {
 
     @Override
     protected Bitmap onDoInBackground() {
-        retriever.setDataSource(url.replaceFirst("https", "http"));
+        FFmpegMediaMetadataRetriever retriever = new FFmpegMediaMetadataRetriever();
+        String source = url.replaceFirst("https", "http");
+        retriever.setDataSource(source);
         byte[] picture = retriever.getEmbeddedPicture();
         if (picture != null) {
+            retriever.release();
             return BitmapFactory.decodeByteArray(picture, 0, picture.length);
         }
         return null;
+    }
+
+    @Override
+    protected boolean isWrongResult(Bitmap result) {
+        return result == null;
     }
 }
