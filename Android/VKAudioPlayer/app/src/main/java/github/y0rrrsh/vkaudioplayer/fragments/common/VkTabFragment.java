@@ -39,8 +39,6 @@ public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragmen
 
     protected A adapter;
 
-    protected ItemObserver activitiesItemObserver;
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_vk_tab;
@@ -92,16 +90,9 @@ public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragmen
         if (size == 0) {
             onEmpty();
         }
-        if (activitiesItemObserver != null) {
-            activitiesItemObserver.onDataSizeChanged(size);
-        }
     }
 
     protected void onEmpty() {
         emptyView.show();
-    }
-
-    public void setItemObserver(ItemObserver observer) {
-        activitiesItemObserver = observer;
     }
 }

@@ -20,12 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingBottom="@dimen/spacing_double"
+        android:paddingLeft="@dimen/spacing_double"
+        android:paddingRight="@dimen/spacing_double">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -39,6 +41,7 @@
                     android:id="@+id/text_player_artist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp"
                     tools:text="Metallica"/>
@@ -47,27 +50,23 @@
                     android:id="@+id/text_player_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
                     android:textSize="16sp"
                     tools:text="For Whom the Bells Tolls"/>
 
             </LinearLayout>
 
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btn_playlist_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/btn_player_remove"
-                    style="@style/PCV.PlayerButton.Small"
-                    android:src="@drawable/ic_remove_black_24dp"/>
-
-                <ImageButton
-                    android:id="@+id/btn_player_add"
-                    style="@style/PCV.PlayerButton.Small"
-                    android:src="@drawable/ic_add_black_24dp"/>
-
-            </LinearLayout>
+                android:background="@drawable/bg_btn_player"
+                android:src="@drawable/ic_playlist_plus_black_24dp"/>
 
         </LinearLayout>
 
@@ -75,6 +74,8 @@
             android:id="@+id/image_player_cover"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:layout_weight="1"
             android:scaleType="centerCrop"
             android:src="@drawable/bg_cover_default"/>
@@ -83,7 +84,7 @@
             android:id="@+id/control_player"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"/>
+            app:pcv_button_background="@drawable/bg_btn_player"/>
 
     </LinearLayout>
 

@@ -25,7 +25,7 @@ public class VKApi {
 
     private static VKApi instance;
 
-    private String userId;
+    public static Integer USER_ID;
     private String accessToken;
     private String tokenExpiresIn;
 
@@ -35,7 +35,7 @@ public class VKApi {
     private VKApi(String accessToken, String tokenExpiresIn, String userId) {
         this.accessToken = accessToken;
         this.tokenExpiresIn = tokenExpiresIn;
-        this.userId = userId;
+        USER_ID = Integer.valueOf(userId);
 
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

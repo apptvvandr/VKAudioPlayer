@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="48dp"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="8dp">
 
@@ -18,7 +18,8 @@
             android:id="@+id/text_audio_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:lines="1"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             tools:text="For Whom The Bells Tools"/>
 
@@ -26,6 +27,7 @@
             android:id="@+id/text_audio_artist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:lines="1"
             android:textSize="18sp"
             tools:text="Metallica"/>
 
@@ -35,7 +37,6 @@
         android:id="@+id/text_audio_duration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
         android:layout_weight="4"
         android:gravity="center"
         tools:text="5:12"/>

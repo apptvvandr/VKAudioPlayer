@@ -33,6 +33,8 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     @Arg(required = false)
     String ownerName;
 
+    private PlaylistReadyListener playlistReadyListener;
+
     @Override
     protected UserAudiosAdapter onCreateItemAdapter() {
         return new UserAudiosAdapter();
@@ -45,6 +47,9 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
             public void onResponse(List<AudioDTO> response) {
                 List<AudioModel> playlist = new ResponseAudioMapper().map(response);
                 adapter.setItems(playlist);
+                if (playlistReadyListener != null) {
+                    playlistReadyListener.onPlaylistReady(playlist);
+                }
             }
 
             @Override
@@ -74,5 +79,13 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
         String message = String.format("Seems, %s playlist is empty,\nor something went wrong.", owner);
         emptyView.setMessage(message);
         emptyView.show();
+    }
+
+    public void setPlaylistReadyListener(PlaylistReadyListener listener) {
+        this.playlistReadyListener = listener;
+    }
+
+    public interface PlaylistReadyListener {
+        void onPlaylistReady(List<AudioModel> playlist);
     }
 }
