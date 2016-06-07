@@ -33,6 +33,7 @@ import github.y0rrrsh.vkaudioplayer.network.asynctask.RetrieveAudioCoverTask;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
+import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 import static java.util.Collections.shuffle;
 
@@ -46,6 +47,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @BindView(R.id.text_player_name) TextView textName;
     @BindView(R.id.btn_playlist_edit) ImageButton btnPlaylistEdit;
     @BindView(R.id.image_player_cover) ImageView imageCover;
+    @BindView(R.id.text_time_current) TextView textTimeCurrent;
+    @BindView(R.id.text_time_full) TextView textTimeFull;
 
     private Bitmap defaultCover;
     private List<AudioModel> playlist;
@@ -67,8 +70,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         playbackControlView.setActionHandler(this);
         defaultCover = BitmapFactory.decodeResource(getResources(), R.drawable.bg_cover_default);
 
-        int shuffleTint = VKAPPreferences.isShuffleEnabled(this) ? R.color.colorAccent : android.R.color.black;
-        int repeatTint = VKAPPreferences.isRepeatEnabled(this) ? R.color.colorAccent : android.R.color.black;
+        int shuffleTint = VKAPPreferences.isShuffleEnabled(this) ? R.color.colorPrimaryDark : android.R.color.black;
+        int repeatTint = VKAPPreferences.isRepeatEnabled(this) ? R.color.colorPrimaryDark : android.R.color.black;
         playbackControlView.setShuffleButtonTintColor(shuffleTint);
         playbackControlView.setRepeatButtonTintColor(repeatTint);
     }
@@ -99,8 +102,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     protected void onResume() {
         super.onResume();
 
-        int playButtonRes = player.isPlaying() ? R.drawable.ic_pause : R.drawable.ic_play;
-        playbackControlView.setPlayButtonIcon(playButtonRes);
+        int playIcon = player.isPlaying() ? R.drawable.ic_pause : R.drawable.ic_play;
+        playbackControlView.setPlayButtonIcon(playIcon);
         playbackControlView.setSeekCurrentProgress(player.getProgress());
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
 
@@ -218,11 +221,11 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         VKAPPreferences.setShuffleEnabled(this, !shuffleEnabled);
         if (!shuffleEnabled) {
             shuffle(player.getPlaylist());
-            playbackControlView.setShuffleButtonTintColor(R.color.colorAccent);
         } else {
             player.setPlaylist(playlist);
-            playbackControlView.setShuffleButtonTintColor(android.R.color.black);
         }
+        int shuffleTint = !shuffleEnabled ? R.color.colorPrimaryDark : android.R.color.black;
+        playbackControlView.setShuffleButtonTintColor(shuffleTint);
     }
 
     @Override
@@ -230,11 +233,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         boolean repeatEnabled = VKAPPreferences.isRepeatEnabled(this);
         VKAPPreferences.setRepeatEnabled(this, !repeatEnabled);
 
-        if (!repeatEnabled) {
-            playbackControlView.setRepeatButtonTintColor(R.color.colorAccent);
-        } else {
-            playbackControlView.setRepeatButtonTintColor(android.R.color.black);
-        }
+        int repeatTint = !repeatEnabled ? R.color.colorPrimaryDark : android.R.color.black;
+        playbackControlView.setRepeatButtonTintColor(repeatTint);
     }
 
     @Override
@@ -247,6 +247,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         imageCover.setImageBitmap(defaultCover);
         textArtist.setText(currentItem.getArtist());
         textName.setText(currentItem.getName());
+        textTimeFull.setText(VKAPUtils.formatProgress(currentItem.getDuration()));
         updateEditPlaylistIcon(currentItem, position);
     }
 
@@ -273,8 +274,9 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     }
 
     @Override
-    protected void onProgressUpdated(int progress) {
+    protected void onProgressChanged(int progress) {
         playbackControlView.setSeekCurrentProgress(progress);
+        textTimeCurrent.setText(VKAPUtils.formatProgress(progress));
     }
 
     @Override
@@ -286,8 +288,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     private void updateEditPlaylistIcon(AudioModel currentItem, int playlistPosition) {
         ManagedAudio managedAudio = managedAudios.get(playlistPosition);
         boolean canBeAddedOrRestored = currentItem.getOwnerId() != VKApi.USER_ID || (managedAudio != null && managedAudio.wasRemoved());
-        int editButtonRes = canBeAddedOrRestored ? R.drawable.ic_playlist_plus : R.drawable.ic_playlist_minus;
-        btnPlaylistEdit.setImageResource(editButtonRes);
+        int editIcon = canBeAddedOrRestored ? R.drawable.ic_playlist_plus : R.drawable.ic_playlist_minus;
+        btnPlaylistEdit.setImageResource(editIcon);
     }
 
     public static void start(Context context, List<AudioModel> playlist, int startPosition) {

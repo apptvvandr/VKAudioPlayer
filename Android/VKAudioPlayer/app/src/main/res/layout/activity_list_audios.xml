@@ -38,7 +38,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_tint_gradient"/>
+                    android:background="@drawable/bg_gradient_linear"/>
 
             </FrameLayout>
 
