@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:maxHeight="144dp"
-        tools:src="@drawable/sad"/>
+        tools:src="@drawable/bg_no_result"/>
 
     <TextView
         android:id="@+id/text_no_data"

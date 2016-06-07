@@ -56,7 +56,7 @@ public class PlaybackReceiver extends AudioPlayerReceiver {
         RemoteViews widgetLayout = new RemoteViews(context.getPackageName(), R.layout.widget_audio_player);
         widgetLayout.setTextViewText(R.id.text_widget_artist, currentItem.getArtist());
         widgetLayout.setTextViewText(R.id.text_widget_name, currentItem.getName());
-        int playButtonRes = AudioPlayer.getInstance(context).isPlaying() ? R.drawable.ic_pause_black_24dp : R.drawable.ic_play_arrow_black_24dp;
+        int playButtonRes = AudioPlayer.getInstance(context).isPlaying() ? R.drawable.ic_pause : R.drawable.ic_play;
         widgetLayout.setImageViewResource(R.id.btn_widget_pause, playButtonRes);
 
         Intent playerActivityStarter = new Intent(context, AudioPlayerActivity.class);

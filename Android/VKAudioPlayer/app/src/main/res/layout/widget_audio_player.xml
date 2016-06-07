@@ -39,13 +39,13 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_pause_black_24dp"/>
+        android:src="@drawable/ic_pause"/>
 
     <ImageButton
         android:id="@+id/btn_widget_next"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_skip_next_black_24dp"/>
+        android:src="@drawable/ic_next"/>
 
 </LinearLayout>

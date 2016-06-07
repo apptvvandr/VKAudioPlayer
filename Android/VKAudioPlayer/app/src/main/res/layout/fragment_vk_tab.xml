@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"
-        app:ev_image="@drawable/sad"
+        app:ev_image="@drawable/bg_no_result"
         app:ev_message="Seems, there is no data"/>
 
 </FrameLayout>

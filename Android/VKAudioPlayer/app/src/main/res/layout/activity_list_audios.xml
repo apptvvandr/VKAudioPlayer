@@ -69,6 +69,7 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:src="@drawable/ic_play"
+        android:tint="@android:color/white"
         android:visibility="gone"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|right|end"/>
