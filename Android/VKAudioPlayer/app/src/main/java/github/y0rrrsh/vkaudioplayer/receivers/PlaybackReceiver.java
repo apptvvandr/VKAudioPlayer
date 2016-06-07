@@ -7,33 +7,38 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import github.y0rrrsh.vkaudioplayer.AudioPlayer;
-import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
-import github.y0rrrsh.vkaudioplayer.receivers.common.AudioPlayerReceiver;
+import github.y0rrrsh.vkaudioplayer.audioplayer.BasePlayerReceiver;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
 /**
  * @author Artur Yorsh
  */
-public class PlaybackReceiver extends AudioPlayerReceiver {
+public class PlaybackReceiver extends BasePlayerReceiver {
 
     public static final int NOTIFICATION_ID_PLAYER = 2417;
 
     @Override
-    protected void onPlayerStart(Context context) {
+    protected void onPlayerItemSelected(Context context) {
         postNowPlayingNotification(context);
     }
 
     @Override
-    protected void onPlayerPause(Context context) {
+    protected void onStartPlaying(Context context) {
         postNowPlayingNotification(context);
     }
 
     @Override
-    protected void onPlayerComplete(Context context) {
+    protected void onPausePlaying(Context context) {
+        postNowPlayingNotification(context);
+    }
+
+    @Override
+    protected void onCompletePlaying(Context context) {
         AudioPlayer player = AudioPlayer.getInstance(context);
         if (VKAPPreferences.isRepeatEnabled(context)) {
             player.play();
@@ -43,7 +48,7 @@ public class PlaybackReceiver extends AudioPlayerReceiver {
     }
 
     @Override
-    protected void onPlayerBufferUpdate(Context context, float percent) {
+    protected void onBufferUpdated(Context context, float percent) {
     }
 
     private void postNowPlayingNotification(Context context) {

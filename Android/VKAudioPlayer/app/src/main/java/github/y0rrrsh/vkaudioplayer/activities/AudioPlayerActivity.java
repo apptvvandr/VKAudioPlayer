@@ -12,16 +12,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import github.y0rrrsh.playbackcontrolview.PlaybackControlView;
 import github.y0rrrsh.playbackcontrolview.PlaybackControlView.PlaybackActionHandler;
-import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
+import github.y0rrrsh.vkaudioplayer.models.ManagedAudio;
+import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.network.asynctask.CallbackTask;
 import github.y0rrrsh.vkaudioplayer.network.asynctask.RetrieveAudioCoverTask;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
@@ -46,7 +50,8 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     private List<AudioModel> playlist;
 
     private VKAPService api = VKApi.getApiService();
-//    private int managedAudioId;
+
+    private Map<Integer, ManagedAudio> managedAudios = new HashMap<>();
 
     @Override
     protected int getLayoutId() {
@@ -93,38 +98,49 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     protected void onResume() {
         super.onResume();
 
-        int playButtonRes = player.isPlaying() ? R.drawable.ic_pause_black_24dp : R.drawable.ic_play_arrow_black_24dp;
+        int playButtonRes = player.isPlaying() ? R.drawable.ic_pause : R.drawable.ic_play;
         playbackControlView.setPlayButtonIcon(playButtonRes);
         playbackControlView.setSeekCurrentProgress(player.getProgress());
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
 
-//        setEditPlaylistIcon(VKAPUtils.canBeAddedOrRestored(this, (AudioModel) player.getCurrentItem()));
-        setTrackInfo((AudioModel) player.getCurrentItem());
+        AudioModel currentItem = (AudioModel) player.getCurrentItem();
+        int currentItemPosition = player.getCurrentItemPosition();
+        onPlayerItemSelected(currentItem, currentItemPosition);
+        updateEditPlaylistIcon(currentItem, currentItemPosition);
     }
+
 
     @OnClick(R.id.btn_playlist_edit)
     protected void onPlaylistEditClicked() {
-//        AudioModel currentItem = (AudioModel) player.getCurrentItem();
-//        if (!VKAPUtils.canBeAddedOrRestored(this, currentItem)) {
-//            if (VKAPUtils.canBeRestored(this, currentItem)) {
-//                restoreAudioRequest(currentItem);
-//                return;
-//            }
-//            addAudioRequest(currentItem);
-//        } else {
-//            removeAudioRequest(currentItem);
-//        }
+        AudioModel currentItem = (AudioModel) player.getCurrentItem();
+        ManagedAudio managedAudio = managedAudios.get(player.getCurrentItemPosition());
+
+        if (currentItem.getOwnerId() != VKApi.USER_ID && managedAudio == null) {
+            addAudioRequest(currentItem); //not owned by default
+            return;
+        }
+        if (currentItem.getOwnerId() == VKApi.USER_ID && managedAudio == null) {
+            removeAudioRequest(currentItem, currentItem.getId()); //owned by default
+            return;
+        }
+        if (!managedAudio.wasRemoved()) {
+            removeAudioRequest(currentItem, managedAudio.getId()); //was owned by adding
+            return;
+        }
+        if (managedAudio.wasRemoved()) {
+            restoreAudioRequest(currentItem, managedAudio.getId()); //was owned some-how and then removed
+        }
     }
 
     private void addAudioRequest(final AudioModel currentAudio) {
         api.addAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VkCallback<Integer>() {
             @Override
-            public void onResponse(Integer response) {
+            public void onResponse(Integer newAudioId) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
-                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was added to your page", Toast.LENGTH_SHORT).show();
-                btnPlaylistEdit.setImageResource(R.drawable.ic_playlist_minus_black_24dp);
+                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was added to your page", Toast.LENGTH_LONG).show();
 
-//                VKAPPreferences.setManagedAudioId(AudioPlayerActivity.this, response);
+                managedAudios.put(player.getCurrentItemPosition(), new ManagedAudio(newAudioId));
+                btnPlaylistEdit.setImageResource(R.drawable.ic_playlist_minus);
             }
 
             @Override
@@ -133,41 +149,52 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         });
     }
 
-//    private void removeAudioRequest(final AudioModel currentAudio) {
-//        api.removeAudio(managedAudioId, VKApi.USER_ID, new VkCallback<Integer>() {
-//            @Override
-//            public void onResponse(Integer response) {
-//                String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
-//                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was removed from your page", Toast.LENGTH_SHORT).show();
-//                btnPlaylistEdit.setImageResource(R.drawable.ic_playlist_plus_black_24dp);
-//            }
-//
-//            @Override
-//            public void onError(Throwable t) {
-//            }
-//        });
-//    }
+    private void removeAudioRequest(final AudioModel currentAudio, Integer audioId) {
+        api.removeAudio(audioId, VKApi.USER_ID, new VkCallback<Integer>() {
+            @Override
+            public void onResponse(Integer response) {
+                String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
+                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was removed from your page", Toast.LENGTH_LONG).show();
 
-//    private void restoreAudioRequest(final AudioModel currentAudio) {
-//        api.restoreAudio(managedAudioId, VKApi.USER_ID, new VkCallback<AudioDTO>() {
-//            @Override
-//            public void onResponse(AudioDTO response) {
-//                String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
-//                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was added to your page", Toast.LENGTH_SHORT).show();
-//                btnPlaylistEdit.setImageResource(R.drawable.ic_playlist_minus_black_24dp);
-//            }
-//
-//            @Override
-//            public void onError(Throwable t) {
-//            }
-//        });
-//    }
+                ManagedAudio managedAudio = managedAudios.get(player.getCurrentItemPosition());
+                if (managedAudio == null) {
+                    managedAudio = new ManagedAudio(currentAudio.getId());
+                    if (currentAudio.getOwnerId() == VKApi.USER_ID) {
+                        managedAudio.setWasRemoved(true);
+                    }
+                } else {
+                    managedAudio.setWasRemoved(true);
+                }
+                managedAudios.put(player.getCurrentItemPosition(), managedAudio);
+                btnPlaylistEdit.setImageResource(R.drawable.ic_playlist_plus);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+            }
+        });
+    }
+
+    private void restoreAudioRequest(final AudioModel currentAudio, Integer audioId) {
+        api.restoreAudio(audioId, VKApi.USER_ID, new VkCallback<AudioDTO>() {
+            @Override
+            public void onResponse(AudioDTO restoredAudio) {
+                String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
+                Toast.makeText(AudioPlayerActivity.this, audioInfo + " was added to your page", Toast.LENGTH_LONG).show();
+
+                managedAudios.put(player.getCurrentItemPosition(), new ManagedAudio(restoredAudio.getId()));
+                btnPlaylistEdit.setImageResource(R.drawable.ic_playlist_minus);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+            }
+        });
+    }
 
     @Override
     public void onPreviousClicked() {
         player.playPrevious();
-        imageCover.setImageBitmap(defaultCover);
-        setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
     @Override
@@ -182,8 +209,6 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     @Override
     public void onNextClicked() {
         player.playNext();
-        imageCover.setImageBitmap(defaultCover);
-        setTrackInfo((AudioModel) player.getCurrentItem());
     }
 
     @Override
@@ -217,13 +242,17 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     }
 
     @Override
-    protected void onStartPlaying(AudioPlayerItem currentItem) {
-        AudioModel audio = (AudioModel) currentItem;
+    protected void onPlayerItemSelected(AudioModel currentItem, int position) {
+        imageCover.setImageBitmap(defaultCover);
+        textArtist.setText(currentItem.getArtist());
+        textName.setText(currentItem.getName());
+        updateEditPlaylistIcon(currentItem, position);
+    }
 
-        playbackControlView.setPlayButtonIcon(R.drawable.ic_pause_black_24dp);
+    @Override
+    protected void onStartPlaying(AudioModel currentItem) {
+        playbackControlView.setPlayButtonIcon(R.drawable.ic_pause);
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
-//        setEditPlaylistIcon(VKAPUtils.canBeAddedOrRestored(this, audio));
-        setTrackInfo(audio);
 
         RetrieveAudioCoverTask.retrieve(currentItem.getUrl(), new CallbackTask.Callback<Bitmap>() {
             @Override
@@ -239,7 +268,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
 
     @Override
     protected void onPausePlaying() {
-        playbackControlView.setPlayButtonIcon(R.drawable.ic_play_arrow_black_24dp);
+        playbackControlView.setPlayButtonIcon(R.drawable.ic_play);
     }
 
     @Override
@@ -253,14 +282,11 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         playbackControlView.setSeekSecondaryProgress(bufferProgress);
     }
 
-    private void setEditPlaylistIcon(boolean canBeAddedOrRestored) {
-        int editButtonRes = canBeAddedOrRestored ? R.drawable.ic_playlist_plus_black_24dp : R.drawable.ic_playlist_minus_black_24dp;
+    private void updateEditPlaylistIcon(AudioModel currentItem, int playlistPosition) {
+        ManagedAudio managedAudio = managedAudios.get(playlistPosition);
+        boolean canBeAddedOrRestored = currentItem.getOwnerId() != VKApi.USER_ID || (managedAudio != null && managedAudio.wasRemoved());
+        int editButtonRes = canBeAddedOrRestored ? R.drawable.ic_playlist_plus : R.drawable.ic_playlist_minus;
         btnPlaylistEdit.setImageResource(editButtonRes);
-    }
-
-    private void setTrackInfo(AudioModel currentItem) {
-        textArtist.setText(currentItem.getArtist());
-        textName.setText(currentItem.getName());
     }
 
     public static void start(Context context, List<AudioModel> playlist, int startPosition) {

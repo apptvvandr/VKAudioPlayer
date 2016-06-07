@@ -1,6 +1,6 @@
 package github.y0rrrsh.vkaudioplayer.models;
 
-import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
 
 /**
  * @author Artur Yorsh. 30.05.16.

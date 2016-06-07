@@ -128,4 +128,25 @@ public class VKAPServiceImpl implements VKAPService {
             }
         });
     }
+
+    @Override
+    public void restoreAudio(Integer id, Integer ownerId, VkCallback<AudioDTO> callback) {
+        service.restoreAudio(id, ownerId).enqueue(new Callback<VkResponse<AudioDTO>>() {
+            @Override
+            public void onResponse(Call<VkResponse<AudioDTO>> call, Response<VkResponse<AudioDTO>> response) {
+                AudioDTO responseAudio = response.body().getResponse();
+                if (responseAudio == null) {
+                    onFailure(call, response.body().getError());
+                    return;
+                }
+                callback.onResponse(responseAudio);
+            }
+
+            @Override
+            public void onFailure(Call<VkResponse<AudioDTO>> call, Throwable t) {
+                t.printStackTrace();
+                callback.onError(t);
+            }
+        });
+    }
 }

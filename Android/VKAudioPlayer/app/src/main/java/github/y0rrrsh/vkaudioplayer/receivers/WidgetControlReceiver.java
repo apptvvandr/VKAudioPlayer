@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import github.y0rrrsh.vkaudioplayer.AudioPlayer;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer;
 
 /**
  * @author Artur Yorsh. 01.06.16.

@@ -33,6 +33,7 @@
 
         <receiver android:name=".receivers.PlaybackReceiver">
             <intent-filter>
+                <action android:name="github.y0rrrsh.vkaudioplayer.SELECT"/>
                 <action android:name="github.y0rrrsh.vkaudioplayer.START"/>
                 <action android:name="github.y0rrrsh.vkaudioplayer.PAUSE"/>
                 <action android:name="github.y0rrrsh.vkaudioplayer.COMPLETE"/>

@@ -20,4 +20,6 @@ public interface VKAPService {
     void addAudio(Integer id, Integer ownerId, VkCallback<Integer> callback);
 
     void removeAudio(Integer id, Integer ownerId, VkCallback<Integer> callback);
+
+    void restoreAudio(Integer id, Integer ownerId, VkCallback<AudioDTO> callback);
 }

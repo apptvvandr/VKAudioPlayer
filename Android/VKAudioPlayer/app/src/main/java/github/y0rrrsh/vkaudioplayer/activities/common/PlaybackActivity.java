@@ -7,9 +7,10 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 
 import github.y0rrrsh.vkaudioplayer.App;
-import github.y0rrrsh.vkaudioplayer.AudioPlayer;
-import github.y0rrrsh.vkaudioplayer.AudioPlayer.AudioPlayerItem;
-import github.y0rrrsh.vkaudioplayer.receivers.common.AudioPlayerReceiver;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer;
+import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
+import github.y0rrrsh.vkaudioplayer.audioplayer.BasePlayerReceiver;
+import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 
 /**
  * @author Artur Yorsh
@@ -49,7 +50,10 @@ public abstract class PlaybackActivity extends BaseActivity {
     protected void onProgressUpdated(int progress) {
     }
 
-    protected void onStartPlaying(AudioPlayerItem currentItem) {
+    protected void onPlayerItemSelected(AudioModel currentItem, int position) {
+    }
+
+    protected void onStartPlaying(AudioModel currentItem) {
     }
 
     protected void onPausePlaying() {
@@ -61,36 +65,43 @@ public abstract class PlaybackActivity extends BaseActivity {
     protected void onBufferUpdated(float percent) {
     }
 
-    private class PlaybackReceiver extends AudioPlayerReceiver {
+
+    private class PlaybackReceiver extends BasePlayerReceiver {
 
         public IntentFilter filter = new IntentFilter();
 
         public PlaybackReceiver() {
-            filter.addAction(AudioPlayer.ACTION_START);
-            filter.addAction(AudioPlayer.ACTION_PAUSE);
-            filter.addAction(AudioPlayer.ACTION_COMPLETE);
-            filter.addAction(AudioPlayer.ACTION_BUFFER_UPDATE);
+            filter.addAction(BasePlayerReceiver.ACTION_SELECT);
+            filter.addAction(BasePlayerReceiver.ACTION_START);
+            filter.addAction(BasePlayerReceiver.ACTION_PAUSE);
+            filter.addAction(BasePlayerReceiver.ACTION_COMPLETE);
+            filter.addAction(BasePlayerReceiver.ACTION_BUFFER_UPDATE);
         }
 
         @Override
-        protected void onPlayerStart(Context context) {
+        protected void onPlayerItemSelected(Context context) {
+            PlaybackActivity.this.onPlayerItemSelected((AudioModel) player.getCurrentItem(), player.getCurrentItemPosition());
+        }
+
+        @Override
+        protected void onStartPlaying(Context context) {
             AudioPlayerItem currentItem = player.getCurrentItem();
-            onStartPlaying(currentItem);
+            PlaybackActivity.this.onStartPlaying((AudioModel) currentItem);
         }
 
         @Override
-        protected void onPlayerPause(Context context) {
-            onPausePlaying();
+        protected void onPausePlaying(Context context) {
+            PlaybackActivity.this.onPausePlaying();
         }
 
         @Override
-        protected void onPlayerComplete(Context context) {
-            onCompletePlaying();
+        protected void onCompletePlaying(Context context) {
+            PlaybackActivity.this.onCompletePlaying();
         }
 
         @Override
-        protected void onPlayerBufferUpdate(Context context, float percent) {
-            onBufferUpdated(percent);
+        protected void onBufferUpdated(Context context, float percent) {
+            PlaybackActivity.this.onBufferUpdated(percent);
         }
     }
 }

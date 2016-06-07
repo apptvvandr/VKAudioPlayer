@@ -25,7 +25,7 @@ public class VKApi {
 
     private static VKApi instance;
 
-    public static Integer USER_ID;
+    public static int USER_ID;
     private String accessToken;
     private String tokenExpiresIn;
 

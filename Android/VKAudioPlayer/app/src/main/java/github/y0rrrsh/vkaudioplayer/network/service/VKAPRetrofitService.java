@@ -28,4 +28,7 @@ public interface VKAPRetrofitService {
 
     @GET("audio.delete")
     Call<VkResponse<Integer>> removeAudio(@Query("audio_id") Integer id, @Query("owner_id") Integer ownerId);
+
+    @GET("audio.restore")
+    Call<VkResponse<AudioDTO>> restoreAudio(@Query("audio_id") Integer id, @Query("owner_id") Integer ownerId);
 }

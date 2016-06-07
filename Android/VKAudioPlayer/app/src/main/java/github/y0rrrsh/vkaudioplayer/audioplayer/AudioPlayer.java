@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer;
+package github.y0rrrsh.vkaudioplayer.audioplayer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class AudioPlayer {
 
-    public static final String ACTION_START = "github.y0rrrsh.vkaudioplayer.START";
-    public static final String ACTION_PAUSE = "github.y0rrrsh.vkaudioplayer.PAUSE";
-    public static final String ACTION_COMPLETE = "github.y0rrrsh.vkaudioplayer.COMPLETE";
-    public static final String ACTION_BUFFER_UPDATE = "github.y0rrrsh.vkaudioplayer.BUFFER";
     public static final String EXTRA_BUFFER_PERCENT = "player_buffer_percent";
 
     private static AudioPlayer instance;
@@ -32,16 +28,15 @@ public class AudioPlayer {
         player = new MediaPlayer();
 
         player.setOnPreparedListener(mp -> {
-            broadcast(ACTION_START);
+            broadcast(BasePlayerReceiver.ACTION_START);
             player.start();
         });
         player.setOnCompletionListener(mp -> {
-            if (player.getCurrentPosition() == 0)
-                return; // FIXME: 01.06.16 because called sometimes before onPrepared
-            broadcast(ACTION_COMPLETE);
+            if (player.getCurrentPosition() == 0) return; // FIXME: 01.06.16 because called sometimes before onPrepared
+            broadcast(BasePlayerReceiver.ACTION_COMPLETE);
         });
         player.setOnBufferingUpdateListener((mp, percent) -> {
-            Intent intent = new Intent(ACTION_BUFFER_UPDATE);
+            Intent intent = new Intent(BasePlayerReceiver.ACTION_BUFFER_UPDATE);
             intent.putExtra(EXTRA_BUFFER_PERCENT, percent);
             context.sendBroadcast(intent);
         });
@@ -61,7 +56,7 @@ public class AudioPlayer {
             play(0);
             return;
         }
-        broadcast(ACTION_START);
+        broadcast(BasePlayerReceiver.ACTION_START);
         player.start();
     }
 
@@ -88,6 +83,7 @@ public class AudioPlayer {
             player.setDataSource(item.getUrl());
             player.prepareAsync();
             currentItem = item;
+            broadcast(BasePlayerReceiver.ACTION_SELECT);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +91,7 @@ public class AudioPlayer {
 
     public void pause() {
         player.pause();
-        broadcast(ACTION_PAUSE);
+        broadcast(BasePlayerReceiver.ACTION_PAUSE);
     }
 
     public boolean isPlaying() {
