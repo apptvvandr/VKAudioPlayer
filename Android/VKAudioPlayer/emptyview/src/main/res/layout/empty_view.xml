@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:maxHeight="144dp"
-        tools:src="@drawable/bg_no_result"/>
+        tools:src="@mipmap/ic_launcher"/>
 
     <TextView
         android:id="@+id/text_no_data"

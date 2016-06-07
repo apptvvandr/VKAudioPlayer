@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer;
+import github.y0rrrsh.streamplayer.StreamPlayer;
 
 /**
  * @author Artur Yorsh. 01.06.16.
@@ -17,7 +17,7 @@ public class WidgetControlReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        AudioPlayer player = AudioPlayer.getInstance(context);
+        StreamPlayer player = StreamPlayer.getInstance(context);
 
         if (ACTION_PLAY.equals(action)) {
             if (player.isPlaying()) {

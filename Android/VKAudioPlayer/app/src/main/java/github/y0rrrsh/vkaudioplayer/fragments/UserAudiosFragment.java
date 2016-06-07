@@ -12,6 +12,7 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import java.util.List;
 
+import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
@@ -19,7 +20,6 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseAudioMapper;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
 
 /**
  * @author Artur Yorsh
@@ -42,7 +42,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getAudios(userId, new VkArrayCallback<AudioDTO>() {
+        api.getAudios(userId, new VKArrayCallback<AudioDTO>() {
             @Override
             public void onResponse(List<AudioDTO> response) {
                 List<AudioModel> playlist = new ResponseAudioMapper().map(response);

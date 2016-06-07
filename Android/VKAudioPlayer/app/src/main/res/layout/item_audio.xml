@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="@dimen/spacing_normal"
+    tools:layout_gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.views;
+package github.y0rrrsh.emptyview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -13,8 +13,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import github.y0rrrsh.vkaudioplayer.R;
 
 /**
  * @author Artur Yorsh
@@ -65,7 +63,7 @@ public class EmptyView extends LinearLayout {
     }
 
     private void init() {
-        View contentView = LayoutInflater.from(getContext()).inflate(R.layout.view_empty, this, true);
+        View contentView = LayoutInflater.from(getContext()).inflate(R.layout.empty_view, this, true);
 
         imageNoData = (ImageView) contentView.findViewById(R.id.image_no_data);
         textNoData = (TextView) contentView.findViewById(R.id.text_no_data);

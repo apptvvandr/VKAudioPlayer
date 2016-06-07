@@ -3,12 +3,12 @@ package github.y0rrrsh.vkaudioplayer.models.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
+import github.y0rrrsh.vkapi.VKItem;
 
 /**
  * @author Artur Yorsh
  */
-public class AudioDTO implements VkItem {
+public class AudioDTO implements VKItem {
 
     @SerializedName("id")
     @Expose
@@ -37,10 +37,6 @@ public class AudioDTO implements VkItem {
     @SerializedName("lyrics_id")
     @Expose
     private Integer lyricsId;
-
-    public Integer getId() {
-        return id;
-    }
 
     public Integer getOwnerId() {
         return ownerId;
@@ -74,4 +70,8 @@ public class AudioDTO implements VkItem {
         return lyricsId;
     }
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
 }

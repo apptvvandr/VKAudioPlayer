@@ -17,10 +17,12 @@ android {
         debug {
             buildConfigField "String", "VKAP_APP_ID", "\"5424227\""
             buildConfigField "String", "VKAP_APP_SCOPE", "\"audio, offline\""
+            buildConfigField "String", "VKAP_API_VERSION", "\"5.52\""
         }
         release {
             buildConfigField "String", "VKAP_APP_ID", "5424227"
             buildConfigField "String", "VKAP_APP_SCOPE", "audio, offline"
+            buildConfigField "String", "VKAP_APP_API_VERSION", "\"5.52\""
         }
     }
     compileOptions {
@@ -30,7 +32,10 @@ android {
 }
 
 dependencies {
+    compile project(':vkapi')
+    compile project(':streamplayer')
     compile project(':playbackcontrolview')
+    compile project(':emptyview')
 
     //Google libs
     compile 'com.android.support:appcompat-v7:23.4.0'

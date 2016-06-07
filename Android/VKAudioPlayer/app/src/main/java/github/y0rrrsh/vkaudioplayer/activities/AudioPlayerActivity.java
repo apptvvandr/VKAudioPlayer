@@ -20,18 +20,19 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import github.y0rrrsh.playbackcontrolview.PlaybackControlView;
 import github.y0rrrsh.playbackcontrolview.PlaybackControlView.PlaybackActionHandler;
+import github.y0rrrsh.streamplayer.StreamPlayer.StreamItem;
+import github.y0rrrsh.vkapi.VKApi;
+import github.y0rrrsh.vkapi.VKApi.VKCallback;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.models.ManagedAudio;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.network.asynctask.CallbackTask;
 import github.y0rrrsh.vkaudioplayer.network.asynctask.RetrieveAudioCoverTask;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkCallback;
 
 import static java.util.Collections.shuffle;
 
@@ -49,7 +50,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     private Bitmap defaultCover;
     private List<AudioModel> playlist;
 
-    private VKAPService api = VKApi.getApiService();
+    private VKAPService api = VKAPServiceImpl.getInstance();
 
     private Map<Integer, ManagedAudio> managedAudios = new HashMap<>();
 
@@ -82,7 +83,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         if (starter.hasExtra(ARG_START_POSITION)) {
             int startPosition = starter.getIntExtra(ARG_START_POSITION, 0);
 
-            AudioPlayerItem currentItem = player.getCurrentItem();
+            StreamItem currentItem = player.getCurrentItem();
             if (currentItem == null || !currentItem.equals(playlist.get(startPosition))) {
                 player.play(startPosition);
             }
@@ -133,7 +134,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     }
 
     private void addAudioRequest(final AudioModel currentAudio) {
-        api.addAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VkCallback<Integer>() {
+        api.addAudio(currentAudio.getId(), currentAudio.getOwnerId(), new VKCallback<Integer>() {
             @Override
             public void onResponse(Integer newAudioId) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
@@ -150,7 +151,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     }
 
     private void removeAudioRequest(final AudioModel currentAudio, Integer audioId) {
-        api.removeAudio(audioId, VKApi.USER_ID, new VkCallback<Integer>() {
+        api.removeAudio(audioId, VKApi.USER_ID, new VKCallback<Integer>() {
             @Override
             public void onResponse(Integer response) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
@@ -176,7 +177,7 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     }
 
     private void restoreAudioRequest(final AudioModel currentAudio, Integer audioId) {
-        api.restoreAudio(audioId, VKApi.USER_ID, new VkCallback<AudioDTO>() {
+        api.restoreAudio(audioId, VKApi.USER_ID, new VKCallback<AudioDTO>() {
             @Override
             public void onResponse(AudioDTO restoredAudio) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());

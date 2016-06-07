@@ -3,12 +3,12 @@ package github.y0rrrsh.vkaudioplayer.models.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import github.y0rrrsh.vkaudioplayer.vkapi.VkItem;
+import github.y0rrrsh.vkapi.VKItem;
 
 /**
  * @author Artur Yorsh
  */
-public class GroupDTO implements VkItem {
+public class GroupDTO implements VKItem {
 
     @SerializedName("id")
     @Expose

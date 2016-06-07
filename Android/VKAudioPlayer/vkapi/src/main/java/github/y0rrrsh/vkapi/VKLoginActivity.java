@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.vkapi;
+package github.y0rrrsh.vkapi;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -3,12 +3,12 @@ package github.y0rrrsh.vkaudioplayer;
 import android.app.Application;
 import android.content.Context;
 
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
+import github.y0rrrsh.vkapi.VKApi;
 
 /**
  * @author Artur Yorsh
  */
-public class App extends Application {
+public class VKAPApplication extends Application {
 
     private static Context context;
 

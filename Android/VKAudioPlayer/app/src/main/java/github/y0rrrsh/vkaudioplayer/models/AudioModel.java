@@ -1,11 +1,11 @@
 package github.y0rrrsh.vkaudioplayer.models;
 
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
+import github.y0rrrsh.streamplayer.StreamPlayer.StreamItem;
 
 /**
  * @author Artur Yorsh. 30.05.16.
  */
-public class AudioModel implements AudioPlayerItem {
+public class AudioModel implements StreamItem {
 
     private Integer id;
     private Integer ownerId;

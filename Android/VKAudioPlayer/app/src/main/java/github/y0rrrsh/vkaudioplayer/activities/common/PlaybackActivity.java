@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 
-import github.y0rrrsh.vkaudioplayer.App;
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer;
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
-import github.y0rrrsh.vkaudioplayer.audioplayer.BasePlayerReceiver;
+import github.y0rrrsh.streamplayer.BasePlayerReceiver;
+import github.y0rrrsh.streamplayer.StreamPlayer;
+import github.y0rrrsh.streamplayer.StreamPlayer.StreamItem;
+import github.y0rrrsh.vkaudioplayer.VKAPApplication;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 
 /**
@@ -17,7 +17,7 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
  */
 public abstract class PlaybackActivity extends BaseActivity {
 
-    protected static AudioPlayer player = AudioPlayer.getInstance(App.getContext());
+    protected static StreamPlayer player = StreamPlayer.getInstance(VKAPApplication.getContext());
     private PlaybackReceiver playbackReceiver = new PlaybackReceiver();
 
     @Override
@@ -85,7 +85,7 @@ public abstract class PlaybackActivity extends BaseActivity {
 
         @Override
         protected void onStartPlaying(Context context) {
-            AudioPlayerItem currentItem = player.getCurrentItem();
+            StreamItem currentItem = player.getCurrentItem();
             PlaybackActivity.this.onStartPlaying((AudioModel) currentItem);
         }
 

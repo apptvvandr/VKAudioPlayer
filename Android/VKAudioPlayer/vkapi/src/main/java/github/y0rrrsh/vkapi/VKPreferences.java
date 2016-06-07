@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.vkapi;
+package github.y0rrrsh.vkapi;
 
 import android.content.Context;
 import android.content.SharedPreferences;

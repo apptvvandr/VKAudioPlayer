@@ -1,8 +1,17 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="spacing_content_tabs">104dp</dimen>
-    <dimen name="spacing_double">16dp</dimen>
+    <dimen name="spacing_quarter">2dp</dimen>
+    <dimen name="spacing_semi">4dp</dimen>
     <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_double">16dp</dimen>
+
+    <!--custom spacings-->
+    <dimen name="spacing_content_tabs">104dp</dimen>
+    <dimen name="spacing_appbar_title_expanded">64dp</dimen>
+    <dimen name="spacing_appbar_title_collapsed">48dp</dimen>
+
+    <!--custom sizes-->
+    <dimen name="height_appbar_expanded">256dp</dimen>
+    <dimen name="height_list_item_group">196dp</dimen>
+    <dimen name="size_list_item_friend_avatar">64dp</dimen>
+    <dimen name="size_widget_button">48dp</dimen>
 </resources>

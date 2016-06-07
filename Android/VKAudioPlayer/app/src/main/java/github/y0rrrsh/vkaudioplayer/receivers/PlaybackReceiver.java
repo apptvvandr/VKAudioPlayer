@@ -7,12 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer;
-import github.y0rrrsh.vkaudioplayer.audioplayer.AudioPlayer.AudioPlayerItem;
+import github.y0rrrsh.streamplayer.BasePlayerReceiver;
+import github.y0rrrsh.streamplayer.StreamPlayer;
+import github.y0rrrsh.streamplayer.StreamPlayer.StreamItem;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
-import github.y0rrrsh.vkaudioplayer.audioplayer.BasePlayerReceiver;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
 /**
@@ -39,7 +39,7 @@ public class PlaybackReceiver extends BasePlayerReceiver {
 
     @Override
     protected void onCompletePlaying(Context context) {
-        AudioPlayer player = AudioPlayer.getInstance(context);
+        StreamPlayer player = StreamPlayer.getInstance(context);
         if (VKAPPreferences.isRepeatEnabled(context)) {
             player.play();
             return;
@@ -52,7 +52,7 @@ public class PlaybackReceiver extends BasePlayerReceiver {
     }
 
     private void postNowPlayingNotification(Context context) {
-        AudioPlayerItem currentItem = AudioPlayer.getInstance(context).getCurrentItem();
+        StreamItem currentItem = StreamPlayer.getInstance(context).getCurrentItem();
         Notification notification = buildNowPlayingNotification(context, (AudioModel) currentItem);
         getNotificationService(context).notify(NOTIFICATION_ID_PLAYER, notification);
     }
@@ -61,7 +61,7 @@ public class PlaybackReceiver extends BasePlayerReceiver {
         RemoteViews widgetLayout = new RemoteViews(context.getPackageName(), R.layout.widget_audio_player);
         widgetLayout.setTextViewText(R.id.text_widget_artist, currentItem.getArtist());
         widgetLayout.setTextViewText(R.id.text_widget_name, currentItem.getName());
-        int playButtonRes = AudioPlayer.getInstance(context).isPlaying() ? R.drawable.ic_pause : R.drawable.ic_play;
+        int playButtonRes = StreamPlayer.getInstance(context).isPlaying() ? R.drawable.ic_pause : R.drawable.ic_play;
         widgetLayout.setImageViewResource(R.id.btn_widget_pause, playButtonRes);
 
         Intent playerActivityStarter = new Intent(context, AudioPlayerActivity.class);

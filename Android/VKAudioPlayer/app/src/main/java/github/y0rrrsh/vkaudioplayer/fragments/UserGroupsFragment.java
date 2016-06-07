@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserGroupsAdapter;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi.VkArrayCallback;
 
 /**
  * @author Artur Yorsh
@@ -38,7 +38,7 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getGroups(new VkArrayCallback<GroupDTO>() {
+        api.getGroups(new VKArrayCallback<GroupDTO>() {
             @Override
             public void onResponse(List<GroupDTO> response) {
                 adapter.setItems(response);

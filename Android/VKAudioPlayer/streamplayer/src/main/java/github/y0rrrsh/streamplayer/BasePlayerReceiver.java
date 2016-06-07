@@ -1,4 +1,4 @@
-package github.y0rrrsh.vkaudioplayer.audioplayer;
+package github.y0rrrsh.streamplayer;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,6 +14,8 @@ public abstract class BasePlayerReceiver extends BroadcastReceiver {
     public static final String ACTION_PAUSE = "github.y0rrrsh.vkaudioplayer.PAUSE";
     public static final String ACTION_COMPLETE = "github.y0rrrsh.vkaudioplayer.COMPLETE";
     public static final String ACTION_BUFFER_UPDATE = "github.y0rrrsh.vkaudioplayer.BUFFER";
+
+    public static final String EXTRA_BUFFER_PERCENT = "player_buffer_percent";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,7 +38,7 @@ public abstract class BasePlayerReceiver extends BroadcastReceiver {
             return;
         }
         if (ACTION_BUFFER_UPDATE.equals(action)) {
-            int percent = intent.getIntExtra(AudioPlayer.EXTRA_BUFFER_PERCENT, 0);
+            int percent = intent.getIntExtra(EXTRA_BUFFER_PERCENT, 0);
             onBufferUpdated(context, percent / 100.0f);
         }
     }

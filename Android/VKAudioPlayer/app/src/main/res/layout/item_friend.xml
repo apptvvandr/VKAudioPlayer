@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    android:orientation="horizontal">
+    android:layout_margin="@dimen/spacing_semi"
+    android:orientation="horizontal"
+    tools:layout_gravity="center">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/image_friend_avatar"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/size_list_item_friend_avatar"
+        android:layout_height="@dimen/size_list_item_friend_avatar"
         android:adjustViewBounds="true"
         android:transitionName="@string/transition_avatar"
         app:riv_corner_radius="32dp"
@@ -22,9 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
         android:textSize="18sp"
-        tools:text="Jason Statham"/>
+        tools:text="James Hetfield"/>
 
 </LinearLayout>

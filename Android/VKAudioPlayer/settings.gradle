@@ -1,1 +1,1 @@
-include ':app', ':playbackcontrolview'
+include ':app', ':playbackcontrolview', ':vkapi', ':streamplayer', ':emptyview'

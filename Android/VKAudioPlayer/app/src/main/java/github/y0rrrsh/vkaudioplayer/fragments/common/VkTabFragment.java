@@ -14,12 +14,12 @@ import android.widget.ProgressBar;
 import com.hannesdorfmann.fragmentargs.FragmentArgs;
 
 import butterknife.BindView;
+import github.y0rrrsh.emptyview.EmptyView;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter.ItemObserver;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.views.EmptyView;
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
+import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
 
 /**
  * @author Artur Yorsh
@@ -75,10 +75,8 @@ public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragmen
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        VKAPService api = VKApi.getApiService();
-        if (api != null) {
-            onDataRequest(api);
-        }
+        //noinspection ConstantConditions
+        onDataRequest(VKAPServiceImpl.getInstance());
     }
 
     protected abstract void onDataRequest(@NonNull VKAPService api);
