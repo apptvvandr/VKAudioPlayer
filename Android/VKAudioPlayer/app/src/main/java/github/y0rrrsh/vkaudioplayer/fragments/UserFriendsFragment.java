@@ -28,6 +28,12 @@ public class UserFriendsFragment extends VkTabFragment<UserFriendsAdapter> {
         return new UserFriendsAdapter();
     }
 
+    @NonNull
+    @Override
+    protected String getDataTag() {
+        return "friends";
+    }
+
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
         api.getFriends(new VKArrayCallback<FriendDTO>() {

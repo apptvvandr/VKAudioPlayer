@@ -29,7 +29,7 @@ public abstract class PlaybackActivity extends BaseActivity {
             @Override
             public void run() {
                 int progress = player.getProgress();
-                onProgressUpdated(progress);
+                onProgressChanged(progress);
                 handler.postDelayed(this, 1000);
             }
         });
@@ -47,7 +47,7 @@ public abstract class PlaybackActivity extends BaseActivity {
         unregisterReceiver(playbackReceiver);
     }
 
-    protected void onProgressUpdated(int progress) {
+    protected void onProgressChanged(int progress) {
     }
 
     protected void onPlayerItemSelected(AudioModel currentItem, int position) {

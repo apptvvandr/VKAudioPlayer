@@ -20,6 +20,7 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseAudioMapper;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 /**
  * @author Artur Yorsh
@@ -38,6 +39,12 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     @Override
     protected UserAudiosAdapter onCreateItemAdapter() {
         return new UserAudiosAdapter();
+    }
+
+    @NonNull
+    @Override
+    protected String getDataTag() {
+        return "audio";
     }
 
     @Override
@@ -71,6 +78,12 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
         });
 
         return contentView;
+    }
+
+    @Override
+    protected boolean canPerformDataRequest() {
+        boolean isEmpty = super.canPerformDataRequest();
+        return dataTag.startsWith("main_") ? isEmpty || VKAPUtils.lastRequestIsOlder(getActivity(), dataTag, 0.25) : isEmpty;
     }
 
     @Override

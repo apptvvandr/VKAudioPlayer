@@ -36,6 +36,12 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
         return new GridLayoutManager(context, 2);
     }
 
+    @NonNull
+    @Override
+    protected String getDataTag() {
+        return "groups";
+    }
+
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
         api.getGroups(new VKArrayCallback<GroupDTO>() {

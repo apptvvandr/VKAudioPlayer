@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.content.SharedPreferencesCompat;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
@@ -18,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.activities.common.BaseActivity;
+import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragment;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragment.PlaylistReadyListener;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragmentBuilder;
@@ -26,7 +25,7 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 
 import static android.support.design.widget.FloatingActionButton.OnVisibilityChangedListener;
 
-public class ListAudioActivity extends BaseActivity implements PlaylistReadyListener {
+public class ListAudioActivity extends PlaybackActivity implements PlaylistReadyListener {
 
     public static final String ARG_OWNER_AVATAR = "owner_avatar";
     public static String ARG_OWNER_ID = "owner_id";
@@ -36,6 +35,7 @@ public class ListAudioActivity extends BaseActivity implements PlaylistReadyList
     @BindView(R.id.fab_play) FloatingActionButton fabPlay;
     @BindView(R.id.image_owner_avatar) ImageView imageOwnerAvatar;
 
+    private int ownerId;
     private List<AudioModel> playlist;
 
     @Override
@@ -47,7 +47,7 @@ public class ListAudioActivity extends BaseActivity implements PlaylistReadyList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
+        ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
         String ownerName = getIntent().getStringExtra(ARG_OWNER_NAME);
         String ownerAvatar = getIntent().getStringExtra(ARG_OWNER_AVATAR);
 
@@ -65,9 +65,34 @@ public class ListAudioActivity extends BaseActivity implements PlaylistReadyList
                 .commit();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        boolean isNowPlayingPlaylist = player.isPlaying() && ((AudioModel) player.getCurrentItem()).getOwnerId() == ownerId;
+        int playButtonRes = isNowPlayingPlaylist ? R.drawable.ic_pause : R.drawable.ic_play;
+        fabPlay.setImageResource(playButtonRes);
+    }
+
     @OnClick(R.id.fab_play)
     protected void onFabClicked() {
-        AudioPlayerActivity.start(this, playlist, 0);
+        if (player.isPlaying()) {
+            player.pause();
+        } else if (player.getPlaylist().isEmpty() || ((AudioModel) player.getCurrentItem()).getOwnerId() != ownerId) {
+            AudioPlayerActivity.start(this, playlist, 0);
+        } else {
+            player.play();
+        }
+    }
+
+    @Override
+    protected void onStartPlaying(AudioModel currentItem) {
+        fabPlay.setImageResource(R.drawable.ic_pause);
+    }
+
+    @Override
+    protected void onPausePlaying() {
+        fabPlay.setImageResource(R.drawable.ic_play);
     }
 
     @Override
