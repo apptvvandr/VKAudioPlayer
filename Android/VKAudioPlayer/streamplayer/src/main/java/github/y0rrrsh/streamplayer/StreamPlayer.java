@@ -19,11 +19,10 @@ public class StreamPlayer {
     private int currentItemPosition;
     private StreamItem currentItem;
     private List<? extends StreamItem> playlist = new ArrayList<>();
-    private MediaPlayer player;
+    private MediaPlayer player = new MediaPlayer();
 
     private StreamPlayer(final Context context) {
         this.context = context;
-        player = new MediaPlayer();
 
         player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -144,6 +143,6 @@ public class StreamPlayer {
     public interface StreamItem {
         String getUrl();
 
-        long getDuration();
+        int getDuration();
     }
 }

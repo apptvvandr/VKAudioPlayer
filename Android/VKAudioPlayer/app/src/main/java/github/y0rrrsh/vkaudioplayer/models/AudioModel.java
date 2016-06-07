@@ -11,11 +11,11 @@ public class AudioModel implements StreamItem {
     private Integer ownerId;
 
     private String url;
-    private long duration;
+    private int duration;
     private String artist;
     private String name;
 
-    public AudioModel(Integer id, Integer ownerId, String url, long duration, String artist, String name) {
+    public AudioModel(Integer id, Integer ownerId, String url, int duration, String artist, String name) {
         this.id = id;
         this.ownerId = ownerId;
         this.url = url;
@@ -46,7 +46,7 @@ public class AudioModel implements StreamItem {
     }
 
     @Override
-    public long getDuration() {
+    public int getDuration() {
         return duration;
     }
 
