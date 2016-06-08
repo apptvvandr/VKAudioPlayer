@@ -6,5 +6,7 @@
 
     <color name="gray_light">#EEEEEE</color>
     <color name="accent_15">#265d4037</color>
-    <color name="transparent_15">#26111111</color>
+
+    <color name="black_15">#26111111</color>
+    <color name="white_50">#80ffffff</color>
 </resources>

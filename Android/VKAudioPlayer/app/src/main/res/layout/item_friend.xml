@@ -16,7 +16,7 @@
         android:adjustViewBounds="true"
         android:transitionName="@string/transition_avatar"
         app:riv_corner_radius="32dp"
-        tools:src="@mipmap/ic_launcher"/>
+        tools:src="@drawable/avatar_default"/>
 
     <TextView
         android:id="@+id/text_friend_name"

@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/transparent_15"
+        android:background="@color/black_15"
         android:gravity="center"
         android:minHeight="40dp"
         android:padding="@dimen/spacing_normal"

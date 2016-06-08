@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    
     buildTypes {
         debug {
             buildConfigField "String", "VKAP_APP_ID", "\"5424227\""
@@ -56,6 +57,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'jp.wasabeef:picasso-transformations:2.1.0'
     compile 'com.makeramen:roundedimageview:2.2.1'
     compile 'com.github.wseemann:FFmpegMediaMetadataRetriever:1.0.9'
 }

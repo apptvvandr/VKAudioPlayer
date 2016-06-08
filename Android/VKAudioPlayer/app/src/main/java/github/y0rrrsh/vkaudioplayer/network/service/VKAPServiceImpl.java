@@ -7,8 +7,11 @@ import github.y0rrrsh.vkapi.VKApi.VKCallback;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
+import github.y0rrrsh.vkaudioplayer.models.dto.UserDTO;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
+import github.y0rrrsh.vkaudioplayer.network.response.VkError;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
+import github.y0rrrsh.vkaudioplayer.network.response.VkSimpleArrayResponse;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -32,7 +35,7 @@ public class VKAPServiceImpl implements VKAPService {
 
     private VKAPServiceImpl() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         Interceptor requestInterceptor = chain -> {
             Request original = chain.request();
@@ -187,6 +190,27 @@ public class VKAPServiceImpl implements VKAPService {
 
             @Override
             public void onFailure(Call<VkResponse<AudioDTO>> call, Throwable t) {
+                t.printStackTrace();
+                callback.onError(t);
+            }
+        });
+    }
+
+    @Override
+    public void getUserInfo(Integer id, VKCallback<UserDTO> callback) {
+        service.getUserInfo(id, "photo_big").enqueue(new Callback<VkSimpleArrayResponse<UserDTO>>() {
+            @Override
+            public void onResponse(Call<VkSimpleArrayResponse<UserDTO>> call, Response<VkSimpleArrayResponse<UserDTO>> response) {
+                VkError error = response.body().getError();
+                if (error != null) {
+                    onFailure(call, error);
+                    return;
+                }
+                callback.onResponse(response.body().getItems().get(0));
+            }
+
+            @Override
+            public void onFailure(Call<VkSimpleArrayResponse<UserDTO>> call, Throwable t) {
                 t.printStackTrace();
                 callback.onError(t);
             }

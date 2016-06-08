@@ -5,6 +5,7 @@ import github.y0rrrsh.vkapi.VKApi.VKCallback;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
+import github.y0rrrsh.vkaudioplayer.models.dto.UserDTO;
 
 /**
  * @author Artur Yorsh
@@ -22,4 +23,6 @@ public interface VKAPService {
     void removeAudio(Integer id, Integer ownerId, VKCallback<Integer> callback);
 
     void restoreAudio(Integer id, Integer ownerId, VKCallback<AudioDTO> callback);
+
+    void getUserInfo(Integer id, VKCallback<UserDTO> callback);
 }
