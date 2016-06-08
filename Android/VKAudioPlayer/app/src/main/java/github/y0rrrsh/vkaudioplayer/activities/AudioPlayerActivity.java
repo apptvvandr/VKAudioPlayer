@@ -113,7 +113,6 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         updateEditPlaylistIcon(currentItem, currentItemPosition);
     }
 
-
     @OnClick(R.id.btn_playlist_edit)
     protected void onPlaylistEditClicked() {
         AudioModel currentItem = (AudioModel) player.getCurrentItem();
@@ -287,8 +286,10 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
 
     private void updateEditPlaylistIcon(AudioModel currentItem, int playlistPosition) {
         ManagedAudio managedAudio = managedAudios.get(playlistPosition);
-        boolean canBeAddedOrRestored = currentItem.getOwnerId() != VKApi.USER_ID || (managedAudio != null && managedAudio.wasRemoved());
-        int editIcon = canBeAddedOrRestored ? R.drawable.ic_playlist_plus : R.drawable.ic_playlist_minus;
+        boolean isOwner = currentItem.getOwnerId() != VKApi.USER_ID && managedAudio == null;
+        boolean canBeRestored = managedAudio != null && managedAudio.wasRemoved();
+
+        int editIcon = isOwner || canBeRestored ? R.drawable.ic_playlist_plus : R.drawable.ic_playlist_minus;
         btnPlaylistEdit.setImageResource(editIcon);
     }
 

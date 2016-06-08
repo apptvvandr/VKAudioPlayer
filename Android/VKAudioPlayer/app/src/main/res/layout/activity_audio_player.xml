@@ -15,10 +15,9 @@
         app:navigationIcon="@drawable/abc_ic_ab_back_mtrl_am_alpha"/>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:paddingBottom="@dimen/spacing_double"
         android:paddingLeft="@dimen/spacing_double"
@@ -27,6 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_normal"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -72,10 +72,8 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            android:layout_weight="1">
+            android:layout_height="320dp"
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/image_player_cover"
@@ -91,34 +89,35 @@
 
         </FrameLayout>
 
-        <LinearLayout
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_normal">
+
+        <TextView
+            android:id="@+id/text_time_current"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:textSize="12sp"
+            tools:text="01:43"/>
 
-            <TextView
-                android:id="@+id/text_time_current"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <github.y0rrrsh.playbackcontrolview.PlaybackControlView
+            android:id="@+id/control_player"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:pcv_button_background="@drawable/bg_btn_player"/>
 
-                android:textSize="12sp"
-                tools:text="01:43"/>
-
-            <github.y0rrrsh.playbackcontrolview.PlaybackControlView
-                android:id="@+id/control_player"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:pcv_button_background="@drawable/bg_btn_player"/>
-
-            <TextView
-                android:id="@+id/text_time_full"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                tools:text="05:12"/>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/text_time_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            tools:text="05:12"/>
 
     </LinearLayout>
 

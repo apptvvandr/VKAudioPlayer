@@ -77,12 +77,23 @@ public class ListAudioActivity extends PlaybackActivity implements PlaylistReady
     @OnClick(R.id.fab_play)
     protected void onFabClicked() {
         if (player.isPlaying()) {
-            player.pause();
-        } else if (player.getPlaylist().isEmpty() || ((AudioModel) player.getCurrentItem()).getOwnerId() != ownerId) {
-            AudioPlayerActivity.start(this, playlist, 0);
-        } else {
+            if (ownerId == ((AudioModel) player.getCurrentItem()).getOwnerId()) {
+                player.pause();
+            } else {
+                player.setPlaylist(playlist);
+                player.play(0);
+            }
+        } else if (player.getCurrentItem() != null) {
             player.play();
+        } else {
+            player.setPlaylist(playlist);
+            player.play(0);
         }
+    }
+
+    @Override
+    protected void onPlayerItemSelected(AudioModel currentItem, int position) {
+        // TODO: 07.06.16 present loading
     }
 
     @Override
