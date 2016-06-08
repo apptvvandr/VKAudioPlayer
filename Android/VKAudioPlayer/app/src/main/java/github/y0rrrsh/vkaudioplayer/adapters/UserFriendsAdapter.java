@@ -29,7 +29,10 @@ public class UserFriendsAdapter extends VkItemAdapter<FriendDTO, UserFriendsAdap
 
     @Override
     protected void onBindViewHolder(FriendHolder holder, FriendDTO item, int position) {
-        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200()).into(holder.imageAvatar);
+        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200())
+                .placeholder(R.drawable.avatar_default)
+                .error(R.drawable.avatar_default)
+                .into(holder.imageAvatar);
         holder.textName.setText(String.format("%s %s", item.getFirstName(), item.getLastName()));
     }
 

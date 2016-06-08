@@ -29,7 +29,10 @@ public class UserGroupsAdapter extends VkItemAdapter<GroupDTO, UserGroupsAdapter
 
     @Override
     protected void onBindViewHolder(GroupHolder holder, GroupDTO item, int position) {
-        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200()).into(holder.imageAvatar);
+        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200())
+                .placeholder(R.drawable.avatar_default)
+                .error(R.drawable.avatar_default)
+                .into(holder.imageAvatar);
         holder.textTitle.setText(item.getName());
     }
 
