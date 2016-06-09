@@ -11,6 +11,7 @@
 
     <!--custom sizes-->
     <dimen name="height_appbar_expanded">256dp</dimen>
+    <dimen name="height_drawer_header">192dp</dimen>
     <dimen name="height_list_item_group">196dp</dimen>
     <dimen name="size_list_item_friend_avatar">64dp</dimen>
     <dimen name="size_widget_button">48dp</dimen>
