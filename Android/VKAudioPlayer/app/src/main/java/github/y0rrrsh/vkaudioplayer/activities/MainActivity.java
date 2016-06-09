@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
@@ -28,6 +29,9 @@ import github.y0rrrsh.vkaudioplayer.adapters.VkTabAdapter;
 import github.y0rrrsh.vkaudioplayer.models.dto.UserDTO;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
 import jp.wasabeef.picasso.transformations.BlurTransformation;
+
+import static github.y0rrrsh.vkaudioplayer.BuildConfig.VKAP_APP_ID;
+import static github.y0rrrsh.vkaudioplayer.BuildConfig.VKAP_APP_SCOPE;
 
 /**
  * @author Artur Yorsh
@@ -67,7 +71,8 @@ public class MainActivity extends BaseActivity {
                     // TODO: 09.06.16 present app info
                     break;
                 case R.id.menu_nav_logout:
-                    // TODO: 09.06.16 vk logout
+                    VKApi.logout(this);
+                    VKApi.login(this, VKAP_APP_ID, VKAP_APP_SCOPE);
                     break;
             }
             drawerLayout.closeDrawers();
@@ -108,5 +113,16 @@ public class MainActivity extends BaseActivity {
         Intent starter = new Intent(activity, MainActivity.class);
         activity.startActivity(starter);
         activity.finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_CANCELED) {
+            Toast.makeText(this, "To use this app you should be logged in!", Toast.LENGTH_SHORT).show();
+            VKApi.login(this, VKAP_APP_ID, VKAP_APP_SCOPE);
+            return;
+        }
+        MainActivity.start(this);
     }
 }

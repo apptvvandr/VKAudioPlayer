@@ -30,6 +30,10 @@ class VKPreferences {
                 .apply();
     }
 
+    static void clearValues(Context context) {
+        getEditor(context).clear().apply();
+    }
+
     private static SharedPreferences.Editor getEditor(Context context) {
         return getSharedPreferences(context).edit();
     }

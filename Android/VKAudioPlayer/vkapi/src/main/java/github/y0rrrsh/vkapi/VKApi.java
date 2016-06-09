@@ -3,6 +3,8 @@ package github.y0rrrsh.vkapi;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 
 import java.util.List;
 
@@ -39,6 +41,15 @@ public class VKApi {
 
     public static void login(@NonNull Activity activity, @NonNull String appId, @NonNull String appScope) {
         VKLoginActivity.startForResult(activity, appId, appScope);
+    }
+
+    public static void logout(@NonNull Activity activity) {
+        VKPreferences.clearValues(activity);
+
+        CookieSyncManager.createInstance(activity);
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.removeAllCookie();
+        instance = null;
     }
 
     public static boolean isInitialized() {

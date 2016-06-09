@@ -60,6 +60,10 @@ public class VKLoginActivity extends AppCompatActivity {
         webView.loadUrl(authUrl);
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
     static void startForResult(Activity activity, @NonNull String appId, String appScope) {
         Intent intent = new Intent(activity, VKLoginActivity.class)
                 .putExtra(EXTRA_APP_ID, appId)
