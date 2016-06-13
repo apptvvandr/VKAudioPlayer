@@ -12,28 +12,28 @@ public class GroupDTO implements VKItem {
 
     @SerializedName("id")
     @Expose
-    public Integer id;
+    private Integer id;
     @SerializedName("name")
     @Expose
-    public String name;
+    private String name;
     @SerializedName("screen_name")
     @Expose
-    public String screenName;
+    private String screenName;
     @SerializedName("is_closed")
     @Expose
-    public Integer isClosed;
+    private Integer isClosed;
     @SerializedName("type")
     @Expose
-    public String type;
+    private String type;
     @SerializedName("photo_50")
     @Expose
-    public String photo50;
+    private String photo50;
     @SerializedName("photo_100")
     @Expose
-    public String photo100;
+    private String photo100;
     @SerializedName("photo_200")
     @Expose
-    public String photo200;
+    private String photo200;
 
     public String getName() {
         return name;

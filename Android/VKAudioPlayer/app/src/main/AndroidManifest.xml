@@ -11,7 +11,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/VKAP.Main">
-
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait"
@@ -24,7 +23,6 @@
         </activity>
         <activity android:name=".activities.MainActivity"/>
         <activity android:name=".activities.ListAudioActivity"/>
-
         <activity
             android:name=".activities.AudioPlayerActivity"
             android:launchMode="singleTask"/>
@@ -37,13 +35,14 @@
                 <action android:name="github.y0rrrsh.vkaudioplayer.COMPLETE"/>
             </intent-filter>
         </receiver>
-
         <receiver android:name=".receivers.WidgetControlReceiver">
             <intent-filter>
                 <action android:name="github.y0rrrsh.vkaudioplayer.widget.PLAY"/>
                 <action android:name="github.y0rrrsh.vkaudioplayer.widget.NEXT"/>
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activities.SettingsActivity"/>
     </application>
 
 </manifest>

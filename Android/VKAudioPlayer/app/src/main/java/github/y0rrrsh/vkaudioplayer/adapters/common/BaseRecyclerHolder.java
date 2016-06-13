@@ -8,9 +8,9 @@ import butterknife.ButterKnife;
 /**
  * @author Artur Yorsh
  */
-public class VkItemHolder extends RecyclerView.ViewHolder {
+public class BaseRecyclerHolder extends RecyclerView.ViewHolder {
 
-    public VkItemHolder(View itemView) {
+    public BaseRecyclerHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }

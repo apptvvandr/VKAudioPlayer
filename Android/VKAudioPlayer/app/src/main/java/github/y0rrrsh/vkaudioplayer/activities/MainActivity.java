@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity {
                     // TODO: 09.06.16 present downloads
                     break;
                 case R.id.menu_nav_settings:
-                    // TODO: 09.06.16 present settings
+                    SettingsActivity.start(this);
                     break;
                 case R.id.menu_nav_about:
                     // TODO: 09.06.16 present app info
@@ -81,7 +81,11 @@ public class MainActivity extends BaseActivity {
 
         viewPager.setAdapter(new VkTabAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         //noinspection ConstantConditions
         VKAPServiceImpl.getInstance().getUserInfo(VKApi.USER_ID, new VKCallback<UserDTO>() {
             @Override

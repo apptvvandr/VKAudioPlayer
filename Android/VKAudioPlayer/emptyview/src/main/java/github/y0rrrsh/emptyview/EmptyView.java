@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,6 +95,11 @@ public class EmptyView extends LinearLayout {
     public void setMessage(String messageNoData) {
         this.message = messageNoData;
         textNoData.setText(messageNoData);
+    }
+
+    public void setMessage(@StringRes int message) {
+        String message1 = getResources().getString(message);
+        setMessage(message1);
     }
 
     public void hide() {

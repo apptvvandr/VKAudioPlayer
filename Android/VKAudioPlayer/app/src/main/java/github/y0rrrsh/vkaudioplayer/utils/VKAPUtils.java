@@ -2,6 +2,8 @@ package github.y0rrrsh.vkaudioplayer.utils;
 
 import android.content.Context;
 
+import github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB;
+
 /**
  * @author Artur Yorsh. 07.06.16.
  */
@@ -19,5 +21,10 @@ public class VKAPUtils {
         long now = System.currentTimeMillis();
 
         return now - lastDataUpdate > minutes * 60 * 1000;
+    }
+
+    public static void resetSettings(Context context) {
+        VKAPPreferences.clear(context);
+        SyncObjectsDB.getInstance().setSyncForAllEnabled(false);
     }
 }

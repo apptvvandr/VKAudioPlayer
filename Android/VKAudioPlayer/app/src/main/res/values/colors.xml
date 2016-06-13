@@ -5,6 +5,8 @@
     <color name="colorAccent">#5D4037</color>
 
     <color name="gray_light">#EEEEEE</color>
+    <color name="gray">#bdbdbd</color>
+    <color name="gray_dark">#757575</color>
     <color name="accent_15">#265d4037</color>
 
     <color name="black_15">#26111111</color>

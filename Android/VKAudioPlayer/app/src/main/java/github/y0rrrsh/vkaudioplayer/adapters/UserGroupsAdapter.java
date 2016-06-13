@@ -8,17 +8,18 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemHolder;
+import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerAdapter;
+import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerHolder;
+import github.y0rrrsh.vkaudioplayer.models.GroupModel;
 import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
 
 /**
  * @author Artur Yorsh
  */
-public class UserGroupsAdapter extends VkItemAdapter<GroupDTO, UserGroupsAdapter.GroupHolder> {
+public class UserGroupsAdapter extends BaseRecyclerAdapter<GroupModel, UserGroupsAdapter.GroupHolder> {
 
     @Override
-    protected int getItemViewResId() {
+    protected int getItemViewResId(int viewType) {
         return R.layout.item_group;
     }
 
@@ -28,15 +29,15 @@ public class UserGroupsAdapter extends VkItemAdapter<GroupDTO, UserGroupsAdapter
     }
 
     @Override
-    protected void onBindViewHolder(GroupHolder holder, GroupDTO item, int position) {
-        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200())
+    protected void onBindViewHolder(GroupHolder holder, GroupModel item, int position) {
+        Picasso.with(holder.itemView.getContext()).load(item.getAvatarUrl())
                 .placeholder(R.drawable.avatar_default)
                 .error(R.drawable.avatar_default)
                 .into(holder.imageAvatar);
         holder.textTitle.setText(item.getName());
     }
 
-    public static class GroupHolder extends VkItemHolder {
+    public static class GroupHolder extends BaseRecyclerHolder {
 
         @BindView(R.id.text_group_title) public TextView textTitle;
         @BindView(R.id.image_group_avatar) public ImageView imageAvatar;

@@ -17,8 +17,8 @@ import butterknife.BindView;
 import github.y0rrrsh.emptyview.EmptyView;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.MainActivity;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter.ItemObserver;
+import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerAdapter;
+import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerAdapter.ItemObserver;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
@@ -26,7 +26,7 @@ import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 /**
  * @author Artur Yorsh
  */
-public abstract class VkTabFragment<A extends VkItemAdapter> extends BaseFragment implements ItemObserver {
+public abstract class VkTabFragment<A extends BaseRecyclerAdapter> extends BaseFragment implements ItemObserver {
 
     protected String dataTag;
 

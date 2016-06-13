@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author Artur Yorsh
  */
-public abstract class VkItemAdapter<M, VH extends VkItemHolder> extends RecyclerView.Adapter<VH> {
+public abstract class BaseRecyclerAdapter<M, VH extends BaseRecyclerHolder> extends RecyclerView.Adapter<VH> {
 
     protected List<M> items;
 
@@ -19,7 +19,7 @@ public abstract class VkItemAdapter<M, VH extends VkItemHolder> extends Recycler
     protected ItemClickListener<M, VH> itemClickListener;
 
     @LayoutRes
-    protected abstract int getItemViewResId();
+    protected abstract int getItemViewResId(int viewType);
 
     protected abstract VH onCreateViewHolder(View itemView, int viewType);
 
@@ -27,7 +27,7 @@ public abstract class VkItemAdapter<M, VH extends VkItemHolder> extends Recycler
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        int itemViewResId = getItemViewResId();
+        int itemViewResId = getItemViewResId(viewType);
         View itemView = LayoutInflater.from(parent.getContext()).inflate(itemViewResId, parent, false);
 
         return onCreateViewHolder(itemView, viewType);
