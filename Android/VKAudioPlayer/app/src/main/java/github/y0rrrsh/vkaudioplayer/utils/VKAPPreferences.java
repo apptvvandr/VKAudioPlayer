@@ -2,14 +2,13 @@ package github.y0rrrsh.vkaudioplayer.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.support.annotation.NonNull;
 
 import github.y0rrrsh.vkapi.VKApi;
-import github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB.DataType;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType;
 
-import static github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB.DataType.FRIENDS;
-import static github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB.DataType.GROUPS;
+import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.FRIENDS;
+import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.GROUPS;
 
 /**
  * @author Artur Yorsh. 01.06.16.
@@ -22,7 +21,8 @@ public class VKAPPreferences {
     private static final String KEY_SHUFFLE_ENABLED = "shuffle_enabled";
     private static final String KEY_LAST_UPDATE = "last_update_";
     public static final String KEY_AUTO_SYNC_ENABLED = "auto_sync_enabled_";
-    public static final String KEY_ASKED_SYNC = "first_use_";
+    public static final String KEY_ASKED_SYNC = "asked_sync_";
+    private static final String KEY_FIRST_USE_MILLIS = "first_use_millis";
 
     //player
     public static boolean isRepeatEnabled(Context context) {
@@ -74,6 +74,14 @@ public class VKAPPreferences {
     public static void setAutoSyncEnabled(Context context, boolean enabled) {
         setAutoSyncEnabled(context, FRIENDS, enabled);
         setAutoSyncEnabled(context, GROUPS, enabled);
+    }
+
+    public static long getLastLoginMillis(Context context) {
+        return getSharedPreferences(context).getLong(KEY_FIRST_USE_MILLIS, 0);
+    }
+
+    public static void setLastLoginMillis(Context context, long millis) {
+        getEditor(context).putLong(KEY_FIRST_USE_MILLIS, millis).apply();
     }
 
     public static void clear(Context context) {

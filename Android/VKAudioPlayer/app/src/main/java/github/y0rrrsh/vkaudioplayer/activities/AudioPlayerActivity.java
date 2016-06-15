@@ -179,9 +179,9 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
     }
 
     private void restoreAudioRequest(final AudioModel currentAudio, Integer audioId) {
-        api.restoreAudio(audioId, VKApi.USER_ID, new VKCallback<AudioDTO>() {
+        api.restoreAudio(audioId, VKApi.USER_ID, new VKCallback<AudioModel>() {
             @Override
-            public void onResponse(AudioDTO restoredAudio) {
+            public void onResponse(AudioModel restoredAudio) {
                 String audioInfo = String.format("%s - %s", currentAudio.getArtist(), currentAudio.getName());
                 Toast.makeText(AudioPlayerActivity.this, audioInfo + " was added to your page", Toast.LENGTH_LONG).show();
 

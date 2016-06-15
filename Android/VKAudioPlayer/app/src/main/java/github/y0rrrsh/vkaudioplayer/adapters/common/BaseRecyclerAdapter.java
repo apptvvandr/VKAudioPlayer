@@ -25,6 +25,16 @@ public abstract class BaseRecyclerAdapter<M, VH extends BaseRecyclerHolder> exte
 
     protected abstract void onBindViewHolder(VH holder, M item, int position);
 
+    protected int getItemViewType(M item, int position) {
+        return 0;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        M item = items.get(position);
+        return getItemViewType(item, position);
+    }
+
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         int itemViewResId = getItemViewResId(viewType);

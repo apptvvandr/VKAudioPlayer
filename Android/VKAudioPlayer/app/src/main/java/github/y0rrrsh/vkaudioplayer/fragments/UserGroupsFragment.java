@@ -17,18 +17,17 @@ import java.util.List;
 
 import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserGroupsAdapter;
-import github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB;
+import github.y0rrrsh.vkaudioplayer.database.syncitem.SyncItemDB;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.GroupModel;
-import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
-import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseGroupsMapper;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
-import static github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB.DataType.GROUPS;
+import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.GROUPS;
 
 /**
  * @author Artur Yorsh
@@ -53,12 +52,12 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getGroups(new VKArrayCallback<GroupDTO>() {
+        api.getGroups(new VKArrayCallback<GroupModel>() {
             @Override
-            public void onResponse(List<GroupDTO> response) {
-                List<GroupModel> groupModels = new ResponseGroupsMapper().map(response);
-                adapter.setItems(groupModels);
-                SyncObjectsDB.getInstance().updateData(GROUPS, groupModels);
+            public void onResponse(List<GroupModel> response) {
+                adapter.setItems(response);
+                VkItemDB.getInstance().update(GROUPS, response);
+                SyncItemDB.getInstance().update();
             }
 
             @Override
@@ -96,7 +95,7 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
                     R.string.dialog_sync_message_groups,
                     R.string.yes,
                     () -> {
-                        SyncObjectsDialogFragment dialog1 = SyncObjectsDialogFragment.newInstance(GROUPS);
+                        VkItemDialogFragment dialog1 = VkItemDialogFragment.newInstance(GROUPS);
                         dialog1.show(activity.getSupportFragmentManager(), null);
                         VKAPPreferences.setAutoSyncEnabled(activity, GROUPS, true);
                     },

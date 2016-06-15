@@ -1,22 +1,19 @@
 package github.y0rrrsh.vkaudioplayer.models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import github.y0rrrsh.vkaudioplayer.database.syncdb.Synchronized;
+import github.y0rrrsh.vkaudioplayer.database.syncitem.SyncItemDB;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
  * @author Artur Yorsh. 09.06.16.
  */
-public class GroupModel extends RealmObject implements Synchronized {
+public class GroupModel extends RealmObject implements VkItem {
 
     @PrimaryKey
     private int id;
     private String name;
     private String avatarUrl;
-    private boolean isSyncEnabled;
 
     public GroupModel() {
     }
@@ -44,41 +41,21 @@ public class GroupModel extends RealmObject implements Synchronized {
 
     @Override
     public boolean isSyncEnabled() {
-        return isSyncEnabled;
+        return SyncItemDB.getInstance().isSyncEnabledForId(id);
     }
 
     @Override
     public void setSyncEnabled(boolean enabled) {
-        this.isSyncEnabled = enabled;
-    }
-
-    public static final Parcelable.Creator<GroupModel> CREATOR = new Parcelable.Creator<GroupModel>() {
-        public GroupModel createFromParcel(Parcel in) {
-            return new GroupModel(in);
-        }
-
-        public GroupModel[] newArray(int size) {
-            return new GroupModel[size];
-        }
-    };
-
-    private GroupModel(Parcel in) {
-        this.id = in.readInt();
-        this.name = in.readString();
-        this.avatarUrl = in.readString();
-        this.isSyncEnabled = in.readInt() == 0;
+        SyncItemDB.getInstance().setSyncEnabledForId(id, enabled);
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(name);
-        dest.writeString(avatarUrl);
-        dest.writeInt(isSyncEnabled ? 0 : 1);
+    public long getSyncSeconds() {
+        return SyncItemDB.getInstance().getSyncMillisForId(id);
     }
 
     @Override
-    public int describeContents() {
-        return 0;
+    public void setSyncSeconds(long seconds) {
+        SyncItemDB.getInstance().setSyncMillisForId(id, seconds);
     }
 }

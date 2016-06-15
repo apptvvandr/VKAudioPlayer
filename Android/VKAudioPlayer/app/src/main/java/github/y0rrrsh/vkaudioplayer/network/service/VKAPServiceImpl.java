@@ -2,12 +2,23 @@ package github.y0rrrsh.vkaudioplayer.network.service;
 
 import android.support.annotation.Nullable;
 
+import java.util.Collections;
+import java.util.List;
+
 import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkapi.VKApi.VKCallback;
+import github.y0rrrsh.vkaudioplayer.models.AudioModel;
+import github.y0rrrsh.vkaudioplayer.models.FriendModel;
+import github.y0rrrsh.vkaudioplayer.models.GroupModel;
+import github.y0rrrsh.vkaudioplayer.models.UserModel;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.UserDTO;
+import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseAudioMapper;
+import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseFriendsMapper;
+import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseGroupsMapper;
+import github.y0rrrsh.vkaudioplayer.models.mapper.common.ResponseUserMapper;
 import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import github.y0rrrsh.vkaudioplayer.network.response.VkError;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
@@ -71,7 +82,7 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getAudios(String userId, VKArrayCallback<AudioDTO> callback) {
+    public void getAudios(Integer userId, VKArrayCallback<AudioModel> callback) {
         service.getAudios(userId).enqueue(new Callback<VkResponse<VkArrayResponse<AudioDTO>>>() {
             @Override
             public void onResponse(Call<VkResponse<VkArrayResponse<AudioDTO>>> call, Response<VkResponse<VkArrayResponse<AudioDTO>>> response) {
@@ -80,7 +91,8 @@ public class VKAPServiceImpl implements VKAPService {
                     onFailure(call, response.body().getError());
                     return;
                 }
-                callback.onResponse(itemsResponse.getItems());
+                List<AudioModel> audioModels = new ResponseAudioMapper().map(itemsResponse.getItems());
+                callback.onResponse(audioModels);
             }
 
             @Override
@@ -92,7 +104,7 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getGroups(VKArrayCallback<GroupDTO> callback) {
+    public void getGroups(VKArrayCallback<GroupModel> callback) {
         service.getGroups(true).enqueue(new Callback<VkResponse<VkArrayResponse<GroupDTO>>>() {
             @Override
             public void onResponse(Call<VkResponse<VkArrayResponse<GroupDTO>>> call, Response<VkResponse<VkArrayResponse<GroupDTO>>> response) {
@@ -101,7 +113,8 @@ public class VKAPServiceImpl implements VKAPService {
                     onFailure(call, response.body().getError());
                     return;
                 }
-                callback.onResponse(itemsResponse.getItems());
+                List<GroupModel> groupModels = new ResponseGroupsMapper().map(itemsResponse.getItems());
+                callback.onResponse(groupModels);
             }
 
             @Override
@@ -113,7 +126,7 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getFriends(VKArrayCallback<FriendDTO> callback) {
+    public void getFriends(VKArrayCallback<FriendModel> callback) {
         service.getFriends("name, photo_200").enqueue(new Callback<VkResponse<VkArrayResponse<FriendDTO>>>() {
             @Override
             public void onResponse(Call<VkResponse<VkArrayResponse<FriendDTO>>> call, Response<VkResponse<VkArrayResponse<FriendDTO>>> response) {
@@ -122,7 +135,8 @@ public class VKAPServiceImpl implements VKAPService {
                     onFailure(call, response.body().getError());
                     return;
                 }
-                callback.onResponse(itemsResponse.getItems());
+                List<FriendModel> friendModels = new ResponseFriendsMapper().map(itemsResponse.getItems());
+                callback.onResponse(friendModels);
             }
 
             @Override
@@ -176,7 +190,7 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void restoreAudio(Integer id, Integer ownerId, VKCallback<AudioDTO> callback) {
+    public void restoreAudio(Integer id, Integer ownerId, VKCallback<AudioModel> callback) {
         service.restoreAudio(id, ownerId).enqueue(new Callback<VkResponse<AudioDTO>>() {
             @Override
             public void onResponse(Call<VkResponse<AudioDTO>> call, Response<VkResponse<AudioDTO>> response) {
@@ -185,7 +199,8 @@ public class VKAPServiceImpl implements VKAPService {
                     onFailure(call, response.body().getError());
                     return;
                 }
-                callback.onResponse(responseAudio);
+                List<AudioModel> audioModels = new ResponseAudioMapper().map(Collections.singletonList(responseAudio));
+                callback.onResponse(audioModels.get(0));
             }
 
             @Override
@@ -197,7 +212,7 @@ public class VKAPServiceImpl implements VKAPService {
     }
 
     @Override
-    public void getUserInfo(Integer id, VKCallback<UserDTO> callback) {
+    public void getUserInfo(Integer id, VKCallback<UserModel> callback) {
         service.getUserInfo(id, "photo_big").enqueue(new Callback<VkSimpleArrayResponse<UserDTO>>() {
             @Override
             public void onResponse(Call<VkSimpleArrayResponse<UserDTO>> call, Response<VkSimpleArrayResponse<UserDTO>> response) {
@@ -206,7 +221,8 @@ public class VKAPServiceImpl implements VKAPService {
                     onFailure(call, error);
                     return;
                 }
-                callback.onResponse(response.body().getItems().get(0));
+                UserModel userModel = new ResponseUserMapper().map(response.body().getItems().get(0));
+                callback.onResponse(userModel);
             }
 
             @Override

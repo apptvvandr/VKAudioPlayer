@@ -62,13 +62,13 @@ public class VKApi {
         void onError(Throwable t);
     }
 
-    public interface VKArrayCallback<T extends VKItem> {
+    public interface VKArrayCallback<T> {
         void onResponse(List<T> response);
 
         void onError(Throwable t);
     }
 
-    public interface VKSimpleArrayCallback<T extends VKItem> {
+    public interface VKSimpleArrayCallback<T> {
         void onResponse(List<T> response);
 
         void onError(Throwable t);

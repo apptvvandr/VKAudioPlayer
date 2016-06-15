@@ -13,26 +13,26 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.adapters.SyncObjectsAdapter;
-import github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB;
-import github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB.DataType;
-import github.y0rrrsh.vkaudioplayer.database.syncdb.Synchronized;
+import github.y0rrrsh.vkaudioplayer.adapters.VkItemAdapter;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType;
 
 /**
  * @author Artur Yorsh. 09.06.16.
  */
-public class SyncObjectsDialogFragment extends DialogFragment {
+public class VkItemDialogFragment extends DialogFragment {
 
     private static final String ARG_TYPE = "type_items";
 
     @BindView(R.id.recycler_sync_objects) RecyclerView recyclerView;
-    private SyncObjectsAdapter<Synchronized> adapter = new SyncObjectsAdapter<>();
+    private VkItemAdapter<VkItem> adapter = new VkItemAdapter<>();
 
-    public static SyncObjectsDialogFragment newInstance(DataType type) {
+    public static VkItemDialogFragment newInstance(DataType type) {
         Bundle args = new Bundle();
         if (type != null) args.putString(ARG_TYPE, type.getName());
 
-        SyncObjectsDialogFragment fragment = new SyncObjectsDialogFragment();
+        VkItemDialogFragment fragment = new VkItemDialogFragment();
         fragment.setArguments(args);
 
         return fragment;
@@ -43,7 +43,7 @@ public class SyncObjectsDialogFragment extends DialogFragment {
         super.onCreate(savedInstanceState);
 
         adapter.setItemClickListener((item, itemPosition, viewHolder) ->
-                SyncObjectsDB.getInstance().setSyncForObjectEnabled(item, !item.isSyncEnabled()));
+                item.setSyncEnabled(!item.isSyncEnabled()));
     }
 
     @Nullable
@@ -61,8 +61,9 @@ public class SyncObjectsDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         String type = getArguments().getString(ARG_TYPE);
-        SyncObjectsDB db = SyncObjectsDB.getInstance();
-        List<Synchronized> items = type == null ? db.getAll() : db.getAll(DataType.forName(type));
+
+        VkItemDB db = VkItemDB.getInstance();
+        List<VkItem> items = type == null ? db.getAll() : db.getAll(DataType.forName(type));
         adapter.setItems(items);
     }
 }

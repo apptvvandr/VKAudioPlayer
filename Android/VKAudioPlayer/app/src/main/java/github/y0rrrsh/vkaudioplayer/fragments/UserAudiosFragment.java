@@ -12,15 +12,19 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 
 import java.util.List;
 
+import github.y0rrrsh.vkapi.VKApi;
 import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
-import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
-import github.y0rrrsh.vkaudioplayer.models.mapper.ResponseAudioMapper;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
+
+import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.USER;
 
 /**
  * @author Artur Yorsh
@@ -28,17 +32,18 @@ import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 @FragmentWithArgs
 public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
-    @Arg(required = false)
-    String userId;
-
-    @Arg(required = false)
-    String ownerName;
+    @Arg
+    int ownerId;
+    private VkItem owner;
 
     private PlaylistReadyListener playlistReadyListener;
 
     @Override
     protected UserAudiosAdapter onCreateItemAdapter() {
-        return new UserAudiosAdapter();
+        DataType ownerType = VKAPUtils.getOwnerTypeById(ownerId);
+        owner = VkItemDB.getInstance().get(ownerType, Math.abs(ownerId));
+
+        return new UserAudiosAdapter(owner);
     }
 
     @NonNull
@@ -49,13 +54,12 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
     @Override
     protected void onDataRequest(@NonNull VKAPService api) {
-        api.getAudios(userId, new VKArrayCallback<AudioDTO>() {
+        api.getAudios(ownerId, new VKArrayCallback<AudioModel>() {
             @Override
-            public void onResponse(List<AudioDTO> response) {
-                List<AudioModel> playlist = new ResponseAudioMapper().map(response);
-                adapter.setItems(playlist);
+            public void onResponse(List<AudioModel> response) {
+                adapter.setItems(response);
                 if (playlistReadyListener != null) {
-                    playlistReadyListener.onPlaylistReady(playlist);
+                    playlistReadyListener.onPlaylistReady(response);
                 }
             }
 
@@ -87,9 +91,18 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     }
 
     @Override
+    public void onDataSizeChanged(int size) {
+        super.onDataSizeChanged(size);
+        if (owner.isSyncEnabled()) {
+            long lastSyncSeconds = System.currentTimeMillis() / 1000 - 60;
+            owner.setSyncSeconds(lastSyncSeconds);
+        }
+    }
+
+    @Override
     protected void onEmpty() {
-        String owner = ownerName == null ? "your" : ownerName + "'s";
-        String message = String.format("Seems, %s playlist is empty,\nor something went wrong.", owner);
+        String ownerName = ownerId == VKApi.USER_ID ? "your" : owner.getName() + "'s";
+        String message = String.format("Seems, %s playlist is empty,\nor something went wrong.", ownerName);
         emptyView.setMessage(message);
         emptyView.show();
     }

@@ -11,15 +11,18 @@ import android.webkit.WebViewClient;
 
 public class VKLoginActivity extends AppCompatActivity {
 
-    static final int REQUEST_CODE = 8724;
+    public static final int REQUEST_CODE = 8724;
 
-    private static String EXTRA_APP_ID = "vk_app_id";
-    private static String EXTRA_APP_SCOPE = "vk_app_scope";
+    protected static String EXTRA_APP_ID = "vk_app_id";
+    protected static String EXTRA_APP_SCOPE = "vk_app_scope";
+
+    protected WebView webView;
+    protected String authUrl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebView webView = new WebView(this);
+        webView = new WebView(this);
         setContentView(webView);
 
         Intent starter = getIntent();
@@ -39,25 +42,33 @@ public class VKLoginActivity extends AppCompatActivity {
 
                     VKApi.init(VKLoginActivity.this, token, expiresIn, userId);
 
-                    setResult(RESULT_OK);
-                    finish();
+                    onLoginResult();
                     return true;
                 }
                 if (url.contains("error")) {
-                    setResult(RESULT_CANCELED);
-                    finish();
+                    onLoginError();
                     return true;
                 }
                 return super.shouldOverrideUrlLoading(view, url);
             }
         });
-        String authUrl = String.format("http://oauth.vk.com/authorize"
+        authUrl = String.format("http://oauth.vk.com/authorize"
                 + "?client_id=%s"
                 + "&scope=%s"
                 + "&display=touch"
                 + "&v=" + "5.52"
                 + "&response_type=token", appId, appScope);
         webView.loadUrl(authUrl);
+    }
+
+    protected void onLoginResult() {
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    protected void onLoginError() {
+        setResult(RESULT_CANCELED);
+        finish();
     }
 
     @Override

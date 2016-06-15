@@ -13,8 +13,9 @@
         android:id="@+id/image_sync_obj_avatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/avatar_default"
-        app:riv_corner_radius="48dp"/>
+        app:riv_corner_radius="24dp"/>
 
     <TextView
         android:id="@+id/text_sync_obj_name"
@@ -22,13 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:padding="@dimen/spacing_normal"
-        android:text="James Hetfield"/>
+        tools:text="James Hetfield"/>
 
     <CheckBox
         android:id="@+id/check_sync_enabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
         tools:checked="true"/>
 
 </LinearLayout>

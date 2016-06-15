@@ -11,7 +11,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.fragments.SyncObjectsDialogFragment;
+import github.y0rrrsh.vkaudioplayer.fragments.VkItemDialogFragment;
 import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.activities.common.BaseActivity;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
@@ -48,7 +48,7 @@ public class SettingsActivity extends BaseActivity {
 
     @OnClick({R.id.text_sync_objects, R.id.btn_open_sync_list})
     protected void onOpenSyncListClicked() {
-        SyncObjectsDialogFragment.newInstance(null).show(getSupportFragmentManager(), null);
+        VkItemDialogFragment.newInstance(null).show(getSupportFragmentManager(), null);
     }
 
     @OnClick(R.id.btn_clear_account_settings)

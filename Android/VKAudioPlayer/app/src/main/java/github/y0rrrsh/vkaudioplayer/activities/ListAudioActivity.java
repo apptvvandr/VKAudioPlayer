@@ -55,10 +55,7 @@ public class ListAudioActivity extends PlaybackActivity implements PlaylistReady
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
         Picasso.with(this).load(ownerAvatar).into(imageOwnerAvatar);
 
-        UserAudiosFragment userAudiosFragment = new UserAudiosFragmentBuilder()
-                .userId(String.valueOf(ownerId))
-                .ownerName(ownerName)
-                .build();
+        UserAudiosFragment userAudiosFragment = new UserAudiosFragmentBuilder(ownerId).build();
         userAudiosFragment.setPlaylistReadyListener(this);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, userAudiosFragment)

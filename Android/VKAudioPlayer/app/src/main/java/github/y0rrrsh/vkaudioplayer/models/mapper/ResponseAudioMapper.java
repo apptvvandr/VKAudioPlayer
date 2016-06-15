@@ -12,6 +12,7 @@ public class ResponseAudioMapper extends ListMapper<AudioDTO, AudioModel> {
     @Override
     protected AudioModel mapValue(AudioDTO value) {
         return new AudioModel(value.getId(), value.getOwnerId(),
-                value.getUrl(), value.getDuration(), value.getArtist(), value.getTitle());
+                value.getUrl(), value.getDuration(), value.getArtist(), value.getTitle(),
+                value.getDate());
     }
 }

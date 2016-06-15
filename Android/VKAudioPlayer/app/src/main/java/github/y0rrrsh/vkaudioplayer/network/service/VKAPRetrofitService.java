@@ -17,7 +17,7 @@ import retrofit2.http.Query;
 public interface VKAPRetrofitService {
 
     @GET("audio.get")
-    Call<VkResponse<VkArrayResponse<AudioDTO>>> getAudios(@Query("owner_id") String userId);
+    Call<VkResponse<VkArrayResponse<AudioDTO>>> getAudios(@Query("owner_id") Integer userId);
 
     @GET("groups.get")
     Call<VkResponse<VkArrayResponse<GroupDTO>>> getGroups(@Query("extended") boolean extended);

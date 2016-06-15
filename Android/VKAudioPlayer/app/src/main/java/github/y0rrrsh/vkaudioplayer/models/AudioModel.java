@@ -14,14 +14,16 @@ public class AudioModel implements StreamItem {
     private int duration;
     private String artist;
     private String name;
+    private long date;
 
-    public AudioModel(Integer id, Integer ownerId, String url, int duration, String artist, String name) {
+    public AudioModel(Integer id, Integer ownerId, String url, int duration, String artist, String name, long date) {
         this.id = id;
         this.ownerId = ownerId;
         this.url = url;
         this.duration = duration;
         this.artist = artist;
         this.name = name;
+        this.date = date;
     }
 
     public Integer getId() {
@@ -50,6 +52,10 @@ public class AudioModel implements StreamItem {
         return duration;
     }
 
+    public long getDate() {
+        return date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,5 +66,10 @@ public class AudioModel implements StreamItem {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (ownerId != null ? !ownerId.equals(that.ownerId) : that.ownerId != null) return false;
         return url != null ? url.equals(that.url) : that.url == null;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s - %s", artist, name);
     }
 }

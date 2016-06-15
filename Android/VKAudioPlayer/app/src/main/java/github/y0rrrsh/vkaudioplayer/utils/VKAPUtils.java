@@ -1,8 +1,14 @@
 package github.y0rrrsh.vkaudioplayer.utils;
 
+import android.app.Activity;
 import android.content.Context;
 
-import github.y0rrrsh.vkaudioplayer.database.syncdb.SyncObjectsDB;
+import github.y0rrrsh.vkapi.VKApi;
+import github.y0rrrsh.vkaudioplayer.activities.LoginActivity;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
+
+import static github.y0rrrsh.vkaudioplayer.BuildConfig.VKAP_APP_ID;
+import static github.y0rrrsh.vkaudioplayer.BuildConfig.VKAP_APP_SCOPE;
 
 /**
  * @author Artur Yorsh. 07.06.16.
@@ -23,8 +29,21 @@ public class VKAPUtils {
         return now - lastDataUpdate > minutes * 60 * 1000;
     }
 
+    public static VkItemDB.DataType getOwnerTypeById(int id) {
+        if (id < 0) return VkItemDB.DataType.GROUPS;
+        return id == VKApi.USER_ID ? VkItemDB.DataType.USER : VkItemDB.DataType.FRIENDS;
+    }
+
     public static void resetSettings(Context context) {
         VKAPPreferences.clear(context);
-        SyncObjectsDB.getInstance().setSyncForAllEnabled(false);
+        VkItemDB.getInstance().setSyncForAllEnabled(false);
+    }
+
+    public static void login(Activity activity) {
+        LoginActivity.start(activity, VKAP_APP_ID, VKAP_APP_SCOPE);
+    }
+
+    public static void logout(Activity activity) {
+        VKApi.logout(activity);
     }
 }

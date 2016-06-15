@@ -6,32 +6,24 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * @author Artur Yorsh. 09.06.16.
+ * @author Artur Yorsh. 14.06.16.
  */
-public class FriendModel extends RealmObject implements VkItem {
+public class UserModel extends RealmObject implements VkItem {
 
     @PrimaryKey
     private int id;
     private String firstName;
     private String lastName;
-    private String avatarUrl;
+    private String photoBig;
 
-    public FriendModel() {
+    public UserModel() {
     }
 
-    public FriendModel(int id, String firstName, String lastName, String photo200) {
+    public UserModel(int id, String firstName, String lastName, String photoBig) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.avatarUrl = photo200;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
+        this.photoBig = photoBig;
     }
 
     @Override
@@ -46,7 +38,7 @@ public class FriendModel extends RealmObject implements VkItem {
 
     @Override
     public String getAvatarUrl() {
-        return avatarUrl;
+        return photoBig;
     }
 
     @Override
