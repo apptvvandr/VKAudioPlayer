@@ -1,11 +1,12 @@
 package github.y0rrrsh.vkaudioplayer.database.vkitem;
 
+import github.y0rrrsh.vkaudioplayer.models.NewMusicAdapterItem;
 import io.realm.RealmModel;
 
 /**
  * @author Artur Yorsh. 09.06.16.
  */
-public interface VkItem extends RealmModel {
+public interface VkItem extends RealmModel, NewMusicAdapterItem{
 
     int getId();
 

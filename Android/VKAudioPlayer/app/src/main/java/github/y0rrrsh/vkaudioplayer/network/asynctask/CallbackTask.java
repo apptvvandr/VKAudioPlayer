@@ -3,6 +3,8 @@ package github.y0rrrsh.vkaudioplayer.network.asynctask;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import github.y0rrrsh.vkaudioplayer.network.Callback;
+
 /**
  * @author Artur Yorsh. 02.06.16.
  */
@@ -44,11 +46,5 @@ public abstract class CallbackTask<T> extends AsyncTask<Void, Void, T> {
 
     protected boolean isWrongResult(T result) {
         return false;
-    }
-
-    public interface Callback<T> {
-        void onResult(T result);
-
-        void onError(Exception e);
     }
 }

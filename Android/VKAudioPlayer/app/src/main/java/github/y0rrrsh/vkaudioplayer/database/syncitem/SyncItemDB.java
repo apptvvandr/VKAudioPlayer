@@ -16,6 +16,7 @@ public class SyncItemDB {
     private static final String BASE_NAME = "vkap_sync_list_";
 
     private Realm realm;
+    private int[] allIds;
 
     private SyncItemDB(Context context, int userId) {
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(context)
@@ -31,6 +32,15 @@ public class SyncItemDB {
 
     public static SyncItemDB getInstance() {
         return instance;
+    }
+
+    public int[] getAllIds() {
+        RealmResults<SyncItem> syncItems = realm.where(SyncItem.class).findAll();
+        int[] ids = new int[syncItems.size()];
+        for (int i = 0; i < syncItems.size(); i++) {
+            ids[i] =  syncItems.get(i).getId();
+        }
+        return ids;
     }
 
     public boolean isSyncEnabledForId(int id) {

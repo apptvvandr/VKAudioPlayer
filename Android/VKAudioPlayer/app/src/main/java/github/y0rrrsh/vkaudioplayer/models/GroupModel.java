@@ -1,5 +1,6 @@
 package github.y0rrrsh.vkaudioplayer.models;
 
+import github.y0rrrsh.vkaudioplayer.adapters.NewMusicAdapter;
 import github.y0rrrsh.vkaudioplayer.database.syncitem.SyncItemDB;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
 import io.realm.RealmObject;
@@ -19,7 +20,7 @@ public class GroupModel extends RealmObject implements VkItem {
     }
 
     public GroupModel(int id, String name, String photo200) {
-        this.id = id;
+        this.id = -id;
         this.name = name;
         this.avatarUrl = photo200;
     }
@@ -57,5 +58,10 @@ public class GroupModel extends RealmObject implements VkItem {
     @Override
     public void setSyncSeconds(long seconds) {
         SyncItemDB.getInstance().setSyncMillisForId(id, seconds);
+    }
+
+    @Override
+    public int getItemType() {
+        return NewMusicAdapter.ITEM_TYPE_HEADER;
     }
 }

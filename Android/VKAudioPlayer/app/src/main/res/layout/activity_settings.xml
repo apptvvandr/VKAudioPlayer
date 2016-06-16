@@ -87,7 +87,6 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:src="@drawable/ic_add"
-                    android:tint="@color/gray"
                     tools:clickable="true"
                     tools:tint="@android:color/black"/>
 

@@ -81,6 +81,7 @@ public class MainActivity extends BaseActivity {
 
         viewPager.setAdapter(new VkTabAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.setCurrentItem(POSITION_USER_AUDIO);
 
         //noinspection ConstantConditions
         VkItem userModel = VkItemDB.getInstance().get(USER, USER_ID);

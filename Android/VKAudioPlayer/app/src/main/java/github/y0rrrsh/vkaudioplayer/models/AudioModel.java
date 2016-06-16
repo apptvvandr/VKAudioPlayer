@@ -1,11 +1,12 @@
 package github.y0rrrsh.vkaudioplayer.models;
 
 import github.y0rrrsh.streamplayer.StreamPlayer.StreamItem;
+import github.y0rrrsh.vkaudioplayer.adapters.NewMusicAdapter;
 
 /**
  * @author Artur Yorsh. 30.05.16.
  */
-public class AudioModel implements StreamItem {
+public class AudioModel implements StreamItem, NewMusicAdapterItem {
 
     private Integer id;
     private Integer ownerId;
@@ -71,5 +72,10 @@ public class AudioModel implements StreamItem {
     @Override
     public String toString() {
         return String.format("%s - %s", artist, name);
+    }
+
+    @Override
+    public int getItemType() {
+        return NewMusicAdapter.ITEM_TYPE_AUDIO;
     }
 }

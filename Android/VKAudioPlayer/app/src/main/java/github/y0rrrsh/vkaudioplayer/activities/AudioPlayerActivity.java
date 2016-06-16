@@ -28,6 +28,7 @@ import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.models.ManagedAudio;
 import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
+import github.y0rrrsh.vkaudioplayer.network.Callback;
 import github.y0rrrsh.vkaudioplayer.network.asynctask.CallbackTask;
 import github.y0rrrsh.vkaudioplayer.network.asynctask.RetrieveAudioCoverTask;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
@@ -255,14 +256,14 @@ public class AudioPlayerActivity extends PlaybackActivity implements PlaybackAct
         playbackControlView.setPlayButtonIcon(R.drawable.ic_pause);
         playbackControlView.setSeekMaxProgress(player.getItemDuration());
 
-        RetrieveAudioCoverTask.retrieve(currentItem.getUrl(), new CallbackTask.Callback<Bitmap>() {
+        RetrieveAudioCoverTask.retrieve(currentItem.getUrl(), new Callback<Bitmap>() {
             @Override
             public void onResult(Bitmap result) {
                 imageCover.setImageBitmap(result);
             }
 
             @Override
-            public void onError(Exception e) {
+            public void onError(Throwable e) {
             }
         });
     }

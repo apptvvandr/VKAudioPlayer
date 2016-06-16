@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 
+import github.y0rrrsh.vkaudioplayer.network.Callback;
 import wseemann.media.FFmpegMediaMetadataRetriever;
 
 /**
  * @author Artur Yorsh. 02.06.16.
  */
 public class RetrieveAudioCoverTask extends CallbackTask<Bitmap> {
-
 
     private String url;
 

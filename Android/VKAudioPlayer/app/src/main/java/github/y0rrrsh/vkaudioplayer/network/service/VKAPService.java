@@ -6,10 +6,6 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.models.FriendModel;
 import github.y0rrrsh.vkaudioplayer.models.GroupModel;
 import github.y0rrrsh.vkaudioplayer.models.UserModel;
-import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
-import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
-import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
-import github.y0rrrsh.vkaudioplayer.models.dto.UserDTO;
 
 /**
  * @author Artur Yorsh

@@ -51,6 +51,19 @@ public class VkItemDB {
         });
     }
 
+    public VkItem get(int id) {
+        VkItem user = get(DataType.USER, id);
+        if (user != null) return user;
+
+        VkItem group = get(DataType.GROUPS, id);
+        if (group != null) return group;
+
+        VkItem friend = get(DataType.FRIENDS, id);
+        if (friend != null) return friend;
+
+        return null;
+    }
+
     public VkItem get(DataType type, int id) {
         return realm.where(type.dataClass).equalTo("id", id).findFirst();
     }
