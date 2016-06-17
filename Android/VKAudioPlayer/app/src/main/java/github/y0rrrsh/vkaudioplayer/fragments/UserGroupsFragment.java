@@ -72,7 +72,7 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = super.onCreateView(inflater, container, savedInstanceState);
 
-        adapter.setItemClickListener((item, itemPosition, viewHolder) -> {
+        adapter.addItemClickListener((item, itemPosition, viewHolder) -> {
             ActivityOptionsCompat options = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),

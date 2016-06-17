@@ -24,8 +24,6 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
-import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.USER;
-
 /**
  * @author Artur Yorsh
  */
@@ -76,7 +74,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = super.onCreateView(inflater, container, savedInstanceState);
 
-        adapter.setItemClickListener((item, itemPosition, viewHolder) -> {
+        adapter.addItemClickListener((item, itemPosition, viewHolder) -> {
             List<AudioModel> playlist = adapter.getItems();
             AudioPlayerActivity.start(getActivity(), playlist, itemPosition);
         });

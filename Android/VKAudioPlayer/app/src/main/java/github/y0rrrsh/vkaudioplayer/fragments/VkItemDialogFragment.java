@@ -42,7 +42,7 @@ public class VkItemDialogFragment extends DialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter.setItemClickListener((item, itemPosition, viewHolder) ->
+        adapter.addItemClickListener((item, itemPosition, viewHolder) ->
                 item.setSyncEnabled(!item.isSyncEnabled()));
     }
 

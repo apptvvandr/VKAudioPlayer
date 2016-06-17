@@ -12,9 +12,9 @@ import github.y0rrrsh.vkaudioplayer.network.Callback;
  */
 public interface VKAPServiceRx {
 
-    void getAudios(Integer userId, Callback<List<AudioModel>> callback);
+    void getAudios(Integer ownerId, Callback<List<AudioModel>> callback);
 
-    void getNewAudios(Integer userId, Callback<List<AudioModel>> callback);
+    void getNewAudios(Integer ownerId, Callback<List<AudioModel>> callback);
 
     void getNewAudios(int[] ids, Callback<Map<VkItem, List<AudioModel>>> callback);
 }

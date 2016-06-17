@@ -6,17 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Artur Yorsh
  */
 public abstract class BaseRecyclerAdapter<M, VH extends BaseRecyclerHolder> extends RecyclerView.Adapter<VH> {
 
+    protected static final int VIEW_TYPE_DEFAULT = -1;
+
     protected List<M> items;
 
     protected ItemObserver itemObserver;
-    protected ItemClickListener<M, VH> itemClickListener;
+    protected Map<Integer, ItemClickListener> itemClickListeners = new HashMap<>();
 
     @LayoutRes
     protected abstract int getItemViewResId(int viewType);
@@ -26,7 +30,7 @@ public abstract class BaseRecyclerAdapter<M, VH extends BaseRecyclerHolder> exte
     protected abstract void onBindViewHolder(VH holder, M item, int position);
 
     protected int getItemViewType(M item, int position) {
-        return 0;
+        return VIEW_TYPE_DEFAULT;
     }
 
     @Override
@@ -48,8 +52,8 @@ public abstract class BaseRecyclerAdapter<M, VH extends BaseRecyclerHolder> exte
         M item = items.get(position);
         onBindViewHolder(holder, item, position);
         holder.itemView.setOnClickListener(v -> {
-            if (itemClickListener == null) return;
-            itemClickListener.onItemClicked(item, position, holder);
+            ItemClickListener itemClickListener = itemClickListeners.get(holder.getItemViewType());
+            if (itemClickListener != null) itemClickListener.onItemClicked(item, position, holder);
         });
     }
 
@@ -74,8 +78,15 @@ public abstract class BaseRecyclerAdapter<M, VH extends BaseRecyclerHolder> exte
         itemObserver = observer;
     }
 
-    public void setItemClickListener(ItemClickListener<M, VH> listener) {
-        this.itemClickListener = listener;
+    public void addItemClickListener(int viewType, ItemClickListener<M, VH> listener) {
+        itemClickListeners.put(viewType, listener);
+    }
+
+    /**
+     * Set listener for all items with {@link #VIEW_TYPE_DEFAULT} viewType
+     */
+    public void addItemClickListener(ItemClickListener<M, VH> listener) {
+        itemClickListeners.put(VIEW_TYPE_DEFAULT, listener);
     }
 
     public interface ItemObserver {

@@ -5,37 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/black_15"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="@dimen/spacing_normal">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/image_owner_avatar"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:src="@drawable/avatar_default"
-        app:riv_corner_radius="32dp"/>
+        app:riv_corner_radius="16dp"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_owner_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/text_owner_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_semi"
-            android:textSize="18sp"
-            tools:text="Metallica"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:background="@android:color/black"/>
-
-    </LinearLayout>
+        android:layout_margin="@dimen/spacing_semi"
+        tools:text="Metallica"/>
 
 </LinearLayout>

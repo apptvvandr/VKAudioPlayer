@@ -19,14 +19,6 @@ import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
  */
 public class VkItemAdapter<T extends VkItem> extends BaseRecyclerAdapter<T, VkItemAdapter.SyncObjectHolder> {
 
-    public static final int TYPE_CURRENT_USER = 0;
-    public static final int TYPE_ITEM_REGULAR = 1;
-
-    @Override
-    protected int getItemViewType(T item, int position) {
-        return item.getId() == VKApi.USER_ID ? TYPE_CURRENT_USER : TYPE_ITEM_REGULAR;
-    }
-
     @Override
     protected int getItemViewResId(int viewType) {
         return R.layout.list_item_sync_object;
@@ -47,10 +39,11 @@ public class VkItemAdapter<T extends VkItem> extends BaseRecyclerAdapter<T, VkIt
 
         holder.textName.setText(item.getName());
         holder.checkSyncEnabled.setChecked(item.isSyncEnabled());
+        //noinspection unchecked
         holder.checkSyncEnabled.setOnClickListener(v ->
-                itemClickListener.onItemClicked(item, position, holder));
+                itemClickListeners.get(VIEW_TYPE_DEFAULT).onItemClicked(item, position, holder));
 
-        boolean isCurrentUser = holder.getItemViewType() == TYPE_CURRENT_USER;
+        boolean isCurrentUser = item.getId() == VKApi.USER_ID;
         holder.itemView.setEnabled(!isCurrentUser);
         holder.checkSyncEnabled.setEnabled(!isCurrentUser);
     }
