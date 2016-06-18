@@ -14,6 +14,6 @@ public class ResponseFriendsMapper extends ListMapper<FriendDTO, FriendModel> {
         return new FriendModel(value.getId(),
                 value.getFirstName(),
                 value.getLastName(),
-                value.getPhoto200());
+                value.getPhotoMax());
     }
 }

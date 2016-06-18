@@ -20,11 +20,11 @@ public class FriendModel extends RealmObject implements VkItem {
     public FriendModel() {
     }
 
-    public FriendModel(int id, String firstName, String lastName, String photo200) {
+    public FriendModel(int id, String firstName, String lastName, String photoMax) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.avatarUrl = photo200;
+        this.avatarUrl = photoMax;
     }
 
     public String getFirstName() {

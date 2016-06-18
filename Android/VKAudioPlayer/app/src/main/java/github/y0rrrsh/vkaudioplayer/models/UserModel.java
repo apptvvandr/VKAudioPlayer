@@ -20,11 +20,11 @@ public class UserModel extends RealmObject implements VkItem {
     public UserModel() {
     }
 
-    public UserModel(int id, String firstName, String lastName, String photoBig) {
+    public UserModel(int id, String firstName, String lastName, String photoMax) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.photoBig = photoBig;
+        this.photoBig = photoMax;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class UserDTO implements VKItem {
     @SerializedName("last_name")
     @Expose
     public String lastName;
-    @SerializedName("photo_big")
+    @SerializedName("photo_max")
     @Expose
     public String photoBig;
 
@@ -31,7 +31,7 @@ public class UserDTO implements VKItem {
         return lastName;
     }
 
-    public String getPhotoBig() {
+    public String getPhotoMax() {
         return photoBig;
     }
 

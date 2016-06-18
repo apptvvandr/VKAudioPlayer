@@ -39,7 +39,7 @@ public class VKAPServiceRxImpl implements VKAPServiceRx {
 
     private VKAPServiceRxImpl() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
         Interceptor requestInterceptor = chain -> {
             Request original = chain.request();

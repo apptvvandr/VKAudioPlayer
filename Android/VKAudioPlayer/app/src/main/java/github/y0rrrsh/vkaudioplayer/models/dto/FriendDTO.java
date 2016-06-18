@@ -19,7 +19,7 @@ public class FriendDTO implements VKItem {
     @SerializedName("last_name")
     @Expose
     private String lastName;
-    @SerializedName("photo_200")
+    @SerializedName("photo_max")
     @Expose
     private String photo200;
     @SerializedName("online")
@@ -34,7 +34,7 @@ public class FriendDTO implements VKItem {
         return lastName;
     }
 
-    public String getPhoto200() {
+    public String getPhotoMax() {
         return photo200;
     }
 

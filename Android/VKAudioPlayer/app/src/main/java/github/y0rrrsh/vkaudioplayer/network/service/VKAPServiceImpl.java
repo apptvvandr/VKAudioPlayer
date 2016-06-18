@@ -127,7 +127,7 @@ public class VKAPServiceImpl implements VKAPService {
 
     @Override
     public void getFriends(VKArrayCallback<FriendModel> callback) {
-        service.getFriends("name, photo_200").enqueue(new Callback<VkResponse<VkArrayResponse<FriendDTO>>>() {
+        service.getFriends("name, photo_max").enqueue(new Callback<VkResponse<VkArrayResponse<FriendDTO>>>() {
             @Override
             public void onResponse(Call<VkResponse<VkArrayResponse<FriendDTO>>> call, Response<VkResponse<VkArrayResponse<FriendDTO>>> response) {
                 VkArrayResponse<FriendDTO> itemsResponse = response.body().getResponse();
@@ -213,7 +213,7 @@ public class VKAPServiceImpl implements VKAPService {
 
     @Override
     public void getUserInfo(Integer id, VKCallback<UserModel> callback) {
-        service.getUserInfo(id, "photo_big").enqueue(new Callback<VkSimpleArrayResponse<UserDTO>>() {
+        service.getUserInfo(id, "photo_max").enqueue(new Callback<VkSimpleArrayResponse<UserDTO>>() {
             @Override
             public void onResponse(Call<VkSimpleArrayResponse<UserDTO>> call, Response<VkSimpleArrayResponse<UserDTO>> response) {
                 VkError error = response.body().getError();
