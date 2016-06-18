@@ -23,8 +23,10 @@ import github.y0rrrsh.vkaudioplayer.models.FriendModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
+import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.FRIENDS;
+import static github.y0rrrsh.vkaudioplayer.utils.VKAPUtils.REQUEST_DELAY_USER_FRIENDS;
 
 /**
  * @author Artur Yorsh
@@ -96,6 +98,12 @@ public class UserFriendsFragment extends VkTabFragment<UserFriendsAdapter> {
             dialog.show();
             VKAPPreferences.setAskedSync(activity, dataTag, true);
         }
+    }
+
+    @Override
+    protected boolean canPerformDataRequest() {
+        boolean isEmpty = super.canPerformDataRequest();
+        return VKAPUtils.lastRequestIsOlder(getActivity(), dataTag, REQUEST_DELAY_USER_FRIENDS) || isEmpty;
     }
 
     @Override

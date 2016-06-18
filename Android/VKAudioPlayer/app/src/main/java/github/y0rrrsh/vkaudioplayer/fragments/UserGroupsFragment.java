@@ -26,8 +26,10 @@ import github.y0rrrsh.vkaudioplayer.models.GroupModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
+import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 import static github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType.GROUPS;
+import static github.y0rrrsh.vkaudioplayer.utils.VKAPUtils.REQUEST_DELAY_USER_GROUPS;
 
 /**
  * @author Artur Yorsh
@@ -104,6 +106,12 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
             dialog.show();
             VKAPPreferences.setAskedSync(activity, dataTag, true);
         }
+    }
+
+    @Override
+    protected boolean canPerformDataRequest() {
+        boolean isEmpty = super.canPerformDataRequest();
+        return isEmpty || VKAPUtils.lastRequestIsOlder(getActivity(), dataTag, REQUEST_DELAY_USER_GROUPS);
     }
 
     @Override

@@ -57,7 +57,7 @@ public abstract class VkTabFragment<A extends BaseRecyclerAdapter> extends BaseF
     public void onResume() {
         super.onResume();
         if (canPerformDataRequest()) {
-            progressBar.setVisibility(View.VISIBLE);
+            if (adapter.getItemCount() == 0) progressBar.setVisibility(View.VISIBLE);
             //noinspection ConstantConditions
             onDataRequest(VKAPServiceImpl.getInstance());
         }

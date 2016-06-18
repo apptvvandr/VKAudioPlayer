@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.NewMusicAdapter;
@@ -19,9 +18,10 @@ import github.y0rrrsh.vkaudioplayer.models.NewMusicAdapterItem;
 import github.y0rrrsh.vkaudioplayer.network.Callback;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRxImpl;
-import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
+import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 import static github.y0rrrsh.vkaudioplayer.adapters.NewMusicAdapter.ITEM_TYPE_AUDIO;
+import static github.y0rrrsh.vkaudioplayer.utils.VKAPUtils.REQUEST_DELAY_NEW_AUDIOS;
 
 /**
  * @author Artur Yorsh. 16.06.16.
@@ -66,9 +66,7 @@ public class NewAudiosFragment extends VkTabFragment<NewMusicAdapter> {
 
     @Override
     protected boolean canPerformDataRequest() {
-        long lastUpdate = VKAPPreferences.getLastDataUpdate(getActivity(), dataTag);
-        long updateInterval = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES);
-
-        return super.canPerformDataRequest() || System.currentTimeMillis() - lastUpdate > updateInterval;
+        boolean isEmpty = super.canPerformDataRequest();
+        return isEmpty || VKAPUtils.lastRequestIsOlder(getActivity(), dataTag, REQUEST_DELAY_NEW_AUDIOS);
     }
 }

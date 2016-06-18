@@ -23,6 +23,8 @@ import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
+import static github.y0rrrsh.vkaudioplayer.utils.VKAPUtils.REQUEST_DEYAY_USER_AUDIOS;
+
 /**
  * @author Artur Yorsh
  */
@@ -82,13 +84,15 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     @Override
     protected boolean canPerformDataRequest() {
         boolean isEmpty = super.canPerformDataRequest();
-        return dataTag.startsWith("main_") ? isEmpty || VKAPUtils.lastRequestIsOlder(getActivity(), dataTag, 0.25) : isEmpty;
+        boolean isUserAudios = dataTag.startsWith("main_");
+        return isUserAudios ? isEmpty || VKAPUtils.lastRequestIsOlder(getActivity(), dataTag, REQUEST_DEYAY_USER_AUDIOS) : isEmpty;
     }
 
     @Override
     public void onDataSizeChanged(int size) {
         super.onDataSizeChanged(size);
         if (owner.isSyncEnabled()) {
+            // TODO: 6/19/2016:
             long lastSyncSeconds = System.currentTimeMillis() / 1000 - 60;
             owner.setSyncSeconds(lastSyncSeconds);
         }
