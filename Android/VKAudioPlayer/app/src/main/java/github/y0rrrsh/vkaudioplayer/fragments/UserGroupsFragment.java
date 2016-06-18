@@ -78,7 +78,7 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
                 options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
                         viewHolder.imageAvatar, viewHolder.imageAvatar.getTransitionName());
             }
-            ListAudioActivity.start(getActivity(), -item.getId(), item.getName(), item.getAvatarUrl(), options);
+            ListAudioActivity.start(getActivity(), item.getId(), options);
         });
 
         return contentView;

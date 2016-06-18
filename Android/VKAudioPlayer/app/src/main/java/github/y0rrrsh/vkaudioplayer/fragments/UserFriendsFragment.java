@@ -70,7 +70,7 @@ public class UserFriendsFragment extends VkTabFragment<UserFriendsAdapter> {
                 options = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
                         viewHolder.imageAvatar, viewHolder.imageAvatar.getTransitionName());
             }
-            ListAudioActivity.start(getActivity(), item.getId(), item.getFirstName(), item.getAvatarUrl(), options);
+            ListAudioActivity.start(getActivity(), item.getId(), options);
         });
 
         return contentView;

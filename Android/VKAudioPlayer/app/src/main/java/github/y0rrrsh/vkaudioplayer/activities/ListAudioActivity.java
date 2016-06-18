@@ -18,6 +18,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
+import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragment;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragment.PlaylistReadyListener;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragmentBuilder;
@@ -27,15 +29,13 @@ import static android.support.design.widget.FloatingActionButton.OnVisibilityCha
 
 public class ListAudioActivity extends PlaybackActivity implements PlaylistReadyListener {
 
-    public static final String ARG_OWNER_AVATAR = "owner_avatar";
-    public static String ARG_OWNER_ID = "owner_id";
-    public static String ARG_OWNER_NAME = "owner_name";
+    private static String ARG_OWNER_ID = "owner_id";
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.fab_play) FloatingActionButton fabPlay;
     @BindView(R.id.image_owner_avatar) ImageView imageOwnerAvatar;
 
-    private int ownerId;
+    private VkItem owner;
     private List<AudioModel> playlist;
 
     @Override
@@ -47,13 +47,12 @@ public class ListAudioActivity extends PlaybackActivity implements PlaylistReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
-        String ownerName = getIntent().getStringExtra(ARG_OWNER_NAME);
-        String ownerAvatar = getIntent().getStringExtra(ARG_OWNER_AVATAR);
+        int ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
+        owner = VkItemDB.getInstance().get(ownerId);
 
-        toolbar.setTitle(ownerName);
+        toolbar.setTitle(owner.getName());
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-        Picasso.with(this).load(ownerAvatar).into(imageOwnerAvatar);
+        Picasso.with(this).load(owner.getAvatarUrl()).into(imageOwnerAvatar);
 
         UserAudiosFragment userAudiosFragment = new UserAudiosFragmentBuilder(ownerId).build();
         userAudiosFragment.setPlaylistReadyListener(this);
@@ -66,7 +65,7 @@ public class ListAudioActivity extends PlaybackActivity implements PlaylistReady
     protected void onResume() {
         super.onResume();
 
-        boolean isNowPlayingPlaylist = player.isPlaying() && ((AudioModel) player.getCurrentItem()).getOwnerId() == ownerId;
+        boolean isNowPlayingPlaylist = player.isPlaying() && ((AudioModel) player.getCurrentItem()).getOwnerId() == owner.getId();
         int playButtonRes = isNowPlayingPlaylist ? R.drawable.ic_pause : R.drawable.ic_play;
         fabPlay.setImageResource(playButtonRes);
     }
@@ -74,7 +73,7 @@ public class ListAudioActivity extends PlaybackActivity implements PlaylistReady
     @OnClick(R.id.fab_play)
     protected void onFabClicked() {
         if (player.isPlaying()) {
-            if (ownerId == ((AudioModel) player.getCurrentItem()).getOwnerId()) {
+            if (owner.getId() == ((AudioModel) player.getCurrentItem()).getOwnerId()) {
                 player.pause();
             } else {
                 player.setPlaylist(playlist);
@@ -123,12 +122,9 @@ public class ListAudioActivity extends PlaybackActivity implements PlaylistReady
         });
     }
 
-    public static void start(Activity activity, int ownerId, String ownerName, String avatarUrl,
-                             @Nullable ActivityOptionsCompat options) {
+    public static void start(Activity activity, int ownerId, @Nullable ActivityOptionsCompat options) {
         Intent starter = new Intent(activity, ListAudioActivity.class)
-                .putExtra(ARG_OWNER_ID, ownerId)
-                .putExtra(ARG_OWNER_NAME, ownerName)
-                .putExtra(ARG_OWNER_AVATAR, avatarUrl);
+                .putExtra(ARG_OWNER_ID, ownerId);
         Bundle transitionOptions = options == null ? null : options.toBundle();
         ActivityCompat.startActivity(activity, starter, transitionOptions);
     }

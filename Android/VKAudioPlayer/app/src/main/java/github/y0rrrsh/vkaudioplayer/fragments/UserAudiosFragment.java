@@ -18,7 +18,6 @@ import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
-import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB.DataType;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
@@ -38,9 +37,7 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
 
     @Override
     protected UserAudiosAdapter onCreateItemAdapter() {
-        DataType ownerType = VKAPUtils.getOwnerTypeById(ownerId);
-        owner = VkItemDB.getInstance().get(ownerType, Math.abs(ownerId));
-
+        owner = VkItemDB.getInstance().get(ownerId);
         return new UserAudiosAdapter(owner);
     }
 

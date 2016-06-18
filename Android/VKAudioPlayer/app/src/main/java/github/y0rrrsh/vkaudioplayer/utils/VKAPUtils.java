@@ -29,11 +29,6 @@ public class VKAPUtils {
         return now - lastDataUpdate > minutes * 60 * 1000;
     }
 
-    public static VkItemDB.DataType getOwnerTypeById(int id) {
-        if (id < 0) return VkItemDB.DataType.GROUPS;
-        return id == VKApi.USER_ID ? VkItemDB.DataType.USER : VkItemDB.DataType.FRIENDS;
-    }
-
     public static void resetSettings(Context context) {
         VKAPPreferences.clear(context);
         VkItemDB.getInstance().setSyncForAllEnabled(false);
