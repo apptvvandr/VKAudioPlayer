@@ -11,6 +11,6 @@ public class ResponseUserMapper implements Mapper<UserDTO,UserModel> {
     @Override
     public UserModel map(UserDTO value) {
         return new UserModel(value.getId(), value.getFirstName(), value.getLastName(),
-                value.getPhotoMax());
+                value.getPhotoMaxOrig());
     }
 }

@@ -19,8 +19,8 @@ import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.MainActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerAdapter;
 import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerAdapter.ItemObserver;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRx;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRxImpl;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
 /**
@@ -59,7 +59,7 @@ public abstract class VkTabFragment<A extends BaseRecyclerAdapter> extends BaseF
         if (canPerformDataRequest()) {
             if (adapter.getItemCount() == 0) progressBar.setVisibility(View.VISIBLE);
             //noinspection ConstantConditions
-            onDataRequest(VKAPServiceImpl.getInstance());
+            onDataRequest(VKAPServiceRxImpl.getInstance());
         }
     }
 
@@ -88,7 +88,7 @@ public abstract class VkTabFragment<A extends BaseRecyclerAdapter> extends BaseF
     @NonNull
     protected abstract String getDataTag();
 
-    protected abstract void onDataRequest(@NonNull VKAPService api);
+    protected abstract void onDataRequest(@NonNull VKAPServiceRx api);
 
     @Override
     public void onDataSizeChanged(int size) {

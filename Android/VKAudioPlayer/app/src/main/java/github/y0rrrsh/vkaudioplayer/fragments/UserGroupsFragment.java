@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserGroupsAdapter;
@@ -23,7 +22,8 @@ import github.y0rrrsh.vkaudioplayer.database.syncitem.SyncItemDB;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.GroupModel;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.Callback;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRx;
 import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
@@ -53,10 +53,10 @@ public class UserGroupsFragment extends VkTabFragment<UserGroupsAdapter> {
     }
 
     @Override
-    protected void onDataRequest(@NonNull VKAPService api) {
-        api.getGroups(new VKArrayCallback<GroupModel>() {
+    protected void onDataRequest(@NonNull VKAPServiceRx api) {
+        api.getGroups(new Callback<List<GroupModel>>() {
             @Override
-            public void onResponse(List<GroupModel> response) {
+            public void onResult(List<GroupModel> response) {
                 adapter.setItems(response);
                 VkItemDB.getInstance().update(GROUPS, response);
                 SyncItemDB.getInstance().update();

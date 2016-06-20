@@ -13,9 +13,9 @@
         android:id="@+id/image_sync_obj_avatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/avatar_default"
-        app:riv_corner_radius="24dp"/>
+        app:riv_oval="true"/>
 
     <TextView
         android:id="@+id/text_sync_obj_name"

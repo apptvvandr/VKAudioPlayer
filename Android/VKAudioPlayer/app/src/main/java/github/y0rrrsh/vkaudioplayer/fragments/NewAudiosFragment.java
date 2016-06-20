@@ -16,8 +16,7 @@ import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 import github.y0rrrsh.vkaudioplayer.models.NewMusicAdapterItem;
 import github.y0rrrsh.vkaudioplayer.network.Callback;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
-import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRxImpl;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRx;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 import static github.y0rrrsh.vkaudioplayer.adapters.NewMusicAdapter.ITEM_TYPE_AUDIO;
@@ -43,9 +42,9 @@ public class NewAudiosFragment extends VkTabFragment<NewMusicAdapter> {
     }
 
     @Override
-    protected void onDataRequest(@NonNull VKAPService api) {
+    protected void onDataRequest(@NonNull VKAPServiceRx api) {
         int[] syncItemIds = SyncItemDB.getInstance().getAllIds();
-        VKAPServiceRxImpl.getInstance().getNewAudios(syncItemIds, new Callback<Map<VkItem, List<AudioModel>>>() {
+        api.getNewAudios(syncItemIds, new Callback<Map<VkItem, List<AudioModel>>>() {
             @Override
             public void onResult(Map<VkItem, List<AudioModel>> result) {
                 List<NewMusicAdapterItem> items = new ArrayList<>();

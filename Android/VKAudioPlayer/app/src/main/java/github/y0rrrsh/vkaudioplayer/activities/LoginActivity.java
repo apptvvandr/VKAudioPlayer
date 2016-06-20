@@ -10,7 +10,8 @@ import github.y0rrrsh.vkaudioplayer.VKAPApplication;
 import github.y0rrrsh.vkaudioplayer.database.syncitem.SyncItemDB;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.models.UserModel;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPServiceImpl;
+import github.y0rrrsh.vkaudioplayer.network.Callback;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRxImpl;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 
 /**
@@ -25,9 +26,9 @@ public class LoginActivity extends VKLoginActivity {
         VKAPPreferences.setLastLoginMillis(this, System.currentTimeMillis());
 
         //noinspection ConstantConditions
-        VKAPServiceImpl.getInstance().getUserInfo(VKApi.USER_ID, new VKApi.VKCallback<UserModel>() {
+        VKAPServiceRxImpl.getInstance().getUserInfo(VKApi.USER_ID, new Callback<UserModel>() {
             @Override
-            public void onResponse(UserModel response) {
+            public void onResult(UserModel response) {
                 response.setSyncEnabled(true);
                 VkItemDB.getInstance().put(response);
 

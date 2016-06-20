@@ -13,9 +13,9 @@
         android:id="@+id/image_friend_avatar"
         android:layout_width="@dimen/size_list_item_friend_avatar"
         android:layout_height="@dimen/size_list_item_friend_avatar"
-        android:adjustViewBounds="true"
         android:transitionName="@string/transition_avatar"
-        app:riv_corner_radius="32dp"
+        android:scaleType="centerCrop"
+        app:riv_oval="true"
         tools:src="@drawable/avatar_default"/>
 
     <TextView

@@ -1,28 +1,18 @@
 package github.y0rrrsh.vkaudioplayer.network.response;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Artur Yorsh
+ * @author Artur Yorsh. 08.06.16.
+ *         <p>
+ *         json response schema:
+ *         response: [{
+ *         id: 1,
+ *         first_name: 'Pavel',
+ *         last_name: 'Durov'
+ *         }]
+ *
+ *         @see VkArray
  */
-public class VkArrayResponse<T> {
-
-    @SerializedName("count")
-    @Expose
-    private Integer count;
-    @SerializedName("items")
-    @Expose
-    private List<T> items = new ArrayList<>();
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public List<T> getItems() {
-        return items;
-    }
+public class VkArrayResponse<T> extends VkResponse<List<T>> {
 }

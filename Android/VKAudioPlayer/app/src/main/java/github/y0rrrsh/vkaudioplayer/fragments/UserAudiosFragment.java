@@ -13,14 +13,14 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import java.util.List;
 
 import github.y0rrrsh.vkapi.VKApi;
-import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.activities.AudioPlayerActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserAudiosAdapter;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.Callback;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRx;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
 
 import static github.y0rrrsh.vkaudioplayer.utils.VKAPUtils.REQUEST_DEYAY_USER_AUDIOS;
@@ -50,10 +50,10 @@ public class UserAudiosFragment extends VkTabFragment<UserAudiosAdapter> {
     }
 
     @Override
-    protected void onDataRequest(@NonNull VKAPService api) {
-        api.getAudios(ownerId, new VKArrayCallback<AudioModel>() {
+    protected void onDataRequest(@NonNull VKAPServiceRx api) {
+        api.getAudios(ownerId, new Callback<List<AudioModel>>() {
             @Override
-            public void onResponse(List<AudioModel> response) {
+            public void onResult(List<AudioModel> response) {
                 adapter.setItems(response);
                 if (playlistReadyListener != null) {
                     playlistReadyListener.onPlaylistReady(response);

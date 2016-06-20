@@ -14,8 +14,9 @@
         android:id="@+id/image_owner_avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:src="@drawable/avatar_default"
-        app:riv_corner_radius="16dp"/>
+        android:scaleType="centerCrop"
+        app:riv_oval="true"
+        tools:src="@drawable/avatar_default"/>
 
     <TextView
         android:id="@+id/text_owner_name"

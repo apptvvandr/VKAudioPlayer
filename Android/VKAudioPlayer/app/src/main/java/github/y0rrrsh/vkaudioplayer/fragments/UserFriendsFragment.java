@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import github.y0rrrsh.vkapi.VKApi.VKArrayCallback;
 import github.y0rrrsh.vkaudioplayer.R;
 import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
 import github.y0rrrsh.vkaudioplayer.adapters.UserFriendsAdapter;
@@ -20,7 +19,8 @@ import github.y0rrrsh.vkaudioplayer.database.syncitem.SyncItemDB;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.fragments.common.VkTabFragment;
 import github.y0rrrsh.vkaudioplayer.models.FriendModel;
-import github.y0rrrsh.vkaudioplayer.network.service.VKAPService;
+import github.y0rrrsh.vkaudioplayer.network.Callback;
+import github.y0rrrsh.vkaudioplayer.network.service.rx.VKAPServiceRx;
 import github.y0rrrsh.vkaudioplayer.utils.SimpleAlertDialog;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPUtils;
@@ -45,10 +45,10 @@ public class UserFriendsFragment extends VkTabFragment<UserFriendsAdapter> {
     }
 
     @Override
-    protected void onDataRequest(@NonNull VKAPService api) {
-        api.getFriends(new VKArrayCallback<FriendModel>() {
+    protected void onDataRequest(@NonNull VKAPServiceRx api) {
+        api.getFriends(new Callback<List<FriendModel>>() {
             @Override
-            public void onResponse(List<FriendModel> response) {
+            public void onResult(List<FriendModel> response) {
                 adapter.setItems(response);
                 VkItemDB.getInstance().update(FRIENDS, response);
                 SyncItemDB.getInstance().update();

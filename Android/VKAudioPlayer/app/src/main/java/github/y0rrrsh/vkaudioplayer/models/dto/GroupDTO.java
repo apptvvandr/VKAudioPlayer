@@ -25,15 +25,9 @@ public class GroupDTO implements VKItem {
     @SerializedName("type")
     @Expose
     private String type;
-    @SerializedName("photo_50")
+    @SerializedName("photo_max_orig")
     @Expose
-    private String photo50;
-    @SerializedName("photo_100")
-    @Expose
-    private String photo100;
-    @SerializedName("photo_200")
-    @Expose
-    private String photo200;
+    private String photoMaxOrig;
 
     public String getName() {
         return name;
@@ -51,16 +45,8 @@ public class GroupDTO implements VKItem {
         return type;
     }
 
-    public String getPhoto50() {
-        return photo50;
-    }
-
-    public String getPhoto100() {
-        return photo100;
-    }
-
-    public String getPhoto200() {
-        return photo200;
+    public String getPhotoMaxOrig() {
+        return photoMaxOrig;
     }
 
     @Override

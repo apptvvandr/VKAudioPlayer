@@ -11,7 +11,12 @@ import github.y0rrrsh.vkaudioplayer.VKAPApplication;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItem;
 import github.y0rrrsh.vkaudioplayer.database.vkitem.VkItemDB;
 import github.y0rrrsh.vkaudioplayer.models.AudioModel;
+import github.y0rrrsh.vkaudioplayer.models.FriendModel;
+import github.y0rrrsh.vkaudioplayer.models.GroupModel;
+import github.y0rrrsh.vkaudioplayer.models.UserModel;
 import github.y0rrrsh.vkaudioplayer.network.Callback;
+import github.y0rrrsh.vkaudioplayer.network.response.VkArray;
+import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
 import github.y0rrrsh.vkaudioplayer.utils.VKAPPreferences;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -96,7 +101,7 @@ public class VKAPServiceRxImpl implements VKAPServiceRx {
 
             for (Object arg : audiosList) {
                 List<AudioModel> audios = (List<AudioModel>) arg;
-                if(audios.isEmpty()) continue;
+                if (audios.isEmpty()) continue;
 
                 Integer ownerId = audios.get(0).getOwnerId();
                 VkItem owner = VkItemDB.getInstance().get(ownerId);
@@ -107,12 +112,57 @@ public class VKAPServiceRxImpl implements VKAPServiceRx {
         }).subscribe(callback::onResult, callback::onError);
     }
 
+    @Override
+    public void getGroups(Callback<List<GroupModel>> callback) {
+        service.getGroups(true, "photo_max_orig").compose(getBaseApiObservable())
+                .map(VkArray::getItems)
+                .flatMap(Observable::from)
+                .map(dto -> new GroupModel(dto.getId(), dto.getName(), dto.getPhotoMaxOrig()))
+                .toList()
+                .subscribe(callback::onResult, callback::onError);
+    }
+
+    @Override
+    public void getFriends(Callback<List<FriendModel>> callback) {
+        service.getFriends("hints", "name, photo_max_orig").compose(getBaseApiObservable())
+                .map(VkArray::getItems)
+                .flatMap(Observable::from)
+                .map(dto -> new FriendModel(dto.getId(), dto.getFirstName(), dto.getLastName(), dto.getPhotoMaxOrig()))
+                .toList()
+                .subscribe(callback::onResult, callback::onError);
+    }
+
+    @Override
+    public void getUserInfo(Integer id, Callback<UserModel> callback) {
+        service.getUserInfo(id, "photo_max_orig").compose(getBaseApiObservable())
+                .map(response -> response.get(0))
+                .map(dto -> new UserModel(dto.getId(), dto.getFirstName(), dto.getLastName(), dto.getPhotoMaxOrig()))
+                .subscribe(callback::onResult, callback::onError);
+    }
+
+    @Override
+    public void addAudio(Integer id, Integer ownerId, Callback<Integer> callback) {
+        service.addAudio(id, ownerId).compose(getBaseApiObservable())
+                .subscribe(callback::onResult, callback::onError);
+    }
+
+    @Override
+    public void removeAudio(Integer id, Integer ownerId, Callback<Integer> callback) {
+        service.removeAudio(id, ownerId).compose(getBaseApiObservable())
+                .subscribe(callback::onResult, callback::onError);
+    }
+
+    @Override
+    public void restoreAudio(Integer id, Integer ownerId, Callback<AudioModel> callback) {
+        service.restoreAudio(id, ownerId).compose(getBaseApiObservable())
+                .map(dto -> new AudioModel(dto.getId(), dto.getOwnerId(), dto.getUrl(),
+                        dto.getDuration(), dto.getArtist(), dto.getTitle(), dto.getDate()))
+                .subscribe(callback::onResult, callback::onError);
+    }
+
     private Observable<List<AudioModel>> getAudiosObservable(Integer ownerId) {
-        return service.getAudios(ownerId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .filter(response -> response.getError() == null)
-                .map(response -> response.getResponse().getItems())
+        return service.getAudios(ownerId).compose(getBaseApiObservable())
+                .map(VkArray::getItems)
                 .flatMap(Observable::from)
                 .map(dto -> new AudioModel(dto.getId(), dto.getOwnerId(), dto.getUrl(),
                         dto.getDuration(), dto.getArtist(), dto.getTitle(), dto.getDate()))
@@ -124,6 +174,14 @@ public class VKAPServiceRxImpl implements VKAPServiceRx {
         return observable -> observable.flatMap(Observable::from)
                 .filter(audio -> audio.getDate() > VKAPPreferences.getLastLoginMillis(VKAPApplication.getContext()) / 1000)
                 .toList();
+    }
+
+    @NonNull
+    private <T> Observable.Transformer<VkResponse<T>, T> getBaseApiObservable() {
+        return observable -> observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter(response -> response.getError() == null) // TODO: 6/20/2016 handle api error
+                .map(VkResponse::getResponse);
     }
 
     public static final class VKAPServiceRxInstanceHolder {

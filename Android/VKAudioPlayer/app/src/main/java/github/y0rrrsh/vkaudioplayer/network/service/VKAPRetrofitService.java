@@ -4,9 +4,9 @@ import github.y0rrrsh.vkaudioplayer.models.dto.AudioDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.GroupDTO;
 import github.y0rrrsh.vkaudioplayer.models.dto.UserDTO;
-import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
+import github.y0rrrsh.vkaudioplayer.network.response.VkArray;
 import github.y0rrrsh.vkaudioplayer.network.response.VkResponse;
-import github.y0rrrsh.vkaudioplayer.network.response.VkSimpleArrayResponse;
+import github.y0rrrsh.vkaudioplayer.network.response.VkArrayResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -17,13 +17,13 @@ import retrofit2.http.Query;
 public interface VKAPRetrofitService {
 
     @GET("audio.get")
-    Call<VkResponse<VkArrayResponse<AudioDTO>>> getAudios(@Query("owner_id") Integer userId);
+    Call<VkResponse<VkArray<AudioDTO>>> getAudios(@Query("owner_id") Integer userId);
 
     @GET("groups.get")
-    Call<VkResponse<VkArrayResponse<GroupDTO>>> getGroups(@Query("extended") boolean extended);
+    Call<VkResponse<VkArray<GroupDTO>>> getGroups(@Query("extended") boolean extended, @Query("fields") String fields);
 
     @GET("friends.get")
-    Call<VkResponse<VkArrayResponse<FriendDTO>>> getFriends(@Query("fields") String fields);
+    Call<VkResponse<VkArray<FriendDTO>>> getFriends(@Query("order") String order, @Query("fields") String fields);
 
     @GET("audio.add")
     Call<VkResponse<Integer>> addAudio(@Query("audio_id") Integer id, @Query("owner_id") Integer ownerId);
@@ -35,5 +35,5 @@ public interface VKAPRetrofitService {
     Call<VkResponse<AudioDTO>> restoreAudio(@Query("audio_id") Integer id, @Query("owner_id") Integer ownerId);
 
     @GET("users.get")
-    Call<VkSimpleArrayResponse<UserDTO>> getUserInfo(@Query("user_ids") Integer id, @Query("fields") String fields);
+    Call<VkArrayResponse<UserDTO>> getUserInfo(@Query("user_ids") Integer id, @Query("fields") String fields);
 }

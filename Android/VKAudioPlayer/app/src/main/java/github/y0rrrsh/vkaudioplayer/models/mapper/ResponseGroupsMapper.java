@@ -13,6 +13,6 @@ public class ResponseGroupsMapper extends ListMapper<GroupDTO, GroupModel> {
     protected GroupModel mapValue(GroupDTO value) {
         return new GroupModel(value.getId(),
                 value.getName(),
-                value.getPhoto200());
+                value.getPhotoMaxOrig());
     }
 }
