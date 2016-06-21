@@ -18,6 +18,6 @@ class Group: VkItem {
 
         id = apiResponse["gid"] as? Int
         name = apiResponse["name"] as? String
-        photoUrl = apiResponse["photo_big"] as? String
+        photoUrl = apiResponse["photo_max_orig"] as? String
     }
 }

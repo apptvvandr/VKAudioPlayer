@@ -22,7 +22,7 @@ class BufferingSlider: UISlider {
         }
     }
     
-    var lineHeight = CGFloat(4) {
+    var lineHeight = CGFloat(2) {
         didSet {
             frameCenter = self.frame.size.height / 2 - lineHeight / 2
         }

@@ -39,7 +39,7 @@ class VKAPService: VKAPServiceDelegate {
     }
     
     func getGroups(callback: VkApiCallback<[Group]>?) {
-        let requestParams: [String: AnyObject] = ["extended": 1]
+        let requestParams: [String: AnyObject] = ["extended": 1, "fields": "photo_max_orig"]
         
         api.getRequest("groups.get", params: requestParams, callback: VkApiCallback(
             onResult: { (result: [AnyObject]) in
@@ -52,7 +52,7 @@ class VKAPService: VKAPServiceDelegate {
     }
     
     func getFriends(callback: VkApiCallback<[User]>?) {
-        let requestParams: [String: AnyObject] = ["fields": "name, photo_100"]
+        let requestParams: [String: AnyObject] = ["fields": "name, photo_max_orig"]
         
         api.getRequest("friends.get", params: requestParams, callback: VkApiCallback(
             onResult: { (result: [AnyObject]) in
@@ -65,11 +65,11 @@ class VKAPService: VKAPServiceDelegate {
     }
     
     func getUserPhoto(callback: VkApiCallback<UIImage>?) {
-        let requestParams: [String: AnyObject] = ["fields": "photo_big"]
+        let requestParams: [String: AnyObject] = ["fields": "photo_max_orig"]
         
         api.getRequest("users.get", params: requestParams, callback: VkApiCallback(
             onResult: { (result: [AnyObject]) in
-                guard let resultDict  = result[0] as? [String : AnyObject], let url = NSURL(string: resultDict["photo_big"] as! String) else {
+                guard let resultDict  = result[0] as? [String : AnyObject], let url = NSURL(string: resultDict["photo_max_orig"] as! String) else {
                     return
                 }
             

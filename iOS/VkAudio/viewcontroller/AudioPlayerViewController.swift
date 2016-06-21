@@ -83,7 +83,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         var newPlaylist = [Audio]()
         if !shuffleEnabled {
             newPlaylist = audios.shuffle()
-            btnShuffle.tintColor = progressAudioStream.tintColor
+            btnShuffle.tintColor = progressAudioStream.progressLayerColor
         }
         else {
             newPlaylist = self.audios
@@ -95,7 +95,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     @IBAction func onRepeatButtonClicked(sender: AnyObject) {
         if !repeatEnabled {
-            btnRepeat.tintColor = progressAudioStream.tintColor
+            btnRepeat.tintColor = progressAudioStream.progressLayerColor
         }
         else {
             btnRepeat.tintColor = UIColor.blackColor()

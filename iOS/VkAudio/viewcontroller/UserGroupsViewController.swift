@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserGroupsViewController: UICollectionViewController {
+class UserGroupsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     let api = VKAPService.sharedInstance!
     var groups = [Group]()
@@ -28,6 +28,12 @@ class UserGroupsViewController: UICollectionViewController {
             self.groups = result
             self.collectionView?.reloadData()
         }))
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let screenWidth = self.view.frame.width
+        let width = screenWidth / 2 <= 160 ? screenWidth / 2 : screenWidth / 3 //wow, ipad compatibility
+        return CGSize(width: width - 12, height: width - 12)
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

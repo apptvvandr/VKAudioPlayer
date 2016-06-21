@@ -14,6 +14,11 @@ class AudioCell: UITableViewCell {
     static let STORYBOARD_ID = "cell_audio"
 
     @IBOutlet weak var labelTitle: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = UIColor.clearColor()
+    }
 
     func setData(artist: String?, name: String?) {
         labelTitle.text = "\(artist ?? "Unknown") - \(name ?? "Unknown")"

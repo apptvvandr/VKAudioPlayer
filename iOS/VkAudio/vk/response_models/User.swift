@@ -21,6 +21,6 @@ class User: VkItem {
         id = apiResponse["uid"] as? Int
         firstName = apiResponse["first_name"] as? String
         lastName = apiResponse["last_name"] as? String
-        photoUrl = apiResponse["photo_100"] as? String
+        photoUrl = apiResponse["photo_max_orig"] as? String
     }
 }
