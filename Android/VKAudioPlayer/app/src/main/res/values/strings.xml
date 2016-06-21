@@ -1,5 +1,27 @@
 <resources>
     <string name="app_name">VKAudioPlayer</string>
+
+    <!--navigation drawer-->
+    <string name="menu_nav_item_downloads">Downloads</string>
+    <string name="menu_nav_item_settings">Settings</string>
+    <string name="menu_nav_item_about">About</string>
+    <string name="menu_nav_item_logout">Logout</string>
+
+    <!--dialogs-->
+    <string name="dialog_reset_settings_title">Warning</string>
+    <string name="dialog_reset_settings_message">This will clear all your account settings.\nAre you sure?</string>
+    <string name="dialog_sync_title">Synchronization</string>
+    <string name="dialog_sync_message_groups">Would you like to sync groups music automatically?</string>
+    <string name="dialog_sync_message_friends">Would you like to sync friends music automatically?</string>
+
+    <!--other-->
     <string name="transition_avatar">transition_avatar</string>
     <string name="transition_name">transition_name</string>
+    <string name="desc_drawer_open">drawer_open</string>
+    <string name="desc_drawer_close">drawer_close</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="empty_message_groups">Seems, you are not a member of any group,\nor something went wrong.</string>
+    <string name="empty_message_friends">Seems, there are no friends in your list\nor something went wrong.</string>
+
 </resources>

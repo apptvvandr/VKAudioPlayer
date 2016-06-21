@@ -1,8 +1,5 @@
 package github.y0rrrsh.vkaudioplayer.adapters;
 
-import android.app.Activity;
-import android.os.Build;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,18 +8,18 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.activities.ListAudioActivity;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemHolder;
-import github.y0rrrsh.vkaudioplayer.models.Friend;
+import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerAdapter;
+import github.y0rrrsh.vkaudioplayer.adapters.common.BaseRecyclerHolder;
+import github.y0rrrsh.vkaudioplayer.models.FriendModel;
+import github.y0rrrsh.vkaudioplayer.models.dto.FriendDTO;
 
 /**
  * @author Artur Yorsh
  */
-public class UserFriendsAdapter extends VkItemAdapter<Friend, UserFriendsAdapter.FriendHolder> {
+public class UserFriendsAdapter extends BaseRecyclerAdapter<FriendModel, UserFriendsAdapter.FriendHolder> {
 
     @Override
-    protected int getItemViewResId() {
+    protected int getItemViewResId(int viewType) {
         return R.layout.item_friend;
     }
 
@@ -32,26 +29,18 @@ public class UserFriendsAdapter extends VkItemAdapter<Friend, UserFriendsAdapter
     }
 
     @Override
-    protected void onBindViewHolder(FriendHolder holder, Friend item, int position) {
-        Picasso.with(holder.itemView.getContext()).load(item.getPhoto200()).into(holder.imageAvatar);
+    protected void onBindViewHolder(FriendHolder holder, FriendModel item, int position) {
+        Picasso.with(holder.itemView.getContext()).load(item.getAvatarUrl())
+                .placeholder(R.drawable.avatar_default)
+                .error(R.drawable.avatar_default)
+                .into(holder.imageAvatar);
         holder.textName.setText(String.format("%s %s", item.getFirstName(), item.getLastName()));
-
-        holder.itemView.setOnClickListener(v -> {
-                    Activity activity = (Activity) holder.itemView.getContext();
-                    ActivityOptionsCompat options = null;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
-                                holder.imageAvatar, holder.imageAvatar.getTransitionName());
-                    }
-                    ListAudioActivity.start(activity, item.getId(), item.getFirstName(), item.getPhoto200(), options);
-                }
-        );
     }
 
-    static class FriendHolder extends VkItemHolder {
+    public static class FriendHolder extends BaseRecyclerHolder {
 
-        @BindView(R.id.image_friend_avatar) RoundedImageView imageAvatar;
-        @BindView(R.id.text_friend_name) TextView textName;
+        @BindView(R.id.image_friend_avatar) public RoundedImageView imageAvatar;
+        @BindView(R.id.text_friend_name) public TextView textName;
 
         public FriendHolder(View itemView) {
             super(itemView);

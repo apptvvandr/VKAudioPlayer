@@ -12,21 +12,31 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.OnClick;
 import github.y0rrrsh.vkaudioplayer.R;
-import github.y0rrrsh.vkaudioplayer.activities.common.BaseActivity;
-import github.y0rrrsh.vkaudioplayer.adapters.common.VkItemAdapter.ItemObserver;
+import github.y0rrrsh.vkaudioplayer.activities.common.PlaybackActivity;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragment;
+import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragment.PlaylistReadyListener;
 import github.y0rrrsh.vkaudioplayer.fragments.UserAudiosFragmentBuilder;
+import github.y0rrrsh.vkaudioplayer.models.AudioModel;
 
-public class ListAudioActivity extends BaseActivity implements ItemObserver {
+import static android.support.design.widget.FloatingActionButton.OnVisibilityChangedListener;
 
+public class ListAudioActivity extends PlaybackActivity implements PlaylistReadyListener {
+
+    public static final String ARG_OWNER_AVATAR = "owner_avatar";
     public static String ARG_OWNER_ID = "owner_id";
     public static String ARG_OWNER_NAME = "owner_name";
-    public static final String ARG_OWNER_AVATAR = "owner_avatar";
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.fab_play) FloatingActionButton fabPlay;
+    @BindView(R.id.image_owner_avatar) ImageView imageOwnerAvatar;
+
+    private int ownerId;
+    private List<AudioModel> playlist;
 
     @Override
     protected int getLayoutId() {
@@ -37,43 +47,83 @@ public class ListAudioActivity extends BaseActivity implements ItemObserver {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
+        ownerId = getIntent().getIntExtra(ARG_OWNER_ID, 0);
         String ownerName = getIntent().getStringExtra(ARG_OWNER_NAME);
         String ownerAvatar = getIntent().getStringExtra(ARG_OWNER_AVATAR);
 
         toolbar.setTitle(ownerName);
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
-
-        ImageView imageView = (ImageView) findViewById(R.id.image_owner_avatar);
-        Picasso.with(this).load(ownerAvatar).into(imageView);
+        Picasso.with(this).load(ownerAvatar).into(imageOwnerAvatar);
 
         UserAudiosFragment userAudiosFragment = new UserAudiosFragmentBuilder()
                 .userId(String.valueOf(ownerId))
                 .ownerName(ownerName)
                 .build();
-        userAudiosFragment.setItemObserver(this);
+        userAudiosFragment.setPlaylistReadyListener(this);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, userAudiosFragment)
                 .commit();
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        boolean isNowPlayingPlaylist = player.isPlaying() && ((AudioModel) player.getCurrentItem()).getOwnerId() == ownerId;
+        int playButtonRes = isNowPlayingPlaylist ? R.drawable.ic_pause : R.drawable.ic_play;
+        fabPlay.setImageResource(playButtonRes);
+    }
+
+    @OnClick(R.id.fab_play)
+    protected void onFabClicked() {
+        if (player.isPlaying()) {
+            if (ownerId == ((AudioModel) player.getCurrentItem()).getOwnerId()) {
+                player.pause();
+            } else {
+                player.setPlaylist(playlist);
+                player.play(0);
+            }
+        } else if (player.getCurrentItem() != null) {
+            player.play();
+        } else {
+            player.setPlaylist(playlist);
+            player.play(0);
+        }
+    }
+
+    @Override
+    protected void onPlayerItemSelected(AudioModel currentItem, int position) {
+        // TODO: 07.06.16 present loading
+    }
+
+    @Override
+    protected void onStartPlaying(AudioModel currentItem) {
+        fabPlay.setImageResource(R.drawable.ic_pause);
+    }
+
+    @Override
+    protected void onPausePlaying() {
+        fabPlay.setImageResource(R.drawable.ic_play);
+    }
+
+    @Override
+    public void onPlaylistReady(List<AudioModel> playlist) {
+        this.playlist = playlist;
+        if (playlist != null && !playlist.isEmpty()) {
+            fabPlay.show();
+        } else {
+            fabPlay.hide();
+        }
+    }
+
+    @Override
     public void onBackPressed() {
-        fabPlay.hide(new FloatingActionButton.OnVisibilityChangedListener() {
+        fabPlay.hide(new OnVisibilityChangedListener() {
             @Override
             public void onHidden(FloatingActionButton fab) {
                 supportFinishAfterTransition();
             }
         });
-    }
-
-    @Override
-    public void onDataSizeChanged(int size) {
-        if (size == 0) {
-            fabPlay.hide();
-        } else {
-            fabPlay.show();
-        }
     }
 
     public static void start(Activity activity, int ownerId, String ownerName, String avatarUrl,

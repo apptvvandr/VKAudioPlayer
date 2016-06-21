@@ -1,0 +1,48 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <SeekBar
+        android:id="@+id/seek_player_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:progress="33"
+        tools:secondaryProgress="66"/>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_player_shuffle"
+            style="@style/PCV.PlayerButton.Medium"
+            android:src="@drawable/ic_shuffle"/>
+
+        <ImageButton
+            android:id="@+id/btn_player_previous"
+            style="@style/PCV.PlayerButton.Medium"
+            android:src="@drawable/ic_previous"/>
+
+        <ImageButton
+            android:id="@+id/btn_player_play"
+            style="@style/PCV.PlayerButton.Large"
+            android:src="@drawable/ic_play"/>
+
+        <ImageButton
+            android:id="@+id/btn_player_next"
+            style="@style/PCV.PlayerButton.Medium"
+            android:src="@drawable/ic_next"/>
+
+        <ImageButton
+            android:id="@+id/btn_player_repeat"
+            style="@style/PCV.PlayerButton.Medium"
+            android:src="@drawable/ic_repeat"/>
+
+    </LinearLayout>
+</LinearLayout>

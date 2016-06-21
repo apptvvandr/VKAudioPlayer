@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import github.y0rrrsh.vkaudioplayer.vkapi.VKApi;
+import github.y0rrrsh.vkapi.VKApi;
 
 import static github.y0rrrsh.vkaudioplayer.BuildConfig.VKAP_APP_ID;
 import static github.y0rrrsh.vkaudioplayer.BuildConfig.VKAP_APP_SCOPE;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PlaybackControlView">
+        <attr name="pcv_button_background" format="integer"/>
+        <attr name="pcv_seek_thumb" format="integer"/>
+        <attr name="pcv_seek_background" format="integer"/>
+    </declare-styleable>
+</resources>
