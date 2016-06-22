@@ -38,6 +38,8 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
         
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
+        
+        self.navigationItem.title = ownerName == nil ? "Audio" : ownerName!
     }
 
     override func viewWillAppear(animated: Bool) {

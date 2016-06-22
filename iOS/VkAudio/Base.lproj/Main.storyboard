@@ -164,7 +164,7 @@
             </objects>
             <point key="canvasLocation" x="-483.75" y="148.5"/>
         </scene>
-        <!--Audios-->
+        <!--Audio-->
         <scene sceneID="BTM-gj-egY">
             <objects>
                 <tableViewController storyboardIdentifier="controller_table_audios" id="45f-pB-Ccl" customClass="UserAudiosViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
@@ -235,7 +235,7 @@
                             <outlet property="delegate" destination="45f-pB-Ccl" id="iXZ-ME-2H6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Audios" id="1k8-lb-1f5"/>
+                    <navigationItem key="navigationItem" title="Audio" id="1k8-lb-1f5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLv-zt-nvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
