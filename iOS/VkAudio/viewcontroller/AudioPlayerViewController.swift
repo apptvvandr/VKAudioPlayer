@@ -21,8 +21,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnShuffle: UIButton!
     @IBOutlet weak var btnRepeat: UIButton!
-    @IBOutlet weak var btnAdd: UIButton!
-    @IBOutlet weak var btnRemove: UIButton!
+    @IBOutlet weak var btnPlaylistEdit: UIButton!
     @IBOutlet weak var progressAudioStream: BufferingSlider!
     @IBOutlet weak var labelAudioCurrentDuration: UILabel!
     @IBOutlet weak var labelAudioDuration: UILabel!
@@ -35,6 +34,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         
     var shuffleEnabled = false
     var repeatEnabled = false
+    
+    var managedAudios = [Int: ManagedAudio]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
+        
+        updateEditPlaylistIcon(audio, playlistPosition: player.currentAudio!.playlistPosition)
     }
     
     @IBAction func onPreviousButtonClicked(sender: AnyObject) {
@@ -103,21 +106,65 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         repeatEnabled = !repeatEnabled
     }
     
-    @IBAction func onRemoveButtonClicked(sender: AnyObject) {
+    @IBAction func onPlaylistEditClicked(sender: AnyObject) {
         let currentAudio = player.currentAudio?.audio as! Audio
-        api.removeAudio(currentAudio.id!, ownerId: currentAudio.ownerId!, callback: VkApiCallback(onResult: { (result) in
-            let message = "\(currentAudio.artist ?? "Unknown") - \(currentAudio.name ?? "Unnamed") was removed from your page"
-            JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
-        }))
-        player.playlist.removeAtIndex(player.currentAudio!.playlistPosition)
-        player.playNext()
+        let managedAudio = managedAudios[player.currentAudio!.playlistPosition]
+        
+        if currentAudio.ownerId != Int(VkApi.sharedInstance!.userId) && managedAudio == nil {
+            addAudioRequest(currentAudio)
+            return
+        }
+        if currentAudio.ownerId == Int(VkApi.sharedInstance!.userId) && managedAudio == nil {
+            removeAudioRequest(currentAudio, id: currentAudio.id!)
+            return
+        }
+        if !managedAudio!.wasRemoved {
+            removeAudioRequest(currentAudio, id: managedAudio!.id)
+            return
+        }
+        if managedAudio!.wasRemoved {
+            restoreAudioRequest(currentAudio, id: managedAudio!.id)
+            return
+        }
     }
     
-    @IBAction func onAddButtonClicked(sender: AnyObject) {
-        let currentAudio = player.currentAudio?.audio as! Audio
-        api.addAudio(currentAudio.id!, ownerId: currentAudio.ownerId!, callback: VkApiCallback(onResult: { (result) in
-            let message = "\(currentAudio.artist ?? "Unknown") - \(currentAudio.name ?? "Unnamed") was added to your page"
+    private func addAudioRequest(audio: Audio) {
+        api.addAudio(audio.id!, ownerId: audio.ownerId!, callback: VkApiCallback(onResult: { (result: Int) in
+            let message = "\(audio.artist ?? "Unknown") - \(audio.name ?? "Unnamed") was added to your page"
             JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
+            
+            self.managedAudios[self.player.currentAudio!.playlistPosition] = ManagedAudio(id: result)
+            self.btnPlaylistEdit.setImage(UIImage(named: "ic_remove"), forState: .Normal)
+        }))
+    }
+    
+    private func removeAudioRequest(audio: Audio, id: Int) {
+        api.removeAudio(id, ownerId: Int(VkApi.sharedInstance!.userId)!, callback: VkApiCallback(onResult: { (result: Int) in
+            let message = "\(audio.artist ?? "Unknown") - \(audio.name ?? "Unnamed") was removed from your page"
+            JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
+            
+            var managedAudio = self.managedAudios[self.player.currentAudio!.playlistPosition]
+            if managedAudio == nil {
+                managedAudio = ManagedAudio(id: audio.id!)
+                if audio.ownerId! == Int(VkApi.sharedInstance!.userId) {
+                    managedAudio!.wasRemoved = true
+                }
+            }
+            else {
+                managedAudio!.wasRemoved = true
+            }
+            self.managedAudios[self.player.currentAudio!.playlistPosition] = managedAudio
+            self.btnPlaylistEdit.setImage(UIImage(named: "ic_add"), forState: .Normal)
+        }))
+    }
+    
+    private func restoreAudioRequest(audio: Audio, id: Int) {
+        api.restoreAudio(id, ownerId: Int(VkApi.sharedInstance!.userId)!, callback: VkApiCallback(onResult: { (result: Audio) in
+            let message = "\(audio.artist ?? "Unknown") - \(audio.name ?? "Unnamed") was added to your page"
+            JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
+            
+            self.managedAudios[self.player.currentAudio!.playlistPosition] = ManagedAudio(id: result.id!)
+            self.btnPlaylistEdit.setImage(UIImage(named: "ic_remove"), forState: .Normal)
         }))
     }
     
@@ -128,16 +175,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
             
             self.updateMediaCenterInfo(currentAudio, elapsedTime: elapsedTime)
         }
-    }
-    
-    private func updateMediaCenterInfo(currentAudio: Audio, elapsedTime: Int64? = 0) {
-        let currentAudioInfo = [
-            MPMediaItemPropertyArtist: currentAudio.artist!,
-            MPMediaItemPropertyTitle: currentAudio.name!,
-            MPNowPlayingInfoPropertyElapsedPlaybackTime: NSNumber(longLong: elapsedTime!),
-            MPMediaItemPropertyPlaybackDuration: NSNumber(integer: currentAudio.duration!)
-        ]
-        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentAudioInfo
     }
     
     //MARK: - AudioPlayerDelegate
@@ -163,9 +200,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         progressAudioStream.maximumValue = Float(audio.duration!)
         labelAudioDuration.text = VKAPUtils.formatProgress(audio.duration ?? 0)
         
-        btnRemove.enabled = playlistOwnerId == nil
-        btnAdd.enabled = playlistOwnerId != nil
-        
+        updateEditPlaylistIcon(audio, playlistPosition: playlistPosition)
         updateMediaCenterInfo(audio, elapsedTime: startSeconds)
     }
     
@@ -173,5 +208,23 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         progressAudioStream.value = Float(seconds)
         labelAudioCurrentDuration.text = VKAPUtils.formatProgress(Int(seconds))
         progressAudioStream.bufferValue = Float(cachedSeconds)
+    }
+    
+    private func updateEditPlaylistIcon(currentAudio: Audio, playlistPosition: Int) {
+        let managedAudio = managedAudios[playlistPosition]
+        let isOwner = currentAudio.ownerId == Int(VkApi.sharedInstance!.userId)
+        let canBeRestored = managedAudio != nil && managedAudio!.wasRemoved
+        let icon = isOwner && !canBeRestored ? "ic_remove" : "ic_add"
+        btnPlaylistEdit.setImage(UIImage(named: icon), forState: .Normal)
+    }
+    
+    private func updateMediaCenterInfo(currentAudio: Audio, elapsedTime: Int64? = 0) {
+        let currentAudioInfo = [
+            MPMediaItemPropertyArtist: currentAudio.artist!,
+            MPMediaItemPropertyTitle: currentAudio.name!,
+            MPNowPlayingInfoPropertyElapsedPlaybackTime: NSNumber(longLong: elapsedTime!),
+            MPMediaItemPropertyPlaybackDuration: NSNumber(integer: currentAudio.duration!)
+        ]
+        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentAudioInfo
     }
 }

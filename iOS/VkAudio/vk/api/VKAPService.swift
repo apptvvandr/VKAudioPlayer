@@ -86,26 +86,36 @@ class VKAPService: VKAPServiceDelegate {
         }))
     }
 
-    func addAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<AnyObject>?) {
+    func addAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<Int>?) {
         let params: [String: AnyObject] = ["audio_id": audioId, "owner_id": ownerId]
         
-        api.getRequest("audio.add", params: params, callback: VkApiCallback(
-            onResult: { (result: AnyObject) in
-                callback?.onResult(result: result)
+        api.getRequest("audio.add", params: params, callback: VkApiCallback(onResult: { (result: AnyObject) in
+                callback?.onResult(result: result as! Int)
             },
             onError: { (error) in
                 callback?.onError?(error: error)
         }))
     }
 
-    func removeAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<AnyObject>?) {
+    func removeAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<Int>?) {
         let params: [String: AnyObject] = ["audio_id": audioId, "owner_id": ownerId]
 
         api.getRequest("audio.delete", params: params, callback: VkApiCallback(
             onResult: { (result: AnyObject) in
-                callback?.onResult(result: result)
+                callback?.onResult(result: result as! Int)
             },
             onError: { (error) in
+                callback?.onError?(error: error)
+        }))
+    }
+    
+    func restoreAudio(id: Int, ownerId: Int, callback: VkApiCallback<Audio>?) {
+        let params: [String: AnyObject] = ["audio_id": id, "owner_id": ownerId]
+        
+        api.getRequest("audio.restore", params: params, callback: VkApiCallback(onResult: { (result: AnyObject) in
+            let audio = Audio(apiResponse: result as! [String: AnyObject])
+            callback?.onResult(result: audio)
+            }, onError: { (error) in
                 callback?.onError?(error: error)
         }))
     }

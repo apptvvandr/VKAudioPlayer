@@ -321,23 +321,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0y-Jt-aHj">
-                                <rect key="frame" x="331" y="71" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="1Ie-MV-EMW"/>
-                                </constraints>
-                                <state key="normal" image="ic_add"/>
-                                <connections>
-                                    <action selector="onAddButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="2dn-2x-Wlp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp6-Tj-Ykx">
-                                <rect key="frame" x="331" y="101" width="24" height="23"/>
-                                <state key="normal" image="ic_remove"/>
-                                <connections>
-                                    <action selector="onRemoveButtonClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="YTm-Ii-o7Z"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5J-GP-QdS">
                                 <rect key="frame" x="175" y="587" width="24" height="23"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -428,34 +411,42 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auc-vy-zMF">
+                                <rect key="frame" x="331" y="84" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="QeD-Eb-5gO"/>
+                                </constraints>
+                                <state key="normal" image="ic_add"/>
+                                <connections>
+                                    <action selector="onPlaylistEditClicked:" destination="hLe-fN-oCO" eventType="touchUpInside" id="naw-W5-k3h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Uju-ne-egQ" firstAttribute="trailing" secondItem="t0y-Jt-aHj" secondAttribute="trailing" id="0wh-o9-S8p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="auc-vy-zMF" secondAttribute="trailing" constant="4" id="3kz-Zm-zXD"/>
+                            <constraint firstItem="auc-vy-zMF" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="20" id="638-vz-Vgf"/>
                             <constraint firstItem="N5J-GP-QdS" firstAttribute="centerX" secondItem="dsl-Co-qvc" secondAttribute="centerX" id="690-U0-CeS"/>
                             <constraint firstItem="YJN-gB-64J" firstAttribute="top" secondItem="2xi-y4-tec" secondAttribute="top" id="6QR-Bk-0Zg"/>
                             <constraint firstItem="s6t-qf-vzk" firstAttribute="leading" secondItem="7z5-Lj-RH9" secondAttribute="leading" id="6ne-mf-DkT"/>
+                            <constraint firstItem="auc-vy-zMF" firstAttribute="trailing" secondItem="Uju-ne-egQ" secondAttribute="trailing" id="AXL-ie-Xta"/>
                             <constraint firstItem="s6t-qf-vzk" firstAttribute="top" secondItem="gut-Q6-0nv" secondAttribute="bottom" constant="8" symbolic="YES" id="BxE-JS-shy"/>
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="0mc-9h-2wg" secondAttribute="bottom" constant="8" symbolic="YES" id="D9w-hg-ZVR"/>
-                            <constraint firstItem="dp6-Tj-Ykx" firstAttribute="centerX" secondItem="t0y-Jt-aHj" secondAttribute="centerX" id="FdM-50-MO0"/>
                             <constraint firstItem="0mc-9h-2wg" firstAttribute="leading" secondItem="Omx-cU-BA6" secondAttribute="trailing" constant="8" symbolic="YES" id="H0w-w1-3ri"/>
-                            <constraint firstItem="dp6-Tj-Ykx" firstAttribute="top" secondItem="t0y-Jt-aHj" secondAttribute="bottom" constant="6" id="HFc-Vj-AVW"/>
                             <constraint firstItem="Uju-ne-egQ" firstAttribute="top" secondItem="7z5-Lj-RH9" secondAttribute="bottom" constant="8" symbolic="YES" id="HR2-KX-GQM"/>
                             <constraint firstItem="N5J-GP-QdS" firstAttribute="top" secondItem="LLk-fw-C06" secondAttribute="bottom" constant="17" id="Hom-ZK-LTz"/>
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="2xi-y4-tec" secondAttribute="bottom" constant="8" symbolic="YES" id="I7E-CF-ccJ"/>
+                            <constraint firstItem="auc-vy-zMF" firstAttribute="trailing" secondItem="LLk-fw-C06" secondAttribute="trailing" id="IfS-mY-n5s"/>
                             <constraint firstItem="N5J-GP-QdS" firstAttribute="leading" secondItem="0mc-9h-2wg" secondAttribute="trailing" constant="8" symbolic="YES" id="LF5-mN-U81"/>
-                            <constraint firstItem="s6t-qf-vzk" firstAttribute="centerY" secondItem="t0y-Jt-aHj" secondAttribute="centerY" id="MgX-xH-I4Z"/>
                             <constraint firstItem="LLk-fw-C06" firstAttribute="leading" secondItem="v4f-0r-8ja" secondAttribute="trailing" constant="8" symbolic="YES" id="ONv-tD-1NE"/>
                             <constraint firstItem="o5B-nM-ewx" firstAttribute="leading" secondItem="s6t-qf-vzk" secondAttribute="leading" id="S3w-VV-ej5"/>
                             <constraint firstItem="7z5-Lj-RH9" firstAttribute="top" secondItem="s6t-qf-vzk" secondAttribute="bottom" constant="8" symbolic="YES" id="U6Q-t5-iFO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="t0y-Jt-aHj" secondAttribute="trailing" constant="4" id="UT9-d9-VkR"/>
-                            <constraint firstItem="LLk-fw-C06" firstAttribute="trailing" secondItem="t0y-Jt-aHj" secondAttribute="trailing" id="W6w-DC-Xa2"/>
                             <constraint firstItem="s6t-qf-vzk" firstAttribute="leading" secondItem="dsl-Co-qvc" secondAttribute="leadingMargin" constant="4" id="YxN-lh-kEx"/>
                             <constraint firstItem="0mc-9h-2wg" firstAttribute="top" secondItem="N5J-GP-QdS" secondAttribute="top" id="bEJ-Zy-d16"/>
-                            <constraint firstItem="t0y-Jt-aHj" firstAttribute="leading" secondItem="s6t-qf-vzk" secondAttribute="trailing" constant="8" symbolic="YES" id="bL6-bC-2ag"/>
                             <constraint firstItem="N5J-GP-QdS" firstAttribute="top" secondItem="o5B-nM-ewx" secondAttribute="bottom" constant="17" id="dld-fs-5fh"/>
                             <constraint firstItem="N5J-GP-QdS" firstAttribute="top" secondItem="YJN-gB-64J" secondAttribute="top" id="ein-rn-1iX"/>
+                            <constraint firstItem="auc-vy-zMF" firstAttribute="leading" secondItem="s6t-qf-vzk" secondAttribute="trailing" constant="8" symbolic="YES" id="er1-Np-kQh"/>
                             <constraint firstItem="2xi-y4-tec" firstAttribute="leading" secondItem="YJN-gB-64J" secondAttribute="trailing" constant="8" symbolic="YES" id="etf-pu-d6X"/>
                             <constraint firstItem="Uju-ne-egQ" firstAttribute="leading" secondItem="7z5-Lj-RH9" secondAttribute="leading" id="gWf-gS-kpK"/>
                             <constraint firstItem="Omx-cU-BA6" firstAttribute="top" secondItem="v4f-0r-8ja" secondAttribute="bottom" constant="8" symbolic="YES" id="hFM-Ep-OIf"/>
@@ -465,15 +456,15 @@
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="YJN-gB-64J" secondAttribute="bottom" constant="8" symbolic="YES" id="qiH-IL-1qd"/>
                             <constraint firstItem="9wO-JN-inN" firstAttribute="top" secondItem="Omx-cU-BA6" secondAttribute="bottom" constant="8" symbolic="YES" id="v85-qA-EFP"/>
                             <constraint firstItem="Omx-cU-BA6" firstAttribute="top" secondItem="0mc-9h-2wg" secondAttribute="top" id="zQn-Ev-xCy"/>
+                            <constraint firstItem="auc-vy-zMF" firstAttribute="leading" secondItem="7z5-Lj-RH9" secondAttribute="trailing" constant="8" symbolic="YES" id="zpM-BO-wdL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jWr-NU-ycx"/>
                     <connections>
-                        <outlet property="btnAdd" destination="t0y-Jt-aHj" id="R1f-my-O1a"/>
                         <outlet property="btnNext" destination="YJN-gB-64J" id="ICr-gt-Lsf"/>
                         <outlet property="btnPlay" destination="N5J-GP-QdS" id="a5M-k8-IjZ"/>
+                        <outlet property="btnPlaylistEdit" destination="auc-vy-zMF" id="mSl-TS-OF5"/>
                         <outlet property="btnPrevious" destination="0mc-9h-2wg" id="7J6-xM-jnz"/>
-                        <outlet property="btnRemove" destination="dp6-Tj-Ykx" id="7hx-Cq-Gtb"/>
                         <outlet property="btnRepeat" destination="2xi-y4-tec" id="wio-Jn-L2M"/>
                         <outlet property="btnShuffle" destination="Omx-cU-BA6" id="t7J-S5-Nrd"/>
                         <outlet property="imageCover" destination="Uju-ne-egQ" id="UWw-gd-fhw"/>
@@ -543,7 +534,6 @@
         <image name="ic_play" width="24" height="24"/>
         <image name="ic_play_circle_outline_white" width="24" height="24"/>
         <image name="ic_previous" width="24" height="24"/>
-        <image name="ic_remove" width="24" height="24"/>
         <image name="ic_repeat" width="24" height="24"/>
         <image name="ic_shuffle" width="24" height="24"/>
         <image name="placeholder_music" width="300" height="300"/>

@@ -39,6 +39,7 @@ protocol VKAPServiceDelegate {
     func getFriends(callback: VkApiCallback<[User]>?)
     func getUserPhoto(callback: VkApiCallback<UIImage>?)
     
-    func addAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<AnyObject>?)
-    func removeAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<AnyObject>?)
+    func addAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<Int>?)
+    func removeAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<Int>?)
+    func restoreAudio(id: Int, ownerId: Int, callback: VkApiCallback<Audio>?)
 }
