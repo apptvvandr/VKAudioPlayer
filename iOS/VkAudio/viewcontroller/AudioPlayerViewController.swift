@@ -47,7 +47,9 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         
         player.delegate = self
         player.playlist = audios.map({$0 as Audio}) //[?] stackoverflow.com/questions/30100787
-        if player.currentAudio?.playlistPosition != selectedAudioIndex {
+        
+        let currentAudio = player.currentAudio?.audio
+        if currentAudio == nil || (currentAudio as! Audio).id != audios[selectedAudioIndex].id {
             player.play(selectedAudioIndex)
         }
     }
