@@ -221,7 +221,7 @@ public class VKAPServiceImpl implements VKAPService {
                     onFailure(call, error);
                     return;
                 }
-                UserModel userModel = new ResponseUserMapper().map(response.body().getItems().get(0));
+                UserModel userModel = new ResponseUserMapper().map(response.body().getResponse().get(0));
                 callback.onResponse(userModel);
             }
 
