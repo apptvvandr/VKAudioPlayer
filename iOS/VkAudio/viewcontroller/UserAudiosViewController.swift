@@ -49,7 +49,7 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
         let cell = tableView.dequeueReusableCellWithIdentifier(AudioCell.STORYBOARD_ID) as! AudioCell
         let audio = isSearchPrepared() ? filteredAudios[indexPath.row] : userAudios[indexPath.row]
 
-        cell.setData(audio.artist, name: audio.name)
+        cell.setData(audio)
         return cell
     }
 

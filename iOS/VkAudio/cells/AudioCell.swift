@@ -12,15 +12,19 @@ import UIKit
 class AudioCell: UITableViewCell {
 
     static let STORYBOARD_ID = "cell_audio"
-
-    @IBOutlet weak var labelTitle: UILabel!
+    
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelArtist: UILabel!
+    @IBOutlet weak var labelDuration: UILabel!
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.backgroundColor = UIColor.clearColor()
     }
 
-    func setData(artist: String?, name: String?) {
-        labelTitle.text = "\(artist ?? "Unknown") - \(name ?? "Unknown")"
+    func setData(audio: Audio) {
+        labelName.text = audio.name ?? "Unnamed"
+        labelArtist.text = audio.artist ?? "Unknown"
+        labelDuration.text = VKAPUtils.formatProgress(audio.duration ?? 0)
     }
 }

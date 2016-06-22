@@ -161,7 +161,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         labelArtist.text = audio.artist
         labelName.text = audio.name
         progressAudioStream.maximumValue = Float(audio.duration!)
-        labelAudioDuration.text = audioDurationToString(audio.duration!)
+        labelAudioDuration.text = VKAPUtils.formatProgress(audio.duration ?? 0)
         
         btnRemove.enabled = playlistOwnerId == nil
         btnAdd.enabled = playlistOwnerId != nil
@@ -169,16 +169,9 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         updateMediaCenterInfo(audio, elapsedTime: startSeconds)
     }
     
-    private func audioDurationToString(seconds: Int) -> String {
-        let minutes = seconds / 60
-        let seconds = seconds % 60
-                
-        return String(format: "%0.2d:%0.2d", minutes, seconds)
-    }
-    
     func onTimeChanged(seconds: Int64, cachedSeconds: Int64) {
         progressAudioStream.value = Float(seconds)
-        labelAudioCurrentDuration.text = audioDurationToString(Int(seconds))
+        labelAudioCurrentDuration.text = VKAPUtils.formatProgress(Int(seconds))
         progressAudioStream.bufferValue = Float(cachedSeconds)
     }
 }
