@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class UserGroupsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     let api = VKAPService.sharedInstance!
-    var groups = [Group]()
+    var dataTag = "groups"
+    
+    var groups = [Group]() {
+        didSet {
+            if self.groups.count > 0 {
+                VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
+            }
+        }
+    }
+    
+    var progressHudHidden: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +35,25 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if groups.count == 0 || VKAPUtils.lastRequestIsOlder(dataTag, seconds: VKAPUtils.REQUSET_DELAY_USER_GROUPS) {
+            onPerformDataRequest()
+        }
+    }
+    
+    private func onPerformDataRequest() {
+        if groups.count == 0 {
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            progressHudHidden = false
+        }
         
-        api.getGroups(VkApiCallback(onResult: { (result) in
-            self.groups = result
-            self.collectionView?.reloadData()
+        api.getGroups(VkApiCallback(
+            onResult: { (result) in
+                self.groups = result
+                self.collectionView?.reloadData()
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+            },
+            onError: { (error) in
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
         }))
     }
     

@@ -8,11 +8,23 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 class UserFriendsViewController: UITableViewController {
 
     let api = VKAPService.sharedInstance!
-    var friends = [User]()
+    let dataTag = "friends"
+    
+    var friends = [User]() {
+        didSet {
+            if friends.count > 0 {
+                VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
+            }
+        }
+    }
+    
+    var progressHudHidden: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +36,26 @@ class UserFriendsViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-        api.getFriends(VkApiCallback(onResult: { (result) in
-            self.friends = result
-            self.tableView.reloadData()
-        }))
+        if friends.count == 0 || VKAPUtils.lastRequestIsOlder(dataTag, seconds: VKAPUtils.REQUEST_DELAY_USER_FRIENDS) {
+            onPerformDataRequest()
+        }
     }
 
+    private func onPerformDataRequest() {
+        if friends.count == 0 {
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            progressHudHidden = false
+        }
+        
+        api.getFriends(VkApiCallback(
+            onResult: { (result) in
+                self.friends = result
+                self.tableView.reloadData()
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+            }, onError: {(error) in
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+        }))
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count

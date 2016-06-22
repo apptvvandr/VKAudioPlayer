@@ -31,9 +31,6 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     var playlistOwnerId: Int? //nil means current user
     var audios: [Audio]!
     var selectedAudioIndex: Int!
-        
-    var shuffleEnabled = false
-    var repeatEnabled = false
     
     var managedAudios = [Int: ManagedAudio]()
     
@@ -86,6 +83,8 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     @IBAction func onShuffleButtonClicked(sender: AnyObject) {
         var newPlaylist = [Audio]()
+        let shuffleEnabled = VKAPUserDefaults.isShuffleEnabled()
+        VKAPUserDefaults.setShuffleEnabled(!shuffleEnabled)
         if !shuffleEnabled {
             newPlaylist = audios.shuffle()
             btnShuffle.tintColor = progressAudioStream.progressLayerColor
@@ -94,18 +93,15 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
             newPlaylist = self.audios
             btnShuffle.tintColor = UIColor.blackColor()
         }
-        shuffleEnabled = !shuffleEnabled
         player.playlist = newPlaylist.map({$0 as Audio})
     }
     
     @IBAction func onRepeatButtonClicked(sender: AnyObject) {
-        if !repeatEnabled {
-            btnRepeat.tintColor = progressAudioStream.progressLayerColor
-        }
-        else {
-            btnRepeat.tintColor = UIColor.blackColor()
-        }
-        repeatEnabled = !repeatEnabled
+        let repeatEnabled = VKAPUserDefaults.isRepeatEnabled()
+        VKAPUserDefaults.setRepeatEnabled(!repeatEnabled)
+        
+        let repeatTint = !repeatEnabled ? progressAudioStream.progressLayerColor : UIColor.blackColor()
+        btnRepeat.tintColor = repeatTint
     }
     
     @IBAction func onPlaylistEditClicked(sender: AnyObject) {
@@ -184,7 +180,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     func onStopPlaying(audio: AudioPlayerItem, playlistPosition: Int, stopSeconds: Int64) {
         btnPlay.setImage(UIImage(named: "ic_play"), forState: .Normal)
         if stopSeconds == Int64(audio.duration!) {
-            if repeatEnabled {
+            if VKAPUserDefaults.isRepeatEnabled() {
                 player.play(playlistPosition)
             }
             else {
