@@ -37,10 +37,24 @@
 		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
 		F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5ABBE821CD0C4F5000699EA /* VkApp.plist */; };
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
+		F5C004721D1C4825000A4D6C /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0046E1D1C4825000A4D6C /* FriendModel.swift */; };
+		F5C004731D1C4825000A4D6C /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0046F1D1C4825000A4D6C /* GroupModel.swift */; };
+		F5C004741D1C4825000A4D6C /* VkItemSyncModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004701D1C4825000A4D6C /* VkItemSyncModel.swift */; };
+		F5C004751D1C4825000A4D6C /* VkItemSyncModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004711D1C4825000A4D6C /* VkItemSyncModelDB.swift */; };
 		F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F50931D31D1BDBF300AB8B95 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5888E721CE9D42B00879186 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,12 +77,6 @@
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
 		F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUtils.swift; sourceTree = "<group>"; };
-		F558564A1D1A962800C64EC4 /* ffmpeg_mediametadataretriever.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ffmpeg_mediametadataretriever.c; sourceTree = "<group>"; };
-		F558564B1D1A962800C64EC4 /* ffmpeg_mediametadataretriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ffmpeg_mediametadataretriever.h; sourceTree = "<group>"; };
-		F558564C1D1A962800C64EC4 /* FFmpegMediaMetadataRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFmpegMediaMetadataRetriever.h; sourceTree = "<group>"; };
-		F558564D1D1A962800C64EC4 /* FFmpegMediaMetadataRetriever.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FFmpegMediaMetadataRetriever.mm; sourceTree = "<group>"; };
-		F558564E1D1A962800C64EC4 /* mediametadataretriever.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mediametadataretriever.cpp; sourceTree = "<group>"; };
-		F558564F1D1A962800C64EC4 /* mediametadataretriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mediametadataretriever.h; sourceTree = "<group>"; };
 		F558565E1D1A9DC200C64EC4 /* ManagedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAudio.swift; sourceTree = "<group>"; };
 		F55856601D1AB02800C64EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55856621D1AD07800C64EC4 /* VKAPUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUserDefaults.swift; sourceTree = "<group>"; };
@@ -96,6 +104,10 @@
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		F5ABBE821CD0C4F5000699EA /* VkApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VkApp.plist; sourceTree = "<group>"; };
 		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5C0046E1D1C4825000A4D6C /* FriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		F5C0046F1D1C4825000A4D6C /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		F5C004701D1C4825000A4D6C /* VkItemSyncModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItemSyncModel.swift; sourceTree = "<group>"; };
+		F5C004711D1C4825000A4D6C /* VkItemSyncModelDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItemSyncModelDB.swift; sourceTree = "<group>"; };
 		F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,25 +126,10 @@
 		4AF451C7F7CF59EA9D9F2A5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F55856491D1A962800C64EC4 /* FMMRLibrary */,
 				F5888E631CE9D42B00879186 /* NotificationCenter.framework */,
 				9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F55856491D1A962800C64EC4 /* FMMRLibrary */ = {
-			isa = PBXGroup;
-			children = (
-				F558564A1D1A962800C64EC4 /* ffmpeg_mediametadataretriever.c */,
-				F558564B1D1A962800C64EC4 /* ffmpeg_mediametadataretriever.h */,
-				F558564C1D1A962800C64EC4 /* FFmpegMediaMetadataRetriever.h */,
-				F558564D1D1A962800C64EC4 /* FFmpegMediaMetadataRetriever.mm */,
-				F558564E1D1A962800C64EC4 /* mediametadataretriever.cpp */,
-				F558564F1D1A962800C64EC4 /* mediametadataretriever.h */,
-			);
-			name = FMMRLibrary;
-			path = "../../../Downloads/FFmpegMediaMetadataRetriever-iOS-master/FMMRLibrary/FMMRLibrary";
 			sourceTree = "<group>";
 		};
 		F563C5E51CEDE09A00825849 /* utils */ = {
@@ -172,6 +169,7 @@
 			children = (
 				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
 				F5AB3D111CD361C500BC2067 /* views */,
+				F5C0046D1D1C4825000A4D6C /* database */,
 				F5B3E56E1CCFC254003270A9 /* vk */,
 				F563C5E51CEDE09A00825849 /* utils */,
 				F5F0882E1CCF673C00525599 /* support */,
@@ -245,6 +243,17 @@
 			path = vk;
 			sourceTree = "<group>";
 		};
+		F5C0046D1D1C4825000A4D6C /* database */ = {
+			isa = PBXGroup;
+			children = (
+				F5C0046E1D1C4825000A4D6C /* FriendModel.swift */,
+				F5C0046F1D1C4825000A4D6C /* GroupModel.swift */,
+				F5C004701D1C4825000A4D6C /* VkItemSyncModel.swift */,
+				F5C004711D1C4825000A4D6C /* VkItemSyncModelDB.swift */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
 		F5F0882E1CCF673C00525599 /* support */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +295,7 @@
 				B6A6AF605EF942F23DB29A0D /* Embed Pods Frameworks */,
 				593C1702B47E4B7521FD0D10 /* Copy Pods Resources */,
 				F5888E721CE9D42B00879186 /* Embed App Extensions */,
+				F50931D31D1BDBF300AB8B95 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -495,7 +505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C004741D1C4825000A4D6C /* VkItemSyncModel.swift in Sources */,
 				F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */,
+				F5C004731D1C4825000A4D6C /* GroupModel.swift in Sources */,
 				F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */,
 				F591452C1CF32A05009D3AA8 /* VKAPService.swift in Sources */,
 				F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */,
@@ -505,6 +517,7 @@
 				F558565F1D1A9DC200C64EC4 /* ManagedAudio.swift in Sources */,
 				F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */,
 				F58308F21CD8BE290094F1F4 /* Group.swift in Sources */,
+				F5C004751D1C4825000A4D6C /* VkItemSyncModelDB.swift in Sources */,
 				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
 				F509CDA01CD7C568003ACCC1 /* User.swift in Sources */,
 				F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */,
@@ -517,6 +530,7 @@
 				F591452E1CF32A05009D3AA8 /* VkApiImpl.swift in Sources */,
 				F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */,
 				F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */,
+				F5C004721D1C4825000A4D6C /* FriendModel.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
 				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,

@@ -47,10 +47,14 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
         }
         
         api.getGroups(VkApiCallback(
-            onResult: { (result) in
+            onResult: { (result: [Group]) in
                 self.groups = result
                 self.collectionView?.reloadData()
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
+                let groupModels = result.map{ group in
+                    GroupModel(value: ["id": group.id!, "name": group.name!, "avatarUrl": group.photoUrl!])}
+                VkItemSyncModelDB.sharedInstance?.update(groupModels)
             },
             onError: { (error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)

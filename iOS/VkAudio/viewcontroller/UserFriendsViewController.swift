@@ -48,10 +48,14 @@ class UserFriendsViewController: UITableViewController {
         }
         
         api.getFriends(VkApiCallback(
-            onResult: { (result) in
+            onResult: { (result: [User]) in
                 self.friends = result
                 self.tableView.reloadData()
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                let friendModels = result.map{ friend in
+                    FriendModel(value: ["id": friend.id!, "firstName": friend.firstName!, "lastName": friend.lastName!, "avatarUrl": friend.photoUrl!])}
+                VkItemSyncModelDB.sharedInstance?.update(friendModels)
             }, onError: {(error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
         }))

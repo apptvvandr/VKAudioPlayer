@@ -30,6 +30,7 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if let url = request.URL?.absoluteString where url.containsString("access_token=") {
             VKAPService.setup(VkApi.setup(url))
+            VkItemSyncModelDB.setup(Int(VkApi.sharedInstance!.userId)!)
             
             performSegueWithIdentifier("segue_tabs", sender: self)
 
