@@ -8,11 +8,23 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 class UserFriendsViewController: UITableViewController {
 
-    let api = VKAPService.sharedInstance!
-    var friends = [User]()
+    let api = VKAPServiceImpl.sharedInstance!
+    let dataTag = "friends"
+    
+    var friends = [FriendModel]() {
+        didSet {
+            if friends.count > 0 {
+                VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
+            }
+        }
+    }
+    
+    var progressHudHidden: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +36,29 @@ class UserFriendsViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
-        api.getFriends(VkApiCallback(onResult: { (result) in
-            self.friends = result
-            self.tableView.reloadData()
-        }))
+        if friends.count == 0 || VKAPUtils.lastRequestIsOlder(dataTag, seconds: VKAPUtils.REQUEST_DELAY_USER_FRIENDS) {
+            onPerformDataRequest()
+        }
     }
 
+    private func onPerformDataRequest() {
+        if friends.count == 0 {
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            progressHudHidden = false
+        }
+        
+        api.getFriends(VKApiCallback(
+            onResult: { (result: [FriendModel]) in
+                self.friends = result
+                self.tableView.reloadData()
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                VkModelDB.sharedInstance?.update(result)
+                SyncItemDB.sharedInstance?.update()
+            }, onError: {(error) in
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+        }))
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
@@ -38,9 +66,9 @@ class UserFriendsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(UserCell.STORYBOARD_ID) as! UserCell
-        let friend: User = friends[indexPath.row]
+        let friend = friends[indexPath.row]
 
-        cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.photoUrl)
+        cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.avatarUrl)
         return cell
     }
 

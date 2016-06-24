@@ -45,8 +45,8 @@ extension MutableCollectionType where Index == Int {
 }
 
 extension NSDate {
-    static func currentTimeMillis() -> Int64 {
-        return Int64(NSDate().timeIntervalSince1970 * 1000)
+    static func currentTimeMillis() -> Double {
+        return Double(NSDate().timeIntervalSince1970 * 1000)
     }
 }
 

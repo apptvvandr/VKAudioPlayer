@@ -7,11 +7,23 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class UserGroupsViewController: UICollectionViewController {
+class UserGroupsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let api = VKAPService.sharedInstance!
-    var groups = [Group]()
+    let api = VKAPServiceImpl.sharedInstance!
+    var dataTag = "groups"
+    
+    var groups = [GroupModel]() {
+        didSet {
+            if self.groups.count > 0 {
+                VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
+            }
+        }
+    }
+    
+    var progressHudHidden: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +35,41 @@ class UserGroupsViewController: UICollectionViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if groups.count == 0 || VKAPUtils.lastRequestIsOlder(dataTag, seconds: VKAPUtils.REQUSET_DELAY_USER_GROUPS) {
+            onPerformDataRequest()
+        }
+    }
+    
+    private func onPerformDataRequest() {
+        if groups.count == 0 {
+            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            progressHudHidden = false
+        }
         
-        api.getGroups(VkApiCallback(onResult: { (result) in
-            self.groups = result
-            self.collectionView?.reloadData()
+        api.getGroups(VKApiCallback(
+            onResult: { (result: [GroupModel]) in
+                self.groups = result
+                self.collectionView?.reloadData()
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
+                VkModelDB.sharedInstance?.update(result)
+                SyncItemDB.sharedInstance?.update()
+            },
+            onError: { (error) in
+                self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
         }))
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let screenWidth = self.view.frame.width
+        let width = screenWidth / 2 <= 160 ? screenWidth / 2 : screenWidth / 3 //wow, ipad compatibility
+        return CGSize(width: width - 12, height: width - 12)
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: GroupCell = collectionView.dequeueReusableCellWithReuseIdentifier(GroupCell.STORYBOARD_ID, forIndexPath: indexPath) as! GroupCell
         let group = groups[indexPath.row]
-        cell.setData(group.id, groupName: group.name, photoUrl: group.photoUrl)
+        cell.setData(group.id, groupName: group.name, photoUrl: group.avatarUrl)
         return cell
     }
 

@@ -20,6 +20,7 @@ class UserCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         imagePhoto.layer.cornerRadius = CGRectGetWidth(imagePhoto.frame) / 2
+        self.backgroundColor = UIColor.clearColor()
     }
 
     func setData(userId: Int?, firstName: String?, lastName: String?, photoUrl: String?) {

@@ -23,9 +23,9 @@ class GroupCell: UICollectionViewCell {
         self.groupId = groupId
         self.groupName = groupName
         
-        labelName.text = groupName
         if let photoUrl = photoUrl, url = NSURL(string: photoUrl) {
             imagePhoto.kf_setImageWithURL(url)
         }
+        labelName.text = groupName
     }
 }

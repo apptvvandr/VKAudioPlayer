@@ -8,22 +8,23 @@
 
 import Foundation
 
-class Audio: VkItem, AudioPlayerItem {
+class Audio: VKItem {
 
+    var id: Int
     var url: String?
     var artist: String?
     var name: String?
     var duration: Int?
     var ownerId: Int?
+    var date: Int? // todo: date is available from api v5
 
-    override init(apiResponse: [String:AnyObject]) {
-        super.init(apiResponse: apiResponse)
-
-        id = apiResponse["aid"] as? Int
+    init(apiResponse: [String: AnyObject]) {
+        id = apiResponse["aid"] as! Int
         url = apiResponse["url"] as? String
         artist = apiResponse["artist"] as? String
         name = apiResponse["title"] as? String
         duration = apiResponse["duration"] as? Int
         ownerId = apiResponse["owner_id"] as? Int
+        date = apiResponse["date"] as? Int
     }
 }

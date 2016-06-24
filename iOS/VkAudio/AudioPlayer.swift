@@ -90,7 +90,7 @@ public class AudioPlayer {
     private func playAudio(position: Int) {
         currentAudio = (position, playlist[position])
         
-        if let path = currentAudio!.audio.url, url = NSURL(string: path){
+        if let url = NSURL(string: currentAudio!.audio.url){
             self.resetTimer()
             
             player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
@@ -103,7 +103,7 @@ public class AudioPlayer {
     
     @objc private func onTimeChanged() {
         let seconds = self.playerSecondsToInt(player.currentTime())
-        let itemDuration = Int64(currentAudio!.audio.duration!)
+        let itemDuration = Int64(currentAudio!.audio.duration)
         
         guard seconds != itemDuration else {
             self.currentAudioTimer?.invalidate()
@@ -134,6 +134,6 @@ public protocol AudioPlayerDelegate {
 }
 
 public protocol AudioPlayerItem : class {
-    var url: String? {get set}
-    var duration: Int? {get set}
+    var url: String {get set}
+    var duration: Int {get set}
 }
