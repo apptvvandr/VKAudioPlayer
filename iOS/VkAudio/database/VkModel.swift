@@ -41,4 +41,8 @@ class VkModel: Object {
     override class func primaryKey() -> String? {
         return "id"
     }
+    
+    override class func ignoredProperties() -> [String] {
+        return ["syncEnabled", "syncSeconds"]
+    }
 }

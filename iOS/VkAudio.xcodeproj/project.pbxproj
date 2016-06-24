@@ -1,748 +1,1855 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		311593230AF33E3421C7C78B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115900DE6111E4627037424 /* UserCell.swift */; };
-		F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */; };
-		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
-		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
-		F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */; };
-		F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55856601D1AB02800C64EC4 /* Assets.xcassets */; };
-		F55856631D1AD07800C64EC4 /* VKAPUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55856621D1AD07800C64EC4 /* VKAPUserDefaults.swift */; };
-		F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E13B21CF454DD00114D89 /* BufferingSlider.swift */; };
-		F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E71CEDE09A00825849 /* Extensions.swift */; };
-		F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5E81CEDE09A00825849 /* LocalStorage.swift */; };
-		F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */; };
-		F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56AD29C1CCF64A100E45170 /* AppDelegate.swift */; };
-		F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A01CCF64A100E45170 /* Main.storyboard */; };
-		F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */; };
-		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
-		F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AD1CDA34E70016C79C /* VkTabsController.swift */; };
-		F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */; };
-		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
-		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
-		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
-		F5C004741D1C4825000A4D6C /* VkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004701D1C4825000A4D6C /* VkModel.swift */; };
-		F5C004751D1C4825000A4D6C /* VkModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004711D1C4825000A4D6C /* VkModelDB.swift */; };
-		F5C004771D1D4828000A4D6C /* SyncItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004761D1D4828000A4D6C /* SyncItem.swift */; };
-		F5C0048B1D1D4993000A4D6C /* VKApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004871D1D4993000A4D6C /* VKApiImpl.swift */; };
-		F5C0048C1D1D4993000A4D6C /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004881D1D4993000A4D6C /* VKApi.swift */; };
-		F5C004A81D1D4ACA000A4D6C /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A11D1D4ACA000A4D6C /* Audio.swift */; };
-		F5C004A91D1D4ACA000A4D6C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A21D1D4ACA000A4D6C /* Group.swift */; };
-		F5C004AA1D1D4ACA000A4D6C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A31D1D4ACA000A4D6C /* Friend.swift */; };
-		F5C004AC1D1D4ACA000A4D6C /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A51D1D4ACA000A4D6C /* FriendModel.swift */; };
-		F5C004AD1D1D4ACA000A4D6C /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A61D1D4ACA000A4D6C /* GroupModel.swift */; };
-		F5C004AE1D1D4ACA000A4D6C /* ManagedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A71D1D4ACA000A4D6C /* ManagedAudio.swift */; };
-		F5C004B01D1D4CB1000A4D6C /* SyncItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004AF1D1D4CB1000A4D6C /* SyncItemDB.swift */; };
-		F5C004B21D1D7098000A4D6C /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004B11D1D7098000A4D6C /* AudioModel.swift */; };
-		F5C004B81D1D7FC6000A4D6C /* VKAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004B61D1D7FC6000A4D6C /* VKAPService.swift */; };
-		F5C004B91D1D7FC6000A4D6C /* VKAPServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004B71D1D7FC6000A4D6C /* VKAPServiceImpl.swift */; };
-		F5C004BB1D1D80A3000A4D6C /* VKAPApplication.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5C004BA1D1D80A3000A4D6C /* VKAPApplication.plist */; };
-		F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		F50931D31D1BDBF300AB8B95 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F5888E721CE9D42B00879186 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
-/* Begin PBXFileReference section */
-		2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.release.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig"; sourceTree = "<group>"; };
-		3115900DE6111E4627037424 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
-		97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.debug.xcconfig"; sourceTree = "<group>"; };
-		F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsViewController.swift; sourceTree = "<group>"; };
-		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
-		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
-		F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUtils.swift; sourceTree = "<group>"; };
-		F55856601D1AB02800C64EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F55856621D1AD07800C64EC4 /* VKAPUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUserDefaults.swift; sourceTree = "<group>"; };
-		F55E13B21CF454DD00114D89 /* BufferingSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferingSlider.swift; sourceTree = "<group>"; };
-		F563C5E71CEDE09A00825849 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		F563C5E81CEDE09A00825849 /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
-		F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsCollectionView.swift; sourceTree = "<group>"; };
-		F56AD2991CCF64A100E45170 /* VkAudio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VkAudio.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F56AD29C1CCF64A100E45170 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = VkAudio/AppDelegate.swift; sourceTree = "<group>"; };
-		F56AD2A11CCF64A100E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VkAudio.xcdatamodel; sourceTree = "<group>"; };
-		F56AD2A91CCF64A200E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F56AD2AB1CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F58706AD1CDA34E70016C79C /* VkTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkTabsController.swift; sourceTree = "<group>"; };
-		F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = VkAudio/AudioPlayer.swift; sourceTree = "<group>"; };
-		F5888E631CE9D42B00879186 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		F5888E731CE9D50700879186 /* VkAudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VkAudio.entitlements; sourceTree = "<group>"; };
-		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
-		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
-		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F5C004701D1C4825000A4D6C /* VkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkModel.swift; sourceTree = "<group>"; };
-		F5C004711D1C4825000A4D6C /* VkModelDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkModelDB.swift; sourceTree = "<group>"; };
-		F5C004761D1D4828000A4D6C /* SyncItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncItem.swift; sourceTree = "<group>"; };
-		F5C004871D1D4993000A4D6C /* VKApiImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VKApiImpl.swift; path = ../vkapi/VKApiImpl.swift; sourceTree = "<group>"; };
-		F5C004881D1D4993000A4D6C /* VKApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
-		F5C004A11D1D4ACA000A4D6C /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
-		F5C004A21D1D4ACA000A4D6C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		F5C004A31D1D4ACA000A4D6C /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		F5C004A51D1D4ACA000A4D6C /* FriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
-		F5C004A61D1D4ACA000A4D6C /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
-		F5C004A71D1D4ACA000A4D6C /* ManagedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAudio.swift; sourceTree = "<group>"; };
-		F5C004AF1D1D4CB1000A4D6C /* SyncItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncItemDB.swift; sourceTree = "<group>"; };
-		F5C004B11D1D7098000A4D6C /* AudioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioModel.swift; path = dto/AudioModel.swift; sourceTree = "<group>"; };
-		F5C004B61D1D7FC6000A4D6C /* VKAPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPService.swift; sourceTree = "<group>"; };
-		F5C004B71D1D7FC6000A4D6C /* VKAPServiceImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPServiceImpl.swift; sourceTree = "<group>"; };
-		F5C004BA1D1D80A3000A4D6C /* VKAPApplication.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VKAPApplication.plist; sourceTree = "<group>"; };
-		F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		F56AD2961CCF64A100E45170 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		4AF451C7F7CF59EA9D9F2A5A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F5888E631CE9D42B00879186 /* NotificationCenter.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F563C5E51CEDE09A00825849 /* utils */ = {
-			isa = PBXGroup;
-			children = (
-				F563C5E71CEDE09A00825849 /* Extensions.swift */,
-				F563C5E81CEDE09A00825849 /* LocalStorage.swift */,
-				F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */,
-				F55856621D1AD07800C64EC4 /* VKAPUserDefaults.swift */,
-			);
-			path = utils;
-			sourceTree = "<group>";
-		};
-		F56AD2901CCF64A100E45170 = {
-			isa = PBXGroup;
-			children = (
-				F56AD29B1CCF64A100E45170 /* VkAudio */,
-				F56AD29C1CCF64A100E45170 /* AppDelegate.swift */,
-				F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */,
-				F56AD2A01CCF64A100E45170 /* Main.storyboard */,
-				F56AD29A1CCF64A100E45170 /* Products */,
-				F8AECB4FDEE61BF233342976 /* Pods */,
-				4AF451C7F7CF59EA9D9F2A5A /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		F56AD29A1CCF64A100E45170 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F56AD2991CCF64A100E45170 /* VkAudio.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F56AD29B1CCF64A100E45170 /* VkAudio */ = {
-			isa = PBXGroup;
-			children = (
-				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
-				F5AB3D111CD361C500BC2067 /* views */,
-				F5C0046D1D1C4825000A4D6C /* database */,
-				F5C0049F1D1D4ACA000A4D6C /* models */,
-				F5C004B51D1D7FC6000A4D6C /* network */,
-				F5F0882E1CCF673C00525599 /* support */,
-				F563C5E51CEDE09A00825849 /* utils */,
-				F5C004861D1D4993000A4D6C /* vkapi */,
-			);
-			path = VkAudio;
-			sourceTree = "<group>";
-		};
-		F58706B11CDA53130016C79C /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				F5AB3D121CD361C500BC2067 /* AudioCell.swift */,
-				3115900DE6111E4627037424 /* UserCell.swift */,
-				F53A00131CD905AE0029B246 /* GroupCell.swift */,
-			);
-			name = cells;
-			sourceTree = "<group>";
-		};
-		F5AB3D111CD361C500BC2067 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				F58706B11CDA53130016C79C /* cells */,
-				F563C5FA1CEDE2B100825849 /* GroupsCollectionView.swift */,
-				F55E13B21CF454DD00114D89 /* BufferingSlider.swift */,
-			);
-			name = views;
-			path = cells;
-			sourceTree = "<group>";
-		};
-		F5B3E56B1CCFC254003270A9 /* viewcontroller */ = {
-			isa = PBXGroup;
-			children = (
-				F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */,
-				F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */,
-				F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */,
-				F58706AD1CDA34E70016C79C /* VkTabsController.swift */,
-				F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */,
-				F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */,
-			);
-			path = viewcontroller;
-			sourceTree = "<group>";
-		};
-		F5C0046D1D1C4825000A4D6C /* database */ = {
-			isa = PBXGroup;
-			children = (
-				F5C004761D1D4828000A4D6C /* SyncItem.swift */,
-				F5C004AF1D1D4CB1000A4D6C /* SyncItemDB.swift */,
-				F5C004701D1C4825000A4D6C /* VkModel.swift */,
-				F5C004711D1C4825000A4D6C /* VkModelDB.swift */,
-			);
-			path = database;
-			sourceTree = "<group>";
-		};
-		F5C004861D1D4993000A4D6C /* vkapi */ = {
-			isa = PBXGroup;
-			children = (
-				F5C004881D1D4993000A4D6C /* VKApi.swift */,
-			);
-			path = vkapi;
-			sourceTree = "<group>";
-		};
-		F5C0049F1D1D4ACA000A4D6C /* models */ = {
-			isa = PBXGroup;
-			children = (
-				F5C004A01D1D4ACA000A4D6C /* dto */,
-				F5C004B11D1D7098000A4D6C /* AudioModel.swift */,
-				F5C004A51D1D4ACA000A4D6C /* FriendModel.swift */,
-				F5C004A61D1D4ACA000A4D6C /* GroupModel.swift */,
-				F5C004A71D1D4ACA000A4D6C /* ManagedAudio.swift */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		F5C004A01D1D4ACA000A4D6C /* dto */ = {
-			isa = PBXGroup;
-			children = (
-				F5C004A11D1D4ACA000A4D6C /* Audio.swift */,
-				F5C004A21D1D4ACA000A4D6C /* Group.swift */,
-				F5C004A31D1D4ACA000A4D6C /* Friend.swift */,
-			);
-			path = dto;
-			sourceTree = "<group>";
-		};
-		F5C004B51D1D7FC6000A4D6C /* network */ = {
-			isa = PBXGroup;
-			children = (
-				F5C004871D1D4993000A4D6C /* VKApiImpl.swift */,
-				F5C004B61D1D7FC6000A4D6C /* VKAPService.swift */,
-				F5C004B71D1D7FC6000A4D6C /* VKAPServiceImpl.swift */,
-			);
-			path = network;
-			sourceTree = "<group>";
-		};
-		F5F0882E1CCF673C00525599 /* support */ = {
-			isa = PBXGroup;
-			children = (
-				F5C004BA1D1D80A3000A4D6C /* VKAPApplication.plist */,
-				F55856601D1AB02800C64EC4 /* Assets.xcassets */,
-				F5888E731CE9D50700879186 /* VkAudio.entitlements */,
-				F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */,
-				F56AD2AB1CCF64A200E45170 /* Info.plist */,
-				F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */,
-			);
-			name = support;
-			sourceTree = "<group>";
-		};
-		F8AECB4FDEE61BF233342976 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */,
-				2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		F56AD2981CCF64A100E45170 /* VkAudio */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F56AD2C41CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudio" */;
-			buildPhases = (
-				D134B10A9C794BCFB51E0BC5 /* Check Pods Manifest.lock */,
-				9E4A410AE2CC4F320C845AF6 /* uD83DuDCE6 Check Pods Manifest.lock */,
-				4B906881404DF1B4F194C996 /* uD83DuDCE6 Check Pods Manifest.lock */,
-				F56AD2951CCF64A100E45170 /* Sources */,
-				F56AD2961CCF64A100E45170 /* Frameworks */,
-				F56AD2971CCF64A100E45170 /* Resources */,
-				71B475321235B166C4AB7DA1 /* uD83DuDCE6 Embed Pods Frameworks */,
-				EC3B6267DF90091495943146 /* uD83DuDCE6 Copy Pods Resources */,
-				15A2BCC0A0B7756B1DEE26F1 /* uD83DuDCE6 Embed Pods Frameworks */,
-				49CB2FCB73742CE60DCC7CB3 /* uD83DuDCE6 Copy Pods Resources */,
-				B6A6AF605EF942F23DB29A0D /* Embed Pods Frameworks */,
-				593C1702B47E4B7521FD0D10 /* Copy Pods Resources */,
-				F5888E721CE9D42B00879186 /* Embed App Extensions */,
-				F50931D31D1BDBF300AB8B95 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = VkAudio;
-			productName = VkAudio;
-			productReference = F56AD2991CCF64A100E45170 /* VkAudio.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		F56AD2911CCF64A100E45170 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = y0rrrsh;
-				TargetAttributes = {
-					F56AD2981CCF64A100E45170 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = ZGUR454Q9D;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
-							};
-							com.apple.BackgroundModes = {
-								enabled = 1;
-							};
-						};
-					};
-				};
-			};
-			buildConfigurationList = F56AD2941CCF64A100E45170 /* Build configuration list for PBXProject "VkAudio" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = F56AD2901CCF64A100E45170;
-			productRefGroup = F56AD29A1CCF64A100E45170 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				F56AD2981CCF64A100E45170 /* VkAudio */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		F56AD2971CCF64A100E45170 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */,
-				F5C004BB1D1D80A3000A4D6C /* VKAPApplication.plist in Resources */,
-				F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */,
-				F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		15A2BCC0A0B7756B1DEE26F1 /* uD83DuDCE6 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		49CB2FCB73742CE60DCC7CB3 /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4B906881404DF1B4F194C996 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		593C1702B47E4B7521FD0D10 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		71B475321235B166C4AB7DA1 /* uD83DuDCE6 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9E4A410AE2CC4F320C845AF6 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B6A6AF605EF942F23DB29A0D /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D134B10A9C794BCFB51E0BC5 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EC3B6267DF90091495943146 /* uD83DuDCE6 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		F56AD2951CCF64A100E45170 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F5C004AC1D1D4ACA000A4D6C /* FriendModel.swift in Sources */,
-				F5C004741D1C4825000A4D6C /* VkModel.swift in Sources */,
-				F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */,
-				F5C004771D1D4828000A4D6C /* SyncItem.swift in Sources */,
-				F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */,
-				F5C004AA1D1D4ACA000A4D6C /* Friend.swift in Sources */,
-				F55856631D1AD07800C64EC4 /* VKAPUserDefaults.swift in Sources */,
-				F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */,
-				F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */,
-				F5C004751D1C4825000A4D6C /* VkModelDB.swift in Sources */,
-				F5C004B21D1D7098000A4D6C /* AudioModel.swift in Sources */,
-				F5C004AD1D1D4ACA000A4D6C /* GroupModel.swift in Sources */,
-				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
-				F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */,
-				F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */,
-				F5C004B81D1D7FC6000A4D6C /* VKAPService.swift in Sources */,
-				F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */,
-				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
-				F5C004A81D1D4ACA000A4D6C /* Audio.swift in Sources */,
-				F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */,
-				F5C0048C1D1D4993000A4D6C /* VKApi.swift in Sources */,
-				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
-				F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */,
-				F5C004A91D1D4ACA000A4D6C /* Group.swift in Sources */,
-				F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */,
-				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
-				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
-				F5C0048B1D1D4993000A4D6C /* VKApiImpl.swift in Sources */,
-				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,
-				F5C004B01D1D4CB1000A4D6C /* SyncItemDB.swift in Sources */,
-				F5C004B91D1D7FC6000A4D6C /* VKAPServiceImpl.swift in Sources */,
-				F5C004AE1D1D4ACA000A4D6C /* ManagedAudio.swift in Sources */,
-				F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F56AD2A01CCF64A100E45170 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F56AD2A11CCF64A100E45170 /* Base */,
-			);
-			name = Main.storyboard;
-			path = VkAudio;
-			sourceTree = "<group>";
-		};
-		F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F56AD2A91CCF64A200E45170 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		F56AD2C21CCF64A200E45170 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		F56AD2C31CCF64A200E45170 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		F56AD2C51CCF64A200E45170 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = VkAudio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.vkmusic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F56AD2C61CCF64A200E45170 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D1885B165AAB5C6AD926A59 /* Pods-VkAudio.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = VkAudio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.y0rrrsh.vkmusic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		F56AD2941CCF64A100E45170 /* Build configuration list for PBXProject "VkAudio" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F56AD2C21CCF64A200E45170 /* Debug */,
-				F56AD2C31CCF64A200E45170 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F56AD2C41CCF64A200E45170 /* Build configuration list for PBXNativeTarget "VkAudio" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F56AD2C51CCF64A200E45170 /* Debug */,
-				F56AD2C61CCF64A200E45170 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */,
-			);
-			currentVersion = F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */;
-			path = VkAudio.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
-	};
-	rootObject = F56AD2911CCF64A100E45170 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>15A2BCC0A0B7756B1DEE26F1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>uD83DuDCE6 Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>2D1885B165AAB5C6AD926A59</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-VkAudio.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3115900DE6111E4627037424</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>311593230AF33E3421C7C78B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3115900DE6111E4627037424</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>49CB2FCB73742CE60DCC7CB3</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>uD83DuDCE6 Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>4AF451C7F7CF59EA9D9F2A5A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5888E631CE9D42B00879186</string>
+				<string>D601F16463E0307E0A315C94</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4B906881404DF1B4F194C996</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>uD83DuDCE6 Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>593C1702B47E4B7521FD0D10</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>620F4075A51BB3417C7A438D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>D601F16463E0307E0A315C94</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>71B475321235B166C4AB7DA1</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>uD83DuDCE6 Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>97C06F4B1BE24542F0241850</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-VkAudio.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9E4A410AE2CC4F320C845AF6</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>uD83DuDCE6 Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>B6A6AF605EF942F23DB29A0D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>D134B10A9C794BCFB51E0BC5</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>D601F16463E0307E0A315C94</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_VkAudio.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>EC3B6267DF90091495943146</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>uD83DuDCE6 Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>F50931D31D1BDBF300AB8B95</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>10</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>name</key>
+			<string>Embed Frameworks</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F509CD9D1CD7C4D7003ACCC1</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserFriendsViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F509CD9E1CD7C4D7003ACCC1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F509CD9D1CD7C4D7003ACCC1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F53A00131CD905AE0029B246</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>GroupCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F53A00141CD905AE0029B246</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F53A00131CD905AE0029B246</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F550084F1CD90D9100798A25</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserGroupsViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F55008501CD90D9100798A25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F550084F1CD90D9100798A25</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F558563D1D1A74FC00C64EC4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VKAPUtils.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F558563E1D1A74FC00C64EC4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F558563D1D1A74FC00C64EC4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F55856601D1AB02800C64EC4</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F55856611D1AB02800C64EC4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F55856601D1AB02800C64EC4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F55856621D1AD07800C64EC4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VKAPUserDefaults.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F55856631D1AD07800C64EC4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F55856621D1AD07800C64EC4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F55E13B21CF454DD00114D89</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>BufferingSlider.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F55E13B31CF454DD00114D89</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F55E13B21CF454DD00114D89</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F563C5E51CEDE09A00825849</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F563C5E71CEDE09A00825849</string>
+				<string>F563C5E81CEDE09A00825849</string>
+				<string>F558563D1D1A74FC00C64EC4</string>
+				<string>F55856621D1AD07800C64EC4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>utils</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F563C5E71CEDE09A00825849</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Extensions.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F563C5E81CEDE09A00825849</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>LocalStorage.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F563C5EA1CEDE09A00825849</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F563C5E71CEDE09A00825849</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F563C5EB1CEDE09A00825849</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F563C5E81CEDE09A00825849</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F563C5FA1CEDE2B100825849</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>GroupsCollectionView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F563C5FB1CEDE2B100825849</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F563C5FA1CEDE2B100825849</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F56AD2901CCF64A100E45170</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F56AD29B1CCF64A100E45170</string>
+				<string>F56AD29C1CCF64A100E45170</string>
+				<string>F5888E5C1CE9C5DE00879186</string>
+				<string>F56AD2A01CCF64A100E45170</string>
+				<string>F56AD29A1CCF64A100E45170</string>
+				<string>F8AECB4FDEE61BF233342976</string>
+				<string>4AF451C7F7CF59EA9D9F2A5A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2911CCF64A100E45170</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0730</string>
+				<key>LastUpgradeCheck</key>
+				<string>0730</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>y0rrrsh</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>F56AD2981CCF64A100E45170</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3</string>
+						<key>DevelopmentTeam</key>
+						<string>ZGUR454Q9D</string>
+						<key>SystemCapabilities</key>
+						<dict>
+							<key>com.apple.ApplicationGroups.iOS</key>
+							<dict>
+								<key>enabled</key>
+								<string>0</string>
+							</dict>
+							<key>com.apple.BackgroundModes</key>
+							<dict>
+								<key>enabled</key>
+								<string>1</string>
+							</dict>
+						</dict>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>F56AD2941CCF64A100E45170</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>F56AD2901CCF64A100E45170</string>
+			<key>productRefGroup</key>
+			<string>F56AD29A1CCF64A100E45170</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>F56AD2981CCF64A100E45170</string>
+			</array>
+		</dict>
+		<key>F56AD2941CCF64A100E45170</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>F56AD2C21CCF64A200E45170</string>
+				<string>F56AD2C31CCF64A200E45170</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>F56AD2951CCF64A100E45170</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F5C004AC1D1D4ACA000A4D6C</string>
+				<string>F5C004741D1C4825000A4D6C</string>
+				<string>F58706AE1CDA34E70016C79C</string>
+				<string>F5C004771D1D4828000A4D6C</string>
+				<string>F5F18BC61CDB451E00A5E140</string>
+				<string>F5C004AA1D1D4ACA000A4D6C</string>
+				<string>F55856631D1AD07800C64EC4</string>
+				<string>F509CD9E1CD7C4D7003ACCC1</string>
+				<string>F53A00141CD905AE0029B246</string>
+				<string>F5C004751D1C4825000A4D6C</string>
+				<string>F5C004B21D1D7098000A4D6C</string>
+				<string>F5C004AD1D1D4ACA000A4D6C</string>
+				<string>F5B3E5721CCFC254003270A9</string>
+				<string>F5888E5D1CE9C5DE00879186</string>
+				<string>F5AB3D131CD361C500BC2067</string>
+				<string>F5C004B81D1D7FC6000A4D6C</string>
+				<string>F558563E1D1A74FC00C64EC4</string>
+				<string>F56AD2A51CCF64A200E45170</string>
+				<string>F5C004A81D1D4ACA000A4D6C</string>
+				<string>F563C5FB1CEDE2B100825849</string>
+				<string>F5C0048C1D1D4993000A4D6C</string>
+				<string>F56AD29D1CCF64A100E45170</string>
+				<string>F563C5EA1CEDE09A00825849</string>
+				<string>F5C004A91D1D4ACA000A4D6C</string>
+				<string>F55E13B31CF454DD00114D89</string>
+				<string>F5AB3D091CD34A0F00BC2067</string>
+				<string>F563C5EB1CEDE09A00825849</string>
+				<string>F5C0048B1D1D4993000A4D6C</string>
+				<string>311593230AF33E3421C7C78B</string>
+				<string>F5C004B01D1D4CB1000A4D6C</string>
+				<string>F5C004B91D1D7FC6000A4D6C</string>
+				<string>F5C004AE1D1D4ACA000A4D6C</string>
+				<string>F55008501CD90D9100798A25</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F56AD2961CCF64A100E45170</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>620F4075A51BB3417C7A438D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F56AD2971CCF64A100E45170</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F56AD2AA1CCF64A200E45170</string>
+				<string>F5C004BB1D1D80A3000A4D6C</string>
+				<string>F56AD2A21CCF64A100E45170</string>
+				<string>F55856611D1AB02800C64EC4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F56AD2981CCF64A100E45170</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>F56AD2C41CCF64A200E45170</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D134B10A9C794BCFB51E0BC5</string>
+				<string>9E4A410AE2CC4F320C845AF6</string>
+				<string>4B906881404DF1B4F194C996</string>
+				<string>F56AD2951CCF64A100E45170</string>
+				<string>F56AD2961CCF64A100E45170</string>
+				<string>F56AD2971CCF64A100E45170</string>
+				<string>71B475321235B166C4AB7DA1</string>
+				<string>EC3B6267DF90091495943146</string>
+				<string>15A2BCC0A0B7756B1DEE26F1</string>
+				<string>49CB2FCB73742CE60DCC7CB3</string>
+				<string>B6A6AF605EF942F23DB29A0D</string>
+				<string>593C1702B47E4B7521FD0D10</string>
+				<string>F5888E721CE9D42B00879186</string>
+				<string>F50931D31D1BDBF300AB8B95</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>VkAudio</string>
+			<key>productName</key>
+			<string>VkAudio</string>
+			<key>productReference</key>
+			<string>F56AD2991CCF64A100E45170</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>F56AD2991CCF64A100E45170</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>VkAudio.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>F56AD29A1CCF64A100E45170</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F56AD2991CCF64A100E45170</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD29B1CCF64A100E45170</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5B3E56B1CCFC254003270A9</string>
+				<string>F5AB3D111CD361C500BC2067</string>
+				<string>F5C0046D1D1C4825000A4D6C</string>
+				<string>F5C0049F1D1D4ACA000A4D6C</string>
+				<string>F5C004B51D1D7FC6000A4D6C</string>
+				<string>F5F0882E1CCF673C00525599</string>
+				<string>F563C5E51CEDE09A00825849</string>
+				<string>F5C004861D1D4993000A4D6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>VkAudio</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD29C1CCF64A100E45170</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AppDelegate.swift</string>
+			<key>path</key>
+			<string>VkAudio/AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD29D1CCF64A100E45170</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F56AD29C1CCF64A100E45170</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F56AD2A01CCF64A100E45170</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F56AD2A11CCF64A100E45170</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>path</key>
+			<string>VkAudio</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2A11CCF64A100E45170</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2A21CCF64A100E45170</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F56AD2A01CCF64A100E45170</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F56AD2A31CCF64A200E45170</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F56AD2A41CCF64A200E45170</string>
+			</array>
+			<key>currentVersion</key>
+			<string>F56AD2A41CCF64A200E45170</string>
+			<key>isa</key>
+			<string>XCVersionGroup</string>
+			<key>path</key>
+			<string>VkAudio.xcdatamodeld</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+			<key>versionGroupType</key>
+			<string>wrapper.xcdatamodel</string>
+		</dict>
+		<key>F56AD2A41CCF64A200E45170</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.xcdatamodel</string>
+			<key>path</key>
+			<string>VkAudio.xcdatamodel</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2A51CCF64A200E45170</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F56AD2A31CCF64A200E45170</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F56AD2A81CCF64A200E45170</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F56AD2A91CCF64A200E45170</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2A91CCF64A200E45170</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2AA1CCF64A200E45170</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F56AD2A81CCF64A200E45170</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F56AD2AB1CCF64A200E45170</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F56AD2C21CCF64A200E45170</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>F56AD2C31CCF64A200E45170</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>F56AD2C41CCF64A200E45170</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>F56AD2C51CCF64A200E45170</string>
+				<string>F56AD2C61CCF64A200E45170</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>F56AD2C51CCF64A200E45170</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>97C06F4B1BE24542F0241850</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>NO</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>VkAudio/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.github.y0rrrsh.vkmusic</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>F56AD2C61CCF64A200E45170</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>2D1885B165AAB5C6AD926A59</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
+				<string>NO</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>$(PROJECT_DIR)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>VkAudio/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.github.y0rrrsh.vkmusic</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>F58706AD1CDA34E70016C79C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VkTabsController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F58706AE1CDA34E70016C79C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F58706AD1CDA34E70016C79C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F58706B11CDA53130016C79C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5AB3D121CD361C500BC2067</string>
+				<string>3115900DE6111E4627037424</string>
+				<string>F53A00131CD905AE0029B246</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>cells</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5888E5C1CE9C5DE00879186</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AudioPlayer.swift</string>
+			<key>path</key>
+			<string>VkAudio/AudioPlayer.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5888E5D1CE9C5DE00879186</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5888E5C1CE9C5DE00879186</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5888E631CE9D42B00879186</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>NotificationCenter.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/NotificationCenter.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>F5888E721CE9D42B00879186</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>dstPath</key>
+			<string></string>
+			<key>dstSubfolderSpec</key>
+			<string>13</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXCopyFilesBuildPhase</string>
+			<key>name</key>
+			<string>Embed App Extensions</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F5888E731CE9D50700879186</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xml</string>
+			<key>path</key>
+			<string>VkAudio.entitlements</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5AB3D081CD34A0F00BC2067</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UserAudiosViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5AB3D091CD34A0F00BC2067</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5AB3D081CD34A0F00BC2067</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5AB3D111CD361C500BC2067</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F58706B11CDA53130016C79C</string>
+				<string>F563C5FA1CEDE2B100825849</string>
+				<string>F55E13B21CF454DD00114D89</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>views</string>
+			<key>path</key>
+			<string>cells</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5AB3D121CD361C500BC2067</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AudioCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5AB3D131CD361C500BC2067</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5AB3D121CD361C500BC2067</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5B3E56B1CCFC254003270A9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F509CD9D1CD7C4D7003ACCC1</string>
+				<string>F5AB3D081CD34A0F00BC2067</string>
+				<string>F550084F1CD90D9100798A25</string>
+				<string>F58706AD1CDA34E70016C79C</string>
+				<string>F5F18BC51CDB451E00A5E140</string>
+				<string>F5B3E56C1CCFC254003270A9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>viewcontroller</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5B3E56C1CCFC254003270A9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>LoginViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5B3E5721CCFC254003270A9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5B3E56C1CCFC254003270A9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C0046D1D1C4825000A4D6C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5C004761D1D4828000A4D6C</string>
+				<string>F5C004AF1D1D4CB1000A4D6C</string>
+				<string>F5C004701D1C4825000A4D6C</string>
+				<string>F5C004711D1C4825000A4D6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>database</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004701D1C4825000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VkModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004711D1C4825000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VkModelDB.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004741D1C4825000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004701D1C4825000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004751D1C4825000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004711D1C4825000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004761D1D4828000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SyncItem.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004771D1D4828000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004761D1D4828000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004861D1D4993000A4D6C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5C004881D1D4993000A4D6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>vkapi</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004871D1D4993000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>VKApiImpl.swift</string>
+			<key>path</key>
+			<string>../vkapi/VKApiImpl.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004881D1D4993000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VKApi.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C0048B1D1D4993000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004871D1D4993000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C0048C1D1D4993000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004881D1D4993000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C0049F1D1D4ACA000A4D6C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5C004A01D1D4ACA000A4D6C</string>
+				<string>F5C004B11D1D7098000A4D6C</string>
+				<string>F5C004A51D1D4ACA000A4D6C</string>
+				<string>F5C004A61D1D4ACA000A4D6C</string>
+				<string>F5C004A71D1D4ACA000A4D6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A01D1D4ACA000A4D6C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5C004A11D1D4ACA000A4D6C</string>
+				<string>F5C004A21D1D4ACA000A4D6C</string>
+				<string>F5C004A31D1D4ACA000A4D6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>dto</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A11D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Audio.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A21D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Group.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A31D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>Friend.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A51D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FriendModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A61D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>GroupModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A71D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ManagedAudio.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004A81D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004A11D1D4ACA000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004A91D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004A21D1D4ACA000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004AA1D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004A31D1D4ACA000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004AC1D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004A51D1D4ACA000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004AD1D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004A61D1D4ACA000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004AE1D1D4ACA000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004A71D1D4ACA000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004AF1D1D4CB1000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>SyncItemDB.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004B01D1D4CB1000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004AF1D1D4CB1000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004B11D1D7098000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>name</key>
+			<string>AudioModel.swift</string>
+			<key>path</key>
+			<string>dto/AudioModel.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004B21D1D7098000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004B11D1D7098000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004B51D1D7FC6000A4D6C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5C004871D1D4993000A4D6C</string>
+				<string>F5C004B61D1D7FC6000A4D6C</string>
+				<string>F5C004B71D1D7FC6000A4D6C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>network</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004B61D1D7FC6000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VKAPService.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004B71D1D7FC6000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>VKAPServiceImpl.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004B81D1D7FC6000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004B61D1D7FC6000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004B91D1D7FC6000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004B71D1D7FC6000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5C004BA1D1D80A3000A4D6C</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>VKAPApplication.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5C004BB1D1D80A3000A4D6C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5C004BA1D1D80A3000A4D6C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F5F0882E1CCF673C00525599</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F5C004BA1D1D80A3000A4D6C</string>
+				<string>F55856601D1AB02800C64EC4</string>
+				<string>F5888E731CE9D50700879186</string>
+				<string>F56AD2A81CCF64A200E45170</string>
+				<string>F56AD2AB1CCF64A200E45170</string>
+				<string>F56AD2A31CCF64A200E45170</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>support</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5F18BC51CDB451E00A5E140</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AudioPlayerViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F5F18BC61CDB451E00A5E140</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F5F18BC51CDB451E00A5E140</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F8AECB4FDEE61BF233342976</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>97C06F4B1BE24542F0241850</string>
+				<string>2D1885B165AAB5C6AD926A59</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>F56AD2911CCF64A100E45170</string>
+</dict>
+</plist>
