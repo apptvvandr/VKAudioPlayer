@@ -13,17 +13,17 @@ import MBProgressHUD
 
 class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
-    let api = VKAPService.sharedInstance!
+    let api = VKAPServiceImpl.sharedInstance!
     var dataTag = "main_audio"
     
     var ownerId: Int? {
         didSet {
-            let isCurrentUser = ownerId == nil || ownerId! == Int(VkApi.sharedInstance!.userId)
+            let isCurrentUser = ownerId == nil || ownerId! == VKApiImpl.userId!
             self.dataTag = isCurrentUser ? "main_audio" : "audio"
         }
     }
     var ownerName: String?
-    var audios = [Audio]() {
+    var audios = [AudioModel]() {
         didSet {
             if self.dataTag.hasPrefix("main_") && self.audios.count > 0 {
                 VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: self.dataTag)
@@ -32,7 +32,7 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
     }
     
     let searchController = UISearchController(searchResultsController: nil)
-    var filteredAudios = [Audio]()
+    var filteredAudios = [AudioModel]()
     
     var progressHudHidden: Bool = true
     
@@ -68,8 +68,8 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
             progressHudHidden = false
         }
         
-        api.getAudios(ownerId, callback: VkApiCallback(
-            onResult: { (result) in
+        api.getAudios(ownerId, callback: VKApiCallback(
+            onResult: { (result: [AudioModel]) in
                 self.audios = result
                 self.tableView.reloadData()
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -101,10 +101,10 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
     
     private func onSearchPrepared(filter: String){
         let lowercaseFilter = filter.lowercaseString
-        filteredAudios = audios.filter({ (audio: Audio) -> Bool in
-            let fullName = "\(audio.artist ?? "")-\(audio.name ?? "")"
+        filteredAudios = audios.filter{ audio in
+            let fullName = "\(audio.artist)-\(audio.name)"
             return fullName.lowercaseString.containsString(lowercaseFilter)
-        })
+        }
         tableView.reloadData()
     }
     
@@ -127,7 +127,7 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
         }
         else {
             let player = AudioPlayer.sharedInstance
-            audioPlayerVC.audios = player.playlist.map({$0 as! Audio})
+            audioPlayerVC.audios = player.playlist.map({$0 as! AudioModel})
             audioPlayerVC.selectedAudioIndex = player.currentAudio?.playlistPosition
         }
     }

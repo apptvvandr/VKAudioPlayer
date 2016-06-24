@@ -12,13 +12,13 @@ import Alamofire
 
 class VkTabsController: UITabBarController {
     
-    let api = VKAPService.sharedInstance!
+    let api = VKAPServiceImpl.sharedInstance!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let userPhoto = UIImage(contentsOfFile: "bg_image.jpg") else {
-            api.getUserPhoto(VkApiCallback(onResult: { (result) in
+            api.getUserPhoto(VKApiCallback(onResult: { (result) in
                 self.setBackgroundImage(result)
             }))
             return

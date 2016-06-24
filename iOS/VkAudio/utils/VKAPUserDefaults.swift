@@ -41,7 +41,7 @@ class VKAPUserDefaults {
     }
     
     private static func getUserDefaults() -> NSUserDefaults {
-        let name = DEFAULTS_NAME_VKAP + VkApi.sharedInstance!.userId
+        let name = "\(DEFAULTS_NAME_VKAP)_\(VKApiImpl.userId!)"
         return NSUserDefaults(suiteName: name)!
     }
 }

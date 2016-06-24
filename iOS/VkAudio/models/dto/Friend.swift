@@ -8,17 +8,16 @@
 
 import Foundation
 
-class Friend: VkItem {
+class Friend: VKItem {
 
+    var id: Int
     var firstName: String?
     var lastName: String?
     var isOnline: Bool?
     var photoUrl: String?
 
-    override init(apiResponse: [String:AnyObject]) {
-        super.init(apiResponse: apiResponse)
-
-        id = apiResponse["uid"] as? Int
+    init(apiResponse: [String:AnyObject]) {
+        id = apiResponse["uid"] as! Int
         firstName = apiResponse["first_name"] as? String
         lastName = apiResponse["last_name"] as? String
         photoUrl = apiResponse["photo_max_orig"] as? String

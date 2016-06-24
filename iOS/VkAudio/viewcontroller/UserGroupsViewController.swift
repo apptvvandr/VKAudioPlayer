@@ -11,10 +11,10 @@ import MBProgressHUD
 
 class UserGroupsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let api = VKAPService.sharedInstance!
+    let api = VKAPServiceImpl.sharedInstance!
     var dataTag = "groups"
     
-    var groups = [Group]() {
+    var groups = [GroupModel]() {
         didSet {
             if self.groups.count > 0 {
                 VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
@@ -46,15 +46,13 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
             progressHudHidden = false
         }
         
-        api.getGroups(VkApiCallback(
-            onResult: { (result: [Group]) in
+        api.getGroups(VKApiCallback(
+            onResult: { (result: [GroupModel]) in
                 self.groups = result
                 self.collectionView?.reloadData()
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
             
-                let groupModels = result.map{ group in
-                    GroupModel(value: ["id": group.id!, "name": group.name!, "avatarUrl": group.photoUrl!])}
-                VkModelDB.sharedInstance?.update(groupModels)
+                VkModelDB.sharedInstance?.update(result)
                 SyncItemDB.sharedInstance?.update()
             },
             onError: { (error) in
@@ -71,7 +69,7 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: GroupCell = collectionView.dequeueReusableCellWithReuseIdentifier(GroupCell.STORYBOARD_ID, forIndexPath: indexPath) as! GroupCell
         let group = groups[indexPath.row]
-        cell.setData(group.id, groupName: group.name, photoUrl: group.photoUrl)
+        cell.setData(group.id, groupName: group.name, photoUrl: group.avatarUrl)
         return cell
     }
 

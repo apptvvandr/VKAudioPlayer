@@ -8,15 +8,14 @@
 
 import Foundation
 
-class Group: VkItem {
+class Group: VKItem {
 
+    var id: Int
     var name: String?
     var photoUrl: String?
 
-    override init(apiResponse: [String:AnyObject]) {
-        super.init(apiResponse: apiResponse)
-
-        id = apiResponse["gid"] as? Int
+    init(apiResponse: [String:AnyObject]) {
+        id = apiResponse["gid"] as! Int
         name = apiResponse["name"] as? String
         photoUrl = apiResponse["photo_max_orig"] as? String
     }

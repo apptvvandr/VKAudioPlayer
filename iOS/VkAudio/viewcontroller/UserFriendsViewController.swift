@@ -12,10 +12,10 @@ import MBProgressHUD
 
 class UserFriendsViewController: UITableViewController {
 
-    let api = VKAPService.sharedInstance!
+    let api = VKAPServiceImpl.sharedInstance!
     let dataTag = "friends"
     
-    var friends = [Friend]() {
+    var friends = [FriendModel]() {
         didSet {
             if friends.count > 0 {
                 VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
@@ -47,15 +47,13 @@ class UserFriendsViewController: UITableViewController {
             progressHudHidden = false
         }
         
-        api.getFriends(VkApiCallback(
-            onResult: { (result: [Friend]) in
+        api.getFriends(VKApiCallback(
+            onResult: { (result: [FriendModel]) in
                 self.friends = result
                 self.tableView.reloadData()
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
                 
-                let friendModels = result.map{ friend in
-                    FriendModel(value: ["id": friend.id!, "firstName": friend.firstName!, "lastName": friend.lastName!, "avatarUrl": friend.photoUrl!])}
-                VkModelDB.sharedInstance?.update(friendModels)
+                VkModelDB.sharedInstance?.update(result)
                 SyncItemDB.sharedInstance?.update()
             }, onError: {(error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -68,9 +66,9 @@ class UserFriendsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(UserCell.STORYBOARD_ID) as! UserCell
-        let friend: Friend = friends[indexPath.row]
+        let friend = friends[indexPath.row]
 
-        cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.photoUrl)
+        cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.avatarUrl)
         return cell
     }
 

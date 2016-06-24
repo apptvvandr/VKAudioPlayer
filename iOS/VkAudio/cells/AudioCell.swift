@@ -22,9 +22,9 @@ class AudioCell: UITableViewCell {
         self.backgroundColor = UIColor.clearColor()
     }
 
-    func setData(audio: Audio) {
-        labelName.text = audio.name ?? "Unnamed"
-        labelArtist.text = audio.artist ?? "Unknown"
-        labelDuration.text = VKAPUtils.formatProgress(audio.duration ?? 0)
+    func setData(audio: AudioModel) {
+        labelName.text = audio.name
+        labelArtist.text = audio.artist
+        labelDuration.text = VKAPUtils.formatProgress(audio.duration)
     }
 }

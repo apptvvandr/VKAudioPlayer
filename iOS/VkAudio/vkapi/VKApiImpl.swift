@@ -10,17 +10,17 @@ import Foundation
 import UIKit
 import Alamofire
 
-class VkApi: VKApiDelegate {
+class VKApiImpl: VKApi {
     
-    static var sharedInstance: VkApi?
+    static var sharedInstance: VKApiImpl?
     
-    var baseUrl: String = "https://api.vk.com/method/"
+    private var baseUrl: String = "https://api.vk.com/method/"
     
     var token: String
     var tokenExpireIn: String
-    var userId: String
+    static var userId: Int?
     
-    static func setup(urlWithToken: String) -> VkApi! {
+    static func setup(urlWithToken: String) -> VKApiImpl! {
         let tokenSubstring = urlWithToken.componentsSeparatedByString("access_token")[1]
         let accessValuesStrings: [String] = tokenSubstring.componentsSeparatedByString("&")
         
@@ -29,7 +29,7 @@ class VkApi: VKApiDelegate {
             let accessValue = value.componentsSeparatedByString("=")[1]
             accessValues.insert(accessValue, atIndex: index)
         }
-        sharedInstance = VkApi(token: accessValues[0], tokenExpiresIn: accessValues[1], userId: accessValues[2])
+        sharedInstance = VKApiImpl(token: accessValues[0], tokenExpiresIn: accessValues[1], userId: accessValues[2])
         
         return sharedInstance!
     }
@@ -37,10 +37,10 @@ class VkApi: VKApiDelegate {
     private init(token: String, tokenExpiresIn: String, userId: String) {
         self.token = token
         self.tokenExpireIn = tokenExpiresIn
-        self.userId = userId
+        VKApiImpl.userId = Int(userId)
     }
     
-    func getRequest<T>(method: String, params: [String : AnyObject]?, callback: VkApiCallback<T>?) {
+    func get<T>(method: String, params: [String : AnyObject]?, callback: VKApiCallback<T>?) {
         var requestParams: [String: AnyObject] = ["access_token": token]
         if let params = params {
            requestParams += params
