@@ -8,6 +8,9 @@
 
 import Foundation
 
-class GroupModel: VkItemSyncModel {
+class GroupModel: VkModel {
     
+    dynamic var name: String = ""
+    
+    override var fullName: String {get{return name}}
 }

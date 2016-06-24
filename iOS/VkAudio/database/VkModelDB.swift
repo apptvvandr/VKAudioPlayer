@@ -9,39 +9,44 @@
 import Foundation
 import RealmSwift
 
-class VkItemSyncModelDB {
+class VkModelDB {
     
-    static var sharedInstance: VkItemSyncModelDB?
+    private static let BASE_NAME = "vkap_vk_items"
+    
+    static var sharedInstance: VkModelDB?
     private var realm: Realm
     
     private init(userId: Int) {
         var realmConfig = Realm.Configuration()
         realmConfig.deleteRealmIfMigrationNeeded = true
+        
         let fileUrl = NSURL.fileURLWithPath(realmConfig.fileURL!.path!)
-                            .URLByAppendingPathExtension(String(userId))
-                            .URLByAppendingPathExtension("realm")
+            .URLByDeletingLastPathComponent!
+            .URLByAppendingPathComponent("\(VkModelDB.BASE_NAME)_\(userId)")
+            .URLByAppendingPathExtension("realm")
+
         realmConfig.fileURL = fileUrl
         realm = try! Realm(configuration: realmConfig)
     }
     
     static func setup(userId: Int) {
-        sharedInstance = VkItemSyncModelDB(userId: userId)
+        sharedInstance = VkModelDB(userId: userId)
     }
     
-    func put <T: VkItemSyncModel> (object: T) {
+    func put <T: VkModel> (object: T) {
         try! realm.write {
             realm.add(object, update: true)
         }
     }
     
-    func update <T: VkItemSyncModel> (objects: [T]) {
+    func update <T: VkModel> (objects: [T]) {
         try! realm.write {
             realm.delete(realm.objects(T))
             realm.add(objects, update: true)
         }
     }
     
-    func get(id: Int) -> VkItemSyncModel? {
+    func get(id: Int) -> VkModel? {
         if let friend = getWithType(FriendModel.self, id: id) {
             return friend
         }
@@ -51,23 +56,23 @@ class VkItemSyncModelDB {
         return nil
     }
     
-    func getWithType <T: VkItemSyncModel> (type: T.Type, id: Int) -> T? {
+    func getWithType <T: VkModel> (type: T.Type, id: Int) -> T? {
         return realm.objectForPrimaryKey(T.self, key: id)
     }
     
-    func getAll() -> [VkItemSyncModel] {
-        var objects = [VkItemSyncModel]()
+    func getAll() -> [VkModel] {
+        var objects = [VkModel]()
         
         let groups: [GroupModel] = getAllWithType(GroupModel.self)
         let friends: [FriendModel] = getAllWithType(FriendModel.self)
         
-        objects.appendContentsOf(groups.map{$0 as VkItemSyncModel})
-        objects.appendContentsOf(friends.map{$0 as VkItemSyncModel})
+        objects.appendContentsOf(groups.map{$0 as VkModel})
+        objects.appendContentsOf(friends.map{$0 as VkModel})
         
         return objects
     }
     
-    func getAllWithType <T: VkItemSyncModel> (type: T.Type) -> [T] {
+    func getAllWithType <T: VkModel> (type: T.Type) -> [T] {
         return Array(realm.objects(T.self))
     }
     
@@ -75,7 +80,11 @@ class VkItemSyncModelDB {
         return containsWithType(GroupModel.self, id: id) || containsWithType(FriendModel.self, id: id)
     }
     
-    func containsWithType <T: VkItemSyncModel> (type: T.Type, id: Int) -> Bool {
+    func containsWithType <T: VkModel> (type: T.Type, id: Int) -> Bool {
         return getWithType(type, id: id) != nil
+    }
+    
+    func path() -> String {
+        return realm.configuration.fileURL!.path!
     }
 }

@@ -51,12 +51,12 @@ class VKAPService: VKAPServiceDelegate {
         }))
     }
     
-    func getFriends(callback: VkApiCallback<[User]>?) {
+    func getFriends(callback: VkApiCallback<[Friend]>?) {
         let requestParams: [String: AnyObject] = ["fields": "name, photo_max_orig"]
         
         api.getRequest("friends.get", params: requestParams, callback: VkApiCallback(
             onResult: { (result: [AnyObject]) in
-                let users = result.flatMap { $0 as? [String: AnyObject] }.map { User(apiResponse: $0) }
+                let users = result.flatMap { $0 as? [String: AnyObject] }.map { Friend(apiResponse: $0) }
                 callback?.onResult(result: users)
             },
             onError: { (error) in

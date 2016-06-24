@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User: VkItem {
+class Friend: VkItem {
 
     var firstName: String?
     var lastName: String?

@@ -15,7 +15,7 @@ class UserFriendsViewController: UITableViewController {
     let api = VKAPService.sharedInstance!
     let dataTag = "friends"
     
-    var friends = [User]() {
+    var friends = [Friend]() {
         didSet {
             if friends.count > 0 {
                 VKAPUserDefaults.setLastDataUpdate(NSDate.currentTimeMillis(), dataTag: dataTag)
@@ -48,14 +48,15 @@ class UserFriendsViewController: UITableViewController {
         }
         
         api.getFriends(VkApiCallback(
-            onResult: { (result: [User]) in
+            onResult: { (result: [Friend]) in
                 self.friends = result
                 self.tableView.reloadData()
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
                 
                 let friendModels = result.map{ friend in
                     FriendModel(value: ["id": friend.id!, "firstName": friend.firstName!, "lastName": friend.lastName!, "avatarUrl": friend.photoUrl!])}
-                VkItemSyncModelDB.sharedInstance?.update(friendModels)
+                VkModelDB.sharedInstance?.update(friendModels)
+                SyncItemDB.sharedInstance?.update()
             }, onError: {(error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
         }))
@@ -67,7 +68,7 @@ class UserFriendsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(UserCell.STORYBOARD_ID) as! UserCell
-        let friend: User = friends[indexPath.row]
+        let friend: Friend = friends[indexPath.row]
 
         cell.setData(friend.id, firstName: friend.firstName, lastName: friend.lastName, photoUrl: friend.photoUrl)
         return cell

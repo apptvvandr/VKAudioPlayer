@@ -10,11 +10,9 @@
 		311593230AF33E3421C7C78B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115900DE6111E4627037424 /* UserCell.swift */; };
 		5BC33EB2A6B9F21D95CE16A4 /* Pods_VkAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */; };
 		F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */; };
-		F509CDA01CD7C568003ACCC1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F509CD9F1CD7C568003ACCC1 /* User.swift */; };
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
 		F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */; };
-		F558565F1D1A9DC200C64EC4 /* ManagedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558565E1D1A9DC200C64EC4 /* ManagedAudio.swift */; };
 		F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55856601D1AB02800C64EC4 /* Assets.xcassets */; };
 		F55856631D1AD07800C64EC4 /* VKAPUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55856621D1AD07800C64EC4 /* VKAPUserDefaults.swift */; };
 		F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E13B21CF454DD00114D89 /* BufferingSlider.swift */; };
@@ -25,22 +23,26 @@
 		F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A01CCF64A100E45170 /* Main.storyboard */; };
 		F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56AD2A31CCF64A200E45170 /* VkAudio.xcdatamodeld */; };
 		F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56AD2A81CCF64A200E45170 /* LaunchScreen.storyboard */; };
-		F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */; };
-		F58308F21CD8BE290094F1F4 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58308F11CD8BE290094F1F4 /* Group.swift */; };
 		F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58706AD1CDA34E70016C79C /* VkTabsController.swift */; };
 		F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */; };
-		F591452C1CF32A05009D3AA8 /* VKAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59145291CF32A05009D3AA8 /* VKAPService.swift */; };
-		F591452D1CF32A05009D3AA8 /* VkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591452A1CF32A05009D3AA8 /* VkApi.swift */; };
-		F591452E1CF32A05009D3AA8 /* VkApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F591452B1CF32A05009D3AA8 /* VkApiImpl.swift */; };
 		F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */; };
-		F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D0F1CD361B600BC2067 /* Audio.swift */; };
 		F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AB3D121CD361C500BC2067 /* AudioCell.swift */; };
-		F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5ABBE821CD0C4F5000699EA /* VkApp.plist */; };
 		F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */; };
-		F5C004721D1C4825000A4D6C /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0046E1D1C4825000A4D6C /* FriendModel.swift */; };
-		F5C004731D1C4825000A4D6C /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0046F1D1C4825000A4D6C /* GroupModel.swift */; };
-		F5C004741D1C4825000A4D6C /* VkItemSyncModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004701D1C4825000A4D6C /* VkItemSyncModel.swift */; };
-		F5C004751D1C4825000A4D6C /* VkItemSyncModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004711D1C4825000A4D6C /* VkItemSyncModelDB.swift */; };
+		F5C004741D1C4825000A4D6C /* VkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004701D1C4825000A4D6C /* VkModel.swift */; };
+		F5C004751D1C4825000A4D6C /* VkModelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004711D1C4825000A4D6C /* VkModelDB.swift */; };
+		F5C004771D1D4828000A4D6C /* SyncItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004761D1D4828000A4D6C /* SyncItem.swift */; };
+		F5C0048B1D1D4993000A4D6C /* VkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004871D1D4993000A4D6C /* VkApi.swift */; };
+		F5C0048C1D1D4993000A4D6C /* VkApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004881D1D4993000A4D6C /* VkApiImpl.swift */; };
+		F5C0048D1D1D4993000A4D6C /* VkApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F5C004891D1D4993000A4D6C /* VkApp.plist */; };
+		F5C0048E1D1D4993000A4D6C /* VKAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C0048A1D1D4993000A4D6C /* VKAPService.swift */; };
+		F5C004A81D1D4ACA000A4D6C /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A11D1D4ACA000A4D6C /* Audio.swift */; };
+		F5C004A91D1D4ACA000A4D6C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A21D1D4ACA000A4D6C /* Group.swift */; };
+		F5C004AA1D1D4ACA000A4D6C /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A31D1D4ACA000A4D6C /* Friend.swift */; };
+		F5C004AB1D1D4ACA000A4D6C /* VkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A41D1D4ACA000A4D6C /* VkItem.swift */; };
+		F5C004AC1D1D4ACA000A4D6C /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A51D1D4ACA000A4D6C /* FriendModel.swift */; };
+		F5C004AD1D1D4ACA000A4D6C /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A61D1D4ACA000A4D6C /* GroupModel.swift */; };
+		F5C004AE1D1D4ACA000A4D6C /* ManagedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004A71D1D4ACA000A4D6C /* ManagedAudio.swift */; };
+		F5C004B01D1D4CB1000A4D6C /* SyncItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C004AF1D1D4CB1000A4D6C /* SyncItemDB.swift */; };
 		F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,11 +75,9 @@
 		9149D7D7005B49CA57ECA32A /* Pods_VkAudio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VkAudio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97C06F4B1BE24542F0241850 /* Pods-VkAudio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VkAudio.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VkAudio/Pods-VkAudio.debug.xcconfig"; sourceTree = "<group>"; };
 		F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFriendsViewController.swift; sourceTree = "<group>"; };
-		F509CD9F1CD7C568003ACCC1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
 		F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUtils.swift; sourceTree = "<group>"; };
-		F558565E1D1A9DC200C64EC4 /* ManagedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAudio.swift; sourceTree = "<group>"; };
 		F55856601D1AB02800C64EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55856621D1AD07800C64EC4 /* VKAPUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUserDefaults.swift; sourceTree = "<group>"; };
 		F55E13B21CF454DD00114D89 /* BufferingSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferingSlider.swift; sourceTree = "<group>"; };
@@ -90,24 +90,28 @@
 		F56AD2A41CCF64A200E45170 /* VkAudio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VkAudio.xcdatamodel; sourceTree = "<group>"; };
 		F56AD2A91CCF64A200E45170 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F56AD2AB1CCF64A200E45170 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItem.swift; sourceTree = "<group>"; };
-		F58308F11CD8BE290094F1F4 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		F58706AD1CDA34E70016C79C /* VkTabsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkTabsController.swift; sourceTree = "<group>"; };
 		F5888E5C1CE9C5DE00879186 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayer.swift; path = VkAudio/AudioPlayer.swift; sourceTree = "<group>"; };
 		F5888E631CE9D42B00879186 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		F5888E731CE9D50700879186 /* VkAudio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VkAudio.entitlements; sourceTree = "<group>"; };
-		F59145291CF32A05009D3AA8 /* VKAPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPService.swift; sourceTree = "<group>"; };
-		F591452A1CF32A05009D3AA8 /* VkApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkApi.swift; sourceTree = "<group>"; };
-		F591452B1CF32A05009D3AA8 /* VkApiImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkApiImpl.swift; sourceTree = "<group>"; };
 		F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAudiosViewController.swift; sourceTree = "<group>"; };
-		F5AB3D0F1CD361B600BC2067 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		F5AB3D121CD361C500BC2067 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
-		F5ABBE821CD0C4F5000699EA /* VkApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VkApp.plist; sourceTree = "<group>"; };
 		F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F5C0046E1D1C4825000A4D6C /* FriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
-		F5C0046F1D1C4825000A4D6C /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
-		F5C004701D1C4825000A4D6C /* VkItemSyncModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItemSyncModel.swift; sourceTree = "<group>"; };
-		F5C004711D1C4825000A4D6C /* VkItemSyncModelDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItemSyncModelDB.swift; sourceTree = "<group>"; };
+		F5C004701D1C4825000A4D6C /* VkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkModel.swift; sourceTree = "<group>"; };
+		F5C004711D1C4825000A4D6C /* VkModelDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkModelDB.swift; sourceTree = "<group>"; };
+		F5C004761D1D4828000A4D6C /* SyncItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncItem.swift; sourceTree = "<group>"; };
+		F5C004871D1D4993000A4D6C /* VkApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkApi.swift; sourceTree = "<group>"; };
+		F5C004881D1D4993000A4D6C /* VkApiImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkApiImpl.swift; sourceTree = "<group>"; };
+		F5C004891D1D4993000A4D6C /* VkApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VkApp.plist; sourceTree = "<group>"; };
+		F5C0048A1D1D4993000A4D6C /* VKAPService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPService.swift; sourceTree = "<group>"; };
+		F5C004A11D1D4ACA000A4D6C /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		F5C004A21D1D4ACA000A4D6C /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		F5C004A31D1D4ACA000A4D6C /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		F5C004A41D1D4ACA000A4D6C /* VkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VkItem.swift; sourceTree = "<group>"; };
+		F5C004A51D1D4ACA000A4D6C /* FriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
+		F5C004A61D1D4ACA000A4D6C /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		F5C004A71D1D4ACA000A4D6C /* ManagedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedAudio.swift; sourceTree = "<group>"; };
+		F5C004AF1D1D4CB1000A4D6C /* SyncItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncItemDB.swift; sourceTree = "<group>"; };
 		F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,10 +174,10 @@
 				F5B3E56B1CCFC254003270A9 /* viewcontroller */,
 				F5AB3D111CD361C500BC2067 /* views */,
 				F5C0046D1D1C4825000A4D6C /* database */,
-				F5B3E56E1CCFC254003270A9 /* vk */,
+				F5C0049F1D1D4ACA000A4D6C /* models */,
 				F563C5E51CEDE09A00825849 /* utils */,
 				F5F0882E1CCF673C00525599 /* support */,
-				F558565E1D1A9DC200C64EC4 /* ManagedAudio.swift */,
+				F5C004861D1D4993000A4D6C /* vkapi */,
 			);
 			path = VkAudio;
 			sourceTree = "<group>";
@@ -186,27 +190,6 @@
 				F53A00131CD905AE0029B246 /* GroupCell.swift */,
 			);
 			name = cells;
-			sourceTree = "<group>";
-		};
-		F59145281CF32A05009D3AA8 /* api */ = {
-			isa = PBXGroup;
-			children = (
-				F59145291CF32A05009D3AA8 /* VKAPService.swift */,
-				F591452A1CF32A05009D3AA8 /* VkApi.swift */,
-				F591452B1CF32A05009D3AA8 /* VkApiImpl.swift */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
-		F5AB3D0E1CD361B600BC2067 /* response_models */ = {
-			isa = PBXGroup;
-			children = (
-				F5AB3D0F1CD361B600BC2067 /* Audio.swift */,
-				F509CD9F1CD7C568003ACCC1 /* User.swift */,
-				F58308EF1CD8BDAD0094F1F4 /* VkItem.swift */,
-				F58308F11CD8BE290094F1F4 /* Group.swift */,
-			);
-			path = response_models;
 			sourceTree = "<group>";
 		};
 		F5AB3D111CD361C500BC2067 /* views */ = {
@@ -233,25 +216,48 @@
 			path = viewcontroller;
 			sourceTree = "<group>";
 		};
-		F5B3E56E1CCFC254003270A9 /* vk */ = {
-			isa = PBXGroup;
-			children = (
-				F59145281CF32A05009D3AA8 /* api */,
-				F5AB3D0E1CD361B600BC2067 /* response_models */,
-				F5ABBE821CD0C4F5000699EA /* VkApp.plist */,
-			);
-			path = vk;
-			sourceTree = "<group>";
-		};
 		F5C0046D1D1C4825000A4D6C /* database */ = {
 			isa = PBXGroup;
 			children = (
-				F5C0046E1D1C4825000A4D6C /* FriendModel.swift */,
-				F5C0046F1D1C4825000A4D6C /* GroupModel.swift */,
-				F5C004701D1C4825000A4D6C /* VkItemSyncModel.swift */,
-				F5C004711D1C4825000A4D6C /* VkItemSyncModelDB.swift */,
+				F5C004761D1D4828000A4D6C /* SyncItem.swift */,
+				F5C004AF1D1D4CB1000A4D6C /* SyncItemDB.swift */,
+				F5C004701D1C4825000A4D6C /* VkModel.swift */,
+				F5C004711D1C4825000A4D6C /* VkModelDB.swift */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		F5C004861D1D4993000A4D6C /* vkapi */ = {
+			isa = PBXGroup;
+			children = (
+				F5C004871D1D4993000A4D6C /* VkApi.swift */,
+				F5C004881D1D4993000A4D6C /* VkApiImpl.swift */,
+				F5C004891D1D4993000A4D6C /* VkApp.plist */,
+				F5C0048A1D1D4993000A4D6C /* VKAPService.swift */,
+			);
+			path = vkapi;
+			sourceTree = "<group>";
+		};
+		F5C0049F1D1D4ACA000A4D6C /* models */ = {
+			isa = PBXGroup;
+			children = (
+				F5C004A01D1D4ACA000A4D6C /* dto */,
+				F5C004A51D1D4ACA000A4D6C /* FriendModel.swift */,
+				F5C004A61D1D4ACA000A4D6C /* GroupModel.swift */,
+				F5C004A71D1D4ACA000A4D6C /* ManagedAudio.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		F5C004A01D1D4ACA000A4D6C /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				F5C004A11D1D4ACA000A4D6C /* Audio.swift */,
+				F5C004A21D1D4ACA000A4D6C /* Group.swift */,
+				F5C004A31D1D4ACA000A4D6C /* Friend.swift */,
+				F5C004A41D1D4ACA000A4D6C /* VkItem.swift */,
+			);
+			path = dto;
 			sourceTree = "<group>";
 		};
 		F5F0882E1CCF673C00525599 /* support */ = {
@@ -356,7 +362,7 @@
 				F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */,
 				F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */,
 				F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */,
-				F5ABBE831CD0C4F5000699EA /* VkApp.plist in Resources */,
+				F5C0048D1D1D4993000A4D6C /* VkApp.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,35 +511,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5C004741D1C4825000A4D6C /* VkItemSyncModel.swift in Sources */,
+				F5C004AC1D1D4ACA000A4D6C /* FriendModel.swift in Sources */,
+				F5C004741D1C4825000A4D6C /* VkModel.swift in Sources */,
 				F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */,
-				F5C004731D1C4825000A4D6C /* GroupModel.swift in Sources */,
-				F58308F01CD8BDAD0094F1F4 /* VkItem.swift in Sources */,
-				F591452C1CF32A05009D3AA8 /* VKAPService.swift in Sources */,
+				F5C004771D1D4828000A4D6C /* SyncItem.swift in Sources */,
+				F5C0048E1D1D4993000A4D6C /* VKAPService.swift in Sources */,
 				F5F18BC61CDB451E00A5E140 /* AudioPlayerViewController.swift in Sources */,
+				F5C004AA1D1D4ACA000A4D6C /* Friend.swift in Sources */,
 				F55856631D1AD07800C64EC4 /* VKAPUserDefaults.swift in Sources */,
 				F509CD9E1CD7C4D7003ACCC1 /* UserFriendsViewController.swift in Sources */,
 				F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */,
-				F558565F1D1A9DC200C64EC4 /* ManagedAudio.swift in Sources */,
-				F5AB3D101CD361B600BC2067 /* Audio.swift in Sources */,
-				F58308F21CD8BE290094F1F4 /* Group.swift in Sources */,
-				F5C004751D1C4825000A4D6C /* VkItemSyncModelDB.swift in Sources */,
+				F5C004751D1C4825000A4D6C /* VkModelDB.swift in Sources */,
+				F5C004AD1D1D4ACA000A4D6C /* GroupModel.swift in Sources */,
 				F5B3E5721CCFC254003270A9 /* LoginViewController.swift in Sources */,
-				F509CDA01CD7C568003ACCC1 /* User.swift in Sources */,
 				F5888E5D1CE9C5DE00879186 /* AudioPlayer.swift in Sources */,
-				F591452D1CF32A05009D3AA8 /* VkApi.swift in Sources */,
 				F5AB3D131CD361C500BC2067 /* AudioCell.swift in Sources */,
 				F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
+				F5C004A81D1D4ACA000A4D6C /* Audio.swift in Sources */,
 				F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */,
+				F5C0048C1D1D4993000A4D6C /* VkApiImpl.swift in Sources */,
 				F56AD29D1CCF64A100E45170 /* AppDelegate.swift in Sources */,
-				F591452E1CF32A05009D3AA8 /* VkApiImpl.swift in Sources */,
+				F5C004AB1D1D4ACA000A4D6C /* VkItem.swift in Sources */,
 				F563C5EA1CEDE09A00825849 /* Extensions.swift in Sources */,
+				F5C004A91D1D4ACA000A4D6C /* Group.swift in Sources */,
 				F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */,
-				F5C004721D1C4825000A4D6C /* FriendModel.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
 				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
+				F5C0048B1D1D4993000A4D6C /* VkApi.swift in Sources */,
 				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,
+				F5C004B01D1D4CB1000A4D6C /* SyncItemDB.swift in Sources */,
+				F5C004AE1D1D4ACA000A4D6C /* ManagedAudio.swift in Sources */,
 				F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

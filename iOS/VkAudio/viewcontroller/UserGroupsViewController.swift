@@ -54,7 +54,8 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
             
                 let groupModels = result.map{ group in
                     GroupModel(value: ["id": group.id!, "name": group.name!, "avatarUrl": group.photoUrl!])}
-                VkItemSyncModelDB.sharedInstance?.update(groupModels)
+                VkModelDB.sharedInstance?.update(groupModels)
+                SyncItemDB.sharedInstance?.update()
             },
             onError: { (error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)

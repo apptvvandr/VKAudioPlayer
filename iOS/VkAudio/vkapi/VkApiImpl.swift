@@ -36,7 +36,7 @@ protocol VKAPServiceDelegate {
     
     func getAudios(ownerId: Int?, callback: VkApiCallback<[Audio]>?)
     func getGroups(callback: VkApiCallback<[Group]>?)
-    func getFriends(callback: VkApiCallback<[User]>?)
+    func getFriends(callback: VkApiCallback<[Friend]>?)
     func getUserPhoto(callback: VkApiCallback<UIImage>?)
     
     func addAudio(audioId: Int, ownerId: Int, callback: VkApiCallback<Int>?)
