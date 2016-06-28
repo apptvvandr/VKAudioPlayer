@@ -12,7 +12,9 @@ import MBProgressHUD
 
 class UserFriendsViewController: UITableViewController {
 
-    let api = VKAPServiceImpl.sharedInstance!
+    @IBOutlet weak var barToggle: UIBarButtonItem!
+    
+    let api = VKAPServiceImpl.sharedInstance
     let dataTag = "friends"
     
     var friends = [FriendModel]() {
@@ -31,6 +33,12 @@ class UserFriendsViewController: UITableViewController {
         
         self.setupBlurView { (blurView) in
             self.tableView.backgroundView = blurView
+        }
+        
+        if let revealViewController = self.revealViewController() {
+            barToggle.target = self.revealViewController()
+            barToggle.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(revealViewController.panGestureRecognizer())
         }
     }
 

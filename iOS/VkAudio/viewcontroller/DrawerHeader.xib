@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="DrawerHeaderSection" id="iN0-l3-epB" customClass="HeaderCell" customModule="VkAudio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-KI-awK">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dv-v1-uGn">
+                    <rect key="frame" x="0.0" y="568" width="600" height="32"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="O0Q-iL-D5n"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="John Doe">
+                            <attributes>
+                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="12" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="NqY-KI-awK" secondAttribute="bottom" id="805-ks-i8n"/>
+                <constraint firstItem="7Dv-v1-uGn" firstAttribute="leading" secondItem="NqY-KI-awK" secondAttribute="leading" id="C18-cn-9x4"/>
+                <constraint firstItem="7Dv-v1-uGn" firstAttribute="trailing" secondItem="NqY-KI-awK" secondAttribute="trailing" id="Pqb-jO-Flv"/>
+                <constraint firstAttribute="trailing" secondItem="NqY-KI-awK" secondAttribute="trailing" id="UL9-9z-D5g"/>
+                <constraint firstItem="7Dv-v1-uGn" firstAttribute="bottom" secondItem="NqY-KI-awK" secondAttribute="bottom" id="aLB-3I-fLh"/>
+                <constraint firstItem="NqY-KI-awK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mQu-9q-ijQ"/>
+                <constraint firstItem="NqY-KI-awK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n0A-Vo-hlD"/>
+            </constraints>
+            <connections>
+                <outlet property="imageAvatar" destination="NqY-KI-awK" id="3ly-tv-Cdv"/>
+                <outlet property="labelUsername" destination="7Dv-v1-uGn" id="KK2-Or-X90"/>
+            </connections>
+        </view>
+    </objects>
+</document>

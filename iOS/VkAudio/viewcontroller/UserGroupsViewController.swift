@@ -11,7 +11,9 @@ import MBProgressHUD
 
 class UserGroupsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let api = VKAPServiceImpl.sharedInstance!
+    @IBOutlet weak var barToggle: UIBarButtonItem!
+    
+    let api = VKAPServiceImpl.sharedInstance
     var dataTag = "groups"
     
     var groups = [GroupModel]() {
@@ -30,6 +32,12 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
         
         self.setupBlurView { (blurView) in
             self.collectionView!.backgroundView = blurView
+        }
+        
+        if let revealViewController = self.revealViewController() {
+            barToggle.target = self.revealViewController()
+            barToggle.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(revealViewController.panGestureRecognizer())
         }
     }
 

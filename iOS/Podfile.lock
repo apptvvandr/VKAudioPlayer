@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (3.4.0)
+  - Alamofire (3.4.1)
   - DZNEmptyDataSet (1.8.1)
-  - JLToast (1.4.1)
+  - JLToast (1.4.2)
   - Kingfisher (2.4.1)
   - MBProgressHUD (0.9.2)
   - Realm (1.0.1):
@@ -19,9 +19,9 @@ DEPENDENCIES:
   - RealmSwift (~> 1.0)
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  JLToast: f2ccfdb8726e562e6c0154fa3658cd432021b1cc
+  JLToast: bf63282a7df069557e80c77dbd2c6b9f9fc4de72
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   Realm: 2e15e39d35b08abb529e212ed5d8af107b5236c8
