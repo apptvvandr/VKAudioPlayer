@@ -12,18 +12,19 @@ import Alamofire
 
 class VkTabsController: UITabBarController {
     
-    let api = VKAPServiceImpl.sharedInstance!
+    let api = VKAPServiceImpl.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let userPhoto = UIImage(contentsOfFile: "bg_image.jpg") else {
-            api.getUserPhoto(VKApiCallback(onResult: { (result) in
-                self.setBackgroundImage(result)
-            }))
-            return
-        }
-        setBackgroundImage(userPhoto)
+        let user = VkModelDB.sharedInstance!.get(VKApi.userId!) as! UserModel
+        
+        let localPath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg")
+        Alamofire.download(.GET, user.avatarUrl, destination: { (temporaryURL, response) in NSURL(string: "file://\(localPath)")!})
+            .response(completionHandler: { (request, response, data, error) in
+                let avatar = UIImage(contentsOfFile: localPath)
+                self.setBackgroundImage(avatar!)
+            })
     }
     
     private func setBackgroundImage(image: UIImage) {
@@ -32,8 +33,6 @@ class VkTabsController: UITabBarController {
         let contextImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        //todo: set blur once here instead of embedded conrollers
-
         self.view.backgroundColor = UIColor(patternImage: contextImage)
     }
 }

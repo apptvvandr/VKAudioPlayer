@@ -26,7 +26,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     @IBOutlet weak var labelAudioCurrentDuration: UILabel!
     @IBOutlet weak var labelAudioDuration: UILabel!
     
-    let api = VKAPServiceImpl.sharedInstance!
+    let api = VKAPServiceImpl.sharedInstance
     let player = AudioPlayer.sharedInstance
     var playlistOwnerId: Int? //nil means current user
     var audios: [AudioModel]!
@@ -108,11 +108,11 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
         let currentAudio = player.currentAudio?.audio as! AudioModel
         let managedAudio = managedAudios[player.currentAudio!.playlistPosition]
         
-        if currentAudio.ownerId != VKApiImpl.userId! && managedAudio == nil {
+        if currentAudio.ownerId != VKApi.userId! && managedAudio == nil {
             addAudioRequest(currentAudio)
             return
         }
-        if currentAudio.ownerId == VKApiImpl.userId! && managedAudio == nil {
+        if currentAudio.ownerId == VKApi.userId! && managedAudio == nil {
             removeAudioRequest(currentAudio, id: currentAudio.id)
             return
         }
@@ -137,14 +137,14 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     }
     
     private func removeAudioRequest(audio: AudioModel, id: Int) {
-        api.removeAudio(id, ownerId: VKApiImpl.userId!, callback: VKApiCallback(onResult: { (result: Int) in
+        api.removeAudio(id, ownerId: VKApi.userId!, callback: VKApiCallback(onResult: { (result: Int) in
             let message = "\(audio.artist ?? "Unknown") - \(audio.name ?? "Unnamed") was removed from your page"
             JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
             
             var managedAudio = self.managedAudios[self.player.currentAudio!.playlistPosition]
             if managedAudio == nil {
                 managedAudio = ManagedAudio(id: audio.id)
-                if audio.ownerId == VKApiImpl.userId! {
+                if audio.ownerId == VKApi.userId! {
                     managedAudio!.wasRemoved = true
                 }
             }
@@ -157,7 +157,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     }
     
     private func restoreAudioRequest(audio: AudioModel, id: Int) {
-        api.restoreAudio(id, ownerId: VKApiImpl.userId!, callback: VKApiCallback(onResult: { (result: AudioModel) in
+        api.restoreAudio(id, ownerId: VKApi.userId!, callback: VKApiCallback(onResult: { (result: AudioModel) in
             let message = "\(audio.artist ?? "Unknown") - \(audio.name ?? "Unnamed") was added to your page"
             JLToast.makeText(message, duration: JLToastDelay.LongDelay).show()
             
@@ -210,7 +210,7 @@ class AudioPlayerViewController: UIViewController, AudioPlayerDelegate {
     
     private func updateEditPlaylistIcon(currentAudio: AudioModel, playlistPosition: Int) {
         let managedAudio = managedAudios[playlistPosition]
-        let isOwner = currentAudio.ownerId == VKApiImpl.userId!
+        let isOwner = currentAudio.ownerId == VKApi.userId!
         let canBeRestored = managedAudio != nil && managedAudio!.wasRemoved
         let icon = isOwner && !canBeRestored ? "ic_remove" : "ic_add"
         btnPlaylistEdit.setImage(UIImage(named: icon), forState: .Normal)

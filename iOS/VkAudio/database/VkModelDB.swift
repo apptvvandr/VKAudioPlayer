@@ -47,6 +47,9 @@ class VkModelDB {
     }
     
     func get(id: Int) -> VkModel? {
+        if let user = getWithType(UserModel.self, id: id){
+            return user
+        }
         if let friend = getWithType(FriendModel.self, id: id) {
             return friend
         }
@@ -63,9 +66,11 @@ class VkModelDB {
     func getAll() -> [VkModel] {
         var objects = [VkModel]()
         
+        let users: [UserModel] = getAllWithType(UserModel.self)
         let groups: [GroupModel] = getAllWithType(GroupModel.self)
         let friends: [FriendModel] = getAllWithType(FriendModel.self)
         
+        objects.appendContentsOf(users.map{$0 as VkModel})
         objects.appendContentsOf(groups.map{$0 as VkModel})
         objects.appendContentsOf(friends.map{$0 as VkModel})
         
@@ -77,7 +82,9 @@ class VkModelDB {
     }
     
     func contains(id: Int) -> Bool {
-        return containsWithType(GroupModel.self, id: id) || containsWithType(FriendModel.self, id: id)
+        return containsWithType(UserModel.self, id: id)
+            || containsWithType(GroupModel.self, id: id)
+            || containsWithType(FriendModel.self, id: id)
     }
     
     func containsWithType <T: VkModel> (type: T.Type, id: Int) -> Bool {

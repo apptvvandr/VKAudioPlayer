@@ -15,6 +15,7 @@ class VKAPUserDefaults {
     private static let KEY_SHUFFLE_ENABLED = "shuffle_enabled"
     private static let KEY_REPEAT_ENABLED = "repeat_enabled"
     private static let KEY_LAST_UPDATE = "last_update_"
+    private static let KEY_LAST_LOGIN = "last_login"
     
     static func isShuffleEnabled() -> Bool {
         return getUserDefaults().boolForKey(KEY_SHUFFLE_ENABLED)
@@ -40,8 +41,16 @@ class VKAPUserDefaults {
         getUserDefaults().setDouble(time, forKey: KEY_LAST_UPDATE + dataTag)
     }
     
+    static func getLastLoginMillis() -> Double {
+        return getUserDefaults().doubleForKey(KEY_LAST_LOGIN)
+    }
+    
+    static func setLastLoginMillis(millis: Double) {
+        getUserDefaults().setDouble(millis, forKey: KEY_LAST_LOGIN)
+    }
+    
     private static func getUserDefaults() -> NSUserDefaults {
-        let name = "\(DEFAULTS_NAME_VKAP)_\(VKApiImpl.userId!)"
+        let name = "\(DEFAULTS_NAME_VKAP)_\(VKApi.userId!)"
         return NSUserDefaults(suiteName: name)!
     }
 }

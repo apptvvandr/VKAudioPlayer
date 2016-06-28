@@ -9,13 +9,11 @@
 import Foundation
 import UIKit
 
-protocol VKAPService {
-    var api: VKApi { get }
-    
+protocol VKAPService {    
     func getAudios(ownerId: Int?, callback: VKApiCallback<[AudioModel]>?)
     func getGroups(callback: VKApiCallback<[GroupModel]>?)
     func getFriends(callback: VKApiCallback<[FriendModel]>?)
-    func getUserPhoto(callback: VKApiCallback<UIImage>?)
+    func getUserInfo(userId: Int, callback: VKApiCallback<UserModel>?)
     
     func addAudio(audioId: Int, ownerId: Int, callback: VKApiCallback<Int>?)
     func removeAudio(audioId: Int, ownerId: Int, callback: VKApiCallback<Int>?)

@@ -13,12 +13,14 @@ import MBProgressHUD
 
 class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
-    let api = VKAPServiceImpl.sharedInstance!
+    @IBOutlet weak var barToggle: UIBarButtonItem!
+    
+    let api = VKAPServiceImpl.sharedInstance
     var dataTag = "main_audio"
     
     var ownerId: Int? {
         didSet {
-            let isCurrentUser = ownerId == nil || ownerId! == VKApiImpl.userId!
+            let isCurrentUser = ownerId == nil || ownerId! == VKApi.userId!
             self.dataTag = isCurrentUser ? "main_audio" : "audio"
         }
     }
@@ -53,6 +55,12 @@ class UserAudiosViewController: UITableViewController, UISearchResultsUpdating, 
         tableView.emptyDataSetDelegate = self
         
         self.navigationItem.title = ownerName == nil ? "Audio" : ownerName!
+        
+        if let revealViewController = self.revealViewController() {
+            barToggle.target = self.revealViewController()
+            barToggle.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(revealViewController.panGestureRecognizer())
+        }
     }
 
     override func viewWillAppear(animated: Bool) {

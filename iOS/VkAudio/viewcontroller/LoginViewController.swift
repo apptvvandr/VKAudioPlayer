@@ -23,17 +23,35 @@ class LoginViewController: UIViewController, UIWebViewDelegate {
         let appId = appValues.objectForKey("APP_ID") as! String
         let appScope = appValues.objectForKey("APP_SCOPE") as! String
 
-        let authUrl = VKApiImpl.authUrl(appId, scope: appScope)
+        let authUrl = VKApi.authUrl(appId, scope: appScope)
         webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
     }
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if let url = request.URL?.absoluteString where url.containsString("access_token=") {
-            VKAPServiceImpl.setup(VKApiImpl.setup(url))
-            VkModelDB.setup(VKApiImpl.userId!)
-            SyncItemDB.setup(VKApiImpl.userId!)
+            //MARK: - api setup
+            //TODO: create VKLoginController for this
+            let tokenSubstring = url.componentsSeparatedByString("access_token")[1]
+            let accessValuesStrings: [String] = tokenSubstring.componentsSeparatedByString("&")
+            
+            var accessValues = [String]()
+            for (index, value) in accessValuesStrings.enumerate() {
+                let accessValue = value.componentsSeparatedByString("=")[1]
+                accessValues.insert(accessValue, atIndex: index)
+            }
+            VKApi.setup(accessValues[0], tokenExpireIn: accessValues[1], userId: accessValues[2])
+            
+            //MARK: - VKAP setup
+            VkModelDB.setup(VKApi.userId!)
+            SyncItemDB.setup(VKApi.userId!)
+            VKAPUserDefaults.setLastLoginMillis(NSDate.currentTimeMillis())
 
-            performSegueWithIdentifier("segue_tabs", sender: self)
+            VKAPServiceImpl.sharedInstance.getUserInfo(VKApi.userId!, callback: VKApiCallback(
+                onResult: { (result: UserModel) in
+                    result.syncEnabled = true
+                    VkModelDB.sharedInstance?.put(result)
+                    self.performSegueWithIdentifier("segue_tabs", sender: self)
+            }))
             return false
         }
         return true

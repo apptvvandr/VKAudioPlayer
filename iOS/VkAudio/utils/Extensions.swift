@@ -11,10 +11,10 @@ import UIKit
 
 extension UIViewController {
     
-    func setupBlurView(style: UIBlurEffectStyle = .ExtraLight, onBlurCreated: (blurView: UIVisualEffectView) -> Void){
+    func setupBlurView(style: UIBlurEffectStyle = .ExtraLight, bounds: CGRect? = nil, onBlurCreated: (blurView: UIVisualEffectView) -> Void) {
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
+        blurEffectView.frame = bounds ?? self.view.bounds
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         
         onBlurCreated(blurView: blurEffectView)
