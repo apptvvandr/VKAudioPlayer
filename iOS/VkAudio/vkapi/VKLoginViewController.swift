@@ -35,7 +35,6 @@ class VKLoginViewController: UIViewController, UIWebViewDelegate {
                 accessValues.insert(accessValue, atIndex: index)
             }
             VKApi.setup(accessValues[0], tokenExpireIn: accessValues[1], userId: accessValues[2])
-            VKApi.setup();
             VKApiDefaults.setLastLoginMillis(Double(NSDate().timeIntervalSince1970 * 1000))
             onLoginResult(accessValues[0], tokenExpiersIn: Double(accessValues[1])!, userId: Int(accessValues[2])!)
             

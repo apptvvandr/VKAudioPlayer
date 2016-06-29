@@ -9,9 +9,6 @@
 import Foundation
 
 class DrawerMenuController: UITableViewController {
- 
-    private let icons = ["ic_download", "ic_settings", "ic_info", "ic_exit_to_app"]
-    private let titles = ["Downloads", "Settings", "About", "Logout"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,43 +17,38 @@ class DrawerMenuController: UITableViewController {
         tableView.registerNib(headerNib, forHeaderFooterViewReuseIdentifier: "DrawerHeaderSection")
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let index = indexPath.row
-        let cell = tableView.dequeueReusableCellWithIdentifier("drawer_cell_menu_item") as! MenuItemCell
-        
-        cell.imageIcon.image = UIImage(named: icons[index])
-        cell.labelTitle.text = titles[index]
-        
-        return cell
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            break //todo: present downloads
+        case 1:
+            break //todo: present settings
+        case 2:
+            break //todo: present app info
+        case 3:
+            VKAPUtils.logout(self)
+        default: break
+        }
+        self.revealViewController().revealToggleAnimated(true)
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("DrawerHeaderSection") as! HeaderCell
-        let user = VkModelDB.sharedInstance!.getWithType(UserModel.self, id: VKApi.userId!)
+        if section == 0 {
+            let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("DrawerHeaderSection") as! HeaderCell
+            let user = VkModelDB.sharedInstance!.getWithType(UserModel.self, id: VKApi.userId!)
         
-        let avatar = UIImage(contentsOfFile: LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg"))
-        header.imageAvatar.image = avatar
-        self.setupBlurView(.Light, bounds: header.imageAvatar.bounds) { header.imageAvatar.addSubview($0) }
-        header.labelUsername.text = user?.fullName
+            let avatar = UIImage(contentsOfFile: LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg"))
+            header.imageAvatar.image = avatar
+            self.setupBlurView(.Light, bounds: header.imageAvatar.bounds) { header.imageAvatar.addSubview($0) }
+            header.labelUsername.text = user?.fullName
         
-        return header
+            return header
+        }
+        return nil
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 128.0
-    }
-    
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        VKAPUtils.logout(self)
-    }
-    
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        let senderCell = sender as! MenuItemCell
-        return senderCell.labelTitle.text == titles[3]
+        return section == 0 ? 160.0 : 3.0
     }
 }
 
@@ -64,9 +56,4 @@ class DrawerMenuController: UITableViewController {
 public class HeaderCell: UITableViewHeaderFooterView {
     @IBOutlet weak var imageAvatar: UIImageView!
     @IBOutlet weak var labelUsername: UILabel!
-}
-
-public class MenuItemCell: UITableViewCell {
-    @IBOutlet weak var imageIcon: UIImageView!
-    @IBOutlet weak var labelTitle: UILabel!
 }

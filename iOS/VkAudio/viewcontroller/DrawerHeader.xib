@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,41 +12,40 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-KI-awK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rME-aV-xHm">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dv-v1-uGn">
-                    <rect key="frame" x="0.0" y="568" width="600" height="32"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vhy-jN-glZ">
+                    <rect key="frame" x="8" y="571" width="584" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="32" id="O0Q-iL-D5n"/>
+                        <constraint firstAttribute="height" constant="21" id="sXc-0n-4OS"/>
                     </constraints>
-                    <attributedString key="attributedText">
-                        <fragment content="John Doe">
-                            <attributes>
-                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="12" tighteningFactorForTruncation="0.0"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVa-ve-2bL">
+                    <rect key="frame" x="0.0" y="562" width="600" height="38"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="NqY-KI-awK" secondAttribute="bottom" id="805-ks-i8n"/>
-                <constraint firstItem="7Dv-v1-uGn" firstAttribute="leading" secondItem="NqY-KI-awK" secondAttribute="leading" id="C18-cn-9x4"/>
-                <constraint firstItem="7Dv-v1-uGn" firstAttribute="trailing" secondItem="NqY-KI-awK" secondAttribute="trailing" id="Pqb-jO-Flv"/>
-                <constraint firstAttribute="trailing" secondItem="NqY-KI-awK" secondAttribute="trailing" id="UL9-9z-D5g"/>
-                <constraint firstItem="7Dv-v1-uGn" firstAttribute="bottom" secondItem="NqY-KI-awK" secondAttribute="bottom" id="aLB-3I-fLh"/>
-                <constraint firstItem="NqY-KI-awK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mQu-9q-ijQ"/>
-                <constraint firstItem="NqY-KI-awK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n0A-Vo-hlD"/>
+                <constraint firstItem="rME-aV-xHm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="81o-Gz-tdP"/>
+                <constraint firstItem="Vhy-jN-glZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="98V-aN-PoQ"/>
+                <constraint firstItem="rME-aV-xHm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FK0-ru-eU4"/>
+                <constraint firstItem="fVa-ve-2bL" firstAttribute="bottom" secondItem="rME-aV-xHm" secondAttribute="bottom" id="G8c-cV-Mtu"/>
+                <constraint firstItem="Vhy-jN-glZ" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="Qk1-AU-Dx3"/>
+                <constraint firstAttribute="bottom" secondItem="rME-aV-xHm" secondAttribute="bottom" id="X1E-tY-LQG"/>
+                <constraint firstItem="fVa-ve-2bL" firstAttribute="centerY" secondItem="Vhy-jN-glZ" secondAttribute="centerY" id="Z03-oq-gnR"/>
+                <constraint firstAttribute="trailing" secondItem="rME-aV-xHm" secondAttribute="trailing" id="aNX-1F-bMk"/>
+                <constraint firstItem="fVa-ve-2bL" firstAttribute="leading" secondItem="rME-aV-xHm" secondAttribute="leading" id="kam-sV-7m1"/>
+                <constraint firstItem="fVa-ve-2bL" firstAttribute="trailing" secondItem="rME-aV-xHm" secondAttribute="trailing" id="uWi-x2-dUX"/>
+                <constraint firstItem="Vhy-jN-glZ" firstAttribute="centerX" secondItem="rME-aV-xHm" secondAttribute="centerX" id="ulK-9H-Jtz"/>
             </constraints>
             <connections>
-                <outlet property="imageAvatar" destination="NqY-KI-awK" id="3ly-tv-Cdv"/>
-                <outlet property="labelUsername" destination="7Dv-v1-uGn" id="KK2-Or-X90"/>
+                <outlet property="imageAvatar" destination="rME-aV-xHm" id="Lla-Fe-bXZ"/>
+                <outlet property="labelUsername" destination="Vhy-jN-glZ" id="QeU-ge-FaR"/>
             </connections>
         </view>
     </objects>
