@@ -7,53 +7,27 @@
 //
 
 import UIKit
+import JLToast
 
-class LoginViewController: UIViewController, UIWebViewDelegate {
-
-    @IBOutlet weak var webView: UIWebView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class LoginViewController: VKLoginViewController {
+    
+    override func onLoginResult(token: String, tokenExpiersIn: Double, userId: Int) {
+        VkModelDB.setup(userId)
+        SyncItemDB.setup(userId)
         
-        webView.delegate = self
-
-        let plistPath = NSBundle.mainBundle().pathForResource("VKAPApplication", ofType: "plist")
-        let appValues = NSDictionary(contentsOfFile: plistPath!)!
-
-        let appId = appValues.objectForKey("APP_ID") as! String
-        let appScope = appValues.objectForKey("APP_SCOPE") as! String
-
-        let authUrl = VKApi.authUrl(appId, scope: appScope)
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: authUrl)!))
+        VKAPServiceImpl.sharedInstance.getUserInfo(VKApi.userId!, callback: VKApiCallback(
+            onResult: { (result: UserModel) in
+                result.syncEnabled = true
+                VkModelDB.sharedInstance?.put(result)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainViewController = storyboard.instantiateViewControllerWithIdentifier("controller_main")
+                self.presentViewController(mainViewController, animated: true, completion: nil)
+        }))
     }
-
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if let url = request.URL?.absoluteString where url.containsString("access_token=") {
-            //MARK: - api setup
-            //TODO: create VKLoginController for this
-            let tokenSubstring = url.componentsSeparatedByString("access_token")[1]
-            let accessValuesStrings: [String] = tokenSubstring.componentsSeparatedByString("&")
-            
-            var accessValues = [String]()
-            for (index, value) in accessValuesStrings.enumerate() {
-                let accessValue = value.componentsSeparatedByString("=")[1]
-                accessValues.insert(accessValue, atIndex: index)
-            }
-            VKApi.setup(accessValues[0], tokenExpireIn: accessValues[1], userId: accessValues[2])
-            
-            //MARK: - VKAP setup
-            VkModelDB.setup(VKApi.userId!)
-            SyncItemDB.setup(VKApi.userId!)
-            VKAPUserDefaults.setLastLoginMillis(NSDate.currentTimeMillis())
-
-            VKAPServiceImpl.sharedInstance.getUserInfo(VKApi.userId!, callback: VKApiCallback(
-                onResult: { (result: UserModel) in
-                    result.syncEnabled = true
-                    VkModelDB.sharedInstance?.put(result)
-                    self.performSegueWithIdentifier("segue_tabs", sender: self)
-            }))
-            return false
-        }
-        return true
+    
+    override func onLoginError() {
+        JLToast.makeText("To use this app you should be logged in!", duration: JLToastDelay.ShortDelay).show()
+        webView.reload()
     }
 }

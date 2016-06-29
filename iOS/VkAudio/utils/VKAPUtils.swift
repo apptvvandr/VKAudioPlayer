@@ -27,4 +27,19 @@ class VKAPUtils {
         
         return now - lastDataUpdate > Double(seconds) * 1000
     }
+    
+    static func login(starter: UIViewController) {
+        let plistPath = NSBundle.mainBundle().pathForResource("VKAPApplication", ofType: "plist")
+        let appValues = NSDictionary(contentsOfFile: plistPath!)!
+        
+        let appId = appValues.objectForKey("APP_ID") as! String
+        let appScope = appValues.objectForKey("APP_SCOPE") as! String
+        
+        VKApi.login(starter, appId: appId, appScope: appScope)
+    }
+    
+    static func logout(holder: UIViewController) {
+        VKApi.logout(holder)
+        login(holder)
+    }
 }

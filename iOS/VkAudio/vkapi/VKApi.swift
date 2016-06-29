@@ -15,6 +15,7 @@ class VKApi {
     
     static var token: String?
     static var userId: Int?
+    lazy var lastLoginMillis: Double = VKApiDefaults.getLastLoginMillis()
     
     private init(token: String, userId: String) {
         VKApi.token = token
@@ -36,7 +37,15 @@ class VKApi {
         sharedInstance = VKApi(token: token, userId: userId)
     }
     
-    static func logout() {
+    static func login(starter: UIViewController, appId: String, appScope: String) {
+        let loginViewController = LoginViewController(nibName: "VKLoginViewController", bundle: nil)
+        loginViewController.appId = appId
+        loginViewController.appScope = appScope
+        
+        starter.presentViewController(loginViewController, animated: true, completion: nil)
+    }
+    
+    static func logout(holder: UIViewController) {
         VKApiDefaults.clearValues()
         let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage()
         //todo: clear cache since last login
@@ -44,6 +53,11 @@ class VKApi {
         for cookie in cookies.cookies! {
             cookies.deleteCookie(cookie)
         }
+        sharedInstance = nil
+    }
+    
+    static func isInitialized() -> Bool {
+        return sharedInstance != nil
     }
     
     static func authUrl(id: String, scope: String) -> String {

@@ -51,7 +51,7 @@ class DrawerMenuController: UITableViewController {
     }
     
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        VKApi.logout()
+        VKAPUtils.logout(self)
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
