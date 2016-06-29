@@ -48,8 +48,6 @@ class VKApi {
     static func logout(holder: UIViewController) {
         VKApiDefaults.clearValues()
         let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-        //todo: clear cache since last login
-        //cookies.removeCookiesSinceDate(date: NSDate)
         for cookie in cookies.cookies! {
             cookies.deleteCookie(cookie)
         }

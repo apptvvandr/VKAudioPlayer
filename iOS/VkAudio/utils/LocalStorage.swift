@@ -17,6 +17,11 @@ class LocalStorage {
         return path.path!
     }
     
+    static func removeFile(dir: NSSearchPathDirectory, fileName: String) {
+        let path = buildFilePath(dir, fileName: fileName)
+        try! NSFileManager.defaultManager().removeItemAtURL(NSURL(string: "file://\(path)")!)
+    }
+    
     static func fileExists(dir: NSSearchPathDirectory, fileName: String) -> Bool {
         let path = buildFilePath(dir, fileName: fileName)
         

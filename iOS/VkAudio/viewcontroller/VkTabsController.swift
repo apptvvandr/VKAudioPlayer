@@ -19,7 +19,13 @@ class VkTabsController: UITabBarController {
         
         let user = VkModelDB.sharedInstance!.get(VKApi.userId!) as! UserModel
         
-        let localPath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg")
+        let avatarName = "bg_image_\(VKApi.userId!).jpg"
+        let localPath = LocalStorage.buildFilePath(.DocumentDirectory, fileName: avatarName)
+        if LocalStorage.fileExists(.DocumentDirectory, fileName: avatarName) {
+           self.setBackgroundImage(UIImage(contentsOfFile: localPath)!)
+            return
+        }
+        
         Alamofire.download(.GET, user.avatarUrl, destination: { (temporaryURL, response) in NSURL(string: "file://\(localPath)")!})
             .response(completionHandler: { (request, response, data, error) in
                 let avatar = UIImage(contentsOfFile: localPath)

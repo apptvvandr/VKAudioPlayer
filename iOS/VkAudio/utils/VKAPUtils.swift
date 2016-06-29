@@ -40,6 +40,9 @@ class VKAPUtils {
     
     static func logout(holder: UIViewController) {
         VKApi.logout(holder)
+        let avatarName = "bg_image_\(VKApi.userId!).jpg"
+        LocalStorage.removeFile(.DocumentDirectory, fileName: avatarName)
+        
         login(holder)
     }
 }

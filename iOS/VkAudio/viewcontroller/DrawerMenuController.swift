@@ -18,14 +18,15 @@ class DrawerMenuController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-        case 0:
+        let position = (indexPath.section, indexPath.row)
+        switch position {
+        case (0, 0):
             break //todo: present downloads
-        case 1:
+        case (1, 0):
             break //todo: present settings
-        case 2:
+        case (1, 1):
             break //todo: present app info
-        case 3:
+        case (2, 0):
             VKAPUtils.logout(self)
         default: break
         }
@@ -37,7 +38,8 @@ class DrawerMenuController: UITableViewController {
             let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier("DrawerHeaderSection") as! HeaderCell
             let user = VkModelDB.sharedInstance!.getWithType(UserModel.self, id: VKApi.userId!)
         
-            let avatar = UIImage(contentsOfFile: LocalStorage.buildFilePath(.DocumentDirectory, fileName: "bg_image.jpg"))
+            let avatarName = "bg_image_\(VKApi.userId!).jpg"
+            let avatar = UIImage(contentsOfFile: LocalStorage.buildFilePath(.DocumentDirectory, fileName: avatarName))
             header.imageAvatar.image = avatar
             self.setupBlurView(.Light, bounds: header.imageAvatar.bounds) { header.imageAvatar.addSubview($0) }
             header.labelUsername.text = user?.fullName
