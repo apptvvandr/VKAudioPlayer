@@ -62,6 +62,18 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
             
                 VkModelDB.sharedInstance?.update(result)
                 SyncItemDB.sharedInstance?.update()
+                
+                if !VKAPUserDefaults.isAskedSync(self.dataTag) {
+                    let alertView = SimpleAlertView(title: "Synchronization", message: "Would you like to sync groups music automatically?",
+                        negativeButtonTitle: "NO", onNegativeButtonClick: {
+                            //todo: onNegativeClick
+                        },
+                        positiveButtonTitle: "YES", onPositiveButtonClick: {
+                            //todo: onPositiveClick
+                    })
+                    VKAPUserDefaults.setAskedSync(true, dataTag: self.dataTag)
+                    alertView.show()
+                }
             },
             onError: { (error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)

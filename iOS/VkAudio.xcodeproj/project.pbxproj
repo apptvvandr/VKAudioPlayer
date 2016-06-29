@@ -13,6 +13,7 @@
 		F516E2B31D22BBF900D665C6 /* VKHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516E2B21D22BBF900D665C6 /* VKHttpClientImpl.swift */; };
 		F516E2BC1D23BBD500D665C6 /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516E2BA1D23BBD500D665C6 /* VKLoginViewController.swift */; };
 		F516E2BD1D23BBD500D665C6 /* VKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F516E2BB1D23BBD500D665C6 /* VKLoginViewController.xib */; };
+		F516E2C11D24133900D665C6 /* SimpleAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516E2C01D24133900D665C6 /* SimpleAlertView.swift */; };
 		F52E219F1D21852700E7F62E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52E219E1D21852700E7F62E /* SWRevealViewController.m */; };
 		F52E21D71D21990300E7F62E /* DrawerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E21D61D21990300E7F62E /* DrawerMenuController.swift */; };
 		F52E21DD1D22846400E7F62E /* DrawerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52E21DC1D22846400E7F62E /* DrawerHeader.xib */; };
@@ -88,6 +89,7 @@
 		F516E2B21D22BBF900D665C6 /* VKHttpClientImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKHttpClientImpl.swift; sourceTree = "<group>"; };
 		F516E2BA1D23BBD500D665C6 /* VKLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 		F516E2BB1D23BBD500D665C6 /* VKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VKLoginViewController.xib; sourceTree = "<group>"; };
+		F516E2C01D24133900D665C6 /* SimpleAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAlertView.swift; sourceTree = "<group>"; };
 		F52E219D1D21852700E7F62E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		F52E219E1D21852700E7F62E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		F52E21A11D2185D400E7F62E /* VkAudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VkAudio-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				F563C5E51CEDE09A00825849 /* utils */,
 				F5C004861D1D4993000A4D6C /* vkapi */,
 				F52E21A11D2185D400E7F62E /* VkAudio-Bridging-Header.h */,
+				F516E2C01D24133900D665C6 /* SimpleAlertView.swift */,
 			);
 			path = VkAudio;
 			sourceTree = "<group>";
@@ -240,8 +243,8 @@
 		F5B3E56B1CCFC254003270A9 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */,
 				F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */,
+				F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */,
 				F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */,
 				F58706AD1CDA34E70016C79C /* VkTabsController.swift */,
 				F5F18BC51CDB451E00A5E140 /* AudioPlayerViewController.swift */,
@@ -592,6 +595,7 @@
 				F5C004A91D1D4ACA000A4D6C /* Group.swift in Sources */,
 				F55E13B31CF454DD00114D89 /* BufferingSlider.swift in Sources */,
 				F5AB3D091CD34A0F00BC2067 /* UserAudiosViewController.swift in Sources */,
+				F516E2C11D24133900D665C6 /* SimpleAlertView.swift in Sources */,
 				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
 				F5C0048B1D1D4993000A4D6C /* VKApi.swift in Sources */,
 				F52E21D71D21990300E7F62E /* DrawerMenuController.swift in Sources */,

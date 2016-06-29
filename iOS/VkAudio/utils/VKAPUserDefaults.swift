@@ -16,6 +16,7 @@ class VKAPUserDefaults {
     private static let KEY_REPEAT_ENABLED = "repeat_enabled"
     private static let KEY_LAST_UPDATE = "last_update_"
     private static let KEY_LAST_LOGIN = "last_login"
+    private static let KEY_ASKED_SYNC = "asked_sync_"
     
     static func isShuffleEnabled() -> Bool {
         return getUserDefaults().boolForKey(KEY_SHUFFLE_ENABLED)
@@ -39,6 +40,14 @@ class VKAPUserDefaults {
     
     static func setLastDataUpdate(time: Double, dataTag: String) {
         getUserDefaults().setDouble(time, forKey: KEY_LAST_UPDATE + dataTag)
+    }
+    
+    static func isAskedSync(dataTag: String) -> Bool {
+        return getUserDefaults().boolForKey(KEY_ASKED_SYNC + dataTag)
+    }
+    
+    static func setAskedSync(askedSync: Bool, dataTag: String) {
+        getUserDefaults().setBool(askedSync, forKey: KEY_ASKED_SYNC + dataTag)
     }
     
     private static func getUserDefaults() -> NSUserDefaults {
