@@ -12,13 +12,29 @@ import AVFoundation
 import MediaPlayer
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class VKAPAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = UIViewController()
+        self.window?.makeKeyAndVisible()
+
+        VKApi.setup();
+        if VKApi.isInitialized() {
+            VkModelDB.setup(VKApi.userId!);
+            SyncItemDB.setup(VKApi.userId!);
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController = storyboard.instantiateViewControllerWithIdentifier("controller_main")
+            self.window?.rootViewController = mainViewController
+        }
+        else {
+            VKAPUtils.login(self.window!.rootViewController!)
+        }
         
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         let commandCenter = MPRemoteCommandCenter.sharedCommandCenter()
         commandCenter.previousTrackCommand.addTargetWithHandler { (event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus in
             AudioPlayer.sharedInstance.playPrevious()
@@ -36,7 +52,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             AudioPlayer.sharedInstance.pause()
             return .Success
         }
-        
         return true
     }
 }

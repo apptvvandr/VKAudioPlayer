@@ -63,11 +63,29 @@ class UserFriendsViewController: UITableViewController {
                 
                 VkModelDB.sharedInstance?.update(result)
                 SyncItemDB.sharedInstance?.update()
-            }, onError: {(error) in
+                
+                if !VKAPUserDefaults.isAskedSync(self.dataTag) {
+                    self.showSyncAlert(result)
+                }
+            },
+            onError: { (error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
         }))
     }
 
+    private func showSyncAlert(items: [FriendModel]) {
+        let alertView = SimpleAlertView(title: "Synchronization", message: "Would you like to sync friends music automatically?",
+            negativeButtonTitle: "NO", onNegativeButtonClick: {
+                //todo: onNegativeClick
+            },
+            positiveButtonTitle: "YES", onPositiveButtonClick: {
+                let pickDialog = SyncModelPickDialog(items: items.map{$0 as VkModel})
+                pickDialog.show()
+        })
+        VKAPUserDefaults.setAskedSync(true, dataTag: self.dataTag)
+        alertView.show()
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
