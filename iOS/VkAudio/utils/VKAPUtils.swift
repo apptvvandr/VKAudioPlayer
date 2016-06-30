@@ -28,6 +28,11 @@ class VKAPUtils {
         return now - lastDataUpdate > Double(seconds) * 1000
     }
     
+    static func resetSettings() {
+        VKAPUserDefaults.clear();
+        VkModelDB.sharedInstance!.setSyncForAllEnabled(false);
+    }
+    
     static func login(starter: UIViewController) {
         let plistPath = NSBundle.mainBundle().pathForResource("VKAPApplication", ofType: "plist")
         let appValues = NSDictionary(contentsOfFile: plistPath!)!

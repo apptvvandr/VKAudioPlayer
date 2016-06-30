@@ -35,12 +35,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="webView" destination="72Y-7H-RP9" id="qnl-ha-Uar"/>
-                        <segue destination="zDU-oW-EG6" kind="show" identifier="segue_tabs" id="Gnp-ss-Ux3"/>
+                        <segue destination="zDU-oW-EG6" kind="show" identifier="segue_tabs" id="bOc-fj-f0y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1030.5" y="-738.5"/>
+            <point key="canvasLocation" x="-382.5" y="-668.5"/>
         </scene>
         <!--Drawer Menu Controller-->
         <scene sceneID="aAt-d0-mN6">
@@ -215,11 +215,12 @@
                             <outlet property="delegate" destination="KTc-J7-QlP" id="37g-zA-0wI"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="FLf-B2-JnB"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="At8-nb-2UU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1603.5" y="148.5"/>
+            <point key="canvasLocation" x="-921.5" y="148.5"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="wAz-vd-Hao">
@@ -234,24 +235,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8uH-TD-g1n"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="Dv0-lz-WMM" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="SoD-J6-X4x"/>
-                        <segue destination="KTc-J7-QlP" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="N2R-51-CH5"/>
+                        <segue destination="KTc-J7-QlP" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="jKb-KD-sXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWp-2N-0hH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1030.5" y="148.5"/>
+            <point key="canvasLocation" x="-382.5" y="148.5"/>
         </scene>
         <!--Friends-->
         <scene sceneID="FK0-fC-vNF">
             <objects>
                 <tableViewController storyboardIdentifier="controller_table_friends" id="Wj7-Ex-Y5o" customClass="UserFriendsViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -370,7 +372,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hR8-gq-V2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-483.75" y="148.5"/>
+            <point key="canvasLocation" x="394.5" y="148.5"/>
         </scene>
         <!--Audio-->
         <scene sceneID="BTM-gj-egY">
@@ -453,7 +455,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qLv-zt-nvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534.5" y="148.5"/>
+            <point key="canvasLocation" x="2173.5" y="148.5"/>
         </scene>
         <!--Groups-->
         <scene sceneID="zmF-ws-i6d">
@@ -526,7 +528,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTP-E8-pZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="930.75" y="148.5"/>
+            <point key="canvasLocation" x="1569.5" y="148.5"/>
         </scene>
         <!--Audio Player View Controller-->
         <scene sceneID="QK7-KN-AEz">
@@ -617,6 +619,9 @@
                                         <color key="value" red="0.36470588235294116" green="0.25098039215686274" blue="0.21568627450980393" alpha="0.25" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onAudioSliderDragged:" destination="hLe-fN-oCO" eventType="valueChanged" id="VjC-vh-wYD"/>
+                                </connections>
                             </slider>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_music" translatesAutoresizingMaskIntoConstraints="NO" id="Uju-ne-egQ">
                                 <rect key="frame" x="20" y="133" width="335" height="335"/>
@@ -691,12 +696,12 @@
                         <outlet property="labelAudioCurrentDuration" destination="o5B-nM-ewx" id="9Pi-Ib-Njk"/>
                         <outlet property="labelAudioDuration" destination="LLk-fw-C06" id="InF-Tq-ifV"/>
                         <outlet property="labelName" destination="7z5-Lj-RH9" id="Wu4-3G-SZN"/>
-                        <outlet property="progressAudioStream" destination="v4f-0r-8ja" id="Fsb-BP-zua"/>
+                        <outlet property="progressAudioStream" destination="v4f-0r-8ja" id="FrY-4M-alh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEQ-6M-JeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109.5" y="148.5"/>
+            <point key="canvasLocation" x="2748.5" y="148.5"/>
         </scene>
         <!--Audio-->
         <scene sceneID="L7P-8s-47k">
@@ -719,7 +724,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wws-eA-FuP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585.5" y="1031.5"/>
+            <point key="canvasLocation" x="1826.5" y="1007.5"/>
         </scene>
         <!--Groups-->
         <scene sceneID="GrU-PQ-LJ8">
@@ -742,7 +747,127 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJj-6p-pia" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.5" y="148.5"/>
+            <point key="canvasLocation" x="1016.5" y="148.5"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="akw-Bt-Ujm">
+            <objects>
+                <viewController title="Settings" id="gjJ-X7-bhH" customClass="SettingsViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hNr-Q3-i86"/>
+                        <viewControllerLayoutGuide type="bottom" id="STI-dk-TKi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RqS-1j-Iwr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synchronization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe7-hE-cdw">
+                                <rect key="frame" x="16" y="72" width="343" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="zg7-P5-Cq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBh-E1-CL4">
+                                <rect key="frame" x="16" y="172" width="198" height="30"/>
+                                <state key="normal" title="RESET ACCOUNT SETTINGS">
+                                    <color key="titleColor" red="1" green="0.02245648523" blue="0.01956858853" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onResetSettingsClicked:" destination="gjJ-X7-bhH" eventType="touchUpInside" id="Aw9-zY-ePP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RGZ-BZ-BTJ">
+                                <rect key="frame" x="16" y="105" width="284" height="32"/>
+                                <state key="normal" title="Synchronize automatically">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAutoSyncClicked:" destination="gjJ-X7-bhH" eventType="touchUpInside" id="En7-AX-ib0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5h1-eS-PEt">
+                                <rect key="frame" x="16" y="134" width="284" height="32"/>
+                                <state key="normal" title="Synchronization objects">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSyncObjectsClicked:" destination="gjJ-X7-bhH" eventType="touchUpInside" id="pTp-d7-Xc7"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bN-PB-daw">
+                                <rect key="frame" x="306" y="104" width="51" height="31"/>
+                                <color key="onTintColor" red="0.36470588240000001" green="0.25098039220000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onAutoSyncClicked:" destination="gjJ-X7-bhH" eventType="valueChanged" id="3IM-24-7Za"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVF-9C-ple">
+                                <rect key="frame" x="306" y="138" width="49" height="24"/>
+                                <state key="normal" image="ic_add"/>
+                                <connections>
+                                    <action selector="onSyncObjectsClicked:" destination="gjJ-X7-bhH" eventType="touchUpInside" id="wlX-vK-3P4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5h1-eS-PEt" firstAttribute="leading" secondItem="CBh-E1-CL4" secondAttribute="leading" id="2R3-mC-6TL"/>
+                            <constraint firstItem="YVF-9C-ple" firstAttribute="top" secondItem="8bN-PB-daw" secondAttribute="bottom" constant="3" id="4Yz-AX-roX"/>
+                            <constraint firstItem="YVF-9C-ple" firstAttribute="trailing" secondItem="8bN-PB-daw" secondAttribute="trailing" id="7N2-eO-VwB"/>
+                            <constraint firstItem="YVF-9C-ple" firstAttribute="centerY" secondItem="5h1-eS-PEt" secondAttribute="centerY" id="AXv-9l-7d6"/>
+                            <constraint firstItem="RGZ-BZ-BTJ" firstAttribute="leading" secondItem="5h1-eS-PEt" secondAttribute="leading" id="D1O-AD-eu9"/>
+                            <constraint firstItem="RGZ-BZ-BTJ" firstAttribute="top" secondItem="Pe7-hE-cdw" secondAttribute="bottom" constant="9" id="Dr8-xO-v52"/>
+                            <constraint firstItem="8bN-PB-daw" firstAttribute="leading" secondItem="5h1-eS-PEt" secondAttribute="trailing" constant="8" symbolic="YES" id="FAz-Ul-8uR"/>
+                            <constraint firstItem="8bN-PB-daw" firstAttribute="top" secondItem="Pe7-hE-cdw" secondAttribute="bottom" constant="8" symbolic="YES" id="KMa-Eu-KFP"/>
+                            <constraint firstItem="5h1-eS-PEt" firstAttribute="top" secondItem="Pe7-hE-cdw" secondAttribute="bottom" constant="38" id="PZT-AA-iUi"/>
+                            <constraint firstItem="RGZ-BZ-BTJ" firstAttribute="leading" secondItem="Pe7-hE-cdw" secondAttribute="leading" id="SCz-dq-qEG"/>
+                            <constraint firstItem="Pe7-hE-cdw" firstAttribute="top" secondItem="hNr-Q3-i86" secondAttribute="bottom" constant="8" symbolic="YES" id="TzY-uE-pNF"/>
+                            <constraint firstItem="Pe7-hE-cdw" firstAttribute="leading" secondItem="RqS-1j-Iwr" secondAttribute="leadingMargin" id="cnd-Tp-4Fa"/>
+                            <constraint firstItem="CBh-E1-CL4" firstAttribute="top" secondItem="5h1-eS-PEt" secondAttribute="bottom" constant="6" id="d7c-PC-ogB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8bN-PB-daw" secondAttribute="trailing" constant="4" id="e6a-bd-9sf"/>
+                            <constraint firstItem="YVF-9C-ple" firstAttribute="leading" secondItem="8bN-PB-daw" secondAttribute="leading" id="eNd-6d-pnR"/>
+                            <constraint firstItem="Pe7-hE-cdw" firstAttribute="trailing" secondItem="RqS-1j-Iwr" secondAttribute="trailingMargin" id="f6z-Sw-mLz"/>
+                            <constraint firstItem="8bN-PB-daw" firstAttribute="leading" secondItem="RGZ-BZ-BTJ" secondAttribute="trailing" constant="8" symbolic="YES" id="wt3-ga-X9w"/>
+                            <constraint firstItem="CBh-E1-CL4" firstAttribute="top" secondItem="RGZ-BZ-BTJ" secondAttribute="bottom" constant="35" id="yEJ-SI-eCG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="vbI-lD-i5Z"/>
+                    <connections>
+                        <outlet property="btnAutoSync" destination="RGZ-BZ-BTJ" id="gEJ-Ob-Par"/>
+                        <outlet property="btnEditSyncObjects" destination="YVF-9C-ple" id="tku-bC-uT8"/>
+                        <outlet property="btnSyncObjects" destination="5h1-eS-PEt" id="ZzQ-eQ-VOf"/>
+                        <outlet property="switchAutoSync" destination="8bN-PB-daw" id="A9M-qH-AhB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3K6-wf-ZQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-382.5" y="991.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n3S-4C-aOv">
+            <objects>
+                <navigationController storyboardIdentifier="controller_settings" automaticallyAdjustsScrollViewInsets="NO" id="4lP-AM-R8Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3A2-iY-FOR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.82745098039999998" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gjJ-X7-bhH" kind="relationship" relationship="rootViewController" id="apG-f3-ehg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhY-m0-YQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-921.5" y="991.5"/>
         </scene>
     </scenes>
     <resources>
@@ -763,7 +888,7 @@
         <image name="placeholder_music" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="V1X-DZ-srj"/>
+        <segue reference="s1F-fO-6pI"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

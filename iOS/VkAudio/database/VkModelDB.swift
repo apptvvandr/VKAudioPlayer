@@ -91,6 +91,12 @@ class VkModelDB {
         return getWithType(type, id: id) != nil
     }
     
+    func setSyncForAllEnabled(enabled: Bool) {
+        for item in getAll() {
+            item.syncEnabled = enabled
+        }
+    }
+    
     func path() -> String {
         return realm.configuration.fileURL!.path!
     }

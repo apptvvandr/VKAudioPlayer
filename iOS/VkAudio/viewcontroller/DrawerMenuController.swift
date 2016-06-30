@@ -23,7 +23,7 @@ class DrawerMenuController: UITableViewController {
         case (0, 0):
             break //todo: present downloads
         case (1, 0):
-            break //todo: present settings
+            OutsideController.present(fromController: self, identified: "controller_settings")
         case (1, 1):
             break //todo: present app info
         case (2, 0):

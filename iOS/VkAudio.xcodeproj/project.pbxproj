@@ -22,6 +22,8 @@
 		F52E21E31D2292FF00E7F62E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E21E21D2292FF00E7F62E /* UserModel.swift */; };
 		F52E21E51D229F7000E7F62E /* VKApiDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E21E41D229F7000E7F62E /* VKApiDefaults.swift */; };
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
+		F54AE98D1D2557B800C586BF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54AE98B1D2557B800C586BF /* SettingsViewController.swift */; };
+		F54AE9961D25805A00C586BF /* OutsideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54AE9951D25805A00C586BF /* OutsideController.swift */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
 		F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */; };
 		F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55856601D1AB02800C64EC4 /* Assets.xcassets */; };
@@ -101,6 +103,8 @@
 		F52E21E21D2292FF00E7F62E /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F52E21E41D229F7000E7F62E /* VKApiDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKApiDefaults.swift; sourceTree = "<group>"; };
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		F54AE98B1D2557B800C586BF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F54AE9951D25805A00C586BF /* OutsideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsideController.swift; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
 		F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUtils.swift; sourceTree = "<group>"; };
 		F55856601D1AB02800C64EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				F5B3E56C1CCFC254003270A9 /* LoginViewController.swift */,
 				F52E21D61D21990300E7F62E /* DrawerMenuController.swift */,
 				F52E21DC1D22846400E7F62E /* DrawerHeader.xib */,
+				F54AE98B1D2557B800C586BF /* SettingsViewController.swift */,
+				F54AE9951D25805A00C586BF /* OutsideController.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -592,6 +598,7 @@
 				F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
 				F5C004A81D1D4ACA000A4D6C /* Audio.swift in Sources */,
+				F54AE9961D25805A00C586BF /* OutsideController.swift in Sources */,
 				F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */,
 				F5C0048C1D1D4993000A4D6C /* ApiProtocol.swift in Sources */,
 				F56AD29D1CCF64A100E45170 /* VKAPAppDelegate.swift in Sources */,
@@ -603,6 +610,7 @@
 				F563C5EB1CEDE09A00825849 /* LocalStorage.swift in Sources */,
 				F5C0048B1D1D4993000A4D6C /* VKApi.swift in Sources */,
 				F52E21D71D21990300E7F62E /* DrawerMenuController.swift in Sources */,
+				F54AE98D1D2557B800C586BF /* SettingsViewController.swift in Sources */,
 				311593230AF33E3421C7C78B /* UserCell.swift in Sources */,
 				F516E2B31D22BBF900D665C6 /* VKHttpClientImpl.swift in Sources */,
 				F5C004B01D1D4CB1000A4D6C /* SyncItemDB.swift in Sources */,
