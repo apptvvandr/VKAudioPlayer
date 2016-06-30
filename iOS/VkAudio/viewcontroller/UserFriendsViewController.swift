@@ -65,15 +65,7 @@ class UserFriendsViewController: UITableViewController {
                 SyncItemDB.sharedInstance?.update()
                 
                 if !VKAPUserDefaults.isAskedSync(self.dataTag) {
-                    let alertView = SimpleAlertView(title: "Synchronization", message: "Would you like to sync friends music automatically?",
-                        negativeButtonTitle: "NO", onNegativeButtonClick: {
-                            //todo: onNegativeClick
-                        },
-                        positiveButtonTitle: "YES", onPositiveButtonClick: {
-                            //todo: onPositiveClick
-                    })
-                    VKAPUserDefaults.setAskedSync(true, dataTag: self.dataTag)
-                    alertView.show()
+                    self.showSyncAlert(result)
                 }
             },
             onError: { (error) in
@@ -81,6 +73,19 @@ class UserFriendsViewController: UITableViewController {
         }))
     }
 
+    private func showSyncAlert(items: [FriendModel]) {
+        let alertView = SimpleAlertView(title: "Synchronization", message: "Would you like to sync friends music automatically?",
+            negativeButtonTitle: "NO", onNegativeButtonClick: {
+                //todo: onNegativeClick
+            },
+            positiveButtonTitle: "YES", onPositiveButtonClick: {
+                let pickDialog = SyncModelPickDialog(items: items.map{$0 as VkModel})
+                pickDialog.show()
+        })
+        VKAPUserDefaults.setAskedSync(true, dataTag: self.dataTag)
+        alertView.show()
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }

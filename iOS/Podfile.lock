@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (3.4.1)
+  - BEMCheckBox (1.2.1)
   - DZNEmptyDataSet (1.8.1)
   - JLToast (1.4.2)
   - Kingfisher (2.4.1)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.3)
+  - BEMCheckBox
   - DZNEmptyDataSet
   - JLToast (~> 1.4)
   - Kingfisher (~> 2.3)
@@ -20,6 +22,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  BEMCheckBox: 264b8b72aa92adbfefa265cc58a0cdb86b207b9f
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   JLToast: bf63282a7df069557e80c77dbd2c6b9f9fc4de72
   Kingfisher: 41aed5b6c1ed8fa98cf6d75283ce89cf7890f517

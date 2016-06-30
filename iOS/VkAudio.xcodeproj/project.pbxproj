@@ -14,6 +14,7 @@
 		F516E2BC1D23BBD500D665C6 /* VKLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516E2BA1D23BBD500D665C6 /* VKLoginViewController.swift */; };
 		F516E2BD1D23BBD500D665C6 /* VKLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F516E2BB1D23BBD500D665C6 /* VKLoginViewController.xib */; };
 		F516E2C11D24133900D665C6 /* SimpleAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516E2C01D24133900D665C6 /* SimpleAlertView.swift */; };
+		F516E2C31D24278D00D665C6 /* SyncModelPickDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F516E2C21D24278D00D665C6 /* SyncModelPickDialog.swift */; };
 		F52E219F1D21852700E7F62E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52E219E1D21852700E7F62E /* SWRevealViewController.m */; };
 		F52E21D71D21990300E7F62E /* DrawerMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52E21D61D21990300E7F62E /* DrawerMenuController.swift */; };
 		F52E21DD1D22846400E7F62E /* DrawerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52E21DC1D22846400E7F62E /* DrawerHeader.xib */; };
@@ -90,6 +91,7 @@
 		F516E2BA1D23BBD500D665C6 /* VKLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKLoginViewController.swift; sourceTree = "<group>"; };
 		F516E2BB1D23BBD500D665C6 /* VKLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VKLoginViewController.xib; sourceTree = "<group>"; };
 		F516E2C01D24133900D665C6 /* SimpleAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAlertView.swift; sourceTree = "<group>"; };
+		F516E2C21D24278D00D665C6 /* SyncModelPickDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncModelPickDialog.swift; sourceTree = "<group>"; };
 		F52E219D1D21852700E7F62E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		F52E219E1D21852700E7F62E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		F52E21A11D2185D400E7F62E /* VkAudio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VkAudio-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				F5C004861D1D4993000A4D6C /* vkapi */,
 				F52E21A11D2185D400E7F62E /* VkAudio-Bridging-Header.h */,
 				F516E2C01D24133900D665C6 /* SimpleAlertView.swift */,
+				F516E2C21D24278D00D665C6 /* SyncModelPickDialog.swift */,
 			);
 			path = VkAudio;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5C004AC1D1D4ACA000A4D6C /* FriendModel.swift in Sources */,
+				F516E2C31D24278D00D665C6 /* SyncModelPickDialog.swift in Sources */,
 				F5C004741D1C4825000A4D6C /* VkModel.swift in Sources */,
 				F58706AE1CDA34E70016C79C /* VkTabsController.swift in Sources */,
 				F5C004771D1D4828000A4D6C /* SyncItem.swift in Sources */,

@@ -64,20 +64,25 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
                 SyncItemDB.sharedInstance?.update()
                 
                 if !VKAPUserDefaults.isAskedSync(self.dataTag) {
-                    let alertView = SimpleAlertView(title: "Synchronization", message: "Would you like to sync groups music automatically?",
-                        negativeButtonTitle: "NO", onNegativeButtonClick: {
-                            //todo: onNegativeClick
-                        },
-                        positiveButtonTitle: "YES", onPositiveButtonClick: {
-                            //todo: onPositiveClick
-                    })
-                    VKAPUserDefaults.setAskedSync(true, dataTag: self.dataTag)
-                    alertView.show()
+                    self.showSyncAlert(result)
                 }
             },
             onError: { (error) in
                 self.progressHudHidden = MBProgressHUD.hideHUDForView(self.view, animated: true)
         }))
+    }
+    
+    private func showSyncAlert(items: [GroupModel]) {
+        let alertView = SimpleAlertView(title: "Synchronization", message: "Would you like to sync groups music automatically?",
+            negativeButtonTitle: "NO", onNegativeButtonClick: {
+                //todo: onNegativeClick
+            },
+            positiveButtonTitle: "YES", onPositiveButtonClick: {
+                let pickDialog = SyncModelPickDialog(items: items.map{$0 as VkModel})
+                pickDialog.show()
+        })
+        VKAPUserDefaults.setAskedSync(true, dataTag: self.dataTag)
+        alertView.show()
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

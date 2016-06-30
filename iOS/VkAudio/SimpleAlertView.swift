@@ -14,10 +14,10 @@ class SimpleAlertView: UIAlertView, UIAlertViewDelegate {
     private var negativeButtonIndex: Int?
     private var positiveButtonIndex: Int?
     
-    var onPositiveButtonClick: (() -> ())?
     var onNegativeButtonClick: (() -> ())?
+    var onPositiveButtonClick: (() -> ())?
     
-    init(title: String, message: String,
+    init(title: String, message: String? = nil,
          negativeButtonTitle: String? = nil, onNegativeButtonClick: (() -> ())? = nil,
          positiveButtonTitle: String? = nil, onPositiveButtonClick: (() -> ())? = nil) {
         

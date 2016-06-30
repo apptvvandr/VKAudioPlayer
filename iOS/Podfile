@@ -7,6 +7,7 @@ pod 'Alamofire', '~> 3.3'
 pod 'RealmSwift', '~> 1.0'
 pod 'Kingfisher', '~> 2.3'
 pod 'DZNEmptyDataSet'
+pod 'BEMCheckBox'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'JLToast', '~> 1.4'
 
