@@ -79,6 +79,7 @@ class UserFriendsViewController: UITableViewController {
                 //todo: onNegativeClick
             },
             positiveButtonTitle: "YES", onPositiveButtonClick: {
+                VKAPUserDefaults.setAutoSyncEnabled(forType: FriendModel.self, enabled: true)
                 let pickDialog = SyncModelPickDialog(items: items.map{$0 as VkModel})
                 pickDialog.show()
         })

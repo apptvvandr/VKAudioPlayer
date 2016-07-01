@@ -78,6 +78,7 @@ class UserGroupsViewController: UICollectionViewController, UICollectionViewDele
                 //todo: onNegativeClick
             },
             positiveButtonTitle: "YES", onPositiveButtonClick: {
+                VKAPUserDefaults.setAutoSyncEnabled(forType: GroupModel.self, enabled: true)
                 let pickDialog = SyncModelPickDialog(items: items.map{$0 as VkModel})
                 pickDialog.show()
         })
