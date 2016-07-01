@@ -18,7 +18,7 @@ class VKHttpClientImpl: VKHttpClient {
     var baseUrl: String = "https://api.vk.com/method/"
     
     func get<T>(method: String, params: [String : AnyObject]?, callback: VKApiCallback<T>?) {
-        var requestParams: [String: AnyObject] = ["access_token": VKApi.token!]
+        var requestParams: [String: AnyObject] = ["access_token": VKApi.token!, "v": "5.52"]
         if let params = params {
             requestParams += params
         }
@@ -31,6 +31,12 @@ class VKHttpClientImpl: VKHttpClient {
                         return
                     }
                     if let responseValues = responseDictionary["response"] as? T {
+                        callback?.onResult(result: responseValues)
+                    }
+                    else if let responseDictValues = responseDictionary["response"] as? [String: AnyObject] {
+                        guard let responseValues = responseDictValues["items"] as? T else {
+                            return
+                        }
                         callback?.onResult(result: responseValues)
                     }
                     else if let errorValues = responseDictionary["error"] {
