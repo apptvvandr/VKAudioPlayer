@@ -17,7 +17,7 @@ class Friend: VKItem {
     var photoUrl: String?
 
     init(apiResponse: [String:AnyObject]) {
-        id = apiResponse["uid"] as! Int
+        id = apiResponse["id"] as! Int
         firstName = apiResponse["first_name"] as? String
         lastName = apiResponse["last_name"] as? String
         photoUrl = apiResponse["photo_max_orig"] as? String

@@ -24,6 +24,8 @@
 		F53A00141CD905AE0029B246 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A00131CD905AE0029B246 /* GroupCell.swift */; };
 		F54AE98D1D2557B800C586BF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54AE98B1D2557B800C586BF /* SettingsViewController.swift */; };
 		F54AE9961D25805A00C586BF /* OutsideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54AE9951D25805A00C586BF /* OutsideController.swift */; };
+		F54AE9981D2656AC00C586BF /* NewAudiosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54AE9971D2656AC00C586BF /* NewAudiosViewController.swift */; };
+		F54AE99A1D2669A500C586BF /* AudioOwnerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = F54AE9991D2669A500C586BF /* AudioOwnerHeader.xib */; };
 		F55008501CD90D9100798A25 /* UserGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */; };
 		F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */; };
 		F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55856601D1AB02800C64EC4 /* Assets.xcassets */; };
@@ -105,6 +107,8 @@
 		F53A00131CD905AE0029B246 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		F54AE98B1D2557B800C586BF /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F54AE9951D25805A00C586BF /* OutsideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutsideController.swift; sourceTree = "<group>"; };
+		F54AE9971D2656AC00C586BF /* NewAudiosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAudiosViewController.swift; sourceTree = "<group>"; };
+		F54AE9991D2669A500C586BF /* AudioOwnerHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioOwnerHeader.xib; sourceTree = "<group>"; };
 		F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsViewController.swift; sourceTree = "<group>"; };
 		F558563D1D1A74FC00C64EC4 /* VKAPUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKAPUtils.swift; sourceTree = "<group>"; };
 		F55856601D1AB02800C64EC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 		F5B3E56B1CCFC254003270A9 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				F54AE9971D2656AC00C586BF /* NewAudiosViewController.swift */,
 				F5AB3D081CD34A0F00BC2067 /* UserAudiosViewController.swift */,
 				F509CD9D1CD7C4D7003ACCC1 /* UserFriendsViewController.swift */,
 				F550084F1CD90D9100798A25 /* UserGroupsViewController.swift */,
@@ -260,6 +265,7 @@
 				F52E21DC1D22846400E7F62E /* DrawerHeader.xib */,
 				F54AE98B1D2557B800C586BF /* SettingsViewController.swift */,
 				F54AE9951D25805A00C586BF /* OutsideController.swift */,
+				F54AE9991D2669A500C586BF /* AudioOwnerHeader.xib */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -423,6 +429,7 @@
 			files = (
 				F56AD2AA1CCF64A200E45170 /* LaunchScreen.storyboard in Resources */,
 				F516E2BD1D23BBD500D665C6 /* VKLoginViewController.xib in Resources */,
+				F54AE99A1D2669A500C586BF /* AudioOwnerHeader.xib in Resources */,
 				F5C004BB1D1D80A3000A4D6C /* VKAPApplication.plist in Resources */,
 				F56AD2A21CCF64A100E45170 /* Main.storyboard in Resources */,
 				F55856611D1AB02800C64EC4 /* Assets.xcassets in Resources */,
@@ -597,6 +604,7 @@
 				F5C004B81D1D7FC6000A4D6C /* VKAPService.swift in Sources */,
 				F558563E1D1A74FC00C64EC4 /* VKAPUtils.swift in Sources */,
 				F56AD2A51CCF64A200E45170 /* VkAudio.xcdatamodeld in Sources */,
+				F54AE9981D2656AC00C586BF /* NewAudiosViewController.swift in Sources */,
 				F5C004A81D1D4ACA000A4D6C /* Audio.swift in Sources */,
 				F54AE9961D25805A00C586BF /* OutsideController.swift in Sources */,
 				F563C5FB1CEDE2B100825849 /* GroupsCollectionView.swift in Sources */,

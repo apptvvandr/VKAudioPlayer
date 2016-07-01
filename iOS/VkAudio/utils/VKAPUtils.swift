@@ -10,6 +10,7 @@ import Foundation
 
 class VKAPUtils {
 
+    static let REQUEST_DELAY_NEW_AUDIOS = 60
     static let REQUEST_DELAY_USER_AUDIOS = 15
     static let REQUSET_DELAY_USER_GROUPS = 5 * 60
     static let REQUEST_DELAY_USER_FRIENDS = 5 * 60

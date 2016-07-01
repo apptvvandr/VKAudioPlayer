@@ -15,7 +15,7 @@ class Group: VKItem {
     var photoUrl: String?
 
     init(apiResponse: [String:AnyObject]) {
-        id = apiResponse["gid"] as! Int
+        id = apiResponse["id"] as! Int
         name = apiResponse["name"] as? String
         photoUrl = apiResponse["photo_max_orig"] as? String
     }
