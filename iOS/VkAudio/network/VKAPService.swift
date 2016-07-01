@@ -11,6 +11,7 @@ import UIKit
 
 protocol VKAPService {    
     func getAudios(ownerId: Int?, callback: VKApiCallback<[AudioModel]>?)
+    func getNewAudios(ids: [Int], callback: VKApiCallback<[VkModel: [AudioModel]]>?)
     func getGroups(callback: VKApiCallback<[GroupModel]>?)
     func getFriends(callback: VKApiCallback<[FriendModel]>?)
     func getUserInfo(userId: Int, callback: VKApiCallback<UserModel>?)

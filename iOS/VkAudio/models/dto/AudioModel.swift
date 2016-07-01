@@ -16,14 +16,15 @@ class AudioModel: AudioPlayerItem {
     var duration: Int
     let artist: String
     let name: String
-//    let date: Int // todo: date is available from api v5
+    let date: Double
     
-    init(id: Int, ownerId: Int, url: String, duration: Int, artist: String, name: String) {
+    init(id: Int, ownerId: Int, url: String, duration: Int, artist: String, name: String, date: Double) {
         self.id = id
         self.ownerId = ownerId
         self.url = url
         self.duration = duration
         self.artist = artist
         self.name = name
+        self.date = date
     }
 }

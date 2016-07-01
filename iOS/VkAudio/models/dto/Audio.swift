@@ -16,15 +16,15 @@ class Audio: VKItem {
     var name: String?
     var duration: Int?
     var ownerId: Int?
-    var date: Int? // todo: date is available from api v5
+    var date: Double? // todo: date is available from api v5
 
     init(apiResponse: [String: AnyObject]) {
-        id = apiResponse["aid"] as! Int
+        id = apiResponse["id"] as! Int
         url = apiResponse["url"] as? String
         artist = apiResponse["artist"] as? String
         name = apiResponse["title"] as? String
         duration = apiResponse["duration"] as? Int
         ownerId = apiResponse["owner_id"] as? Int
-        date = apiResponse["date"] as? Int
+        date = apiResponse["date"] as? Double
     }
 }

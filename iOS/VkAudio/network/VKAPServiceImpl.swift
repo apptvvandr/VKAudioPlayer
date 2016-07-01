@@ -25,12 +25,36 @@ class VKAPServiceImpl: VKAPService {
             onResult: { (result: [AnyObject]) in
                 let audioDtos = result.flatMap { $0 as? [String: AnyObject] }.map { Audio(apiResponse: $0) }
                 let audioModels = audioDtos.map{dto in
-                    AudioModel(id: dto.id, ownerId: dto.ownerId!, url: dto.url!, duration: dto.duration!, artist: dto.artist!, name: dto.name!)}
+                    AudioModel(id: dto.id, ownerId: dto.ownerId!, url: dto.url!, duration: dto.duration!, artist: dto.artist!, name: dto.name!, date: dto.date!)}
                 callback?.onResult(result: audioModels)
             },
             onError: { (error) in
                 callback?.onError?(error: error)
         }))
+    }
+    
+    func getNewAudios(ids: [Int], callback: VKApiCallback<[VkModel : [AudioModel]]>?) {
+        var items = [VkModel: [AudioModel]]()
+        let requestGroup = dispatch_group_create()
+        
+        dispatch_apply(ids.count, dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), { (index) in
+            dispatch_group_enter(requestGroup)
+//            sleep(1)
+            self.getAudios(ids[index], callback: VKApiCallback(
+                onResult: { (result) in
+                    let owner = VkModelDB.sharedInstance?.get(ids[index])
+                    let newAudios = result.filter({ audio in audio.date > VKApi.sharedInstance!.lastLoginMillis / 1000})
+                    items[owner!] = newAudios
+                    dispatch_group_leave(requestGroup)
+                },
+                onError: { (error) in
+                    print(error)
+                    dispatch_group_leave(requestGroup)
+            }))
+        })
+        dispatch_group_notify(requestGroup, dispatch_get_main_queue()) {
+            callback?.onResult(result: items)
+        }
     }
     
     func getGroups(callback: VKApiCallback<[GroupModel]>?) {
@@ -105,7 +129,7 @@ class VKAPServiceImpl: VKAPService {
         
         httpClient.get("audio.restore", params: params, callback: VKApiCallback(onResult: { (result: AnyObject) in
             let dto = Audio(apiResponse: result as! [String: AnyObject])
-            let audioModel = AudioModel(id: dto.id, ownerId: dto.ownerId!, url: dto.url!, duration: dto.duration!, artist: dto.artist!, name: dto.name!)
+            let audioModel = AudioModel(id: dto.id, ownerId: dto.ownerId!, url: dto.url!, duration: dto.duration!, artist: dto.artist!, name: dto.name!, date: dto.date!)
             callback?.onResult(result: audioModel)
             }, onError: { (error) in
                 callback?.onError?(error: error)

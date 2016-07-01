@@ -253,7 +253,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="iw6-lM-2yK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -364,7 +364,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <segue destination="6Kw-0h-mcS" kind="relationship" relationship="viewControllers" id="mBD-PO-Wtu"/>
                         <segue destination="fH4-cd-slO" kind="relationship" relationship="viewControllers" id="XcJ-zk-uza"/>
                         <segue destination="JSq-eW-Tbh" kind="relationship" relationship="viewControllers" id="oiM-ZO-900"/>
                         <segue destination="JgF-P3-fYK" kind="relationship" relationship="viewControllers" id="dSf-cj-qAK"/>
@@ -703,6 +709,86 @@
             </objects>
             <point key="canvasLocation" x="2748.5" y="148.5"/>
         </scene>
+        <!--New-->
+        <scene sceneID="jSU-ZM-NiQ">
+            <objects>
+                <tableViewController id="Ret-pF-Tac" customClass="NewAudiosViewController" customModule="VkAudio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="48" sectionFooterHeight="28" id="67x-SB-Lvm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell_audio" rowHeight="64" id="9t6-g3-ye5" customClass="AudioCell" customModule="VkAudio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="112" width="375" height="64"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9t6-g3-ye5" id="Vb7-AV-sNI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klm-9V-5HD">
+                                            <rect key="frame" x="324" y="23" width="43" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="43" id="jPj-0k-AB5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="324" y="24" width="43" height="17"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whereever I may Roam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOY-5Y-uBK">
+                                            <rect key="frame" x="8" y="8" width="309" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metallica" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J4-tX-uAZ">
+                                            <rect key="frame" x="8" y="35" width="309" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Klm-9V-5HD" firstAttribute="trailing" secondItem="Vb7-AV-sNI" secondAttribute="trailingMargin" id="GWy-xk-DVD"/>
+                                        <constraint firstItem="pOY-5Y-uBK" firstAttribute="top" secondItem="Vb7-AV-sNI" secondAttribute="topMargin" id="JZn-s0-b1d"/>
+                                        <constraint firstItem="Klm-9V-5HD" firstAttribute="leading" secondItem="4J4-tX-uAZ" secondAttribute="trailing" constant="7" id="M2i-B5-bHs"/>
+                                        <constraint firstItem="pOY-5Y-uBK" firstAttribute="leading" secondItem="Vb7-AV-sNI" secondAttribute="leadingMargin" id="MgK-y0-47o"/>
+                                        <constraint firstItem="Klm-9V-5HD" firstAttribute="centerY" secondItem="Vb7-AV-sNI" secondAttribute="centerY" id="On5-JW-YVZ"/>
+                                        <constraint firstItem="Klm-9V-5HD" firstAttribute="leading" secondItem="pOY-5Y-uBK" secondAttribute="trailing" constant="7" id="ff0-Ni-W7j"/>
+                                        <constraint firstItem="pOY-5Y-uBK" firstAttribute="leading" secondItem="4J4-tX-uAZ" secondAttribute="leading" id="jlM-dB-Dky"/>
+                                        <constraint firstItem="4J4-tX-uAZ" firstAttribute="bottom" secondItem="Vb7-AV-sNI" secondAttribute="bottomMargin" id="pUz-DJ-ZgM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="labelArtist" destination="4J4-tX-uAZ" id="3kD-fP-0Yu"/>
+                                    <outlet property="labelDuration" destination="Klm-9V-5HD" id="93B-XG-Svi"/>
+                                    <outlet property="labelName" destination="pOY-5Y-uBK" id="pBJ-cB-LDA"/>
+                                    <segue destination="hLe-fN-oCO" kind="show" identifier="segue_new_player" id="eTh-ho-w12"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ret-pF-Tac" id="yRx-IC-TCw"/>
+                            <outlet property="delegate" destination="Ret-pF-Tac" id="tg1-K7-eaa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New" id="U6N-lY-Ru7">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="u5h-0b-Yvx"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="barToggle" destination="u5h-0b-Yvx" id="rzF-ph-Uqb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Akg-ty-gVu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.5" y="991.5"/>
+        </scene>
         <!--Audio-->
         <scene sceneID="L7P-8s-47k">
             <objects>
@@ -869,11 +955,35 @@
             </objects>
             <point key="canvasLocation" x="-921.5" y="991.5"/>
         </scene>
+        <!--New-->
+        <scene sceneID="1TW-bt-j0y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Kw-0h-mcS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="New" image="ic_filter_list" id="9qU-4f-8Tb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SCc-Ew-Cxg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.82745098039999998" green="0.1843137255" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ret-pF-Tac" kind="relationship" relationship="rootViewController" id="toz-ID-WoY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Pv-NK-ISX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="403.5" y="991.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_add" width="24" height="24"/>
         <image name="ic_download" width="24" height="24"/>
         <image name="ic_exit_to_app" width="24" height="24"/>
+        <image name="ic_filter_list" width="24" height="24"/>
         <image name="ic_info" width="24" height="24"/>
         <image name="ic_next" width="24" height="24"/>
         <image name="ic_people" width="24" height="24"/>
@@ -888,7 +998,8 @@
         <image name="placeholder_music" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s1F-fO-6pI"/>
+        <segue reference="eTh-ho-w12"/>
+        <segue reference="V1X-DZ-srj"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
